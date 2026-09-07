@@ -1,3 +1,5 @@
+/* Dynamic Supabase RPC is checked by PostgreSQL; the inherited client schema does not include it. */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PageHeading, EmptyState } from '@/components/ui';
 import { leagueFeed } from '@/lib/public-data';
 import { Newspaper } from 'lucide-react';
