@@ -34,7 +34,7 @@ export default async function Market({
     const { data: details } = await db.from('player_enriched_details').select('mkcentral_player_id,display_name,country,tier').eq('season_number', 3);
     const detailById = new Map((details ?? []).map((d: any) => [String(d.mkcentral_player_id), d]));
     const detailByName = new Map((details ?? []).map((d: any) => [String(d.display_name).trim().toLocaleLowerCase(), d]));
-    offers = offers.map((offer) => ({ ...offer, detail: detailById.get(String(offer.players?.mkcentral_player_id)) ?? detailByName.get(String(offer.players?.name).trim().toLocaleLowerCase()) }));
+    offers = offers.map((offer) => { const normalizedName = String(offer.players?.name).trim().toLocaleLowerCase(); return { ...offer, detail: detailById.get(String(offer.players?.mkcentral_player_id)) ?? detailByName.get(normalizedName) ?? (details ?? []).find((item: any) => normalizedName.split(/[\s/|]+/).filter(Boolean).includes(String(item.display_name ?? '').trim().toLocaleLowerCase())) }; });
     team = squad;
     if (team) {
       const result = await db

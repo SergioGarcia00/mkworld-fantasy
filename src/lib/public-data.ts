@@ -26,7 +26,8 @@ export const publicCatalog = cache(async () => {
     const live = catalog?.players.find(
       (p) => String(p.mkcentral_player_id) === String(row.player_id),
     );
-    const detail = details.get(String(row.player_id)) ?? detailsByName.get(String(row.jugador).trim().toLocaleLowerCase());
+    const normalizedName = String(row.jugador).trim().toLocaleLowerCase();
+    const detail = details.get(String(row.player_id)) ?? detailsByName.get(normalizedName) ?? enriched.find((item: any) => normalizedName.split(/[\s/|]+/).filter(Boolean).includes(String(item.display_name ?? '').trim().toLocaleLowerCase()));
     return {
       id: String(row.player_id),
       slug: live?.slug ?? String(row.player_id),
