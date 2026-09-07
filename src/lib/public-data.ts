@@ -13,21 +13,25 @@ export const publicCatalog = cache(async () => {
     ? await (async () => {
         try {
           const db: any = await createClient();
-          const { data } = await db.from('player_enriched_details').select('*').eq('season_number', 3);
-          return data ?? [];
+          const rows: any[] = [];
+          for (let offset = 0; ; offset += 500) {
+            const { data, error } = await db.from('player_enriched_details').select('*').eq('season_number', 3).order('mkcentral_player_id').range(offset, offset + 499);
+            if (error) throw error;
+            rows.push(...(data ?? []));
+            if (!data || data.length < 500) break;
+          }
+          return rows;
         } catch {
           return [];
         }
       })()
     : [];
   const details = new Map(enriched.map((row: any) => [String(row.mkcentral_player_id), row]));
-  const detailsByName = new Map(enriched.map((row: any) => [String(row.display_name ?? '').trim().toLocaleLowerCase(), row]));
   const players = source.jugadores.map((row) => {
     const live = catalog?.players.find(
       (p) => String(p.mkcentral_player_id) === String(row.player_id),
     );
-    const normalizedName = String(row.jugador).trim().toLocaleLowerCase();
-    const detail = details.get(String(row.player_id)) ?? detailsByName.get(normalizedName) ?? enriched.find((item: any) => normalizedName.split(/[\s/|]+/).filter(Boolean).includes(String(item.display_name ?? '').trim().toLocaleLowerCase()));
+    const detail = details.get(String(row.player_id));
     return {
       id: String(row.player_id),
       slug: live?.slug ?? String(row.player_id),

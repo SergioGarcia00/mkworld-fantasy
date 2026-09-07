@@ -1,3 +1,4 @@
+import { countryCode as resolveCountryCode } from '@/lib/country-code';
 import Link from 'next/link';
 import { Flag } from 'lucide-react';
 /* Enriched columns are maintained by a database migration ahead of generated client types. */
@@ -19,9 +20,8 @@ export default async function Player({ params }: { params: Promise<{ slug: strin
   const maxMmr = Math.max(...chartEvents.map((event: any) => event.mmr_after), p.mmr ?? 1);
   const points = chartEvents.map((event: any, index: number) => `${(index / Math.max(1, chartEvents.length - 1)) * 100},${100 - ((event.mmr_after - minMmr) / Math.max(1, maxMmr - minMmr)) * 82 - 9}`).join(' ');
   const percent = (value: number | null | undefined) => value == null ? '—' : `${(value / 10).toLocaleString('es-ES', { maximumFractionDigits: 1 })}%`;
-  const countryCode: Record<string, string> = { Spain: 'es', 'United States': 'us', Canada: 'ca', Lebanon: 'lb', France: 'fr', Germany: 'de', Italy: 'it', Portugal: 'pt', 'United Kingdom': 'gb', Japan: 'jp', Brazil: 'br', Mexico: 'mx', Chile: 'cl', Argentina: 'ar', Australia: 'au', Netherlands: 'nl', Belgium: 'be', Sweden: 'se', Norway: 'no', Finland: 'fi', Denmark: 'dk', Poland: 'pl', Austria: 'at', Switzerland: 'ch', Turkey: 'tr' };
   const country = d?.country ?? 'País no registrado';
-  const flagCode = countryCode[country];
+  const flagCode = resolveCountryCode(country);
   return (
     <>
       <Link className="back-link" href="/players">

@@ -1,3 +1,4 @@
+import { countryCode as resolveCountryCode } from '@/lib/country-code';
 /* Dynamic Supabase relations are checked by PostgreSQL; the inherited client schema only covers core tables. */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';
@@ -31,10 +32,9 @@ export default async function Market({
     ]);
     if (error) throw new Error('No se pudieron cargar las ofertas.');
     offers = rows ?? [];
-    const { data: details } = await db.from('player_enriched_details').select('mkcentral_player_id,display_name,country,tier').eq('season_number', 3);
+    const { data: details } = await db.from('player_enriched_details').select('mkcentral_player_id,display_name,country,tier').eq('season_number', 3).in('mkcentral_player_id', offers.map((offer) => String(offer.players?.mkcentral_player_id)));
     const detailById = new Map((details ?? []).map((d: any) => [String(d.mkcentral_player_id), d]));
-    const detailByName = new Map((details ?? []).map((d: any) => [String(d.display_name).trim().toLocaleLowerCase(), d]));
-    offers = offers.map((offer) => { const normalizedName = String(offer.players?.name).trim().toLocaleLowerCase(); return { ...offer, detail: detailById.get(String(offer.players?.mkcentral_player_id)) ?? detailByName.get(normalizedName) ?? (details ?? []).find((item: any) => normalizedName.split(/[\s/|]+/).filter(Boolean).includes(String(item.display_name ?? '').trim().toLocaleLowerCase())) }; });
+    offers = offers.map((offer) => ({ ...offer, detail: detailById.get(String(offer.players?.mkcentral_player_id)) }));
     team = squad;
     if (team) {
       const result = await db
@@ -164,9 +164,8 @@ export default async function Market({
                     .join('')
                     .slice(0, 2)
                     .toUpperCase();
-                  const countryCodes: Record<string, string> = { Spain: 'es', 'United States': 'us', Canada: 'ca', Lebanon: 'lb', France: 'fr', Germany: 'de', Italy: 'it', Portugal: 'pt', 'United Kingdom': 'gb', Japan: 'jp', Brazil: 'br', Mexico: 'mx', Chile: 'cl', Argentina: 'ar', Australia: 'au', Netherlands: 'nl', Belgium: 'be', Sweden: 'se', Norway: 'no', Finland: 'fi', Denmark: 'dk', Poland: 'pl', Austria: 'at', Switzerland: 'ch', Turkey: 'tr' };
                   const playerCountry = o.detail?.country ?? p.nationality;
-                  const flag = playerCountry ? countryCodes[playerCountry] : null;
+                  const flag = playerCountry ? resolveCountryCode(playerCountry) : null;
                   return (
                     <article key={o.id} className="participant-offer">
                       <div className="participant-offer-head">

@@ -26,10 +26,13 @@ const file = process.argv[2];
 if (!file) throw new Error('Uso: npm run import:player-details -- <ruta-al-json>');
 const source = JSON.parse(await readFile(file, 'utf8')) as { jugadores: SourceRow[] };
 const db = adminClient();
-const { data: players, error: playerError } = await db
-  .from('players')
-  .select('id,mkcentral_player_id');
-if (playerError) throw playerError;
+const players: { id: string; mkcentral_player_id: string | null }[] = [];
+for (let offset = 0; ; offset += 500) {
+  const { data, error } = await db.from('players').select('id,mkcentral_player_id').order('id').range(offset, offset + 499);
+  if (error) throw error;
+  players.push(...(data ?? []));
+  if (!data || data.length < 500) break;
+}
 const ids = new Map((players ?? []).filter((p: { mkcentral_player_id: string | null }) => p.mkcentral_player_id).map((p: { mkcentral_player_id: string | null; id: string }) => [String(p.mkcentral_player_id), p.id]));
 const rows = source.jugadores.map((row) => {
   const s12 = row.season_3?.['12p'] ?? {};
