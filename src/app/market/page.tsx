@@ -155,35 +155,48 @@ export default async function Market({
                 {filtered.map((o) => {
                   const p = o.players;
                   const inTeam = owned.some((r) => r.player_id === o.player_id);
+                  const initials = p.name
+                    .split(' ')
+                    .map((part: string) => part[0])
+                    .join('')
+                    .slice(0, 2)
+                    .toUpperCase();
                   return (
                     <article key={o.id} className="participant-offer">
-                      <div className="toolbar">
-                        <span className="badge">
-                          {o.slot === 10
-                            ? 'Code Genius'
-                            : o.mmr > 9000
-                              ? 'Top MMR'
-                              : o.mmr < 4000
-                                ? 'Oportunidad'
-                                : 'Rango medio'}
-                        </span>
-                        <span className="muted">MMR {o.mmr.toLocaleString('es-ES')}</span>
+                      <div className="participant-offer-head">
+                        <div className="player-avatar" aria-hidden="true">{initials}</div>
+                        <div className="player-identity">
+                          <div className="toolbar">
+                            <span className="badge">
+                              {o.slot === 10
+                                ? 'Code Genius'
+                                : o.mmr > 9000
+                                  ? 'Top MMR'
+                                  : o.mmr < 4000
+                                    ? 'Oportunidad'
+                                    : 'Rango medio'}
+                            </span>
+                            <span className="muted">MMR {o.mmr.toLocaleString('es-ES')}</span>
+                          </div>
+                          <h2><Link href={`/players/${p.slug}`}>{p.name}</Link></h2>
+                          <p className="muted">{p.teams?.name ?? 'Piloto independiente'}</p>
+                        </div>
                       </div>
-                      <h2>
-                        <Link href={`/players/${p.slug}`}>{p.name}</Link>
-                      </h2>
-                      <p className="muted">{p.teams?.name}</p>
-                      <div className="toolbar">
-                        <strong>Valor base · {euros(p.initial_value)}</strong>
-                        <span className="muted">
-                          {o.bidderCount} {o.bidderCount === 1 ? 'participante puja' : 'participantes pujan'}
-                        </span>
+                      <div className="player-price-row">
+                        <div>
+                          <span className="muted">Valor base</span>
+                          <strong>{euros(p.initial_value)}</strong>
+                        </div>
+                        <div className="bidder-count">
+                          <span className="participant-dot" aria-hidden="true" />
+                          <span>{o.bidderCount} {o.bidderCount === 1 ? 'participante puja' : 'participantes pujan'}</span>
+                        </div>
                       </div>
-                      <form action={placeBid}>
+                      <form action={placeBid} className="bid-form">
                         <input type="hidden" name="team" value={team?.id ?? ''} />
                         <input type="hidden" name="player" value={o.player_id} />
                         <label className="field">
-                          Tu puja (importe privado)
+                          <span>Tu puja <small>Importe privado</small></span>
                           <input name="amount" type="number" min={p.initial_value} step="1" placeholder={String(p.initial_value)} required />
                         </label>
                         <Submit
