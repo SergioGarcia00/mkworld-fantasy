@@ -16,6 +16,7 @@ export default async function Player({ params }: { params: Promise<{ slug: strin
   const minMmr = Math.min(...chartEvents.map((event: any) => event.mmr_after), p.mmr ?? 0);
   const maxMmr = Math.max(...chartEvents.map((event: any) => event.mmr_after), p.mmr ?? 1);
   const points = chartEvents.map((event: any, index: number) => `${(index / Math.max(1, chartEvents.length - 1)) * 100},${100 - ((event.mmr_after - minMmr) / Math.max(1, maxMmr - minMmr)) * 82 - 9}`).join(' ');
+  const percent = (value: number | null | undefined) => value == null ? '—' : `${(value / 10).toLocaleString('es-ES', { maximumFractionDigits: 1 })}%`;
   return (
     <>
       <Link className="back-link" href="/players">
@@ -45,7 +46,7 @@ export default async function Player({ params }: { params: Promise<{ slug: strin
         <section className="panel">
           <h2>Rendimiento Lounge</h2>
           {points && <div className="mmr-chart"><div className="chart-labels"><span>{number(maxMmr)}</span><span>{number(minMmr)}</span></div><svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Evolución reciente de MMR"><polyline points={points} fill="none" stroke="var(--blue)" strokeWidth="2.5" vectorEffect="non-scaling-stroke" /></svg><span className="chart-caption">Evolución MMR · últimos {chartEvents.length} eventos</span></div>}
-          <div className="profile-stat-grid"><div><strong>{number(s12.events_played ?? d?.events_played_12p ?? p.events)}</strong><span>Eventos 12p</span></div><div><strong>{number(s12.win_rate_percent ?? null)}%</strong><span>Win rate 12p</span></div><div><strong>{number(s24.mmr ?? d?.mmr_24p ?? null)}</strong><span>MMR 24p</span></div><div><strong>{number(d?.events_played_24p ?? null)}</strong><span>Eventos 24p</span></div></div>
+          <div className="profile-stat-grid"><div><strong>{number(s12.events_played ?? d?.events_played_12p ?? p.events)}</strong><span>Eventos 12p</span></div><div><strong>{percent(s12.win_rate_percent)}</strong><span>Win rate 12p</span></div><div><strong>{number(s24.mmr ?? d?.mmr_24p ?? null)}</strong><span>MMR 24p</span></div><div><strong>{percent(s24.win_rate_percent)}</strong><span>Win rate 24p</span></div></div>
           <p className="muted">Últimos eventos registrados: {d?.events?.length ?? p.events ?? 0}. Los valores no disponibles se conservan sin estimaciones.</p>
           <div className="toolbar"><a className="text-link" href={d?.mkcentral_profile_url ?? p.profile} target="_blank" rel="noreferrer">Perfil MKCentral ↗</a>{d?.lounge_profile_url_12p && <a className="text-link" href={d.lounge_profile_url_12p} target="_blank" rel="noreferrer">Perfil Lounge 12p ↗</a>}</div>
         </section>
