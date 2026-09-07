@@ -102,7 +102,6 @@ export default async function Market({
       )}
       <section className="panel">
         <h2>Ofertas de la semana</h2>
-        <p className="muted">2 Top MMR · 6 rango medio · 1 oportunidad · 1 Code Genius</p>
         {!profile ? (
           <div className="empty-state">
             <h3>Tu siguiente fichaje te espera</h3>
