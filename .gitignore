@@ -7,3 +7,10 @@ supabase/.temp/
 supabase/.branches/
 coverage/
 *.log
+
+# Codex/local tooling
+.agents/
+design-detection.json
+lint-result.txt
+tsconfig.tsbuildinfo
+
