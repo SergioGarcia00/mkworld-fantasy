@@ -1,4 +1,6 @@
 import 'server-only';
+/* Dynamic Supabase relations are added by migrations and may lag generated types. */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { cache } from 'react';
 import source from '../../atlas-fantasy-s3-mmr-FINAL.json';
 import { getCatalog } from './catalog';
@@ -10,7 +12,7 @@ export const publicCatalog = cache(async () => {
   const enriched = catalog
     ? await (async () => {
         try {
-          const db = await createClient();
+          const db: any = await createClient();
           const { data } = await db.from('player_enriched_details').select('*').eq('season_number', 3);
           return data ?? [];
         } catch {
