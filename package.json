@@ -12,6 +12,7 @@
     "test": "vitest run",
     "seed": "tsx --env-file=.env.local scripts/seed.ts",
     "import:players": "tsx --env-file=.env.local scripts/import-players.ts",
+    "import:player-details": "tsx --env-file=.env.local scripts/import-player-details.ts",
     "data:refresh": "tsx scripts/fetch-mkcentral.ts",
     "market:generate": "tsx --env-file=.env.local scripts/generate-market.ts",
     "db:types": "supabase gen types typescript --local > src/lib/supabase/database.generated.ts"
