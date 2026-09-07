@@ -4,6 +4,7 @@ import { Flag } from 'lucide-react';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { notFound } from 'next/navigation';
 import { publicCatalog, number, money } from '@/lib/public-data';
+export const dynamic = 'force-dynamic';
 export default async function Player({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const catalog = await publicCatalog();
