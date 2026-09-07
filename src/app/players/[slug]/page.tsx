@@ -55,6 +55,10 @@ export default async function Player({ params }: { params: Promise<{ slug: strin
           </Link>
         </section>
       </div>
+      <section className="panel player-history">
+        <div className="section-heading"><div><h2>Historial reciente</h2><p className="muted">Últimos eventos registrados en Lounge · {d?.events?.length ?? 0} en total</p></div></div>
+        {d?.events?.length ? <div className="event-list">{d.events.slice(0, 12).map((event: any, index: number) => <div className="event-row" key={`${event.event_id ?? 'event'}-${index}`}><div><strong>{event.name}</strong><span>{event.time_raw ?? 'Fecha no disponible'}</span></div><div className={event.mmr_delta > 0 ? 'delta positive' : event.mmr_delta < 0 ? 'delta negative' : 'delta'}>{event.mmr_delta > 0 ? '+' : ''}{number(event.mmr_delta)} <small>MMR</small></div><span className="event-after">{number(event.mmr_after)} después</span>{event.event_url && <a className="text-link" href={event.event_url} target="_blank" rel="noreferrer">Ver ↗</a>}</div>)}</div> : <p className="muted">Todavía no hay eventos registrados para este piloto.</p>}
+      </section>
     </>
   );
 }
