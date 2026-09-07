@@ -831,6 +831,10 @@ textarea {
 .profile-stat-grid span,.recent-form span { color:var(--muted); font-size:12px; }
 .recent-form { display:grid; grid-template-columns:1fr 1fr; gap:5px 16px; margin:22px 0; }
 .recent-form strong { font:28px var(--font-display); font-variant-numeric:tabular-nums; }
+.mmr-chart { position:relative; height:150px; margin:18px 0 24px 42px; border-bottom:1px solid var(--line); border-left:1px solid var(--line); background:linear-gradient(to bottom,transparent 49%,#29374b 50%,transparent 51%); }
+.mmr-chart svg { width:100%; height:100%; overflow:visible; }
+.chart-labels { position:absolute; left:-42px; top:0; bottom:0; display:flex; flex-direction:column; justify-content:space-between; color:var(--muted); font-size:10px; }
+.chart-caption { position:absolute; left:0; bottom:-24px; color:var(--muted); font-size:11px; }
 .player-history { margin-top: 24px; }
 .player-history .section-heading { margin-bottom: 8px; }
 .player-history .section-heading h2 { margin-bottom: 6px; }
