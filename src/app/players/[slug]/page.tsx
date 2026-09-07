@@ -1,4 +1,6 @@
 import Link from 'next/link';
+/* Enriched columns are maintained by a database migration ahead of generated client types. */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { notFound } from 'next/navigation';
 import { publicCatalog, number, money } from '@/lib/public-data';
 export default async function Player({ params }: { params: Promise<{ slug: string }> }) {
@@ -6,7 +8,7 @@ export default async function Player({ params }: { params: Promise<{ slug: strin
   const catalog = await publicCatalog();
   const p = catalog.players.find((p) => p.slug === slug || p.id === slug);
   if (!p) notFound();
-  const d = p.detail;
+  const d: any = p.detail;
   const s12 = d?.stats_12p ?? {};
   const s24 = d?.stats_24p ?? {};
   const initials = p.name.split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase();
