@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs/promises';
-import { createOperatorClient } from './client';
+import { adminClient } from './client';
 
 type SourceRow = {
   player_id: number | string;
@@ -25,12 +25,12 @@ type SourceRow = {
 const file = process.argv[2];
 if (!file) throw new Error('Uso: npm run import:player-details -- <ruta-al-json>');
 const source = JSON.parse(await readFile(file, 'utf8')) as { jugadores: SourceRow[] };
-const db = createOperatorClient();
+const db = adminClient();
 const { data: players, error: playerError } = await db
   .from('players')
   .select('id,mkcentral_player_id');
 if (playerError) throw playerError;
-const ids = new Map((players ?? []).filter((p) => p.mkcentral_player_id).map((p) => [String(p.mkcentral_player_id), p.id]));
+const ids = new Map((players ?? []).filter((p: { mkcentral_player_id: string | null }) => p.mkcentral_player_id).map((p: { mkcentral_player_id: string | null; id: string }) => [String(p.mkcentral_player_id), p.id]));
 const rows = source.jugadores.map((row) => {
   const s12 = row.season_3?.['12p'] ?? {};
   const s24 = row.season_3?.['24p'] ?? {};
