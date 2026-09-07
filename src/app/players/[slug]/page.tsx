@@ -52,13 +52,9 @@ export default async function Player({ params }: { params: Promise<{ slug: strin
         </section>
         <section className="panel">
           <h2>Forma reciente</h2>
-          <div className="recent-form"><strong>{number(s12.last_10_wins ?? null)}–{number(s12.last_10_losses ?? null)}</strong><span>Balance últimas 10</span><strong>{number(s12.last_10_mmr_delta ?? null)}</strong><span>Variación MMR</span></div>
-          <p className="muted">
-            Los resultados fantasy aparecerán después de la validación oficial de cada jornada.
-          </p>
-          <Link href="/leagues" className="text-link">
-            Consultar clasificación
-          </Link>
+          <div className="recent-form"><div><strong>{number(s12.last_10_wins ?? null)}–{number(s12.last_10_losses ?? null)}</strong><span>Balance últimas 10</span></div><div><strong>{number(s12.last_10_mmr_delta ?? null)}</strong><span>Variación MMR</span></div><div><strong>{number(s12.average_score ?? null)}</strong><span>Media de puntos</span></div><div><strong>{number(s12.average_score_last_10 ?? null)}</strong><span>Media últimas 10</span></div><div><strong>{number(s12.largest_gain ?? null)}</strong><span>Mayor subida</span></div><div><strong>{number(s12.partner_average_score ?? null)}</strong><span>Media con pareja</span></div></div>
+          <p className="muted">Datos de rendimiento de Season 3 en formato 12p. Los resultados fantasy se publican tras validar cada jornada.</p>
+          <Link href="/leagues" className="text-link">Consultar clasificación</Link>
         </section>
       </div>
       <section className="panel player-history">
