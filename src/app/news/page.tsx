@@ -1,8 +1,18 @@
 import { PageHeading, EmptyState } from '@/components/ui';
 import { leagueFeed } from '@/lib/public-data';
 import { Newspaper } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server';
+import { isConfigured } from '@/lib/supabase/env';
+import { madridWeek } from '@/components/participant-time';
 export const metadata = { title: 'Noticias' };
 export default async function News() {
+  if (isConfigured()) {
+    const week = madridWeek();
+    if (!week.marketOpen) {
+      const db: any = await createClient();
+      await db.rpc('publish_market_winner_news', { target_week: week.week }).catch(() => null);
+    }
+  }
   const feed = await leagueFeed();
   return (
     <>
