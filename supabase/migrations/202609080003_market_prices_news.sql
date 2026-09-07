@@ -14,7 +14,7 @@ begin
     select r.market_offer_id,r.player_id,r.fantasy_team_id,r.id,r.amount,
       (select r2.amount from ranked r2 where r2.market_offer_id=r.market_offer_id and r2.rank=2)
     from ranked r where r.rank=1
-    on conflict (market_offer_id) do update set winning_amount=excluded.winning_amount,second_amount=excluded.second_amount
+    on conflict (market_offer_id) do update set winning_amount=excluded.winning_amount,second_amount=excluded.second_amount where public.market_bid_results.winning_amount is null
     returning player_id,fantasy_team_id,winning_amount,second_amount
   )
   insert into public.news_posts(title,body,category,published)
