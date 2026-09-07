@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Flag } from 'lucide-react';
 /* Enriched columns are maintained by a database migration ahead of generated client types. */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { notFound } from 'next/navigation';
@@ -27,7 +28,7 @@ export default async function Player({ params }: { params: Promise<{ slug: strin
           <div className="profile-avatar" aria-hidden="true">{initials}</div>
           <div><span className="badge">{d?.tier ?? 'Piloto Atlas'} · Season 3</span><h1>{p.name}</h1><Link className="text-link" href={`/teams/${encodeURIComponent(p.team)}`}>{p.team}</Link></div>
         </div>
-        <p className="profile-meta">{d?.country ?? 'País no registrado'} · Lounge: {d?.display_name ?? p.name}</p>
+        <p className="profile-meta"><Flag size={15} aria-hidden="true" /> {d?.country ?? 'País no registrado'} · Lounge: {d?.display_name ?? p.name}</p>
       </section>
       <section className="metrics-strip" aria-label="Datos del piloto">
         {[
