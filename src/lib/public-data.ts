@@ -21,11 +21,12 @@ export const publicCatalog = cache(async () => {
       })()
     : [];
   const details = new Map(enriched.map((row: any) => [String(row.mkcentral_player_id), row]));
+  const detailsByName = new Map(enriched.map((row: any) => [String(row.display_name ?? '').trim().toLocaleLowerCase(), row]));
   const players = source.jugadores.map((row) => {
     const live = catalog?.players.find(
       (p) => String(p.mkcentral_player_id) === String(row.player_id),
     );
-    const detail = details.get(String(row.player_id));
+    const detail = details.get(String(row.player_id)) ?? detailsByName.get(String(row.jugador).trim().toLocaleLowerCase());
     return {
       id: String(row.player_id),
       slug: live?.slug ?? String(row.player_id),

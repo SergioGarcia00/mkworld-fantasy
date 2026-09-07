@@ -31,9 +31,10 @@ export default async function Market({
     ]);
     if (error) throw new Error('No se pudieron cargar las ofertas.');
     offers = rows ?? [];
-    const { data: details } = await db.from('player_enriched_details').select('mkcentral_player_id,country,tier').eq('season_number', 3);
+    const { data: details } = await db.from('player_enriched_details').select('mkcentral_player_id,display_name,country,tier').eq('season_number', 3);
     const detailById = new Map((details ?? []).map((d: any) => [String(d.mkcentral_player_id), d]));
-    offers = offers.map((offer) => ({ ...offer, detail: detailById.get(String(offer.players?.mkcentral_player_id)) }));
+    const detailByName = new Map((details ?? []).map((d: any) => [String(d.display_name).trim().toLocaleLowerCase(), d]));
+    offers = offers.map((offer) => ({ ...offer, detail: detailById.get(String(offer.players?.mkcentral_player_id)) ?? detailByName.get(String(offer.players?.name).trim().toLocaleLowerCase()) }));
     team = squad;
     if (team) {
       const result = await db
