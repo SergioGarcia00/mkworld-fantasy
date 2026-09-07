@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/server';
 import { Countdown, Submit } from '@/components/participant-forms';
 import { euros } from '@/components/participant-data';
 import { madridWeek } from '@/components/participant-time';
-import { buyPlayer } from './actions';
+import { placeBid } from './actions';
 export const metadata = { title: 'Mercado' };
 export default async function Market({
   searchParams,
@@ -39,6 +39,13 @@ export default async function Market({
         .eq('fantasy_team_id', team.id);
       owned = result.data ?? [];
     }
+    const [{ data: counts }, { data: mine }] = await Promise.all([
+      db.rpc('market_bid_counts', { target_week: week.week }),
+      db.rpc('my_market_bids', { target_week: week.week }),
+    ]);
+    const countByPlayer = new Map((counts ?? []).map((row: any) => [row.player_id, Number(row.bidder_count)]));
+    const mineSet = new Set((mine ?? []).map((row: any) => row.player_id));
+    offers = offers.map((offer) => ({ ...offer, bidderCount: countByPlayer.get(offer.player_id) ?? 0, hasBid: mineSet.has(offer.player_id) }));
   }
   const teams: string[] = [
     ...new Set<string>(offers.map((o) => o.players?.teams?.name).filter(Boolean)),
@@ -148,7 +155,6 @@ export default async function Market({
                 {filtered.map((o) => {
                   const p = o.players;
                   const inTeam = owned.some((r) => r.player_id === o.player_id);
-                  const difference = p.market_value - p.initial_value;
                   return (
                     <article key={o.id} className="participant-offer">
                       <div className="toolbar">
@@ -168,30 +174,28 @@ export default async function Market({
                       </h2>
                       <p className="muted">{p.teams?.name}</p>
                       <div className="toolbar">
-                        <strong>{euros(p.market_value)}</strong>
+                        <strong>Valor base · {euros(p.initial_value)}</strong>
                         <span className="muted">
-                          {Number.isFinite(difference)
-                            ? `${difference > 0 ? '+' : ''}${euros(difference)} desde inicio`
-                            : 'Variación no disponible'}
+                          {o.bidderCount} {o.bidderCount === 1 ? 'participante puja' : 'participantes pujan'}
                         </span>
                       </div>
-                      <form action={buyPlayer}>
+                      <form action={placeBid}>
                         <input type="hidden" name="team" value={team?.id ?? ''} />
                         <input type="hidden" name="player" value={o.player_id} />
+                        <label className="field">
+                          Tu puja (importe privado)
+                          <input name="amount" type="number" min={p.initial_value} step="1" placeholder={String(p.initial_value)} required />
+                        </label>
                         <Submit
                           disabled={
                             !team ||
                             !week.marketOpen ||
                             inTeam ||
                             owned.length >= 10 ||
-                            team.budget < p.market_value
+                            team.budget < p.initial_value
                           }
                         >
-                          {inTeam
-                            ? 'En tu plantilla'
-                            : team && team.budget < p.market_value
-                              ? 'Presupuesto insuficiente'
-                              : 'Fichar piloto'}
+                          {inTeam ? 'En tu plantilla' : o.hasBid ? 'Actualizar puja' : 'Pujar por piloto'}
                         </Submit>
                       </form>
                     </article>
