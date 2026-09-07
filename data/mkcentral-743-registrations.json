@@ -1,0 +1,8709 @@
+[
+  {
+    "id": 90480,
+    "tag": "Ly",
+    "players": [
+      {
+        "name": "Byakuya Togami",
+        "player_id": 15167
+      },
+      {
+        "name": "Celestia Ludenberg",
+        "player_id": 55
+      },
+      {
+        "name": "Chiaki Nanami",
+        "player_id": 16321
+      },
+      {
+        "name": "Dragnir / p1",
+        "player_id": 1840
+      },
+      {
+        "name": "Eden",
+        "player_id": 12293
+      },
+      {
+        "name": "Gasper / Alonzo",
+        "player_id": 69685
+      },
+      {
+        "name": "Gundham Tanaka",
+        "player_id": 68803
+      },
+      {
+        "name": "Ibuki Mioda",
+        "player_id": 17220
+      },
+      {
+        "name": "itzastro_03/Mukuro",
+        "player_id": 43522
+      },
+      {
+        "name": "Kaito Momota / Ezari",
+        "player_id": 69546
+      },
+      {
+        "name": "Maki Harukawa",
+        "player_id": 204
+      },
+      {
+        "name": "Nagito Komaeda",
+        "player_id": 13656
+      },
+      {
+        "name": "Saber",
+        "player_id": 14835
+      },
+      {
+        "name": "Tatane",
+        "player_id": 20161
+      }
+    ],
+    "name": "Lycoris"
+  },
+  {
+    "id": 90481,
+    "tag": "Ly",
+    "players": [
+      {
+        "name": "Axoul",
+        "player_id": 66166
+      },
+      {
+        "name": "Fantsu",
+        "player_id": 68773
+      },
+      {
+        "name": "Filou",
+        "player_id": 59710
+      },
+      {
+        "name": "Firekeeper_8",
+        "player_id": 20229
+      },
+      {
+        "name": "Fuyuhiko Kuzuryu",
+        "player_id": 73869
+      },
+      {
+        "name": "Junko Enoshima",
+        "player_id": 43107
+      },
+      {
+        "name": "Kyoko Kirigiri",
+        "player_id": 13664
+      },
+      {
+        "name": "Papa_ours_jr",
+        "player_id": 21897
+      },
+      {
+        "name": "Revvylo",
+        "player_id": 68733
+      },
+      {
+        "name": "Rompe / RORO CASCO",
+        "player_id": 13759
+      },
+      {
+        "name": "Shroob",
+        "player_id": 37936
+      },
+      {
+        "name": "SmyLee / IPPO",
+        "player_id": 23793
+      },
+      {
+        "name": "Zarika/Kaoruko Waguri",
+        "player_id": 51579
+      }
+    ],
+    "name": "Dandelion"
+  },
+  {
+    "id": 90482,
+    "tag": "=★",
+    "players": [
+      {
+        "name": "buddha.",
+        "player_id": 87888
+      },
+      {
+        "name": "Dicey",
+        "player_id": 37617
+      },
+      {
+        "name": "JakeSpear",
+        "player_id": 67964
+      },
+      {
+        "name": "Jelledot / Kaii",
+        "player_id": 2527
+      },
+      {
+        "name": "KnDo",
+        "player_id": 69529
+      },
+      {
+        "name": "LAMELL",
+        "player_id": 77512
+      },
+      {
+        "name": "Lewiii",
+        "player_id": 77128
+      },
+      {
+        "name": "Mael/Jesus/Gérard",
+        "player_id": 26955
+      },
+      {
+        "name": "PieHat",
+        "player_id": 76279
+      },
+      {
+        "name": "Snowboar",
+        "player_id": 24687
+      },
+      {
+        "name": "tomiedronie",
+        "player_id": 47240
+      },
+      {
+        "name": "TrikkyFeFox",
+        "player_id": 28629
+      },
+      {
+        "name": "y0shell",
+        "player_id": 50307
+      }
+    ],
+    "name": "Starstruck 2"
+  },
+  {
+    "id": 90483,
+    "tag": "CG",
+    "players": [
+      {
+        "name": "Brosu",
+        "player_id": 7088
+      },
+      {
+        "name": "Croqueta/Sin Nombre",
+        "player_id": 27064
+      },
+      {
+        "name": "elgraco/camel blue",
+        "player_id": 13964
+      },
+      {
+        "name": "Ender360",
+        "player_id": 91904
+      },
+      {
+        "name": "figs",
+        "player_id": 79453
+      },
+      {
+        "name": "iLyOniiX",
+        "player_id": 42167
+      },
+      {
+        "name": "Kimo",
+        "player_id": 91864
+      },
+      {
+        "name": "Kr1ps",
+        "player_id": 41872
+      },
+      {
+        "name": "Lechu / coñete",
+        "player_id": 27622
+      },
+      {
+        "name": "Mauri",
+        "player_id": 29143
+      },
+      {
+        "name": "Morioh / Mrh",
+        "player_id": 20125
+      },
+      {
+        "name": "OscarBK / Mago / MagoBK",
+        "player_id": 772
+      },
+      {
+        "name": "PabloGKR",
+        "player_id": 73844
+      },
+      {
+        "name": "Paxx",
+        "player_id": 89455
+      },
+      {
+        "name": "Phoski/bwin/Stake",
+        "player_id": 12107
+      },
+      {
+        "name": "Ranger",
+        "player_id": 198
+      },
+      {
+        "name": "Royals/Liko",
+        "player_id": 79570
+      },
+      {
+        "name": "Sipgb",
+        "player_id": 68279
+      },
+      {
+        "name": "Spark~",
+        "player_id": 5598
+      },
+      {
+        "name": "Tario",
+        "player_id": 67997
+      },
+      {
+        "name": "Vick6804",
+        "player_id": 69797
+      },
+      {
+        "name": "Wolfeet",
+        "player_id": 19469
+      },
+      {
+        "name": "Yegu07",
+        "player_id": 78148
+      }
+    ],
+    "name": "Code Genius"
+  },
+  {
+    "id": 90484,
+    "tag": "ヤ",
+    "players": [
+      {
+        "name": "black_billa",
+        "player_id": 74630
+      },
+      {
+        "name": "Butter_chicken",
+        "player_id": 60964
+      },
+      {
+        "name": "charel",
+        "player_id": 14959
+      },
+      {
+        "name": "DatRaptor",
+        "player_id": 7543
+      },
+      {
+        "name": "Franz",
+        "player_id": 68243
+      },
+      {
+        "name": "Frapix",
+        "player_id": 52064
+      },
+      {
+        "name": "FraX",
+        "player_id": 109
+      },
+      {
+        "name": "izzy",
+        "player_id": 31018
+      },
+      {
+        "name": "L Goonie/OHC ZaDi/LeGoat",
+        "player_id": 38871
+      },
+      {
+        "name": "Liam",
+        "player_id": 73961
+      },
+      {
+        "name": "Ls",
+        "player_id": 47565
+      },
+      {
+        "name": "Mulli",
+        "player_id": 4286
+      },
+      {
+        "name": "Señor Pink",
+        "player_id": 44666
+      },
+      {
+        "name": "skel",
+        "player_id": 21015
+      },
+      {
+        "name": "TimiQC",
+        "player_id": 82976
+      },
+      {
+        "name": "Tomenimo",
+        "player_id": 68202
+      },
+      {
+        "name": "Trappi",
+        "player_id": 18994
+      },
+      {
+        "name": "Ulme187/RedoXXL",
+        "player_id": 57311
+      },
+      {
+        "name": "Vesty",
+        "player_id": 57405
+      }
+    ],
+    "name": "Tempest"
+  },
+  {
+    "id": 90488,
+    "tag": "Gv",
+    "players": [
+      {
+        "name": "audrey",
+        "player_id": 3887
+      },
+      {
+        "name": "Crash Bootycoot",
+        "player_id": 5858
+      },
+      {
+        "name": "Danny Fathom",
+        "player_id": 3084
+      },
+      {
+        "name": "Dr Ivo",
+        "player_id": 35175
+      },
+      {
+        "name": "Emarie",
+        "player_id": 2206
+      },
+      {
+        "name": "ember",
+        "player_id": 771
+      },
+      {
+        "name": "Galley",
+        "player_id": 1960
+      },
+      {
+        "name": "garch",
+        "player_id": 28
+      },
+      {
+        "name": "garchomp1",
+        "player_id": 15593
+      },
+      {
+        "name": "HeeHaw",
+        "player_id": 5458
+      },
+      {
+        "name": "jacob",
+        "player_id": 1890
+      },
+      {
+        "name": "jaiden",
+        "player_id": 2369
+      },
+      {
+        "name": "Klaxodin",
+        "player_id": 57614
+      },
+      {
+        "name": "Lilnickf6",
+        "player_id": 2701
+      },
+      {
+        "name": "macy",
+        "player_id": 2715
+      },
+      {
+        "name": "Maki Zenin",
+        "player_id": 1257
+      },
+      {
+        "name": "Matt",
+        "player_id": 59445
+      },
+      {
+        "name": "Moomin",
+        "player_id": 17856
+      },
+      {
+        "name": "Peetzyn",
+        "player_id": 38715
+      },
+      {
+        "name": "Ricky / the nibbler",
+        "player_id": 2293
+      },
+      {
+        "name": "Roberto",
+        "player_id": 51
+      },
+      {
+        "name": "sagee / crash!",
+        "player_id": 68872
+      },
+      {
+        "name": "scones",
+        "player_id": 32775
+      },
+      {
+        "name": "sinic",
+        "player_id": 3122
+      },
+      {
+        "name": "TwoFlips / lil bingo",
+        "player_id": 3940
+      },
+      {
+        "name": "Val",
+        "player_id": 14567
+      },
+      {
+        "name": "Zay / 3:16 / Juna",
+        "player_id": 37570
+      },
+      {
+        "name": "zekeke / devcard",
+        "player_id": 72583
+      }
+    ],
+    "name": "Grass Valley, CA"
+  },
+  {
+    "id": 90489,
+    "tag": "βλ",
+    "players": [
+      {
+        "name": "abyssucks",
+        "player_id": 44156
+      },
+      {
+        "name": "Alexxx",
+        "player_id": 636
+      },
+      {
+        "name": "Doflamingo",
+        "player_id": 6494
+      },
+      {
+        "name": "DUGO",
+        "player_id": 27
+      },
+      {
+        "name": "Fox15",
+        "player_id": 9133
+      },
+      {
+        "name": "Francy",
+        "player_id": 4926
+      },
+      {
+        "name": "GえCKお",
+        "player_id": 2435
+      },
+      {
+        "name": "H. Nurse",
+        "player_id": 330
+      },
+      {
+        "name": "James",
+        "player_id": 918
+      },
+      {
+        "name": "Kim",
+        "player_id": 1414
+      },
+      {
+        "name": "Lee",
+        "player_id": 2553
+      },
+      {
+        "name": "Lodon",
+        "player_id": 68851
+      },
+      {
+        "name": "Lore",
+        "player_id": 56030
+      },
+      {
+        "name": "Lyncas98",
+        "player_id": 3868
+      },
+      {
+        "name": "Markus",
+        "player_id": 7170
+      },
+      {
+        "name": "Mng",
+        "player_id": 7637
+      },
+      {
+        "name": "multi / clem from YF",
+        "player_id": 15030
+      },
+      {
+        "name": "Nico_",
+        "player_id": 48593
+      },
+      {
+        "name": "Nicola",
+        "player_id": 836
+      },
+      {
+        "name": "Riky",
+        "player_id": 1177
+      },
+      {
+        "name": "Ropi",
+        "player_id": 44707
+      },
+      {
+        "name": "Soma",
+        "player_id": 8601
+      },
+      {
+        "name": "Spike",
+        "player_id": 51676
+      },
+      {
+        "name": "Zero",
+        "player_id": 5636
+      }
+    ],
+    "name": "Battle Alliance"
+  },
+  {
+    "id": 90490,
+    "tag": "V⇒",
+    "players": [
+      {
+        "name": "AlwaysAFK",
+        "player_id": 56939
+      },
+      {
+        "name": "C1000",
+        "player_id": 81202
+      },
+      {
+        "name": "eden",
+        "player_id": 59292
+      },
+      {
+        "name": "Ixzeltia",
+        "player_id": 56967
+      },
+      {
+        "name": "Jigglyboi",
+        "player_id": 54628
+      },
+      {
+        "name": "JK8",
+        "player_id": 35164
+      },
+      {
+        "name": "LeBob/I <3 Fent",
+        "player_id": 29533
+      },
+      {
+        "name": "Luigi.WeeGee",
+        "player_id": 52902
+      },
+      {
+        "name": "meichan / めい",
+        "player_id": 66156
+      },
+      {
+        "name": "Milkshake",
+        "player_id": 42394
+      },
+      {
+        "name": "Pyos",
+        "player_id": 60530
+      },
+      {
+        "name": "Riffy / Take Five",
+        "player_id": 46836
+      },
+      {
+        "name": "shamchez",
+        "player_id": 46151
+      },
+      {
+        "name": "splatty",
+        "player_id": 58358
+      },
+      {
+        "name": "SuperMK",
+        "player_id": 56621
+      },
+      {
+        "name": "Tedi",
+        "player_id": 27081
+      }
+    ],
+    "name": "Volt Switch"
+  },
+  {
+    "id": 90491,
+    "tag": "NFO",
+    "players": [
+      {
+        "name": "Boshi",
+        "player_id": 32
+      },
+      {
+        "name": "CaliforniaX2",
+        "player_id": 61836
+      },
+      {
+        "name": "Chaloka",
+        "player_id": 63019
+      },
+      {
+        "name": "Doomey",
+        "player_id": 68399
+      },
+      {
+        "name": "eXpanda",
+        "player_id": 69634
+      },
+      {
+        "name": "Falcon",
+        "player_id": 82
+      },
+      {
+        "name": "Flix'dashi",
+        "player_id": 114
+      },
+      {
+        "name": "Fuesch",
+        "player_id": 68240
+      },
+      {
+        "name": "Impact",
+        "player_id": 71792
+      },
+      {
+        "name": "Jeako",
+        "player_id": 24003
+      },
+      {
+        "name": "K.K",
+        "player_id": 72762
+      },
+      {
+        "name": "MH",
+        "player_id": 66821
+      },
+      {
+        "name": "Paul",
+        "player_id": 373
+      },
+      {
+        "name": "Wadsm",
+        "player_id": 45697
+      },
+      {
+        "name": "waenot",
+        "player_id": 384
+      }
+    ],
+    "name": "Nferno Violet"
+  },
+  {
+    "id": 90492,
+    "tag": "NFO",
+    "players": [
+      {
+        "name": "ACK",
+        "player_id": 69007
+      },
+      {
+        "name": "Aexo / Bruno",
+        "player_id": 394
+      },
+      {
+        "name": "Blizzey",
+        "player_id": 68839
+      },
+      {
+        "name": "Bobo",
+        "player_id": 69872
+      },
+      {
+        "name": "Dark",
+        "player_id": 172
+      },
+      {
+        "name": "E1lias",
+        "player_id": 87990
+      },
+      {
+        "name": "Gidbo",
+        "player_id": 81036
+      },
+      {
+        "name": "HerrVonJan",
+        "player_id": 5351
+      },
+      {
+        "name": "Kaamos",
+        "player_id": 2579
+      },
+      {
+        "name": "Lars",
+        "player_id": 14609
+      },
+      {
+        "name": "Leo'",
+        "player_id": 2130
+      },
+      {
+        "name": "NFO_keule",
+        "player_id": 19258
+      },
+      {
+        "name": "Orvyn",
+        "player_id": 83433
+      },
+      {
+        "name": "phillish",
+        "player_id": 7680
+      },
+      {
+        "name": "Senadcat",
+        "player_id": 83423
+      },
+      {
+        "name": "Skail",
+        "player_id": 66981
+      },
+      {
+        "name": "TrueFortune",
+        "player_id": 54452
+      }
+    ],
+    "name": "Nferno Teal"
+  },
+  {
+    "id": 90493,
+    "tag": "Д",
+    "players": [
+      {
+        "name": "Aidan/Nayeon/ghasts",
+        "player_id": 51974
+      },
+      {
+        "name": "Cryte",
+        "player_id": 54800
+      },
+      {
+        "name": "Forretress",
+        "player_id": 55612
+      },
+      {
+        "name": "J_MS",
+        "player_id": 41542
+      },
+      {
+        "name": "Jackiee8dx",
+        "player_id": 33185
+      },
+      {
+        "name": "Jackisons",
+        "player_id": 55011
+      },
+      {
+        "name": "K3",
+        "player_id": 68981
+      },
+      {
+        "name": "Keiran/Sylvio/Luigi",
+        "player_id": 41868
+      },
+      {
+        "name": "Luna | Zoey",
+        "player_id": 70042
+      },
+      {
+        "name": "mr guy",
+        "player_id": 39039
+      },
+      {
+        "name": "n.",
+        "player_id": 57985
+      },
+      {
+        "name": "Neon Arrow",
+        "player_id": 55077
+      },
+      {
+        "name": "Octo1584",
+        "player_id": 61099
+      },
+      {
+        "name": "Phoenix",
+        "player_id": 65029
+      },
+      {
+        "name": "TabbyThing",
+        "player_id": 45227
+      }
+    ],
+    "name": "STAKATAKA"
+  },
+  {
+    "id": 90494,
+    "tag": "SøL",
+    "players": [
+      {
+        "name": "CAP ahaha",
+        "player_id": 32129
+      },
+      {
+        "name": "cosiam",
+        "player_id": 50951
+      },
+      {
+        "name": "Kramer",
+        "player_id": 36716
+      },
+      {
+        "name": "Mankalor",
+        "player_id": 363
+      },
+      {
+        "name": "Mashi",
+        "player_id": 37499
+      },
+      {
+        "name": "Owenn / Ampharos",
+        "player_id": 40284
+      },
+      {
+        "name": "Ryann",
+        "player_id": 48088
+      },
+      {
+        "name": "Silver",
+        "player_id": 67925
+      },
+      {
+        "name": "Six/Senkø",
+        "player_id": 38774
+      },
+      {
+        "name": "Steamby",
+        "player_id": 46631
+      },
+      {
+        "name": "Stingray / Ray",
+        "player_id": 49237
+      },
+      {
+        "name": "The / Mystery",
+        "player_id": 68994
+      },
+      {
+        "name": "TopHatBear / Alex",
+        "player_id": 49785
+      },
+      {
+        "name": "Tylerrr",
+        "player_id": 1226
+      }
+    ],
+    "name": "Solar Storm"
+  },
+  {
+    "id": 90495,
+    "tag": "ARC",
+    "players": [
+      {
+        "name": "47k",
+        "player_id": 631
+      },
+      {
+        "name": "Ace Tman",
+        "player_id": 175
+      },
+      {
+        "name": "Arti",
+        "player_id": 192
+      },
+      {
+        "name": "Brandon",
+        "player_id": 171
+      },
+      {
+        "name": "CanosoJr / Hu Tao",
+        "player_id": 378
+      },
+      {
+        "name": "gdin",
+        "player_id": 1475
+      },
+      {
+        "name": "maya",
+        "player_id": 166
+      },
+      {
+        "name": "Michael",
+        "player_id": 802
+      },
+      {
+        "name": "Monfi",
+        "player_id": 29
+      },
+      {
+        "name": "Nick",
+        "player_id": 211
+      },
+      {
+        "name": "oj_",
+        "player_id": 9548
+      },
+      {
+        "name": "reyllizer",
+        "player_id": 28084
+      },
+      {
+        "name": "RyanBritish",
+        "player_id": 1854
+      },
+      {
+        "name": "syn",
+        "player_id": 41967
+      },
+      {
+        "name": "Teeples",
+        "player_id": 164
+      },
+      {
+        "name": "Ty",
+        "player_id": 2468
+      }
+    ],
+    "name": "Arcadia Sky"
+  },
+  {
+    "id": 90496,
+    "tag": "AM",
+    "players": [
+      {
+        "name": "Doobert",
+        "player_id": 5783
+      },
+      {
+        "name": "dwebl_",
+        "player_id": 20744
+      },
+      {
+        "name": "Francis",
+        "player_id": 80759
+      },
+      {
+        "name": "gamek0i",
+        "player_id": 5977
+      },
+      {
+        "name": "Geozaki",
+        "player_id": 5969
+      },
+      {
+        "name": "Mayro",
+        "player_id": 37477
+      },
+      {
+        "name": "Nero",
+        "player_id": 9869
+      },
+      {
+        "name": "Pengu",
+        "player_id": 64049
+      },
+      {
+        "name": "Photon Jet",
+        "player_id": 5845
+      },
+      {
+        "name": "worm.exe",
+        "player_id": 5846
+      },
+      {
+        "name": "Yoshikid",
+        "player_id": 5851
+      }
+    ],
+    "name": "Aftermath (again)"
+  },
+  {
+    "id": 90497,
+    "tag": "=★",
+    "players": [
+      {
+        "name": "dive",
+        "player_id": 1285
+      },
+      {
+        "name": "Dman",
+        "player_id": 1209
+      },
+      {
+        "name": "Ferroo/frr",
+        "player_id": 53045
+      },
+      {
+        "name": "Guitarman",
+        "player_id": 43059
+      },
+      {
+        "name": "Hol1ow",
+        "player_id": 59288
+      },
+      {
+        "name": "JAMES",
+        "player_id": 3159
+      },
+      {
+        "name": "M4",
+        "player_id": 322
+      },
+      {
+        "name": "Mirymeg",
+        "player_id": 58497
+      },
+      {
+        "name": "Nxvy",
+        "player_id": 43735
+      },
+      {
+        "name": "PhaaZe/Aegis/GengaR",
+        "player_id": 68857
+      },
+      {
+        "name": "Psychodog",
+        "player_id": 77425
+      },
+      {
+        "name": "SpeZy",
+        "player_id": 20269
+      },
+      {
+        "name": "sphinx",
+        "player_id": 1328
+      },
+      {
+        "name": "Umbre",
+        "player_id": 24856
+      }
+    ],
+    "name": "Starstruck"
+  },
+  {
+    "id": 90498,
+    "tag": "GK",
+    "players": [
+      {
+        "name": "Ami",
+        "player_id": 67087
+      },
+      {
+        "name": "ayanon",
+        "player_id": 63295
+      },
+      {
+        "name": "Breezy",
+        "player_id": 50745
+      },
+      {
+        "name": "CatsuMK",
+        "player_id": 54094
+      },
+      {
+        "name": "Chimere",
+        "player_id": 89270
+      },
+      {
+        "name": "DemonShark",
+        "player_id": 6966
+      },
+      {
+        "name": "Finalstraw15",
+        "player_id": 44068
+      },
+      {
+        "name": "Junebug / Cleffa",
+        "player_id": 57844
+      },
+      {
+        "name": "Kirbs III",
+        "player_id": 71811
+      },
+      {
+        "name": "Lewis&Clark/chud&ringle",
+        "player_id": 61356
+      },
+      {
+        "name": "Melody",
+        "player_id": 66951
+      },
+      {
+        "name": "Momo",
+        "player_id": 8120
+      },
+      {
+        "name": "Olmi",
+        "player_id": 81721
+      },
+      {
+        "name": "pali/Garfield",
+        "player_id": 53703
+      },
+      {
+        "name": "Roxas",
+        "player_id": 44404
+      },
+      {
+        "name": "SJGarnet",
+        "player_id": 82179
+      },
+      {
+        "name": "Tebu",
+        "player_id": 43329
+      },
+      {
+        "name": "Triple C/Carter",
+        "player_id": 35799
+      },
+      {
+        "name": "UNLUNKY",
+        "player_id": 13848
+      },
+      {
+        "name": "Willis/Scizor",
+        "player_id": 46810
+      }
+    ],
+    "name": "Garfield Kart"
+  },
+  {
+    "id": 90500,
+    "tag": "=★",
+    "players": [
+      {
+        "name": "Beave",
+        "player_id": 2447
+      },
+      {
+        "name": "Brainiac327",
+        "player_id": 31361
+      },
+      {
+        "name": "Carpie",
+        "player_id": 75356
+      },
+      {
+        "name": "EdiblePine",
+        "player_id": 63705
+      },
+      {
+        "name": "GoldNinja1215",
+        "player_id": 59432
+      },
+      {
+        "name": "jo_onii",
+        "player_id": 2483
+      },
+      {
+        "name": "meangreen",
+        "player_id": 38495
+      },
+      {
+        "name": "Melonz",
+        "player_id": 5129
+      },
+      {
+        "name": "PedroCV",
+        "player_id": 7105
+      },
+      {
+        "name": "POW",
+        "player_id": 6188
+      },
+      {
+        "name": "Reese",
+        "player_id": 85827
+      },
+      {
+        "name": "Shineh",
+        "player_id": 20629
+      },
+      {
+        "name": "SpritzTheMoo",
+        "player_id": 68251
+      },
+      {
+        "name": "Sweq32",
+        "player_id": 67644
+      },
+      {
+        "name": "WorldLove Gaming",
+        "player_id": 28980
+      }
+    ],
+    "name": "Starstruck 3"
+  },
+  {
+    "id": 90502,
+    "tag": "YQ",
+    "players": [
+      {
+        "name": "Better_Aidan",
+        "player_id": 55466
+      },
+      {
+        "name": "Boiling",
+        "player_id": 81631
+      },
+      {
+        "name": "Bowser Jr",
+        "player_id": 79102
+      },
+      {
+        "name": "Buzz",
+        "player_id": 43170
+      },
+      {
+        "name": "Freekoe",
+        "player_id": 77170
+      },
+      {
+        "name": "GnottSense",
+        "player_id": 80671
+      },
+      {
+        "name": "jkp_3900",
+        "player_id": 42033
+      },
+      {
+        "name": "kola",
+        "player_id": 91751
+      },
+      {
+        "name": "Ludicolo",
+        "player_id": 39632
+      },
+      {
+        "name": "Lukealele",
+        "player_id": 23600
+      },
+      {
+        "name": "OwenY09",
+        "player_id": 84287
+      },
+      {
+        "name": "pizzagamer/YQ Pizza/ピザ",
+        "player_id": 71889
+      },
+      {
+        "name": "R00STR",
+        "player_id": 63067
+      },
+      {
+        "name": "rocky",
+        "player_id": 29988
+      },
+      {
+        "name": "rorzilla",
+        "player_id": 42969
+      },
+      {
+        "name": "Sam Nin10doville",
+        "player_id": 47075
+      },
+      {
+        "name": "Schpiv",
+        "player_id": 82601
+      },
+      {
+        "name": "Skye / Daisy / Fire",
+        "player_id": 49941
+      },
+      {
+        "name": "Tanuki",
+        "player_id": 79761
+      },
+      {
+        "name": "twins2133",
+        "player_id": 62062
+      },
+      {
+        "name": "Wood22",
+        "player_id": 38076
+      },
+      {
+        "name": "ZG (Z)",
+        "player_id": 67534
+      }
+    ],
+    "name": "Yoshi Ganq"
+  },
+  {
+    "id": 90503,
+    "tag": "ΘF",
+    "players": [
+      {
+        "name": "Angle",
+        "player_id": 45699
+      },
+      {
+        "name": "BonkeRs",
+        "player_id": 41323
+      },
+      {
+        "name": "Brice Turang",
+        "player_id": 351
+      },
+      {
+        "name": "Bubbles",
+        "player_id": 48085
+      },
+      {
+        "name": "Color",
+        "player_id": 40934
+      },
+      {
+        "name": "Diogo Dos Santos Costa",
+        "player_id": 257
+      },
+      {
+        "name": "Dynamo",
+        "player_id": 38386
+      },
+      {
+        "name": "Elisa",
+        "player_id": 5918
+      },
+      {
+        "name": "enna",
+        "player_id": 2864
+      },
+      {
+        "name": "Goro / Hnk / Iko / Kaito",
+        "player_id": 2300
+      },
+      {
+        "name": "immortal",
+        "player_id": 6567
+      },
+      {
+        "name": "Luxitone / Leah",
+        "player_id": 30817
+      },
+      {
+        "name": "Monomi Park / Hobson",
+        "player_id": 36446
+      },
+      {
+        "name": "Morgana",
+        "player_id": 37490
+      },
+      {
+        "name": "NinjaMario",
+        "player_id": 22879
+      },
+      {
+        "name": "Noa Mouri",
+        "player_id": 72516
+      },
+      {
+        "name": "Opal",
+        "player_id": 6310
+      },
+      {
+        "name": "peas",
+        "player_id": 10156
+      },
+      {
+        "name": "Princesss Brat",
+        "player_id": 17659
+      },
+      {
+        "name": "RumbletheBumble",
+        "player_id": 46586
+      },
+      {
+        "name": "sausage",
+        "player_id": 34173
+      },
+      {
+        "name": "shadowww / hange zoë",
+        "player_id": 44850
+      },
+      {
+        "name": "Slime2Evan",
+        "player_id": 6996
+      },
+      {
+        "name": "ZekieCat",
+        "player_id": 45782
+      }
+    ],
+    "name": "OnlyFriends"
+  },
+  {
+    "id": 90504,
+    "tag": "πя",
+    "players": [
+      {
+        "name": "AFCHuayra / Garuda",
+        "player_id": 50960
+      },
+      {
+        "name": "Anemoi Asura / Isolde",
+        "player_id": 87785
+      },
+      {
+        "name": "BigSniker/Migos",
+        "player_id": 48053
+      },
+      {
+        "name": "Dark",
+        "player_id": 78294
+      },
+      {
+        "name": "EKM Espinツ",
+        "player_id": 81081
+      },
+      {
+        "name": "H3ar",
+        "player_id": 66047
+      },
+      {
+        "name": "Heb",
+        "player_id": 73556
+      },
+      {
+        "name": "Héroe",
+        "player_id": 7196
+      },
+      {
+        "name": "Javivi/Toad ^^/guh?",
+        "player_id": 86688
+      },
+      {
+        "name": "Keinster",
+        "player_id": 26018
+      },
+      {
+        "name": "kiwillius",
+        "player_id": 12951
+      },
+      {
+        "name": "Larry",
+        "player_id": 5107
+      },
+      {
+        "name": "Mantis/RMantis/Tachyon",
+        "player_id": 50345
+      },
+      {
+        "name": "RegiShikimi",
+        "player_id": 72308
+      },
+      {
+        "name": "Uriel5_5",
+        "player_id": 59058
+      },
+      {
+        "name": "Ângěl Âgěs/Vîvlôs",
+        "player_id": 50612
+      }
+    ],
+    "name": "Pixel Racers"
+  },
+  {
+    "id": 90505,
+    "tag": "πα",
+    "players": [
+      {
+        "name": "Alexei_0201",
+        "player_id": 52125
+      },
+      {
+        "name": "ElAron",
+        "player_id": 77276
+      },
+      {
+        "name": "ElMiaaaau",
+        "player_id": 81572
+      },
+      {
+        "name": "Garysito/Boshi",
+        "player_id": 56562
+      },
+      {
+        "name": "Irving2",
+        "player_id": 52487
+      },
+      {
+        "name": "Iza / Star Butterfly",
+        "player_id": 14531
+      },
+      {
+        "name": "JuanAsiNomas",
+        "player_id": 87828
+      },
+      {
+        "name": "Kelpie",
+        "player_id": 15202
+      },
+      {
+        "name": "PANDUX",
+        "player_id": 12010
+      },
+      {
+        "name": "RaFiii",
+        "player_id": 85066
+      },
+      {
+        "name": "Santi",
+        "player_id": 90889
+      },
+      {
+        "name": "Velamy",
+        "player_id": 53979
+      },
+      {
+        "name": "Veronixrock",
+        "player_id": 80990
+      },
+      {
+        "name": "ραυパウロ/Chaseя",
+        "player_id": 47959
+      }
+    ],
+    "name": "Pixel Academy"
+  },
+  {
+    "id": 90507,
+    "tag": "πг",
+    "players": [
+      {
+        "name": "Acragod",
+        "player_id": 94044
+      },
+      {
+        "name": "Adair",
+        "player_id": 91700
+      },
+      {
+        "name": "alejo",
+        "player_id": 91869
+      },
+      {
+        "name": "Anyeloo",
+        "player_id": 86056
+      },
+      {
+        "name": "Boxy/BoxyPan/Brosky",
+        "player_id": 54416
+      },
+      {
+        "name": "Emily",
+        "player_id": 92804
+      },
+      {
+        "name": "Gael12/Gael",
+        "player_id": 49056
+      },
+      {
+        "name": "Jesus_.l",
+        "player_id": 90884
+      },
+      {
+        "name": "Migueloowls",
+        "player_id": 80782
+      },
+      {
+        "name": "Mikephy",
+        "player_id": 91832
+      },
+      {
+        "name": "MnkoMaster",
+        "player_id": 87992
+      },
+      {
+        "name": "Nero",
+        "player_id": 93129
+      },
+      {
+        "name": "Oscar",
+        "player_id": 85630
+      },
+      {
+        "name": "Ospaly",
+        "player_id": 93999
+      }
+    ],
+    "name": "Pixel Raiders"
+  },
+  {
+    "id": 90509,
+    "tag": "CS",
+    "players": [
+      {
+        "name": "Aarones / Adokill",
+        "player_id": 53165
+      },
+      {
+        "name": "Abocado08",
+        "player_id": 76734
+      },
+      {
+        "name": "Cappy / Morgan / C.C",
+        "player_id": 546
+      },
+      {
+        "name": "Caramel with acid.",
+        "player_id": 58944
+      },
+      {
+        "name": "Jesús",
+        "player_id": 89633
+      },
+      {
+        "name": "Joel / Ardilla",
+        "player_id": 52302
+      },
+      {
+        "name": "José A.",
+        "player_id": 85734
+      },
+      {
+        "name": "Loxen",
+        "player_id": 54026
+      },
+      {
+        "name": "lydaf",
+        "player_id": 2960
+      },
+      {
+        "name": "Mo-Mo",
+        "player_id": 59749
+      },
+      {
+        "name": "Suarez",
+        "player_id": 54070
+      },
+      {
+        "name": "William",
+        "player_id": 19342
+      }
+    ],
+    "name": "Capybara Skies"
+  },
+  {
+    "id": 90511,
+    "tag": "ARC",
+    "players": [
+      {
+        "name": "Abaraik",
+        "player_id": 72488
+      },
+      {
+        "name": "Awoken",
+        "player_id": 4561
+      },
+      {
+        "name": "Baird.N",
+        "player_id": 873
+      },
+      {
+        "name": "Bery",
+        "player_id": 30788
+      },
+      {
+        "name": "Blue",
+        "player_id": 4260
+      },
+      {
+        "name": "fluidounce / floz",
+        "player_id": 66457
+      },
+      {
+        "name": "Geddy",
+        "player_id": 2995
+      },
+      {
+        "name": "Josue",
+        "player_id": 2047
+      },
+      {
+        "name": "Nathaniel/Wheels",
+        "player_id": 19275
+      },
+      {
+        "name": "Neopolitan",
+        "player_id": 8505
+      },
+      {
+        "name": "Silver/Damian/fps",
+        "player_id": 781
+      },
+      {
+        "name": "Technical",
+        "player_id": 4558
+      },
+      {
+        "name": "TromTendo",
+        "player_id": 229
+      },
+      {
+        "name": "Twingy //Blind",
+        "player_id": 44256
+      },
+      {
+        "name": "zPeachez/Vulpix",
+        "player_id": 68379
+      }
+    ],
+    "name": "Arcadia Terra"
+  },
+  {
+    "id": 90512,
+    "tag": "V$",
+    "players": [
+      {
+        "name": "Camden",
+        "player_id": 68593
+      },
+      {
+        "name": "Chumbo",
+        "player_id": 67639
+      },
+      {
+        "name": "elana / karma",
+        "player_id": 15203
+      },
+      {
+        "name": "erupt",
+        "player_id": 11999
+      },
+      {
+        "name": "Joey",
+        "player_id": 24383
+      },
+      {
+        "name": "Joshy-",
+        "player_id": 6622
+      },
+      {
+        "name": "Kez",
+        "player_id": 53718
+      },
+      {
+        "name": "Lorone",
+        "player_id": 10585
+      },
+      {
+        "name": "Majin",
+        "player_id": 78021
+      },
+      {
+        "name": "Maq",
+        "player_id": 15192
+      },
+      {
+        "name": "Maxi",
+        "player_id": 2676
+      },
+      {
+        "name": "Meowser",
+        "player_id": 67517
+      },
+      {
+        "name": "MrCactus",
+        "player_id": 68092
+      },
+      {
+        "name": "Nolanimations",
+        "player_id": 49403
+      },
+      {
+        "name": "pinkcatxo",
+        "player_id": 80508
+      },
+      {
+        "name": "Ruby",
+        "player_id": 38154
+      },
+      {
+        "name": "Willlm",
+        "player_id": 10521
+      },
+      {
+        "name": "zoomer joe",
+        "player_id": 48841
+      }
+    ],
+    "name": "Versatile Pearl"
+  },
+  {
+    "id": 90514,
+    "tag": "RR",
+    "players": [
+      {
+        "name": "Alexis / LimPyD",
+        "player_id": 46357
+      },
+      {
+        "name": "Antho / Djoufari",
+        "player_id": 32242
+      },
+      {
+        "name": "Chris / Xooo",
+        "player_id": 23217
+      },
+      {
+        "name": "Drazelight",
+        "player_id": 26964
+      },
+      {
+        "name": "Fonsi",
+        "player_id": 117
+      },
+      {
+        "name": "Kunder_on",
+        "player_id": 17265
+      },
+      {
+        "name": "kx. / Pink <3 / Kaori",
+        "player_id": 81658
+      },
+      {
+        "name": "LuCyD/Narita Top Road",
+        "player_id": 33260
+      },
+      {
+        "name": "riJyD / Frapdu1/4tié",
+        "player_id": 7844
+      },
+      {
+        "name": "Suprey/ Mada/ likiD",
+        "player_id": 9314
+      },
+      {
+        "name": "Tita / clebs",
+        "player_id": 34512
+      },
+      {
+        "name": "Venum / FeKaL / Golmon",
+        "player_id": 33959
+      },
+      {
+        "name": "zertox",
+        "player_id": 60575
+      }
+    ],
+    "name": "Ronrons 2"
+  },
+  {
+    "id": 90515,
+    "tag": "Uβ",
+    "players": [
+      {
+        "name": "Capn",
+        "player_id": 13141
+      },
+      {
+        "name": "clout",
+        "player_id": 67972
+      },
+      {
+        "name": "Connor",
+        "player_id": 11214
+      },
+      {
+        "name": "DeadlyMouse",
+        "player_id": 49279
+      },
+      {
+        "name": "Deci",
+        "player_id": 1668
+      },
+      {
+        "name": "Elmer",
+        "player_id": 1516
+      },
+      {
+        "name": "fbs / tetsu",
+        "player_id": 16383
+      },
+      {
+        "name": "Flurry",
+        "player_id": 12479
+      },
+      {
+        "name": "grimshadow10",
+        "player_id": 66207
+      },
+      {
+        "name": "iona",
+        "player_id": 17733
+      },
+      {
+        "name": "Julian/BlueJ",
+        "player_id": 8327
+      },
+      {
+        "name": "Kensa Dudu",
+        "player_id": 8288
+      },
+      {
+        "name": "KingKing",
+        "player_id": 75445
+      },
+      {
+        "name": "kyledluffy",
+        "player_id": 12205
+      },
+      {
+        "name": "maxxe",
+        "player_id": 32057
+      },
+      {
+        "name": "Mejary Ikana",
+        "player_id": 2512
+      },
+      {
+        "name": "Mitch",
+        "player_id": 70
+      },
+      {
+        "name": "mxz",
+        "player_id": 68173
+      },
+      {
+        "name": "nthn",
+        "player_id": 30643
+      },
+      {
+        "name": "Obiyo",
+        "player_id": 64366
+      },
+      {
+        "name": "Revengestyle6",
+        "player_id": 18370
+      },
+      {
+        "name": "roy",
+        "player_id": 5581
+      },
+      {
+        "name": "Sav",
+        "player_id": 8225
+      },
+      {
+        "name": "Shaq Fu / Maanghang",
+        "player_id": 13614
+      },
+      {
+        "name": "Smiley",
+        "player_id": 10980
+      },
+      {
+        "name": "soli / hirata",
+        "player_id": 34504
+      },
+      {
+        "name": "TheKoopaGuy",
+        "player_id": 69
+      },
+      {
+        "name": "Toby",
+        "player_id": 400
+      },
+      {
+        "name": "Trowa Barton / HolySexyBeast_11",
+        "player_id": 3574
+      }
+    ],
+    "name": "Unbelievably Bailed"
+  },
+  {
+    "id": 90516,
+    "tag": "RK",
+    "players": [
+      {
+        "name": "Aketx",
+        "player_id": 218
+      },
+      {
+        "name": "Aleek/P1LEEK/P1BLIA",
+        "player_id": 72511
+      },
+      {
+        "name": "AxeeL14",
+        "player_id": 4780
+      },
+      {
+        "name": "César",
+        "player_id": 3870
+      },
+      {
+        "name": "Enekito",
+        "player_id": 2958
+      },
+      {
+        "name": "imasanvi",
+        "player_id": 12567
+      },
+      {
+        "name": "Kevo",
+        "player_id": 2165
+      },
+      {
+        "name": "Milotic",
+        "player_id": 20126
+      },
+      {
+        "name": "Santipajas",
+        "player_id": 26904
+      },
+      {
+        "name": "Sliver",
+        "player_id": 12
+      },
+      {
+        "name": "Splendy",
+        "player_id": 4451
+      },
+      {
+        "name": "Timo",
+        "player_id": 42572
+      }
+    ],
+    "name": "Rozando la Katástrofe"
+  },
+  {
+    "id": 90517,
+    "tag": "てм",
+    "players": [
+      {
+        "name": "Alexiagz",
+        "player_id": 2079
+      },
+      {
+        "name": "Bany",
+        "player_id": 4545
+      },
+      {
+        "name": "Baptboy",
+        "player_id": 6614
+      },
+      {
+        "name": "Doug",
+        "player_id": 16245
+      },
+      {
+        "name": "Dudu_ne/ La Cible",
+        "player_id": 27482
+      },
+      {
+        "name": "Dylan 49/ Kyocate/ Wind",
+        "player_id": 9543
+      },
+      {
+        "name": "Eyes",
+        "player_id": 6160
+      },
+      {
+        "name": "Floasm",
+        "player_id": 4553
+      },
+      {
+        "name": "Greenway13",
+        "player_id": 33045
+      },
+      {
+        "name": "jonaq",
+        "player_id": 17650
+      },
+      {
+        "name": "Léo Patate",
+        "player_id": 20214
+      },
+      {
+        "name": "Maryane",
+        "player_id": 15143
+      },
+      {
+        "name": "mattriochka",
+        "player_id": 16083
+      },
+      {
+        "name": "Meltical",
+        "player_id": 27440
+      },
+      {
+        "name": "Nino",
+        "player_id": 36060
+      },
+      {
+        "name": "Raditz",
+        "player_id": 948
+      },
+      {
+        "name": "Romparis / 35T / Rompapa",
+        "player_id": 28734
+      },
+      {
+        "name": "Sarei",
+        "player_id": 16148
+      },
+      {
+        "name": "viko / Evian",
+        "player_id": 48707
+      },
+      {
+        "name": "WHITE ROOM SURVIVOR",
+        "player_id": 46121
+      },
+      {
+        "name": "Zakovu",
+        "player_id": 1802
+      }
+    ],
+    "name": "Cocktail Madeleine"
+  },
+  {
+    "id": 90520,
+    "tag": "RR",
+    "players": [
+      {
+        "name": "Devoty",
+        "player_id": 775
+      },
+      {
+        "name": "Esteboss / AryD",
+        "player_id": 12865
+      },
+      {
+        "name": "GagouKing",
+        "player_id": 52615
+      },
+      {
+        "name": "glemglem",
+        "player_id": 69673
+      },
+      {
+        "name": "JulusM",
+        "player_id": 17363
+      },
+      {
+        "name": "KC kyeahoo (enzo)",
+        "player_id": 8518
+      },
+      {
+        "name": "LooPer",
+        "player_id": 9186
+      },
+      {
+        "name": "Marmew",
+        "player_id": 77749
+      },
+      {
+        "name": "Neibafu",
+        "player_id": 69469
+      },
+      {
+        "name": "PinkPantheress",
+        "player_id": 25917
+      },
+      {
+        "name": "Qilin Zius / Foulek",
+        "player_id": 34741
+      },
+      {
+        "name": "Roni / cuPyD",
+        "player_id": 58502
+      },
+      {
+        "name": "St0ne",
+        "player_id": 18451
+      },
+      {
+        "name": "WawayZz/hUmyD/Wa",
+        "player_id": 23511
+      },
+      {
+        "name": "WoomyJr / Pespi",
+        "player_id": 49366
+      }
+    ],
+    "name": "Ronrons"
+  },
+  {
+    "id": 90521,
+    "tag": "x¢",
+    "players": [
+      {
+        "name": "Ace",
+        "player_id": 36133
+      },
+      {
+        "name": "arkiem",
+        "player_id": 15527
+      },
+      {
+        "name": "Bays",
+        "player_id": 78130
+      },
+      {
+        "name": "Borger",
+        "player_id": 46132
+      },
+      {
+        "name": "Fugitive",
+        "player_id": 83116
+      },
+      {
+        "name": "hendrixx",
+        "player_id": 9254
+      },
+      {
+        "name": "josh",
+        "player_id": 16815
+      },
+      {
+        "name": "Korquz",
+        "player_id": 41627
+      },
+      {
+        "name": "Minh",
+        "player_id": 70568
+      },
+      {
+        "name": "RWE",
+        "player_id": 43487
+      },
+      {
+        "name": "squeaky",
+        "player_id": 70605
+      },
+      {
+        "name": "SwagGamer47",
+        "player_id": 59201
+      },
+      {
+        "name": "SweetOnion",
+        "player_id": 71039
+      },
+      {
+        "name": "☆Felix☆",
+        "player_id": 82254
+      }
+    ],
+    "name": "Excalibur"
+  },
+  {
+    "id": 90522,
+    "tag": "x¢",
+    "players": [
+      {
+        "name": "aqua",
+        "player_id": 71359
+      },
+      {
+        "name": "Glaci",
+        "player_id": 36724
+      },
+      {
+        "name": "Joltkip",
+        "player_id": 70285
+      },
+      {
+        "name": "Kermit / maka",
+        "player_id": 44194
+      },
+      {
+        "name": "MattyPatty",
+        "player_id": 70243
+      },
+      {
+        "name": "Moomoo",
+        "player_id": 79776
+      },
+      {
+        "name": "Penn",
+        "player_id": 78986
+      },
+      {
+        "name": "Rewrite",
+        "player_id": 72400
+      },
+      {
+        "name": "SmokeyonMK",
+        "player_id": 55453
+      },
+      {
+        "name": "Spheall",
+        "player_id": 80342
+      },
+      {
+        "name": "SuperNoah925",
+        "player_id": 70237
+      },
+      {
+        "name": "Techy",
+        "player_id": 72621
+      },
+      {
+        "name": "Valentijn / Verso",
+        "player_id": 70754
+      }
+    ],
+    "name": "Caliburn"
+  },
+  {
+    "id": 90524,
+    "tag": "ム∞★",
+    "players": [
+      {
+        "name": "Alya / Yor / TuPapá / Ruby / Akane",
+        "player_id": 264
+      },
+      {
+        "name": "Bonais / Rowlet",
+        "player_id": 43063
+      },
+      {
+        "name": "Chispa/Juno",
+        "player_id": 82587
+      },
+      {
+        "name": "Clawx/Hak/Yamada",
+        "player_id": 722
+      },
+      {
+        "name": "CRC Error404",
+        "player_id": 29539
+      },
+      {
+        "name": "Cyan / AnnieDL",
+        "player_id": 415
+      },
+      {
+        "name": "Ever/EZ/EverP3",
+        "player_id": 54277
+      },
+      {
+        "name": "Felicha/catshort/cat",
+        "player_id": 78938
+      },
+      {
+        "name": "Felicho/Xebec/FCota",
+        "player_id": 82448
+      },
+      {
+        "name": "Fercho10",
+        "player_id": 50676
+      },
+      {
+        "name": "Jade",
+        "player_id": 16776
+      },
+      {
+        "name": "Jqredh",
+        "player_id": 76410
+      },
+      {
+        "name": "Kaiser/Lena",
+        "player_id": 30221
+      },
+      {
+        "name": "Lalo62",
+        "player_id": 47897
+      },
+      {
+        "name": "Lameth",
+        "player_id": 73859
+      },
+      {
+        "name": "legendsito",
+        "player_id": 9804
+      },
+      {
+        "name": "Lemmy / Himmel / Sparxie",
+        "player_id": 2090
+      },
+      {
+        "name": "Mely/Melody/Mel",
+        "player_id": 54280
+      },
+      {
+        "name": "Nicemm",
+        "player_id": 88483
+      }
+    ],
+    "name": "Arcanum"
+  },
+  {
+    "id": 90525,
+    "tag": "ArX",
+    "players": [
+      {
+        "name": "Anonyme",
+        "player_id": 90414
+      },
+      {
+        "name": "Asaa",
+        "player_id": 11059
+      },
+      {
+        "name": "Guigs",
+        "player_id": 72227
+      },
+      {
+        "name": "JustKarli",
+        "player_id": 46834
+      },
+      {
+        "name": "Kaowi_",
+        "player_id": 41433
+      },
+      {
+        "name": "Kazuki974",
+        "player_id": 56299
+      },
+      {
+        "name": "Kouy",
+        "player_id": 14233
+      },
+      {
+        "name": "kraken8192",
+        "player_id": 72509
+      },
+      {
+        "name": "kyoukyou",
+        "player_id": 69047
+      },
+      {
+        "name": "LeR",
+        "player_id": 2629
+      },
+      {
+        "name": "lipsness",
+        "player_id": 71755
+      },
+      {
+        "name": "Maribel-_-",
+        "player_id": 78391
+      },
+      {
+        "name": "Mojorito",
+        "player_id": 76008
+      },
+      {
+        "name": "Navulox",
+        "player_id": 52119
+      },
+      {
+        "name": "Pichou",
+        "player_id": 93624
+      },
+      {
+        "name": "Shaker",
+        "player_id": 1809
+      },
+      {
+        "name": "Tchupi",
+        "player_id": 74303
+      },
+      {
+        "name": "Tip",
+        "player_id": 63449
+      }
+    ],
+    "name": "Nakama Clan"
+  },
+  {
+    "id": 90526,
+    "tag": "_sqz",
+    "players": [
+      {
+        "name": "alleypercent",
+        "player_id": 65478
+      },
+      {
+        "name": "Banan",
+        "player_id": 28813
+      },
+      {
+        "name": "beepboop",
+        "player_id": 66847
+      },
+      {
+        "name": "Benny/Chomp Caller",
+        "player_id": 52869
+      },
+      {
+        "name": "DanyIsHere",
+        "player_id": 42670
+      },
+      {
+        "name": "GamerGrant",
+        "player_id": 86224
+      },
+      {
+        "name": "Lost_Jad3N",
+        "player_id": 42266
+      },
+      {
+        "name": "minimatt",
+        "player_id": 84432
+      },
+      {
+        "name": "MuffinMan",
+        "player_id": 46734
+      },
+      {
+        "name": "Piloto",
+        "player_id": 44176
+      },
+      {
+        "name": "PizzaKing4",
+        "player_id": 57539
+      },
+      {
+        "name": "QuagStar",
+        "player_id": 29423
+      },
+      {
+        "name": "Robotic/Pixel",
+        "player_id": 13296
+      },
+      {
+        "name": "spearmint / jack",
+        "player_id": 33680
+      },
+      {
+        "name": "UnluckyPro121",
+        "player_id": 46802
+      },
+      {
+        "name": "Z4R4_20",
+        "player_id": 51429
+      }
+    ],
+    "name": "Freshly Squeezed"
+  },
+  {
+    "id": 90528,
+    "tag": "ηβ",
+    "players": [
+      {
+        "name": "BAMBAM",
+        "player_id": 84253
+      },
+      {
+        "name": "Civia",
+        "player_id": 5743
+      },
+      {
+        "name": "Colchoneta",
+        "player_id": 459
+      },
+      {
+        "name": "Javimega23 ジャビ",
+        "player_id": 4160
+      },
+      {
+        "name": "jei",
+        "player_id": 55701
+      },
+      {
+        "name": "Kikee",
+        "player_id": 77521
+      },
+      {
+        "name": "Pacochef",
+        "player_id": 1382
+      },
+      {
+        "name": "Pasel / FA14",
+        "player_id": 45508
+      },
+      {
+        "name": "PATATA",
+        "player_id": 21970
+      },
+      {
+        "name": "Peckmat",
+        "player_id": 11432
+      },
+      {
+        "name": "Polimar",
+        "player_id": 1028
+      },
+      {
+        "name": "Raauldlg",
+        "player_id": 42497
+      },
+      {
+        "name": "Rayito1005",
+        "player_id": 11122
+      },
+      {
+        "name": "Sharpy",
+        "player_id": 4184
+      },
+      {
+        "name": "smrtt",
+        "player_id": 1728
+      },
+      {
+        "name": "♪Mikuel",
+        "player_id": 45524
+      }
+    ],
+    "name": "Nebulosa"
+  },
+  {
+    "id": 90529,
+    "tag": "ηβ",
+    "players": [
+      {
+        "name": "Curious Guy",
+        "player_id": 3080
+      },
+      {
+        "name": "Danirisu",
+        "player_id": 75309
+      },
+      {
+        "name": "DANMA ダンマ",
+        "player_id": 76436
+      },
+      {
+        "name": "Fernan",
+        "player_id": 6858
+      },
+      {
+        "name": "Fourier / Maxwell",
+        "player_id": 84290
+      },
+      {
+        "name": "JoAnt",
+        "player_id": 77308
+      },
+      {
+        "name": "Lucía / Amiga",
+        "player_id": 28117
+      },
+      {
+        "name": "Man0tak0",
+        "player_id": 77531
+      },
+      {
+        "name": "Ner0",
+        "player_id": 86558
+      },
+      {
+        "name": "OcellCanari",
+        "player_id": 28789
+      },
+      {
+        "name": "Paulita",
+        "player_id": 92487
+      },
+      {
+        "name": "Riper",
+        "player_id": 14510
+      },
+      {
+        "name": "RubyNoyume",
+        "player_id": 55694
+      },
+      {
+        "name": "santiferar",
+        "player_id": 8071
+      },
+      {
+        "name": "Swiftab",
+        "player_id": 23337
+      },
+      {
+        "name": "Vlue",
+        "player_id": 14983
+      }
+    ],
+    "name": "Nebulosa del Cangrejo"
+  },
+  {
+    "id": 90531,
+    "tag": "Ð¥",
+    "players": [
+      {
+        "name": "Batboo",
+        "player_id": 143
+      },
+      {
+        "name": "ceelyan / yan",
+        "player_id": 63532
+      },
+      {
+        "name": "Dylan",
+        "player_id": 136
+      },
+      {
+        "name": "Forrex / Bandido",
+        "player_id": 14041
+      },
+      {
+        "name": "Fox04k",
+        "player_id": 224
+      },
+      {
+        "name": "Fredr",
+        "player_id": 14666
+      },
+      {
+        "name": "Hazza",
+        "player_id": 28991
+      },
+      {
+        "name": "Jonas",
+        "player_id": 37706
+      },
+      {
+        "name": "Lucer",
+        "player_id": 31770
+      },
+      {
+        "name": "Mark",
+        "player_id": 103
+      },
+      {
+        "name": "Mimi",
+        "player_id": 37404
+      },
+      {
+        "name": "Murm",
+        "player_id": 29714
+      },
+      {
+        "name": "Nick",
+        "player_id": 87
+      },
+      {
+        "name": "Polaris",
+        "player_id": 20820
+      },
+      {
+        "name": "Pottary",
+        "player_id": 14130
+      },
+      {
+        "name": "Pxnda",
+        "player_id": 47528
+      },
+      {
+        "name": "Slak",
+        "player_id": 48590
+      },
+      {
+        "name": "Spielpro",
+        "player_id": 20467
+      },
+      {
+        "name": "Staticalx",
+        "player_id": 59334
+      },
+      {
+        "name": "Stroopwafl",
+        "player_id": 45661
+      },
+      {
+        "name": "Timonnn",
+        "player_id": 14702
+      }
+    ],
+    "name": "Dynamite"
+  },
+  {
+    "id": 90534,
+    "tag": "ΔΩ",
+    "players": [
+      {
+        "name": "Arujo",
+        "player_id": 9625
+      },
+      {
+        "name": "Bholt",
+        "player_id": 85501
+      },
+      {
+        "name": "carota",
+        "player_id": 69584
+      },
+      {
+        "name": "DabeSweater",
+        "player_id": 68266
+      },
+      {
+        "name": "LadroPigro",
+        "player_id": 69552
+      },
+      {
+        "name": "Lucky79",
+        "player_id": 75709
+      },
+      {
+        "name": "Lucoz",
+        "player_id": 85126
+      },
+      {
+        "name": "marione / mari1 / mewo",
+        "player_id": 62270
+      },
+      {
+        "name": "NDrew",
+        "player_id": 64239
+      },
+      {
+        "name": "ninny",
+        "player_id": 53800
+      },
+      {
+        "name": "Pardo",
+        "player_id": 2706
+      },
+      {
+        "name": "Sasino",
+        "player_id": 55698
+      },
+      {
+        "name": "Simolesta",
+        "player_id": 65436
+      },
+      {
+        "name": "Toost",
+        "player_id": 68382
+      },
+      {
+        "name": "Tunamii‧₊♡",
+        "player_id": 66835
+      }
+    ],
+    "name": "Dedalo"
+  },
+  {
+    "id": 90535,
+    "tag": "r»",
+    "players": [
+      {
+        "name": "Chrin",
+        "player_id": 68426
+      },
+      {
+        "name": "Crony",
+        "player_id": 1308
+      },
+      {
+        "name": "Doodle",
+        "player_id": 791
+      },
+      {
+        "name": "Elder Sahasrahla",
+        "player_id": 1112
+      },
+      {
+        "name": "Faith",
+        "player_id": 91965
+      },
+      {
+        "name": "Fetch",
+        "player_id": 57657
+      },
+      {
+        "name": "Hydro",
+        "player_id": 1948
+      },
+      {
+        "name": "mika",
+        "player_id": 57239
+      },
+      {
+        "name": "Mucio",
+        "player_id": 2507
+      },
+      {
+        "name": "SKaR",
+        "player_id": 11922
+      },
+      {
+        "name": "sketch",
+        "player_id": 487
+      },
+      {
+        "name": "Sky",
+        "player_id": 2258
+      },
+      {
+        "name": "SnugPixels",
+        "player_id": 70051
+      },
+      {
+        "name": "Sparky",
+        "player_id": 1928
+      }
+    ],
+    "name": "rebirth"
+  },
+  {
+    "id": 90541,
+    "tag": "TEPS",
+    "players": [
+      {
+        "name": "Arukay",
+        "player_id": 214
+      },
+      {
+        "name": "Big0t",
+        "player_id": 11992
+      },
+      {
+        "name": "ChickenPowaa",
+        "player_id": 23524
+      },
+      {
+        "name": "Flo",
+        "player_id": 1309
+      },
+      {
+        "name": "Gity",
+        "player_id": 621
+      },
+      {
+        "name": "h3ylow",
+        "player_id": 3881
+      },
+      {
+        "name": "Hamano",
+        "player_id": 303
+      },
+      {
+        "name": "Kokichi Oma",
+        "player_id": 127
+      },
+      {
+        "name": "Mimi",
+        "player_id": 1206
+      },
+      {
+        "name": "MONKEYYYYYYYYYYYYYYY",
+        "player_id": 2724
+      },
+      {
+        "name": "Pretender",
+        "player_id": 4432
+      },
+      {
+        "name": "Selim",
+        "player_id": 1883
+      },
+      {
+        "name": "Xray",
+        "player_id": 68267
+      },
+      {
+        "name": "zederof",
+        "player_id": 70158
+      }
+    ],
+    "name": "TEPS"
+  },
+  {
+    "id": 90543,
+    "tag": "Vγ",
+    "players": [
+      {
+        "name": "Amanda",
+        "player_id": 8084
+      },
+      {
+        "name": "B1ed",
+        "player_id": 68639
+      },
+      {
+        "name": "Charlie",
+        "player_id": 68882
+      },
+      {
+        "name": "Isaiah",
+        "player_id": 7722
+      },
+      {
+        "name": "Jakey",
+        "player_id": 67350
+      },
+      {
+        "name": "Leb",
+        "player_id": 17527
+      },
+      {
+        "name": "Lusion",
+        "player_id": 14709
+      },
+      {
+        "name": "Mints",
+        "player_id": 73642
+      },
+      {
+        "name": "NoJ0hnz",
+        "player_id": 74951
+      },
+      {
+        "name": "Reubz / rz1 / King Cobra",
+        "player_id": 47058
+      },
+      {
+        "name": "tornado",
+        "player_id": 32712
+      },
+      {
+        "name": "vee",
+        "player_id": 2766
+      },
+      {
+        "name": "Willo",
+        "player_id": 20270
+      },
+      {
+        "name": "WombatBaby",
+        "player_id": 75961
+      },
+      {
+        "name": "Xerneas",
+        "player_id": 57791
+      }
+    ],
+    "name": "Velocity"
+  },
+  {
+    "id": 90544,
+    "tag": "Vγ²",
+    "players": [
+      {
+        "name": "Acing",
+        "player_id": 67635
+      },
+      {
+        "name": "AG64",
+        "player_id": 90028
+      },
+      {
+        "name": "Azusa",
+        "player_id": 68634
+      },
+      {
+        "name": "Barrett/Gouenji/Kirking",
+        "player_id": 55549
+      },
+      {
+        "name": "BlazeCanon",
+        "player_id": 3557
+      },
+      {
+        "name": "FishiiBlue / ch go rAF",
+        "player_id": 70742
+      },
+      {
+        "name": "hughdawinner",
+        "player_id": 55745
+      },
+      {
+        "name": "Taron",
+        "player_id": 44102
+      },
+      {
+        "name": "TC Rapha",
+        "player_id": 82687
+      },
+      {
+        "name": "Traviss1",
+        "player_id": 27460
+      },
+      {
+        "name": "Urieka",
+        "player_id": 85203
+      },
+      {
+        "name": "Valux",
+        "player_id": 9749
+      },
+      {
+        "name": "WilliamCree",
+        "player_id": 16233
+      },
+      {
+        "name": "xi / axis",
+        "player_id": 83506
+      },
+      {
+        "name": "YuFuu",
+        "player_id": 65817
+      }
+    ],
+    "name": "Acceleration"
+  },
+  {
+    "id": 90545,
+    "tag": "IW",
+    "players": [
+      {
+        "name": "Amarellos",
+        "player_id": 80365
+      },
+      {
+        "name": "Antón Drifter",
+        "player_id": 80367
+      },
+      {
+        "name": "Anysarket",
+        "player_id": 92205
+      },
+      {
+        "name": "Brandvb97",
+        "player_id": 14740
+      },
+      {
+        "name": "Carlos / Shiryu",
+        "player_id": 9330
+      },
+      {
+        "name": "Fulcrum",
+        "player_id": 17295
+      },
+      {
+        "name": "GalloMx",
+        "player_id": 80200
+      },
+      {
+        "name": "Leo",
+        "player_id": 6169
+      },
+      {
+        "name": "Lucas_",
+        "player_id": 5409
+      },
+      {
+        "name": "Lumita/Glowy/Peachy",
+        "player_id": 48054
+      },
+      {
+        "name": "marindayoooo",
+        "player_id": 1339
+      },
+      {
+        "name": "marior/マリオ",
+        "player_id": 86556
+      },
+      {
+        "name": "Mike/Lucky",
+        "player_id": 5601
+      },
+      {
+        "name": "Ranze",
+        "player_id": 5007
+      },
+      {
+        "name": "∴Pollo Lego∴ (lola)",
+        "player_id": 11637
+      }
+    ],
+    "name": "IW"
+  },
+  {
+    "id": 90546,
+    "tag": "ArΣ",
+    "players": [
+      {
+        "name": "Dlucario6",
+        "player_id": 69720
+      },
+      {
+        "name": "GetWrecked",
+        "player_id": 83354
+      },
+      {
+        "name": "Ice Bear",
+        "player_id": 52941
+      },
+      {
+        "name": "JazzKartWorld",
+        "player_id": 84990
+      },
+      {
+        "name": "Kod",
+        "player_id": 36769
+      },
+      {
+        "name": "Mastodon",
+        "player_id": 70282
+      },
+      {
+        "name": "NoDice",
+        "player_id": 77292
+      },
+      {
+        "name": "Olive",
+        "player_id": 59781
+      },
+      {
+        "name": "Ophelia",
+        "player_id": 80867
+      },
+      {
+        "name": "peep / Sxyd",
+        "player_id": 42464
+      },
+      {
+        "name": "rascal",
+        "player_id": 77652
+      },
+      {
+        "name": "Spider Dragon",
+        "player_id": 67662
+      },
+      {
+        "name": "T-rixs",
+        "player_id": 77395
+      },
+      {
+        "name": "tsunami",
+        "player_id": 88167
+      }
+    ],
+    "name": "Archon Accelerators"
+  },
+  {
+    "id": 90552,
+    "tag": "RK",
+    "players": [
+      {
+        "name": "deivou/dei/bousi",
+        "player_id": 73341
+      },
+      {
+        "name": "Deku/Kasery",
+        "player_id": 65665
+      },
+      {
+        "name": "Dominic / Ymir",
+        "player_id": 40837
+      },
+      {
+        "name": "Engel",
+        "player_id": 284
+      },
+      {
+        "name": "Enzo",
+        "player_id": 12211
+      },
+      {
+        "name": "Galu",
+        "player_id": 80931
+      },
+      {
+        "name": "ivanchuuu",
+        "player_id": 36057
+      },
+      {
+        "name": "Jamal",
+        "player_id": 80132
+      },
+      {
+        "name": "JonZz",
+        "player_id": 37274
+      },
+      {
+        "name": "Mario",
+        "player_id": 691
+      },
+      {
+        "name": "Turtwig/Sparky/Alb3rT",
+        "player_id": 35765
+      },
+      {
+        "name": "Yag0",
+        "player_id": 77819
+      }
+    ],
+    "name": "Rozando la Katástrofe Castores"
+  },
+  {
+    "id": 90553,
+    "tag": "RK",
+    "players": [
+      {
+        "name": "Denial",
+        "player_id": 77338
+      },
+      {
+        "name": "Deriva / Deri jr",
+        "player_id": 80495
+      },
+      {
+        "name": "fade",
+        "player_id": 68203
+      },
+      {
+        "name": "Ferinter",
+        "player_id": 84400
+      },
+      {
+        "name": "Francis",
+        "player_id": 72209
+      },
+      {
+        "name": "JerWolf",
+        "player_id": 42095
+      },
+      {
+        "name": "JJ/Olise/Luffy",
+        "player_id": 80921
+      },
+      {
+        "name": "JustAB / Mizook",
+        "player_id": 42429
+      },
+      {
+        "name": "Kevin26/KCP26",
+        "player_id": 42565
+      },
+      {
+        "name": "Miguex",
+        "player_id": 41797
+      },
+      {
+        "name": "Sasuke yo",
+        "player_id": 258
+      },
+      {
+        "name": "Sokram/Fito/marfos",
+        "player_id": 76314
+      },
+      {
+        "name": "Sombluz",
+        "player_id": 76773
+      },
+      {
+        "name": "yanfri-s0rrow",
+        "player_id": 21429
+      }
+    ],
+    "name": "Rozando la Katástrofe Lobos"
+  },
+  {
+    "id": 90556,
+    "tag": "DeΔ",
+    "players": [
+      {
+        "name": "BH3_Fan",
+        "player_id": 84062
+      },
+      {
+        "name": "BR0XX",
+        "player_id": 57031
+      },
+      {
+        "name": "Bryant",
+        "player_id": 90282
+      },
+      {
+        "name": "damien øwł",
+        "player_id": 21684
+      },
+      {
+        "name": "Datty8",
+        "player_id": 59630
+      },
+      {
+        "name": "Dmoney",
+        "player_id": 85759
+      },
+      {
+        "name": "Fank009",
+        "player_id": 21034
+      },
+      {
+        "name": "MaxKuBaMa",
+        "player_id": 78447
+      },
+      {
+        "name": "Pardi/Inkling/Meriji",
+        "player_id": 1897
+      },
+      {
+        "name": "pzyko103",
+        "player_id": 81360
+      },
+      {
+        "name": "RedPandaかい",
+        "player_id": 85194
+      },
+      {
+        "name": "Ruby/ライチュウ",
+        "player_id": 54499
+      },
+      {
+        "name": "Shien1234",
+        "player_id": 75524
+      },
+      {
+        "name": "Sir human",
+        "player_id": 82288
+      },
+      {
+        "name": "StrawHatSeb",
+        "player_id": 91257
+      }
+    ],
+    "name": "Delta Drifters"
+  },
+  {
+    "id": 90562,
+    "tag": "★ ͡ ★",
+    "players": [
+      {
+        "name": "AdrianMars",
+        "player_id": 17453
+      },
+      {
+        "name": "Ai",
+        "player_id": 40654
+      },
+      {
+        "name": "Chamuco",
+        "player_id": 7077
+      },
+      {
+        "name": "chema06",
+        "player_id": 18204
+      },
+      {
+        "name": "cosmonova",
+        "player_id": 20671
+      },
+      {
+        "name": "Den",
+        "player_id": 24881
+      },
+      {
+        "name": "ElPoyo",
+        "player_id": 56192
+      },
+      {
+        "name": "Luis86",
+        "player_id": 14585
+      },
+      {
+        "name": "Pan/JosePablo",
+        "player_id": 12713
+      },
+      {
+        "name": "Rami77",
+        "player_id": 15150
+      },
+      {
+        "name": "Rhii",
+        "player_id": 5079
+      },
+      {
+        "name": "SolarAaron",
+        "player_id": 76720
+      },
+      {
+        "name": "Todoke",
+        "player_id": 28835
+      }
+    ],
+    "name": "Space Dementia"
+  },
+  {
+    "id": 90563,
+    "tag": "RK",
+    "players": [
+      {
+        "name": "Aitor/Macedonia",
+        "player_id": 85332
+      },
+      {
+        "name": "Benpac",
+        "player_id": 71422
+      },
+      {
+        "name": "Bordalismo-#EuroGetafe",
+        "player_id": 68671
+      },
+      {
+        "name": "Botu/Botulin",
+        "player_id": 87679
+      },
+      {
+        "name": "CASTILLA",
+        "player_id": 59931
+      },
+      {
+        "name": "Chamu/Fofoca?",
+        "player_id": 66283
+      },
+      {
+        "name": "D1egox3",
+        "player_id": 86201
+      },
+      {
+        "name": "D3lt4/Froholdt/Will",
+        "player_id": 47227
+      },
+      {
+        "name": "DuRThU",
+        "player_id": 82008
+      },
+      {
+        "name": "Goron",
+        "player_id": 78576
+      },
+      {
+        "name": "Irene",
+        "player_id": 59894
+      },
+      {
+        "name": "Jowy",
+        "player_id": 85715
+      },
+      {
+        "name": "Khabib",
+        "player_id": 88371
+      },
+      {
+        "name": "Maagicalex",
+        "player_id": 90802
+      },
+      {
+        "name": "MaNuV",
+        "player_id": 83501
+      },
+      {
+        "name": "MarioMares",
+        "player_id": 54773
+      },
+      {
+        "name": "Rin",
+        "player_id": 10981
+      },
+      {
+        "name": "Rioja/Xerneas/pan",
+        "player_id": 51955
+      },
+      {
+        "name": "SARR",
+        "player_id": 77564
+      }
+    ],
+    "name": "Rozando la Katástrofe Unicorns"
+  },
+  {
+    "id": 90569,
+    "tag": "KR",
+    "players": [
+      {
+        "name": "3rag0ne",
+        "player_id": 56001
+      },
+      {
+        "name": "Apopo",
+        "player_id": 21936
+      },
+      {
+        "name": "Coco_San",
+        "player_id": 59212
+      },
+      {
+        "name": "Jesa",
+        "player_id": 47221
+      },
+      {
+        "name": "Monnier / Bingo",
+        "player_id": 48021
+      },
+      {
+        "name": "Phenyyx",
+        "player_id": 7642
+      },
+      {
+        "name": "Stiyl",
+        "player_id": 75878
+      },
+      {
+        "name": "tomhand59",
+        "player_id": 75856
+      },
+      {
+        "name": "Valman60",
+        "player_id": 60779
+      },
+      {
+        "name": "Vixy",
+        "player_id": 58858
+      },
+      {
+        "name": "WιsρIςe",
+        "player_id": 57321
+      },
+      {
+        "name": "YoshFR",
+        "player_id": 53005
+      }
+    ],
+    "name": "KartsRapaces Bleues"
+  },
+  {
+    "id": 90570,
+    "tag": "KR",
+    "players": [
+      {
+        "name": "Blash",
+        "player_id": 4995
+      },
+      {
+        "name": "Fab2006_",
+        "player_id": 25064
+      },
+      {
+        "name": "Fluxy",
+        "player_id": 76963
+      },
+      {
+        "name": "Gota",
+        "player_id": 56348
+      },
+      {
+        "name": "Iwen/Ozzoneee/Marad",
+        "player_id": 87152
+      },
+      {
+        "name": "jojopikmin",
+        "player_id": 16465
+      },
+      {
+        "name": "Lowry",
+        "player_id": 76297
+      },
+      {
+        "name": "OceanSymphony",
+        "player_id": 56320
+      },
+      {
+        "name": "Shaver",
+        "player_id": 58637
+      },
+      {
+        "name": "TchiZee",
+        "player_id": 85214
+      },
+      {
+        "name": "Thithis",
+        "player_id": 68690
+      },
+      {
+        "name": "Tsuvidz",
+        "player_id": 57190
+      },
+      {
+        "name": "ZunE",
+        "player_id": 67719
+      }
+    ],
+    "name": "KartsRapaces Rouge"
+  },
+  {
+    "id": 90573,
+    "tag": "CAL",
+    "players": [
+      {
+        "name": "0xc4r",
+        "player_id": 25415
+      },
+      {
+        "name": "Androkeo",
+        "player_id": 64123
+      },
+      {
+        "name": "CokeCL",
+        "player_id": 93258
+      },
+      {
+        "name": "DevorSlather",
+        "player_id": 35448
+      },
+      {
+        "name": "DSG MAGO PAJAS",
+        "player_id": 85199
+      },
+      {
+        "name": "ESPRubén",
+        "player_id": 46040
+      },
+      {
+        "name": "Fali",
+        "player_id": 92718
+      },
+      {
+        "name": "FernanXd",
+        "player_id": 72374
+      },
+      {
+        "name": "Javystun",
+        "player_id": 690
+      },
+      {
+        "name": "Jero",
+        "player_id": 92998
+      },
+      {
+        "name": "JordiSkillS",
+        "player_id": 92634
+      },
+      {
+        "name": "Jordy",
+        "player_id": 80405
+      },
+      {
+        "name": "Lamelania",
+        "player_id": 93485
+      },
+      {
+        "name": "Lucark",
+        "player_id": 93533
+      },
+      {
+        "name": "MARCpoot",
+        "player_id": 75802
+      },
+      {
+        "name": "Pelu",
+        "player_id": 93047
+      },
+      {
+        "name": "Raziel-20",
+        "player_id": 92719
+      },
+      {
+        "name": "Rchi82ri",
+        "player_id": 92725
+      },
+      {
+        "name": "San-Z-L",
+        "player_id": 91017
+      }
+    ],
+    "name": "Real Calabacín"
+  },
+  {
+    "id": 90574,
+    "tag": "RK",
+    "players": [
+      {
+        "name": "AciiD",
+        "player_id": 78844
+      },
+      {
+        "name": "anderlabo",
+        "player_id": 87622
+      },
+      {
+        "name": "Aruson",
+        "player_id": 69704
+      },
+      {
+        "name": "Asta/Noelle/Mimosa",
+        "player_id": 77696
+      },
+      {
+        "name": "Ferxxo",
+        "player_id": 78790
+      },
+      {
+        "name": "Fosyy/Ptooie",
+        "player_id": 78936
+      },
+      {
+        "name": "J0SEH",
+        "player_id": 78746
+      },
+      {
+        "name": "Jeja ;)",
+        "player_id": 78976
+      },
+      {
+        "name": "JuankaLGM",
+        "player_id": 61443
+      },
+      {
+        "name": "Katusso/Rimuru",
+        "player_id": 36009
+      },
+      {
+        "name": "Mullo",
+        "player_id": 71565
+      },
+      {
+        "name": "Purruichi",
+        "player_id": 79208
+      },
+      {
+        "name": "Seergio",
+        "player_id": 510
+      },
+      {
+        "name": "viti",
+        "player_id": 52585
+      }
+    ],
+    "name": "Rozando la Katastrofe Kuñau"
+  },
+  {
+    "id": 90575,
+    "tag": "CK",
+    "players": [
+      {
+        "name": "A-milly",
+        "player_id": 72937
+      },
+      {
+        "name": "Astral / Vastavhs",
+        "player_id": 33138
+      },
+      {
+        "name": "bbkul7",
+        "player_id": 74715
+      },
+      {
+        "name": "Chamomileon",
+        "player_id": 48432
+      },
+      {
+        "name": "Félix Fresh",
+        "player_id": 1173
+      },
+      {
+        "name": "GuiLeC",
+        "player_id": 38880
+      },
+      {
+        "name": "Jixcs",
+        "player_id": 75751
+      },
+      {
+        "name": "Judgesphinx",
+        "player_id": 49219
+      },
+      {
+        "name": "Koshi",
+        "player_id": 68938
+      },
+      {
+        "name": "Pink",
+        "player_id": 75646
+      },
+      {
+        "name": "Schierke / シールケ",
+        "player_id": 67575
+      },
+      {
+        "name": "sophie",
+        "player_id": 69792
+      },
+      {
+        "name": "TeeJ / TJ",
+        "player_id": 17998
+      },
+      {
+        "name": "Term",
+        "player_id": 75943
+      },
+      {
+        "name": "WoomyStar",
+        "player_id": 7009
+      },
+      {
+        "name": "xdpro79",
+        "player_id": 69248
+      },
+      {
+        "name": "yukino",
+        "player_id": 66594
+      }
+    ],
+    "name": "Cool Kids"
+  },
+  {
+    "id": 90579,
+    "tag": "『?』",
+    "players": [
+      {
+        "name": "1965 / Wazza / JEEF",
+        "player_id": 43944
+      },
+      {
+        "name": "aantoine_ma",
+        "player_id": 21367
+      },
+      {
+        "name": "Alya",
+        "player_id": 54709
+      },
+      {
+        "name": "Anna",
+        "player_id": 51545
+      },
+      {
+        "name": "Anni",
+        "player_id": 47637
+      },
+      {
+        "name": "Aytee",
+        "player_id": 54313
+      },
+      {
+        "name": "CashTag",
+        "player_id": 55885
+      },
+      {
+        "name": "Countez",
+        "player_id": 16338
+      },
+      {
+        "name": "Deez",
+        "player_id": 40103
+      },
+      {
+        "name": "Dürni",
+        "player_id": 14378
+      },
+      {
+        "name": "emyrii/えみりー",
+        "player_id": 1452
+      },
+      {
+        "name": "Helio",
+        "player_id": 47071
+      },
+      {
+        "name": "Jan-Chan",
+        "player_id": 3023
+      },
+      {
+        "name": "Jannibox/OG/Brunson/KAT",
+        "player_id": 55667
+      },
+      {
+        "name": "karespielt",
+        "player_id": 47848
+      },
+      {
+        "name": "Lars-Chan",
+        "player_id": 3126
+      },
+      {
+        "name": "Leo",
+        "player_id": 89214
+      },
+      {
+        "name": "LuGGaZZ/Lucas",
+        "player_id": 44313
+      },
+      {
+        "name": "Maexl",
+        "player_id": 66780
+      },
+      {
+        "name": "Maks",
+        "player_id": 60472
+      },
+      {
+        "name": "Monsti",
+        "player_id": 1049
+      },
+      {
+        "name": "MrPancake",
+        "player_id": 59275
+      },
+      {
+        "name": "Octo",
+        "player_id": 13925
+      },
+      {
+        "name": "Sbg991",
+        "player_id": 72580
+      },
+      {
+        "name": "Schmettalink/Tanja",
+        "player_id": 54562
+      },
+      {
+        "name": "Shag/Jari Reuker/Rydz",
+        "player_id": 16268
+      },
+      {
+        "name": "SomeOne",
+        "player_id": 36293
+      },
+      {
+        "name": "Valnuss",
+        "player_id": 17922
+      },
+      {
+        "name": "Yano",
+        "player_id": 75115
+      }
+    ],
+    "name": "BAFI"
+  },
+  {
+    "id": 90580,
+    "tag": "TSS",
+    "players": [
+      {
+        "name": "A7ng/Vody",
+        "player_id": 82791
+      },
+      {
+        "name": "Acornelly",
+        "player_id": 72620
+      },
+      {
+        "name": "airhawkey / Kairyu",
+        "player_id": 43336
+      },
+      {
+        "name": "Amity",
+        "player_id": 70967
+      },
+      {
+        "name": "Azura / Ivy / Lucina",
+        "player_id": 60662
+      },
+      {
+        "name": "Emmyy",
+        "player_id": 82781
+      },
+      {
+        "name": "Kevzs / Keezo",
+        "player_id": 46080
+      },
+      {
+        "name": "Minus Skye",
+        "player_id": 68777
+      },
+      {
+        "name": "Unkwn / Intel / Infinite",
+        "player_id": 56813
+      },
+      {
+        "name": "Worm",
+        "player_id": 80382
+      },
+      {
+        "name": "Zahaire",
+        "player_id": 82911
+      }
+    ],
+    "name": "The Squirrel Squad"
+  },
+  {
+    "id": 90581,
+    "tag": "TAA",
+    "players": [
+      {
+        "name": "02B",
+        "player_id": 65
+      },
+      {
+        "name": "AuraMKW",
+        "player_id": 54054
+      },
+      {
+        "name": "HeWe015",
+        "player_id": 78260
+      },
+      {
+        "name": "ItzPhant0m",
+        "player_id": 64134
+      },
+      {
+        "name": "Lunaaa/Lun3a",
+        "player_id": 4650
+      },
+      {
+        "name": "MayMei-P",
+        "player_id": 87113
+      },
+      {
+        "name": "Megamix",
+        "player_id": 20007
+      },
+      {
+        "name": "Nona",
+        "player_id": 82428
+      },
+      {
+        "name": "Philip",
+        "player_id": 75634
+      },
+      {
+        "name": "Rosado",
+        "player_id": 49543
+      },
+      {
+        "name": "Willow / Silly / Osager",
+        "player_id": 32237
+      },
+      {
+        "name": "yozo75",
+        "player_id": 63585
+      }
+    ],
+    "name": "The Acorn Academy"
+  },
+  {
+    "id": 90588,
+    "tag": "Hoop",
+    "players": [
+      {
+        "name": "Biquette",
+        "player_id": 31369
+      },
+      {
+        "name": "Cadoizz",
+        "player_id": 705
+      },
+      {
+        "name": "Carla",
+        "player_id": 16428
+      },
+      {
+        "name": "Chris13",
+        "player_id": 57937
+      },
+      {
+        "name": "dūstsċēawung",
+        "player_id": 29860
+      },
+      {
+        "name": "Guntar",
+        "player_id": 3405
+      },
+      {
+        "name": "Infornia",
+        "player_id": 45944
+      },
+      {
+        "name": "Kikii",
+        "player_id": 9522
+      },
+      {
+        "name": "LaGeozone",
+        "player_id": 11495
+      },
+      {
+        "name": "Lucky",
+        "player_id": 42056
+      },
+      {
+        "name": "Pecovitch",
+        "player_id": 55323
+      },
+      {
+        "name": "Romal",
+        "player_id": 4289
+      },
+      {
+        "name": "SouKo",
+        "player_id": 22576
+      },
+      {
+        "name": "Varimatrax",
+        "player_id": 41553
+      },
+      {
+        "name": "Will",
+        "player_id": 13462
+      },
+      {
+        "name": "Wonder54",
+        "player_id": 15316
+      },
+      {
+        "name": "Yosh'",
+        "player_id": 10766
+      }
+    ],
+    "name": "La Hoop"
+  },
+  {
+    "id": 90713,
+    "tag": "『K』",
+    "players": [
+      {
+        "name": "AlvArO",
+        "player_id": 235
+      },
+      {
+        "name": "Alvaroce10",
+        "player_id": 14544
+      },
+      {
+        "name": "Bersa",
+        "player_id": 79381
+      },
+      {
+        "name": "Black Dash",
+        "player_id": 79675
+      },
+      {
+        "name": "Copycat",
+        "player_id": 6067
+      },
+      {
+        "name": "dc09_mk",
+        "player_id": 52132
+      },
+      {
+        "name": "DH / h. / ハンス",
+        "player_id": 2322
+      },
+      {
+        "name": "Gaby02",
+        "player_id": 16854
+      },
+      {
+        "name": "JBaau",
+        "player_id": 593
+      },
+      {
+        "name": "Kimmy Linka",
+        "player_id": 61555
+      },
+      {
+        "name": "Kraid",
+        "player_id": 91368
+      },
+      {
+        "name": "LarryS",
+        "player_id": 7597
+      },
+      {
+        "name": "Lönny tt",
+        "player_id": 53771
+      },
+      {
+        "name": "Muten Roshi",
+        "player_id": 3440
+      },
+      {
+        "name": "Noname09",
+        "player_id": 59661
+      },
+      {
+        "name": "Patroller💙",
+        "player_id": 90111
+      },
+      {
+        "name": "Pofe",
+        "player_id": 92529
+      },
+      {
+        "name": "Ra.",
+        "player_id": 6339
+      },
+      {
+        "name": "Rolandz",
+        "player_id": 88464
+      },
+      {
+        "name": "Shortbug",
+        "player_id": 55056
+      },
+      {
+        "name": "Yazzi",
+        "player_id": 9491
+      },
+      {
+        "name": "zXFlare",
+        "player_id": 3471
+      }
+    ],
+    "name": "Kartvengers Team"
+  },
+  {
+    "id": 90714,
+    "tag": "『K』",
+    "players": [
+      {
+        "name": "Alejo",
+        "player_id": 422
+      },
+      {
+        "name": "Braan",
+        "player_id": 42550
+      },
+      {
+        "name": "ChocKek",
+        "player_id": 1661
+      },
+      {
+        "name": "Clöve",
+        "player_id": 14804
+      },
+      {
+        "name": "Dxt",
+        "player_id": 7947
+      },
+      {
+        "name": "Gatzumara",
+        "player_id": 8595
+      },
+      {
+        "name": "ivandlg",
+        "player_id": 30514
+      },
+      {
+        "name": "Jairby",
+        "player_id": 305
+      },
+      {
+        "name": "Kyowns",
+        "player_id": 513
+      },
+      {
+        "name": "Mau",
+        "player_id": 82832
+      },
+      {
+        "name": "moemedina",
+        "player_id": 443
+      },
+      {
+        "name": "Muffin",
+        "player_id": 1390
+      },
+      {
+        "name": "MythozMeX",
+        "player_id": 9594
+      },
+      {
+        "name": "Ninfercho",
+        "player_id": 37985
+      },
+      {
+        "name": "Piolin / Sayori",
+        "player_id": 26577
+      },
+      {
+        "name": "TLOZ",
+        "player_id": 1130
+      },
+      {
+        "name": "Wanda",
+        "player_id": 11567
+      },
+      {
+        "name": "YFM",
+        "player_id": 579
+      },
+      {
+        "name": "Yiyo",
+        "player_id": 276
+      }
+    ],
+    "name": "Kartvengers Team Alpha"
+  },
+  {
+    "id": 90799,
+    "tag": "κω",
+    "players": [
+      {
+        "name": "Ard51",
+        "player_id": 60174
+      },
+      {
+        "name": "Ayren",
+        "player_id": 5615
+      },
+      {
+        "name": "Blue_",
+        "player_id": 6258
+      },
+      {
+        "name": "charneas",
+        "player_id": 4862
+      },
+      {
+        "name": "Klein",
+        "player_id": 2648
+      },
+      {
+        "name": "Kvara",
+        "player_id": 9541
+      },
+      {
+        "name": "Laard",
+        "player_id": 9464
+      },
+      {
+        "name": "Maatpac",
+        "player_id": 33090
+      },
+      {
+        "name": "Mr. TitiYoshi",
+        "player_id": 21898
+      },
+      {
+        "name": "Nairolf59",
+        "player_id": 61796
+      },
+      {
+        "name": "Pampo",
+        "player_id": 3263
+      },
+      {
+        "name": "Riky.tv",
+        "player_id": 93626
+      },
+      {
+        "name": "Sam",
+        "player_id": 27515
+      },
+      {
+        "name": "tuna",
+        "player_id": 63916
+      },
+      {
+        "name": "yaya_koopa",
+        "player_id": 31484
+      }
+    ],
+    "name": "Knights Of Wheels"
+  },
+  {
+    "id": 90800,
+    "tag": "CB",
+    "players": [
+      {
+        "name": "BLAST",
+        "player_id": 135
+      },
+      {
+        "name": "Chadofy / Fy",
+        "player_id": 8195
+      },
+      {
+        "name": "Crazykg",
+        "player_id": 33
+      },
+      {
+        "name": "Fireball",
+        "player_id": 17774
+      },
+      {
+        "name": "Flora",
+        "player_id": 11284
+      },
+      {
+        "name": "Goudif",
+        "player_id": 6004
+      },
+      {
+        "name": "Hollend",
+        "player_id": 404
+      },
+      {
+        "name": "Lora ロラ",
+        "player_id": 36731
+      },
+      {
+        "name": "Muraisa",
+        "player_id": 265
+      },
+      {
+        "name": "Nono",
+        "player_id": 70429
+      },
+      {
+        "name": "Saezuri",
+        "player_id": 308
+      },
+      {
+        "name": "Straw",
+        "player_id": 69641
+      },
+      {
+        "name": "Will50 / Lixy",
+        "player_id": 45614
+      },
+      {
+        "name": "Zepple",
+        "player_id": 72258
+      }
+    ],
+    "name": "Champi-Brothers"
+  },
+  {
+    "id": 90846,
+    "tag": "A-7",
+    "players": [
+      {
+        "name": "AdriFloXD",
+        "player_id": 80502
+      },
+      {
+        "name": "Aggron",
+        "player_id": 1942
+      },
+      {
+        "name": "Bel99",
+        "player_id": 62395
+      },
+      {
+        "name": "Camp",
+        "player_id": 74674
+      },
+      {
+        "name": "Eli",
+        "player_id": 76789
+      },
+      {
+        "name": "Ivancleram",
+        "player_id": 77532
+      },
+      {
+        "name": "Jose",
+        "player_id": 33381
+      },
+      {
+        "name": "Josemi",
+        "player_id": 12541
+      },
+      {
+        "name": "KinGel",
+        "player_id": 83876
+      },
+      {
+        "name": "KoopMK",
+        "player_id": 64657
+      },
+      {
+        "name": "Kumbo",
+        "player_id": 67977
+      },
+      {
+        "name": "L.i.d.i.a.p",
+        "player_id": 93581
+      },
+      {
+        "name": "Lx",
+        "player_id": 45662
+      },
+      {
+        "name": "Marina",
+        "player_id": 93591
+      },
+      {
+        "name": "maxieplay",
+        "player_id": 14616
+      },
+      {
+        "name": "Pepue",
+        "player_id": 14265
+      },
+      {
+        "name": "richeto",
+        "player_id": 38767
+      },
+      {
+        "name": "Rub",
+        "player_id": 87436
+      },
+      {
+        "name": "ZBL",
+        "player_id": 55411
+      },
+      {
+        "name": "Álvaro",
+        "player_id": 85087
+      }
+    ],
+    "name": "Autovía del Mediterráneo"
+  },
+  {
+    "id": 90848,
+    "tag": "NFO",
+    "players": [
+      {
+        "name": "cloud",
+        "player_id": 36842
+      },
+      {
+        "name": "FakeFire/Peepa",
+        "player_id": 17861
+      },
+      {
+        "name": "JOJO www",
+        "player_id": 53284
+      },
+      {
+        "name": "Kevino/Moino",
+        "player_id": 68624
+      },
+      {
+        "name": "LèzardAlkohol",
+        "player_id": 1859
+      },
+      {
+        "name": "Niko",
+        "player_id": 7
+      },
+      {
+        "name": "olliiiibtw",
+        "player_id": 7143
+      },
+      {
+        "name": "RayOS",
+        "player_id": 60584
+      },
+      {
+        "name": "SaGaBOT",
+        "player_id": 29370
+      },
+      {
+        "name": "Sp3dy",
+        "player_id": 47759
+      },
+      {
+        "name": "Zocka",
+        "player_id": 66130
+      },
+      {
+        "name": "ふみもん",
+        "player_id": 1344
+      }
+    ],
+    "name": "Nferno Scarlet"
+  },
+  {
+    "id": 90854,
+    "tag": "!!",
+    "players": [
+      {
+        "name": "Alexio",
+        "player_id": 60599
+      },
+      {
+        "name": "Chara",
+        "player_id": 74188
+      },
+      {
+        "name": "Cozmic",
+        "player_id": 68497
+      },
+      {
+        "name": "EggDog",
+        "player_id": 56761
+      },
+      {
+        "name": "Froyo",
+        "player_id": 67927
+      },
+      {
+        "name": "H3R01C VIII",
+        "player_id": 44746
+      },
+      {
+        "name": "hrsnab",
+        "player_id": 75170
+      },
+      {
+        "name": "Jameson",
+        "player_id": 72107
+      },
+      {
+        "name": "KorokodileMK",
+        "player_id": 72991
+      },
+      {
+        "name": "Lucas",
+        "player_id": 52814
+      },
+      {
+        "name": "Menis111",
+        "player_id": 35910
+      },
+      {
+        "name": "Najman",
+        "player_id": 55460
+      },
+      {
+        "name": "Pigeon/Faye",
+        "player_id": 62443
+      },
+      {
+        "name": "Shdw",
+        "player_id": 71582
+      },
+      {
+        "name": "Sir Gp Bragz 1st",
+        "player_id": 68233
+      },
+      {
+        "name": "tarek ballhog",
+        "player_id": 54076
+      },
+      {
+        "name": "VC",
+        "player_id": 56741
+      }
+    ],
+    "name": "brilliant"
+  },
+  {
+    "id": 90859,
+    "tag": "TL",
+    "players": [
+      {
+        "name": "Alsmith",
+        "player_id": 87425
+      },
+      {
+        "name": "Corazan",
+        "player_id": 80026
+      },
+      {
+        "name": "Joselatzki",
+        "player_id": 11231
+      },
+      {
+        "name": "Kakpu",
+        "player_id": 1050
+      },
+      {
+        "name": "Kexomaru",
+        "player_id": 28996
+      },
+      {
+        "name": "Kiwibomm",
+        "player_id": 371
+      },
+      {
+        "name": "Kuey",
+        "player_id": 78904
+      },
+      {
+        "name": "lowbro",
+        "player_id": 80286
+      },
+      {
+        "name": "Lulli",
+        "player_id": 93766
+      },
+      {
+        "name": "Mayonetta",
+        "player_id": 7511
+      },
+      {
+        "name": "Pingu07",
+        "player_id": 968
+      },
+      {
+        "name": "Prosody",
+        "player_id": 28776
+      },
+      {
+        "name": "Relvoi",
+        "player_id": 1970
+      },
+      {
+        "name": "Scorpsassembly",
+        "player_id": 93847
+      },
+      {
+        "name": "slinet2",
+        "player_id": 78894
+      },
+      {
+        "name": "Tikki",
+        "player_id": 18640
+      },
+      {
+        "name": "TL BenDK",
+        "player_id": 749
+      },
+      {
+        "name": "TL Dylan",
+        "player_id": 79425
+      },
+      {
+        "name": "TL Francis",
+        "player_id": 12234
+      }
+    ],
+    "name": "Team Luxembourg"
+  },
+  {
+    "id": 90864,
+    "tag": "нe",
+    "players": [
+      {
+        "name": "DepressionMK",
+        "player_id": 2484
+      },
+      {
+        "name": "DimS",
+        "player_id": 68977
+      },
+      {
+        "name": "Galax / Akashi",
+        "player_id": 7851
+      },
+      {
+        "name": "Gonuhkun",
+        "player_id": 25753
+      },
+      {
+        "name": "Kotaro",
+        "player_id": 2348
+      },
+      {
+        "name": "Lécka",
+        "player_id": 68870
+      },
+      {
+        "name": "Mask0 / Cisco / Kaiser",
+        "player_id": 8876
+      },
+      {
+        "name": "Mizer",
+        "player_id": 21273
+      },
+      {
+        "name": "Pamplemousse Prime",
+        "player_id": 39035
+      },
+      {
+        "name": "Raph",
+        "player_id": 838
+      },
+      {
+        "name": "Rayzopp / Aomine / Yamal",
+        "player_id": 5709
+      },
+      {
+        "name": "Reviverz",
+        "player_id": 68572
+      },
+      {
+        "name": "shurikn",
+        "player_id": 46742
+      },
+      {
+        "name": "Sorendo / Kvara",
+        "player_id": 60377
+      },
+      {
+        "name": "Xale",
+        "player_id": 17450
+      }
+    ],
+    "name": "Helios"
+  },
+  {
+    "id": 90868,
+    "tag": "ρн",
+    "players": [
+      {
+        "name": "Acria/Rei",
+        "player_id": 34413
+      },
+      {
+        "name": "Alpha",
+        "player_id": 524
+      },
+      {
+        "name": "Amaris",
+        "player_id": 1606
+      },
+      {
+        "name": "Berry",
+        "player_id": 69865
+      },
+      {
+        "name": "Blåhaj",
+        "player_id": 91474
+      },
+      {
+        "name": "ceostride",
+        "player_id": 40824
+      },
+      {
+        "name": "Jadeypop",
+        "player_id": 69254
+      },
+      {
+        "name": "MegaJkeezy",
+        "player_id": 1719
+      },
+      {
+        "name": "NQ",
+        "player_id": 3839
+      },
+      {
+        "name": "Phoebe",
+        "player_id": 67989
+      },
+      {
+        "name": "Squid555",
+        "player_id": 28167
+      },
+      {
+        "name": "TTRAiN",
+        "player_id": 51686
+      }
+    ],
+    "name": "Pirate Hackers"
+  },
+  {
+    "id": 90871,
+    "tag": "～く★",
+    "players": [
+      {
+        "name": "Alonso890",
+        "player_id": 46054
+      },
+      {
+        "name": "azul",
+        "player_id": 66371
+      },
+      {
+        "name": "Brandoooon",
+        "player_id": 49738
+      },
+      {
+        "name": "CastroG",
+        "player_id": 46056
+      },
+      {
+        "name": "ChristianH",
+        "player_id": 89601
+      },
+      {
+        "name": "Coldafa",
+        "player_id": 73268
+      },
+      {
+        "name": "dan!_lol",
+        "player_id": 52885
+      },
+      {
+        "name": "Emilio",
+        "player_id": 86512
+      },
+      {
+        "name": "Gonzo",
+        "player_id": 76265
+      },
+      {
+        "name": "Jota",
+        "player_id": 63283
+      },
+      {
+        "name": "Keyki/Styles",
+        "player_id": 51385
+      },
+      {
+        "name": "LightRequiem/Anonime",
+        "player_id": 60479
+      },
+      {
+        "name": "Link",
+        "player_id": 1558
+      },
+      {
+        "name": "Matus",
+        "player_id": 7767
+      },
+      {
+        "name": "Pablillo",
+        "player_id": 86996
+      },
+      {
+        "name": "Sanvera",
+        "player_id": 48483
+      },
+      {
+        "name": "Tups",
+        "player_id": 24353
+      },
+      {
+        "name": "Zebrax",
+        "player_id": 19499
+      }
+    ],
+    "name": "KARTNIVOROS"
+  },
+  {
+    "id": 90873,
+    "tag": "¢y☆",
+    "players": [
+      {
+        "name": "Bape",
+        "player_id": 32713
+      },
+      {
+        "name": "DDJ Enthusiast",
+        "player_id": 68522
+      },
+      {
+        "name": "Feysal",
+        "player_id": 45692
+      },
+      {
+        "name": "Gold/Maisie",
+        "player_id": 27925
+      },
+      {
+        "name": "green",
+        "player_id": 2093
+      },
+      {
+        "name": "Jamal",
+        "player_id": 37559
+      },
+      {
+        "name": "JPGiviner",
+        "player_id": 1213
+      },
+      {
+        "name": "okashi",
+        "player_id": 38650
+      },
+      {
+        "name": "sopt",
+        "player_id": 56496
+      },
+      {
+        "name": "Tyler",
+        "player_id": 2976
+      },
+      {
+        "name": "tyson / olise / verisyn",
+        "player_id": 30036
+      },
+      {
+        "name": "yoshira",
+        "player_id": 1980
+      }
+    ],
+    "name": "Clarity"
+  },
+  {
+    "id": 90878,
+    "tag": "=★",
+    "players": [
+      {
+        "name": "boaRXe",
+        "player_id": 74489
+      },
+      {
+        "name": "Chilo",
+        "player_id": 36178
+      },
+      {
+        "name": "Claw Wolf",
+        "player_id": 28808
+      },
+      {
+        "name": "Conzi 05",
+        "player_id": 23527
+      },
+      {
+        "name": "dashSylv",
+        "player_id": 53644
+      },
+      {
+        "name": "dulexu",
+        "player_id": 88859
+      },
+      {
+        "name": "FlashGordon",
+        "player_id": 2181
+      },
+      {
+        "name": "Flavian",
+        "player_id": 66344
+      },
+      {
+        "name": "Fusions",
+        "player_id": 14954
+      },
+      {
+        "name": "Gold Nugget",
+        "player_id": 26628
+      },
+      {
+        "name": "Hampe",
+        "player_id": 69715
+      },
+      {
+        "name": "Joe K",
+        "player_id": 40
+      },
+      {
+        "name": "Snnuy",
+        "player_id": 1248
+      },
+      {
+        "name": "Virox",
+        "player_id": 14902
+      },
+      {
+        "name": "Will18",
+        "player_id": 45914
+      },
+      {
+        "name": "Yuto",
+        "player_id": 37134
+      },
+      {
+        "name": "Šeta/Šcath",
+        "player_id": 15355
+      }
+    ],
+    "name": "Starstruck 4"
+  },
+  {
+    "id": 90880,
+    "tag": "RK",
+    "players": [
+      {
+        "name": "Adri04",
+        "player_id": 91693
+      },
+      {
+        "name": "Clase1",
+        "player_id": 83296
+      },
+      {
+        "name": "Conan",
+        "player_id": 74767
+      },
+      {
+        "name": "Davess",
+        "player_id": 89620
+      },
+      {
+        "name": "Drago",
+        "player_id": 90268
+      },
+      {
+        "name": "emoy90g",
+        "player_id": 86514
+      },
+      {
+        "name": "Florin",
+        "player_id": 86971
+      },
+      {
+        "name": "Iker",
+        "player_id": 77526
+      },
+      {
+        "name": "ItsKiki/Kiki",
+        "player_id": 82010
+      },
+      {
+        "name": "KazuKz0",
+        "player_id": 90082
+      },
+      {
+        "name": "LiUnai8",
+        "player_id": 87387
+      },
+      {
+        "name": "Nico",
+        "player_id": 88426
+      },
+      {
+        "name": "Norko",
+        "player_id": 73883
+      },
+      {
+        "name": "panini999",
+        "player_id": 16427
+      },
+      {
+        "name": "Xabo",
+        "player_id": 89588
+      },
+      {
+        "name": "Yunko",
+        "player_id": 89754
+      }
+    ],
+    "name": "Rozando la Katástrofe Lotus"
+  },
+  {
+    "id": 90881,
+    "tag": "RK",
+    "players": [
+      {
+        "name": "Ayla",
+        "player_id": 49396
+      },
+      {
+        "name": "BreixxG",
+        "player_id": 93392
+      },
+      {
+        "name": "Cochavi",
+        "player_id": 89626
+      },
+      {
+        "name": "DSTYR",
+        "player_id": 82677
+      },
+      {
+        "name": "EVANS",
+        "player_id": 86184
+      },
+      {
+        "name": "Game8boy",
+        "player_id": 74176
+      },
+      {
+        "name": "Giovannisland24 / Zeus",
+        "player_id": 77529
+      },
+      {
+        "name": "Huxopro",
+        "player_id": 76298
+      },
+      {
+        "name": "Ivi",
+        "player_id": 34420
+      },
+      {
+        "name": "Jose",
+        "player_id": 69424
+      },
+      {
+        "name": "Josuan/Andy S",
+        "player_id": 87046
+      },
+      {
+        "name": "lovelymax",
+        "player_id": 91291
+      },
+      {
+        "name": "Mandongo/Galeón",
+        "player_id": 90266
+      },
+      {
+        "name": "MaXimo",
+        "player_id": 86522
+      },
+      {
+        "name": "Miknor1731",
+        "player_id": 86552
+      },
+      {
+        "name": "Mr.H",
+        "player_id": 76451
+      },
+      {
+        "name": "Pablo NQN",
+        "player_id": 22252
+      },
+      {
+        "name": "sebasdmi",
+        "player_id": 90153
+      },
+      {
+        "name": "TNT",
+        "player_id": 84951
+      }
+    ],
+    "name": "Rozando la Katástrofe Eclipse"
+  },
+  {
+    "id": 90884,
+    "tag": "Sr.",
+    "players": [
+      {
+        "name": "Aleeex",
+        "player_id": 2666
+      },
+      {
+        "name": "DG_14",
+        "player_id": 209
+      },
+      {
+        "name": "Ever",
+        "player_id": 76127
+      },
+      {
+        "name": "Flygod/Alfon",
+        "player_id": 66366
+      },
+      {
+        "name": "Gos",
+        "player_id": 67443
+      },
+      {
+        "name": "HFurbi/Aki",
+        "player_id": 78157
+      },
+      {
+        "name": "Jaime",
+        "player_id": 554
+      },
+      {
+        "name": "JuanP",
+        "player_id": 4584
+      },
+      {
+        "name": "Killua",
+        "player_id": 76413
+      },
+      {
+        "name": "Migueel",
+        "player_id": 32950
+      },
+      {
+        "name": "Nando",
+        "player_id": 696
+      },
+      {
+        "name": "P3r3jon",
+        "player_id": 3609
+      },
+      {
+        "name": "Pesho",
+        "player_id": 4910
+      },
+      {
+        "name": "PH",
+        "player_id": 6295
+      },
+      {
+        "name": "Samu",
+        "player_id": 85037
+      },
+      {
+        "name": "Starp",
+        "player_id": 70813
+      },
+      {
+        "name": "Suaf",
+        "player_id": 3598
+      },
+      {
+        "name": "Zarkal",
+        "player_id": 492
+      }
+    ],
+    "name": "Stellar Roses"
+  },
+  {
+    "id": 90915,
+    "tag": "RK",
+    "players": [
+      {
+        "name": ".rafa",
+        "player_id": 78514
+      },
+      {
+        "name": "albertaco_/Reaper/Jimbo",
+        "player_id": 85325
+      },
+      {
+        "name": "Argos/Faliyo/Abucheos",
+        "player_id": 35909
+      },
+      {
+        "name": "Choco",
+        "player_id": 68698
+      },
+      {
+        "name": "Facundo",
+        "player_id": 86984
+      },
+      {
+        "name": "Fer",
+        "player_id": 78671
+      },
+      {
+        "name": "Fuuse/kuro",
+        "player_id": 84493
+      },
+      {
+        "name": "Gabi",
+        "player_id": 85320
+      },
+      {
+        "name": "Kenthix",
+        "player_id": 80859
+      },
+      {
+        "name": "Luiyi",
+        "player_id": 78837
+      },
+      {
+        "name": "MANUUUU / MCMENÚ",
+        "player_id": 85336
+      },
+      {
+        "name": "Misajumii/Shadow",
+        "player_id": 78674
+      },
+      {
+        "name": "nokzie",
+        "player_id": 85476
+      },
+      {
+        "name": "Pabot236/Però/Usapyon",
+        "player_id": 78550
+      },
+      {
+        "name": "Shaunix17/Taquito",
+        "player_id": 69591
+      },
+      {
+        "name": "ZYN",
+        "player_id": 81440
+      }
+    ],
+    "name": "Rozando la Katástrofe Exodus"
+  },
+  {
+    "id": 90935,
+    "tag": "ign",
+    "players": [
+      {
+        "name": "Alopez5",
+        "player_id": 51005
+      },
+      {
+        "name": "DiegoSL10",
+        "player_id": 45373
+      },
+      {
+        "name": "Dizzle",
+        "player_id": 41141
+      },
+      {
+        "name": "FaZe Jorg",
+        "player_id": 53445
+      },
+      {
+        "name": "GeorgeWashingtoad",
+        "player_id": 59341
+      },
+      {
+        "name": "GregTheSumo",
+        "player_id": 61831
+      },
+      {
+        "name": "King",
+        "player_id": 66770
+      },
+      {
+        "name": "Lamp",
+        "player_id": 91115
+      },
+      {
+        "name": "mole",
+        "player_id": 44159
+      },
+      {
+        "name": "Ruddy",
+        "player_id": 41102
+      },
+      {
+        "name": "Sceptile",
+        "player_id": 52882
+      },
+      {
+        "name": "sdp Flame",
+        "player_id": 62509
+      },
+      {
+        "name": "Yellowfish",
+        "player_id": 509
+      }
+    ],
+    "name": "Ignition"
+  },
+  {
+    "id": 90954,
+    "tag": "DK",
+    "players": [
+      {
+        "name": "5 de Asada",
+        "player_id": 93364
+      },
+      {
+        "name": "<>ŠëXäR<>",
+        "player_id": 93940
+      },
+      {
+        "name": "CarlosV",
+        "player_id": 94048
+      },
+      {
+        "name": "Chesco",
+        "player_id": 94041
+      },
+      {
+        "name": "Christian",
+        "player_id": 93836
+      },
+      {
+        "name": "Confiture",
+        "player_id": 93826
+      },
+      {
+        "name": "Dowyss",
+        "player_id": 87821
+      },
+      {
+        "name": "drake",
+        "player_id": 93839
+      },
+      {
+        "name": "Erick/Eito",
+        "player_id": 90381
+      },
+      {
+        "name": "Fabrizio",
+        "player_id": 94040
+      },
+      {
+        "name": "Fejegano01",
+        "player_id": 93837
+      },
+      {
+        "name": "Fer",
+        "player_id": 94081
+      },
+      {
+        "name": "Fernando",
+        "player_id": 93949
+      },
+      {
+        "name": "Franco",
+        "player_id": 88244
+      },
+      {
+        "name": "God Wrath",
+        "player_id": 94043
+      },
+      {
+        "name": "jhyanr007",
+        "player_id": 91009
+      },
+      {
+        "name": "Juancho",
+        "player_id": 48426
+      },
+      {
+        "name": "Kevin",
+        "player_id": 91481
+      },
+      {
+        "name": "kirby",
+        "player_id": 93383
+      },
+      {
+        "name": "Luigito1.0",
+        "player_id": 93172
+      },
+      {
+        "name": "Mijares",
+        "player_id": 93860
+      },
+      {
+        "name": "N0t Manu",
+        "player_id": 93705
+      },
+      {
+        "name": "Nero RD",
+        "player_id": 94053
+      },
+      {
+        "name": "Pedro",
+        "player_id": 93862
+      },
+      {
+        "name": "Poggas",
+        "player_id": 93611
+      },
+      {
+        "name": "ShanksFP",
+        "player_id": 68519
+      },
+      {
+        "name": "Tame",
+        "player_id": 31343
+      },
+      {
+        "name": "Zeta",
+        "player_id": 78678
+      },
+      {
+        "name": "⭐N I C K⭐",
+        "player_id": 93859
+      }
+    ],
+    "name": "DK Lexus"
+  },
+  {
+    "id": 90958,
+    "tag": "JJ",
+    "players": [
+      {
+        "name": "Alberto",
+        "player_id": 777
+      },
+      {
+        "name": "Aleexia",
+        "player_id": 48479
+      },
+      {
+        "name": "Alexony",
+        "player_id": 900
+      },
+      {
+        "name": "Biz",
+        "player_id": 68771
+      },
+      {
+        "name": "Brox",
+        "player_id": 354
+      },
+      {
+        "name": "DANIPRO",
+        "player_id": 387
+      },
+      {
+        "name": "Guti",
+        "player_id": 1014
+      },
+      {
+        "name": "Jandro",
+        "player_id": 71573
+      },
+      {
+        "name": "JenZua",
+        "player_id": 5139
+      },
+      {
+        "name": "Lollo",
+        "player_id": 69992
+      },
+      {
+        "name": "Matedy89",
+        "player_id": 3918
+      },
+      {
+        "name": "MortLas",
+        "player_id": 3853
+      },
+      {
+        "name": "Owned",
+        "player_id": 837
+      },
+      {
+        "name": "Paco_Gaita",
+        "player_id": 6255
+      },
+      {
+        "name": "Rocar",
+        "player_id": 48324
+      },
+      {
+        "name": "Sync",
+        "player_id": 1939
+      }
+    ],
+    "name": "Jet Joker"
+  },
+  {
+    "id": 90959,
+    "tag": "MRK",
+    "players": [
+      {
+        "name": "Aleformula",
+        "player_id": 41771
+      },
+      {
+        "name": "cjarias",
+        "player_id": 82717
+      },
+      {
+        "name": "Cleisi",
+        "player_id": 2966
+      },
+      {
+        "name": "Dmky",
+        "player_id": 41807
+      },
+      {
+        "name": "Edu",
+        "player_id": 1029
+      },
+      {
+        "name": "ElJeh",
+        "player_id": 34341
+      },
+      {
+        "name": "HIROwned",
+        "player_id": 325
+      },
+      {
+        "name": "Jinx",
+        "player_id": 32185
+      },
+      {
+        "name": "Korni",
+        "player_id": 41770
+      },
+      {
+        "name": "Maario",
+        "player_id": 27146
+      },
+      {
+        "name": "PLAD",
+        "player_id": 29808
+      },
+      {
+        "name": "pxxblo/tete/morente",
+        "player_id": 12998
+      },
+      {
+        "name": "Raulfg5",
+        "player_id": 2207
+      },
+      {
+        "name": "Sonic",
+        "player_id": 68714
+      },
+      {
+        "name": "Weegah",
+        "player_id": 30695
+      }
+    ],
+    "name": "Jet Joker Merekes"
+  },
+  {
+    "id": 90960,
+    "tag": "JJ",
+    "players": [
+      {
+        "name": "Attila",
+        "player_id": 42068
+      },
+      {
+        "name": "BF",
+        "player_id": 84895
+      },
+      {
+        "name": "Chiky",
+        "player_id": 64
+      },
+      {
+        "name": "DesTGa",
+        "player_id": 84008
+      },
+      {
+        "name": "Dkaoo_",
+        "player_id": 71793
+      },
+      {
+        "name": "El Bicho",
+        "player_id": 26574
+      },
+      {
+        "name": "el cachivache",
+        "player_id": 85045
+      },
+      {
+        "name": "Kingmy",
+        "player_id": 19578
+      },
+      {
+        "name": "Klever",
+        "player_id": 80991
+      },
+      {
+        "name": "L-DIEGO!",
+        "player_id": 35373
+      },
+      {
+        "name": "Lokilla",
+        "player_id": 332
+      },
+      {
+        "name": "Maickel",
+        "player_id": 9738
+      },
+      {
+        "name": "Manu",
+        "player_id": 75274
+      },
+      {
+        "name": "MrL7boi",
+        "player_id": 38232
+      },
+      {
+        "name": "night",
+        "player_id": 81483
+      },
+      {
+        "name": "Pablo",
+        "player_id": 71364
+      },
+      {
+        "name": "StiK",
+        "player_id": 86113
+      },
+      {
+        "name": "Univers",
+        "player_id": 8783
+      },
+      {
+        "name": "zecarsito/sitoo",
+        "player_id": 60515
+      },
+      {
+        "name": "Ͻɑɳɩζꜫɭ",
+        "player_id": 47610
+      }
+    ],
+    "name": "Jet Joker Neo"
+  },
+  {
+    "id": 90973,
+    "tag": "½",
+    "players": [
+      {
+        "name": "Alondra/Waguri/Furina",
+        "player_id": 50327
+      },
+      {
+        "name": "Armaledge_😈🔥",
+        "player_id": 84399
+      },
+      {
+        "name": "Breve",
+        "player_id": 47619
+      },
+      {
+        "name": "Cimmerian",
+        "player_id": 82529
+      },
+      {
+        "name": "ElJuan123/Kito/MrÑarky",
+        "player_id": 82446
+      },
+      {
+        "name": "Enr1Cat / Prosi / Laver",
+        "player_id": 78891
+      },
+      {
+        "name": "ItsJulian47 / Yulien",
+        "player_id": 30647
+      },
+      {
+        "name": "Jon",
+        "player_id": 48750
+      },
+      {
+        "name": "PSIception",
+        "player_id": 80788
+      },
+      {
+        "name": "Ray/Silvana/Mon Laferte",
+        "player_id": 38046
+      },
+      {
+        "name": "Sanmi",
+        "player_id": 80792
+      },
+      {
+        "name": "Serapis",
+        "player_id": 90231
+      },
+      {
+        "name": "Shy guay/ct play/ban",
+        "player_id": 18598
+      },
+      {
+        "name": "Toriyaki | Virtual Diva",
+        "player_id": 61857
+      },
+      {
+        "name": "Yester",
+        "player_id": 61922
+      },
+      {
+        "name": "Yisus Gun",
+        "player_id": 40560
+      },
+      {
+        "name": "zapatinni",
+        "player_id": 27275
+      }
+    ],
+    "name": "Segundones Team"
+  },
+  {
+    "id": 90984,
+    "tag": "ρ6",
+    "players": [
+      {
+        "name": "Abbas afanah",
+        "player_id": 34857
+      },
+      {
+        "name": "Ange",
+        "player_id": 32727
+      },
+      {
+        "name": "ArthurC_BR",
+        "player_id": 42217
+      },
+      {
+        "name": "berna",
+        "player_id": 13661
+      },
+      {
+        "name": "ItsCJ",
+        "player_id": 33890
+      },
+      {
+        "name": "matam",
+        "player_id": 1024
+      },
+      {
+        "name": "MegaBadHector",
+        "player_id": 36692
+      },
+      {
+        "name": "MegaLeoMania (mlm)",
+        "player_id": 58365
+      },
+      {
+        "name": "Nuel",
+        "player_id": 34826
+      },
+      {
+        "name": "Renats",
+        "player_id": 53477
+      },
+      {
+        "name": "rich Billiam II",
+        "player_id": 68295
+      },
+      {
+        "name": "Rick",
+        "player_id": 25818
+      },
+      {
+        "name": "Slake",
+        "player_id": 68263
+      }
+    ],
+    "name": "Prime 6"
+  },
+  {
+    "id": 90987,
+    "tag": "HR",
+    "players": [
+      {
+        "name": "AFtt11",
+        "player_id": 71991
+      },
+      {
+        "name": "Arthug",
+        "player_id": 6108
+      },
+      {
+        "name": "Avend",
+        "player_id": 53558
+      },
+      {
+        "name": "Guyal",
+        "player_id": 5052
+      },
+      {
+        "name": "Kompot / Aiko / Olise",
+        "player_id": 23402
+      },
+      {
+        "name": "Larii",
+        "player_id": 18595
+      },
+      {
+        "name": "Leviossah",
+        "player_id": 6101
+      },
+      {
+        "name": "Louloutre",
+        "player_id": 54540
+      },
+      {
+        "name": "Marss",
+        "player_id": 13963
+      },
+      {
+        "name": "Nosta",
+        "player_id": 26648
+      },
+      {
+        "name": "nsdive",
+        "player_id": 5540
+      },
+      {
+        "name": "Royal45",
+        "player_id": 7617
+      },
+      {
+        "name": "Spara",
+        "player_id": 14533
+      },
+      {
+        "name": "Symen",
+        "player_id": 61506
+      },
+      {
+        "name": "Vava / Ahri / Spirit",
+        "player_id": 17470
+      },
+      {
+        "name": "Zephyr | Manu",
+        "player_id": 55508
+      }
+    ],
+    "name": "Harmonia"
+  },
+  {
+    "id": 90997,
+    "tag": "тс",
+    "players": [
+      {
+        "name": "Asté/Z.Z/Abel",
+        "player_id": 23333
+      },
+      {
+        "name": "Byakuya/Taki/Sasuke",
+        "player_id": 44703
+      },
+      {
+        "name": "Exoshi/Typhoeus",
+        "player_id": 39599
+      },
+      {
+        "name": "ivangc/Matteo",
+        "player_id": 28339
+      },
+      {
+        "name": "Jepard / Ferran Torres",
+        "player_id": 33351
+      },
+      {
+        "name": "Kikit",
+        "player_id": 19260
+      },
+      {
+        "name": "Kowai",
+        "player_id": 47438
+      },
+      {
+        "name": "Léø694",
+        "player_id": 8258
+      },
+      {
+        "name": "Matthew",
+        "player_id": 34158
+      },
+      {
+        "name": "Myzaru / Rémielle",
+        "player_id": 38694
+      },
+      {
+        "name": "No",
+        "player_id": 88130
+      },
+      {
+        "name": "Saxx/Kiyotaka/Itachi",
+        "player_id": 16326
+      },
+      {
+        "name": "Sev/Haru/Jungle Pocket",
+        "player_id": 8954
+      },
+      {
+        "name": "Spipoisson",
+        "player_id": 7983
+      },
+      {
+        "name": "Tanguy11YT",
+        "player_id": 40962
+      },
+      {
+        "name": "Veko",
+        "player_id": 33946
+      },
+      {
+        "name": "You-pk",
+        "player_id": 74289
+      }
+    ],
+    "name": "Trial Chambers Diamant"
+  },
+  {
+    "id": 91002,
+    "tag": "тс",
+    "players": [
+      {
+        "name": "Azgold",
+        "player_id": 69496
+      },
+      {
+        "name": "Barry Allen",
+        "player_id": 63432
+      },
+      {
+        "name": "Bloupard",
+        "player_id": 72080
+      },
+      {
+        "name": "Futuriste",
+        "player_id": 93186
+      },
+      {
+        "name": "Greeninja",
+        "player_id": 82273
+      },
+      {
+        "name": "Launain/Ahyeon/Ahri",
+        "player_id": 39914
+      },
+      {
+        "name": "Mauz",
+        "player_id": 13434
+      },
+      {
+        "name": "Mxmphiis",
+        "player_id": 91297
+      },
+      {
+        "name": "Nashiza",
+        "player_id": 38666
+      },
+      {
+        "name": "NeroXander",
+        "player_id": 83101
+      },
+      {
+        "name": "Raph/Mitsuki/Kitagawa",
+        "player_id": 14540
+      },
+      {
+        "name": "StaYin / Nayak / dsatur",
+        "player_id": 66353
+      },
+      {
+        "name": "Tagnon / MOSHlTO",
+        "player_id": 2481
+      },
+      {
+        "name": "Tezcat",
+        "player_id": 41235
+      },
+      {
+        "name": "TourneviZ",
+        "player_id": 29627
+      },
+      {
+        "name": "Ushikomi",
+        "player_id": 40640
+      },
+      {
+        "name": "YetiGaming",
+        "player_id": 29073
+      },
+      {
+        "name": "Yoshield",
+        "player_id": 73446
+      }
+    ],
+    "name": "Trial Chambers Perle"
+  },
+  {
+    "id": 91007,
+    "tag": "SX",
+    "players": [
+      {
+        "name": "Canal+/loic77",
+        "player_id": 51576
+      },
+      {
+        "name": "cyril",
+        "player_id": 51127
+      },
+      {
+        "name": "Echo/Sylveon",
+        "player_id": 42930
+      },
+      {
+        "name": "Frutu",
+        "player_id": 69788
+      },
+      {
+        "name": "Gojo Satoru/Kilinoé",
+        "player_id": 72345
+      },
+      {
+        "name": "Insupportank/4Poum",
+        "player_id": 72660
+      },
+      {
+        "name": "kuitree",
+        "player_id": 49129
+      },
+      {
+        "name": "Lélé",
+        "player_id": 46923
+      },
+      {
+        "name": "maskou/Clémentine",
+        "player_id": 41051
+      },
+      {
+        "name": "miercolboy",
+        "player_id": 65924
+      },
+      {
+        "name": "mio_min_mio",
+        "player_id": 15337
+      },
+      {
+        "name": "MPB",
+        "player_id": 25592
+      },
+      {
+        "name": "Nero〜",
+        "player_id": 2314
+      },
+      {
+        "name": "Pili2.0",
+        "player_id": 54852
+      },
+      {
+        "name": "platineblanc",
+        "player_id": 37390
+      },
+      {
+        "name": "Pyrhanox",
+        "player_id": 69010
+      },
+      {
+        "name": "Rapha/Arch",
+        "player_id": 75560
+      },
+      {
+        "name": "ShiHonk",
+        "player_id": 28238
+      },
+      {
+        "name": "Staaany",
+        "player_id": 40964
+      },
+      {
+        "name": "Vayana",
+        "player_id": 61422
+      },
+      {
+        "name": "xerneas999",
+        "player_id": 20300
+      },
+      {
+        "name": "yocraft",
+        "player_id": 86082
+      }
+    ],
+    "name": "Solarblitz"
+  },
+  {
+    "id": 91008,
+    "tag": "WEC",
+    "players": [
+      {
+        "name": "A1ex",
+        "player_id": 69039
+      },
+      {
+        "name": "Alen",
+        "player_id": 3123
+      },
+      {
+        "name": "Alex",
+        "player_id": 183
+      },
+      {
+        "name": "Bersan",
+        "player_id": 19471
+      },
+      {
+        "name": "CrazyKrisi",
+        "player_id": 462
+      },
+      {
+        "name": "Dustin|ダスティン|Дастин",
+        "player_id": 18901
+      },
+      {
+        "name": "KingKong",
+        "player_id": 19651
+      },
+      {
+        "name": "Kiria | KiriYo",
+        "player_id": 6332
+      },
+      {
+        "name": "Leetroll",
+        "player_id": 28876
+      },
+      {
+        "name": "Marvin",
+        "player_id": 197
+      },
+      {
+        "name": "Nevitchen",
+        "player_id": 58667
+      },
+      {
+        "name": "PASSIMANNPower",
+        "player_id": 47513
+      },
+      {
+        "name": "Phil",
+        "player_id": 69190
+      },
+      {
+        "name": "Robin",
+        "player_id": 501
+      },
+      {
+        "name": "Schmidti",
+        "player_id": 30394
+      },
+      {
+        "name": "SimonS04",
+        "player_id": 69160
+      },
+      {
+        "name": "Steffi",
+        "player_id": 13939
+      },
+      {
+        "name": "TimkarioCS",
+        "player_id": 1912
+      },
+      {
+        "name": "Tobse",
+        "player_id": 35966
+      },
+      {
+        "name": "Wassu",
+        "player_id": 76806
+      },
+      {
+        "name": "Zi",
+        "player_id": 76595
+      }
+    ],
+    "name": "Wii Elite Clan"
+  },
+  {
+    "id": 91020,
+    "tag": "kπ",
+    "players": [
+      {
+        "name": "AtlasThe64",
+        "player_id": 1326
+      },
+      {
+        "name": "BuRathalos",
+        "player_id": 51843
+      },
+      {
+        "name": "cafi",
+        "player_id": 59961
+      },
+      {
+        "name": "Dade98",
+        "player_id": 80053
+      },
+      {
+        "name": "Davide",
+        "player_id": 71583
+      },
+      {
+        "name": "Elia",
+        "player_id": 84837
+      },
+      {
+        "name": "Formy",
+        "player_id": 73995
+      },
+      {
+        "name": "Karkat",
+        "player_id": 59576
+      },
+      {
+        "name": "Marcosky",
+        "player_id": 49331
+      },
+      {
+        "name": "Misaka92",
+        "player_id": 37427
+      },
+      {
+        "name": "PeppeBrescia",
+        "player_id": 67184
+      },
+      {
+        "name": "Phillyx",
+        "player_id": 87937
+      },
+      {
+        "name": "RedFenix",
+        "player_id": 69233
+      },
+      {
+        "name": "Sam",
+        "player_id": 68445
+      },
+      {
+        "name": "Tony",
+        "player_id": 72958
+      },
+      {
+        "name": "Zexal",
+        "player_id": 72649
+      }
+    ],
+    "name": "Koopa Troopers"
+  },
+  {
+    "id": 91079,
+    "tag": "R$$",
+    "players": [
+      {
+        "name": "Aroca",
+        "player_id": 21089
+      },
+      {
+        "name": "Big Jaye",
+        "player_id": 28894
+      },
+      {
+        "name": "Chrop",
+        "player_id": 65399
+      },
+      {
+        "name": "Dave",
+        "player_id": 77647
+      },
+      {
+        "name": "Evo Royal Hogs",
+        "player_id": 55320
+      },
+      {
+        "name": "favsandall",
+        "player_id": 64087
+      },
+      {
+        "name": "Flareonity",
+        "player_id": 56904
+      },
+      {
+        "name": "HeyItsJuice",
+        "player_id": 6387
+      },
+      {
+        "name": "Jerry",
+        "player_id": 60976
+      },
+      {
+        "name": "JoshuaSonOfNun",
+        "player_id": 64121
+      },
+      {
+        "name": "kurisiu",
+        "player_id": 60099
+      },
+      {
+        "name": "mitzlplyk",
+        "player_id": 68479
+      },
+      {
+        "name": "Panda Exotico",
+        "player_id": 62065
+      },
+      {
+        "name": "rclo",
+        "player_id": 53239
+      },
+      {
+        "name": "Sambam",
+        "player_id": 62362
+      },
+      {
+        "name": "SpRayRayray",
+        "player_id": 37546
+      }
+    ],
+    "name": "Red Shell Syndicate"
+  },
+  {
+    "id": 91080,
+    "tag": "RS",
+    "players": [
+      {
+        "name": "Adri_crack_pro",
+        "player_id": 23515
+      },
+      {
+        "name": "Alex_GTF",
+        "player_id": 76665
+      },
+      {
+        "name": "Arsène/Asura",
+        "player_id": 40857
+      },
+      {
+        "name": "ATM Lana",
+        "player_id": 72996
+      },
+      {
+        "name": "Bousi/Palmer/BD",
+        "player_id": 6129
+      },
+      {
+        "name": "Capde / Calçot",
+        "player_id": 16447
+      },
+      {
+        "name": "DaniFr",
+        "player_id": 34167
+      },
+      {
+        "name": "Falin/Ire'S",
+        "player_id": 2761
+      },
+      {
+        "name": "Hugoman7/ Nero",
+        "player_id": 23531
+      },
+      {
+        "name": "ItsNide_32",
+        "player_id": 14352
+      },
+      {
+        "name": "Juan",
+        "player_id": 76067
+      },
+      {
+        "name": "M1gu3l / Mixana",
+        "player_id": 74944
+      },
+      {
+        "name": "M4nuu",
+        "player_id": 77588
+      },
+      {
+        "name": "Malingre / Hipuque",
+        "player_id": 75243
+      },
+      {
+        "name": "Mamu",
+        "player_id": 41514
+      },
+      {
+        "name": "marioo",
+        "player_id": 78334
+      },
+      {
+        "name": "Michel_MK",
+        "player_id": 35324
+      },
+      {
+        "name": "MrJaume",
+        "player_id": 27579
+      },
+      {
+        "name": "NatsuMK",
+        "player_id": 6240
+      },
+      {
+        "name": "Neji/Asuna/Mugi",
+        "player_id": 77879
+      },
+      {
+        "name": "NOMBRESITO",
+        "player_id": 89034
+      },
+      {
+        "name": "Rubi_07",
+        "player_id": 42558
+      },
+      {
+        "name": "Uri/LeireP/Hasnan",
+        "player_id": 6133
+      },
+      {
+        "name": "Zektx",
+        "player_id": 89586
+      }
+    ],
+    "name": "Race in the Stars"
+  },
+  {
+    "id": 91081,
+    "tag": "RS",
+    "players": [
+      {
+        "name": "Aaronaker8/Cris Enjoyer",
+        "player_id": 31505
+      },
+      {
+        "name": "Akusika/Dybala/Pocoyo",
+        "player_id": 77547
+      },
+      {
+        "name": "Axxl / Артем",
+        "player_id": 1860
+      },
+      {
+        "name": "Bamtop/Xene",
+        "player_id": 72788
+      },
+      {
+        "name": "DNox",
+        "player_id": 958
+      },
+      {
+        "name": "Goose",
+        "player_id": 20710
+      },
+      {
+        "name": "Hollow",
+        "player_id": 23214
+      },
+      {
+        "name": "Karma / Suicune / アド",
+        "player_id": 77483
+      },
+      {
+        "name": "Luixito",
+        "player_id": 21492
+      },
+      {
+        "name": "Mega",
+        "player_id": 12762
+      },
+      {
+        "name": "Monkey/Ahri/JoJo",
+        "player_id": 64979
+      },
+      {
+        "name": "NiCoTo",
+        "player_id": 78315
+      },
+      {
+        "name": "Pableet/Beiby/Isagi",
+        "player_id": 76874
+      },
+      {
+        "name": "Pepardo",
+        "player_id": 5278
+      },
+      {
+        "name": "Pinga / Sigma hollow",
+        "player_id": 28658
+      },
+      {
+        "name": "Pollo/Riyo",
+        "player_id": 77836
+      },
+      {
+        "name": "Ravos / Bocata lomo ya",
+        "player_id": 80846
+      },
+      {
+        "name": "Roger",
+        "player_id": 70746
+      },
+      {
+        "name": "seral",
+        "player_id": 67715
+      },
+      {
+        "name": "Super_BC",
+        "player_id": 674
+      },
+      {
+        "name": "WilliamX",
+        "player_id": 21741
+      },
+      {
+        "name": "Xurirur / Ultra",
+        "player_id": 13083
+      }
+    ],
+    "name": "Race in the Space"
+  },
+  {
+    "id": 91083,
+    "tag": "AX",
+    "players": [
+      {
+        "name": "Aidanlef",
+        "player_id": 78134
+      },
+      {
+        "name": "Aurel.92i",
+        "player_id": 70564
+      },
+      {
+        "name": "Bomm",
+        "player_id": 19762
+      },
+      {
+        "name": "CAlexis",
+        "player_id": 61077
+      },
+      {
+        "name": "clemzer",
+        "player_id": 41546
+      },
+      {
+        "name": "Desjo",
+        "player_id": 51670
+      },
+      {
+        "name": "ErwanH",
+        "player_id": 42653
+      },
+      {
+        "name": "Iron / P0o",
+        "player_id": 25613
+      },
+      {
+        "name": "Kayami",
+        "player_id": 60594
+      },
+      {
+        "name": "Kurt",
+        "player_id": 68672
+      },
+      {
+        "name": "LAXATIF",
+        "player_id": 67903
+      },
+      {
+        "name": "morgen / zingui1",
+        "player_id": 52960
+      },
+      {
+        "name": "Moustache / Megumi F.",
+        "player_id": 55284
+      },
+      {
+        "name": "MptTired.",
+        "player_id": 60195
+      },
+      {
+        "name": "Neigojo",
+        "player_id": 60164
+      },
+      {
+        "name": "Nyko",
+        "player_id": 71368
+      },
+      {
+        "name": "OctoToucan / zingui2",
+        "player_id": 78095
+      },
+      {
+        "name": "Piranha_san",
+        "player_id": 50941
+      },
+      {
+        "name": "PonK_",
+        "player_id": 65870
+      },
+      {
+        "name": "Snowky / Pinguu",
+        "player_id": 34323
+      }
+    ],
+    "name": "Astroblitz"
+  },
+  {
+    "id": 91084,
+    "tag": "Ly",
+    "players": [
+      {
+        "name": "annyrosario",
+        "player_id": 29833
+      },
+      {
+        "name": "Bert",
+        "player_id": 74723
+      },
+      {
+        "name": "Beury",
+        "player_id": 66456
+      },
+      {
+        "name": "DF_BR",
+        "player_id": 2980
+      },
+      {
+        "name": "DK",
+        "player_id": 40487
+      },
+      {
+        "name": "Fewings",
+        "player_id": 59746
+      },
+      {
+        "name": "Hansry",
+        "player_id": 60880
+      },
+      {
+        "name": "jaraki1902",
+        "player_id": 78831
+      },
+      {
+        "name": "Kuri",
+        "player_id": 67916
+      },
+      {
+        "name": "Larakitty",
+        "player_id": 6316
+      },
+      {
+        "name": "Lipix",
+        "player_id": 69186
+      },
+      {
+        "name": "Maximusrob",
+        "player_id": 74970
+      },
+      {
+        "name": "Ponce",
+        "player_id": 2446
+      },
+      {
+        "name": "RaisedNewt42",
+        "player_id": 7885
+      },
+      {
+        "name": "Sidney_Oliver",
+        "player_id": 74396
+      },
+      {
+        "name": "Sir Butterstot II",
+        "player_id": 83411
+      },
+      {
+        "name": "TATY",
+        "player_id": 10292
+      },
+      {
+        "name": "TB Ly ChuckNorris",
+        "player_id": 66809
+      },
+      {
+        "name": "vinyrod07",
+        "player_id": 34346
+      }
+    ],
+    "name": "Liberty"
+  },
+  {
+    "id": 91105,
+    "tag": "DJ",
+    "players": [
+      {
+        "name": "2morris",
+        "player_id": 6990
+      },
+      {
+        "name": "AkhenatoN / Musa",
+        "player_id": 4170
+      },
+      {
+        "name": "alexpro / manteca",
+        "player_id": 76400
+      },
+      {
+        "name": "Disayer",
+        "player_id": 82170
+      },
+      {
+        "name": "Jav3008R/Echenike",
+        "player_id": 80190
+      },
+      {
+        "name": "JavierGM/Mankazo/Ljgm03",
+        "player_id": 1565
+      },
+      {
+        "name": "leitossb",
+        "player_id": 69334
+      },
+      {
+        "name": "Matias",
+        "player_id": 77476
+      },
+      {
+        "name": "Oziel / Shinwi / Guwon",
+        "player_id": 1988
+      },
+      {
+        "name": "RollyX64",
+        "player_id": 80499
+      },
+      {
+        "name": "Scarchet33",
+        "player_id": 85449
+      },
+      {
+        "name": "Smaliito",
+        "player_id": 81710
+      },
+      {
+        "name": "TiLeix",
+        "player_id": 67737
+      },
+      {
+        "name": "TitoSam",
+        "player_id": 93958
+      },
+      {
+        "name": "Venya",
+        "player_id": 44031
+      }
+    ],
+    "name": "Diamond Justice"
+  },
+  {
+    "id": 91109,
+    "tag": "ᵃs",
+    "players": [
+      {
+        "name": "CAGEtheGEGEG",
+        "player_id": 80483
+      },
+      {
+        "name": "CowPizzaPasta",
+        "player_id": 60535
+      },
+      {
+        "name": "dkee4492",
+        "player_id": 50786
+      },
+      {
+        "name": "Jaguwar/ex",
+        "player_id": 52855
+      },
+      {
+        "name": "keygen",
+        "player_id": 56553
+      },
+      {
+        "name": "Lucas / sillygoose",
+        "player_id": 50031
+      },
+      {
+        "name": "Mr. Active",
+        "player_id": 48455
+      },
+      {
+        "name": "plonk",
+        "player_id": 23657
+      },
+      {
+        "name": "Pop2pop / YaoiFan",
+        "player_id": 43856
+      },
+      {
+        "name": "raspada",
+        "player_id": 16808
+      },
+      {
+        "name": "Rixzy",
+        "player_id": 4906
+      },
+      {
+        "name": "SimoneUff",
+        "player_id": 75578
+      },
+      {
+        "name": "Thatmariospeedrunner",
+        "player_id": 49433
+      },
+      {
+        "name": "Thunder/Satoru/βailey’s",
+        "player_id": 33237
+      },
+      {
+        "name": "TJToad40",
+        "player_id": 59479
+      },
+      {
+        "name": "WaluigiGaming",
+        "player_id": 18806
+      },
+      {
+        "name": "ZonX24 / gort",
+        "player_id": 43250
+      }
+    ],
+    "name": "Shy Guys Gambling Club"
+  },
+  {
+    "id": 91119,
+    "tag": "α★",
+    "players": [
+      {
+        "name": "Aki",
+        "player_id": 24041
+      },
+      {
+        "name": "BestOf",
+        "player_id": 83396
+      },
+      {
+        "name": "Chinew",
+        "player_id": 19564
+      },
+      {
+        "name": "Clowdo/Newton/Coulomb",
+        "player_id": 60279
+      },
+      {
+        "name": "DarkyUp",
+        "player_id": 56140
+      },
+      {
+        "name": "Demiurge",
+        "player_id": 39311
+      },
+      {
+        "name": "GraïD",
+        "player_id": 80969
+      },
+      {
+        "name": "Horsujet",
+        "player_id": 43340
+      },
+      {
+        "name": "Kami",
+        "player_id": 4218
+      },
+      {
+        "name": "Lylith",
+        "player_id": 69383
+      },
+      {
+        "name": "Melon/Shura/Ippo",
+        "player_id": 33613
+      },
+      {
+        "name": "MuwwanaZz",
+        "player_id": 56124
+      },
+      {
+        "name": "ry",
+        "player_id": 20610
+      },
+      {
+        "name": "Shizuka",
+        "player_id": 96
+      }
+    ],
+    "name": "Aquasterne"
+  },
+  {
+    "id": 91120,
+    "tag": "777",
+    "players": [
+      {
+        "name": "Afrogut",
+        "player_id": 51995
+      },
+      {
+        "name": "Corbs/Traffic Cone",
+        "player_id": 42209
+      },
+      {
+        "name": "Cristian/Radikal/Queen<3",
+        "player_id": 84047
+      },
+      {
+        "name": "Dazai",
+        "player_id": 52659
+      },
+      {
+        "name": "Faw",
+        "player_id": 81959
+      },
+      {
+        "name": "Gecko",
+        "player_id": 1232
+      },
+      {
+        "name": "Kuppa",
+        "player_id": 37329
+      },
+      {
+        "name": "lukyi",
+        "player_id": 67954
+      },
+      {
+        "name": "Mach",
+        "player_id": 76522
+      },
+      {
+        "name": "ProTimeNow",
+        "player_id": 77437
+      },
+      {
+        "name": "Rhy",
+        "player_id": 82290
+      },
+      {
+        "name": "Roey",
+        "player_id": 83752
+      },
+      {
+        "name": "Shrezwick",
+        "player_id": 84900
+      },
+      {
+        "name": "snkz",
+        "player_id": 1947
+      },
+      {
+        "name": "Stpr_Dave/Shelbo",
+        "player_id": 56522
+      },
+      {
+        "name": "superman_J",
+        "player_id": 88231
+      },
+      {
+        "name": "TheDudeBlake",
+        "player_id": 55779
+      },
+      {
+        "name": "Topaz53",
+        "player_id": 45259
+      },
+      {
+        "name": "YoshiNoyes",
+        "player_id": 63411
+      }
+    ],
+    "name": "Jackpot"
+  },
+  {
+    "id": 91121,
+    "tag": "21",
+    "players": [
+      {
+        "name": "AbsoluteUnit42",
+        "player_id": 65894
+      },
+      {
+        "name": "Apple !",
+        "player_id": 84911
+      },
+      {
+        "name": "Bman0460",
+        "player_id": 71735
+      },
+      {
+        "name": "Camdizzle",
+        "player_id": 76724
+      },
+      {
+        "name": "DEMISE",
+        "player_id": 43227
+      },
+      {
+        "name": "Eags",
+        "player_id": 83280
+      },
+      {
+        "name": "ER Mac",
+        "player_id": 80497
+      },
+      {
+        "name": "Froy",
+        "player_id": 22294
+      },
+      {
+        "name": "GDMonkey",
+        "player_id": 83510
+      },
+      {
+        "name": "Johanian",
+        "player_id": 71884
+      },
+      {
+        "name": "Lulukins",
+        "player_id": 70462
+      },
+      {
+        "name": "Malex2005",
+        "player_id": 84227
+      },
+      {
+        "name": "Megurine Luka",
+        "player_id": 83437
+      },
+      {
+        "name": "RSho",
+        "player_id": 53586
+      },
+      {
+        "name": "S17MO/Manny/Bean",
+        "player_id": 66291
+      },
+      {
+        "name": "TheMagicalLoaf",
+        "player_id": 69081
+      },
+      {
+        "name": "THESHIMME21421",
+        "player_id": 83497
+      },
+      {
+        "name": "Unknown 7",
+        "player_id": 29894
+      },
+      {
+        "name": "Xeaf",
+        "player_id": 73728
+      },
+      {
+        "name": "Zubarrr",
+        "player_id": 86817
+      }
+    ],
+    "name": "Blackjack"
+  },
+  {
+    "id": 91123,
+    "tag": "L+",
+    "players": [
+      {
+        "name": "Etane/Cane's",
+        "player_id": 48138
+      },
+      {
+        "name": "gyrodos /  TACOS",
+        "player_id": 13953
+      },
+      {
+        "name": "Haruka",
+        "player_id": 44345
+      },
+      {
+        "name": "Jsaav / saav",
+        "player_id": 72610
+      },
+      {
+        "name": "JSouth887",
+        "player_id": 39581
+      },
+      {
+        "name": "pepe8610",
+        "player_id": 66786
+      },
+      {
+        "name": "Super / やつ",
+        "player_id": 40505
+      },
+      {
+        "name": "Thunda",
+        "player_id": 45290
+      },
+      {
+        "name": "Vibxz55",
+        "player_id": 42832
+      },
+      {
+        "name": "yezy",
+        "player_id": 9582
+      },
+      {
+        "name": "YoungBreezy",
+        "player_id": 52317
+      }
+    ],
+    "name": "Leftovers"
+  },
+  {
+    "id": 91132,
+    "tag": "Ums",
+    "players": [
+      {
+        "name": "Almetry",
+        "player_id": 63247
+      },
+      {
+        "name": "Altale",
+        "player_id": 12375
+      },
+      {
+        "name": "Chyan",
+        "player_id": 28969
+      },
+      {
+        "name": "killer",
+        "player_id": 45407
+      },
+      {
+        "name": "kujirla",
+        "player_id": 87629
+      },
+      {
+        "name": "medy",
+        "player_id": 22392
+      },
+      {
+        "name": "neekohri",
+        "player_id": 31694
+      },
+      {
+        "name": "rack",
+        "player_id": 30820
+      },
+      {
+        "name": "remiria",
+        "player_id": 53257
+      },
+      {
+        "name": "wiisan",
+        "player_id": 50643
+      },
+      {
+        "name": "けろりん",
+        "player_id": 51521
+      },
+      {
+        "name": "ねあ",
+        "player_id": 28049
+      },
+      {
+        "name": "もずく",
+        "player_id": 23760
+      }
+    ],
+    "name": "Urumyans♪"
+  },
+  {
+    "id": 91140,
+    "tag": "KC",
+    "players": [
+      {
+        "name": "Blopa",
+        "player_id": 88121
+      },
+      {
+        "name": "CR0NO",
+        "player_id": 89439
+      },
+      {
+        "name": "DragonCaos",
+        "player_id": 80663
+      },
+      {
+        "name": "Heshoki",
+        "player_id": 64441
+      },
+      {
+        "name": "ilayzx",
+        "player_id": 89497
+      },
+      {
+        "name": "migu",
+        "player_id": 92665
+      },
+      {
+        "name": "Miku/Sukuna",
+        "player_id": 6345
+      },
+      {
+        "name": "Ombra",
+        "player_id": 86595
+      },
+      {
+        "name": "roblochon",
+        "player_id": 47228
+      },
+      {
+        "name": "Sombriux",
+        "player_id": 87742
+      },
+      {
+        "name": "TheKrusher",
+        "player_id": 65251
+      },
+      {
+        "name": "uebo",
+        "player_id": 82901
+      }
+    ],
+    "name": "King of Caos"
+  },
+  {
+    "id": 91141,
+    "tag": "DDS",
+    "players": [
+      {
+        "name": "Adri3500__",
+        "player_id": 92654
+      },
+      {
+        "name": "AXGS09",
+        "player_id": 86014
+      },
+      {
+        "name": "Coscos_09",
+        "player_id": 87857
+      },
+      {
+        "name": "Danatosss",
+        "player_id": 77616
+      },
+      {
+        "name": "Dialga8",
+        "player_id": 88853
+      },
+      {
+        "name": "IvanCat",
+        "player_id": 78787
+      },
+      {
+        "name": "Jorge",
+        "player_id": 87342
+      },
+      {
+        "name": "Nacho",
+        "player_id": 76837
+      },
+      {
+        "name": "Prandy",
+        "player_id": 89547
+      },
+      {
+        "name": "RK ÓMS",
+        "player_id": 91958
+      },
+      {
+        "name": "RKAdrianXD",
+        "player_id": 90768
+      },
+      {
+        "name": "Samurayh",
+        "player_id": 46861
+      },
+      {
+        "name": "Super Coco",
+        "player_id": 92908
+      },
+      {
+        "name": "Zambo",
+        "player_id": 51853
+      }
+    ],
+    "name": "Deidades"
+  },
+  {
+    "id": 91145,
+    "tag": "ώƒ",
+    "players": [
+      {
+        "name": "Artox",
+        "player_id": 61392
+      },
+      {
+        "name": "Blaze211",
+        "player_id": 473
+      },
+      {
+        "name": "Elie",
+        "player_id": 341
+      },
+      {
+        "name": "Flowx",
+        "player_id": 252
+      },
+      {
+        "name": "Honord",
+        "player_id": 2983
+      },
+      {
+        "name": "Huglou",
+        "player_id": 398
+      },
+      {
+        "name": "Kuzu",
+        "player_id": 1319
+      },
+      {
+        "name": "Larias",
+        "player_id": 19378
+      },
+      {
+        "name": "Linkos",
+        "player_id": 193
+      },
+      {
+        "name": "Mars",
+        "player_id": 362
+      },
+      {
+        "name": "Master",
+        "player_id": 1471
+      },
+      {
+        "name": "Shawazer",
+        "player_id": 31727
+      },
+      {
+        "name": "Slish",
+        "player_id": 69400
+      },
+      {
+        "name": "Soren",
+        "player_id": 481
+      },
+      {
+        "name": "Sparks",
+        "player_id": 244
+      },
+      {
+        "name": "Tomka",
+        "player_id": 31782
+      },
+      {
+        "name": "Zakaria",
+        "player_id": 304
+      }
+    ],
+    "name": "World Friend"
+  },
+  {
+    "id": 91160,
+    "tag": "D$",
+    "players": [
+      {
+        "name": "Anwamanë/Creeepe",
+        "player_id": 32877
+      },
+      {
+        "name": "Clem / 2deTension",
+        "player_id": 31979
+      },
+      {
+        "name": "D$-Chris",
+        "player_id": 78706
+      },
+      {
+        "name": "D$/Logbag",
+        "player_id": 54942
+      },
+      {
+        "name": "Dimitri1470",
+        "player_id": 61499
+      },
+      {
+        "name": "Flow/Catnap",
+        "player_id": 44472
+      },
+      {
+        "name": "kaizo/かいぞさん",
+        "player_id": 2957
+      },
+      {
+        "name": "Leek",
+        "player_id": 30780
+      },
+      {
+        "name": "Maskass06",
+        "player_id": 80606
+      },
+      {
+        "name": "Mat",
+        "player_id": 70449
+      },
+      {
+        "name": "MKted61",
+        "player_id": 58922
+      },
+      {
+        "name": "MoahRikunel",
+        "player_id": 483
+      },
+      {
+        "name": "Trixie",
+        "player_id": 56853
+      },
+      {
+        "name": "Troncheafioul",
+        "player_id": 52358
+      },
+      {
+        "name": "Yienyien",
+        "player_id": 72027
+      },
+      {
+        "name": "Z3Y",
+        "player_id": 93446
+      }
+    ],
+    "name": "Dry Shell"
+  },
+  {
+    "id": 91161,
+    "tag": "3QI",
+    "players": [
+      {
+        "name": "ALI|ISSA",
+        "player_id": 57901
+      },
+      {
+        "name": "Crabby / Zouave",
+        "player_id": 29119
+      },
+      {
+        "name": "CraZeL",
+        "player_id": 28491
+      },
+      {
+        "name": "Makoto Naegi",
+        "player_id": 39446
+      },
+      {
+        "name": "metalhex",
+        "player_id": 58356
+      },
+      {
+        "name": "Nicolachaume",
+        "player_id": 50335
+      },
+      {
+        "name": "Noah",
+        "player_id": 69399
+      },
+      {
+        "name": "Nvga",
+        "player_id": 68897
+      },
+      {
+        "name": "OCTAVIRUS",
+        "player_id": 74878
+      },
+      {
+        "name": "Oxy",
+        "player_id": 2038
+      },
+      {
+        "name": "Pein36",
+        "player_id": 56611
+      },
+      {
+        "name": "Roxi36",
+        "player_id": 77329
+      },
+      {
+        "name": "Sun",
+        "player_id": 15216
+      },
+      {
+        "name": "Wiwi36",
+        "player_id": 82907
+      }
+    ],
+    "name": "3QI"
+  },
+  {
+    "id": 91174,
+    "tag": "YF",
+    "players": [
+      {
+        "name": "ChatNinja",
+        "player_id": 3432
+      },
+      {
+        "name": "Chilly / BoLyD / Sykes",
+        "player_id": 69025
+      },
+      {
+        "name": "Coco",
+        "player_id": 7804
+      },
+      {
+        "name": "Equinox",
+        "player_id": 4263
+      },
+      {
+        "name": "Jeanne",
+        "player_id": 196
+      },
+      {
+        "name": "JoeDeceives",
+        "player_id": 12843
+      },
+      {
+        "name": "Pillou",
+        "player_id": 1393
+      },
+      {
+        "name": "Theo",
+        "player_id": 75
+      },
+      {
+        "name": "Ti_C",
+        "player_id": 49
+      },
+      {
+        "name": "Victini",
+        "player_id": 491
+      }
+    ],
+    "name": "Yoshi Family Island"
+  },
+  {
+    "id": 91175,
+    "tag": "YF",
+    "players": [
+      {
+        "name": "AnimalSage",
+        "player_id": 77612
+      },
+      {
+        "name": "Carton",
+        "player_id": 18265
+      },
+      {
+        "name": "clem",
+        "player_id": 277
+      },
+      {
+        "name": "felyne",
+        "player_id": 23827
+      },
+      {
+        "name": "Kilubi",
+        "player_id": 180
+      },
+      {
+        "name": "klarn",
+        "player_id": 29278
+      },
+      {
+        "name": "Miu",
+        "player_id": 832
+      },
+      {
+        "name": "Storm",
+        "player_id": 359
+      },
+      {
+        "name": "Tasty/Crunchy/Crousti",
+        "player_id": 16413
+      },
+      {
+        "name": "Thib",
+        "player_id": 797
+      },
+      {
+        "name": "Waulth",
+        "player_id": 24432
+      },
+      {
+        "name": "Yasn",
+        "player_id": 1877
+      },
+      {
+        "name": "Yugo",
+        "player_id": 721
+      }
+    ],
+    "name": "Yoshi Family Safari"
+  },
+  {
+    "id": 91274,
+    "tag": "Łƒ",
+    "players": [
+      {
+        "name": "anto",
+        "player_id": 22520
+      },
+      {
+        "name": "Aqua / Hiroto Kiyama",
+        "player_id": 36237
+      },
+      {
+        "name": "Aruo / Limule Tempest",
+        "player_id": 67946
+      },
+      {
+        "name": "Azrok",
+        "player_id": 23081
+      },
+      {
+        "name": "BidKip",
+        "player_id": 50255
+      },
+      {
+        "name": "CroNeX",
+        "player_id": 7794
+      },
+      {
+        "name": "Daisam",
+        "player_id": 28234
+      },
+      {
+        "name": "Fraude",
+        "player_id": 20230
+      },
+      {
+        "name": "georgio / gio",
+        "player_id": 68381
+      },
+      {
+        "name": "Kuru / Yuta Okkotsu",
+        "player_id": 8787
+      },
+      {
+        "name": "Luis/Origin",
+        "player_id": 71
+      },
+      {
+        "name": "Maze/SadHam/Zagreus",
+        "player_id": 27712
+      },
+      {
+        "name": "Nalid",
+        "player_id": 20648
+      },
+      {
+        "name": "Nissou",
+        "player_id": 42592
+      },
+      {
+        "name": "norsk",
+        "player_id": 35438
+      },
+      {
+        "name": "Piero",
+        "player_id": 9708
+      },
+      {
+        "name": "RhayKou",
+        "player_id": 9944
+      },
+      {
+        "name": "Rune/ovant",
+        "player_id": 4429
+      },
+      {
+        "name": "Sheidow / Useless",
+        "player_id": 28695
+      },
+      {
+        "name": "Thomas",
+        "player_id": 518
+      },
+      {
+        "name": "wox",
+        "player_id": 9643
+      },
+      {
+        "name": "Yotano / Grotono",
+        "player_id": 42065
+      },
+      {
+        "name": "Yotoon / Damona",
+        "player_id": 42142
+      },
+      {
+        "name": "zaytox-chanUwU",
+        "player_id": 61798
+      }
+    ],
+    "name": "Leaf Bloom"
+  },
+  {
+    "id": 91384,
+    "tag": "AP☆",
+    "players": [
+      {
+        "name": "Bwight!!!",
+        "player_id": 68194
+      },
+      {
+        "name": "Chloe",
+        "player_id": 7662
+      },
+      {
+        "name": "DyevclrArret",
+        "player_id": 82612
+      },
+      {
+        "name": "Firestone",
+        "player_id": 41154
+      },
+      {
+        "name": "Guyfry",
+        "player_id": 14541
+      },
+      {
+        "name": "Misdre",
+        "player_id": 93829
+      },
+      {
+        "name": "Monkey D. Luffy",
+        "player_id": 6546
+      },
+      {
+        "name": "NERD",
+        "player_id": 4472
+      },
+      {
+        "name": "Nub",
+        "player_id": 4334
+      },
+      {
+        "name": "Savannah",
+        "player_id": 2034
+      },
+      {
+        "name": "Zarikos_",
+        "player_id": 51041
+      },
+      {
+        "name": "☆Lμηa☆",
+        "player_id": 21484
+      },
+      {
+        "name": "ジョジョ",
+        "player_id": 4473
+      }
+    ],
+    "name": "Afterparty"
+  },
+  {
+    "id": 91385,
+    "tag": "Hi",
+    "players": [
+      {
+        "name": "aryhn",
+        "player_id": 42179
+      },
+      {
+        "name": "badders/Goomba",
+        "player_id": 19305
+      },
+      {
+        "name": "CUTIE MEW MEW MAGIC",
+        "player_id": 39161
+      },
+      {
+        "name": "d, / ahyeon",
+        "player_id": 7710
+      },
+      {
+        "name": "fento",
+        "player_id": 36964
+      },
+      {
+        "name": "Ghost",
+        "player_id": 46437
+      },
+      {
+        "name": "Harry",
+        "player_id": 45734
+      },
+      {
+        "name": "LazyMuch",
+        "player_id": 31502
+      },
+      {
+        "name": "LotusNXO",
+        "player_id": 43846
+      },
+      {
+        "name": "o w e n",
+        "player_id": 37561
+      },
+      {
+        "name": "SideB NITA",
+        "player_id": 43225
+      },
+      {
+        "name": "sshort / Du Feng",
+        "player_id": 37371
+      },
+      {
+        "name": "Steez",
+        "player_id": 9742
+      },
+      {
+        "name": "vantox",
+        "player_id": 435
+      },
+      {
+        "name": "yac / bokba",
+        "player_id": 74561
+      }
+    ],
+    "name": "Crazy Dave Racing"
+  },
+  {
+    "id": 91386,
+    "tag": "мω",
+    "players": [
+      {
+        "name": "Christo",
+        "player_id": 289
+      },
+      {
+        "name": "Clembec",
+        "player_id": 73
+      },
+      {
+        "name": "DavidZSM",
+        "player_id": 84
+      },
+      {
+        "name": "Flopi",
+        "player_id": 23392
+      },
+      {
+        "name": "Félix",
+        "player_id": 58
+      },
+      {
+        "name": "Hayley Williams",
+        "player_id": 6013
+      },
+      {
+        "name": "Hurtadoo",
+        "player_id": 68041
+      },
+      {
+        "name": "Kado",
+        "player_id": 38819
+      },
+      {
+        "name": "Matlhias",
+        "player_id": 536
+      },
+      {
+        "name": "neyy / phi",
+        "player_id": 14839
+      },
+      {
+        "name": "Said",
+        "player_id": 307
+      },
+      {
+        "name": "Valdain",
+        "player_id": 280
+      },
+      {
+        "name": "Will_Boss_Gamer",
+        "player_id": 23991
+      }
+    ],
+    "name": "Midnight Wasps"
+  },
+  {
+    "id": 91387,
+    "tag": "SLχ",
+    "players": [
+      {
+        "name": "Andy1077",
+        "player_id": 84674
+      },
+      {
+        "name": "b4ron_94",
+        "player_id": 64044
+      },
+      {
+        "name": "BIGW",
+        "player_id": 21450
+      },
+      {
+        "name": "Bowsy",
+        "player_id": 65111
+      },
+      {
+        "name": "Chibixoxo",
+        "player_id": 52181
+      },
+      {
+        "name": "False King / 2GL",
+        "player_id": 12624
+      },
+      {
+        "name": "Ghost Tiger",
+        "player_id": 75240
+      },
+      {
+        "name": "Kaleb112",
+        "player_id": 20871
+      },
+      {
+        "name": "Krapfen",
+        "player_id": 37127
+      },
+      {
+        "name": "SoMuchPuke",
+        "player_id": 6497
+      },
+      {
+        "name": "Stan",
+        "player_id": 20948
+      },
+      {
+        "name": "Vixo / ayo",
+        "player_id": 27391
+      },
+      {
+        "name": "Xenoph / Xukarin",
+        "player_id": 16130
+      },
+      {
+        "name": "XxunlyxX",
+        "player_id": 80705
+      },
+      {
+        "name": "Zquka",
+        "player_id": 16127
+      }
+    ],
+    "name": "Silent Lightning"
+  },
+  {
+    "id": 91388,
+    "tag": "HE",
+    "players": [
+      {
+        "name": "Aizen",
+        "player_id": 74189
+      },
+      {
+        "name": "Aksel",
+        "player_id": 84451
+      },
+      {
+        "name": "AmiralKoopa",
+        "player_id": 69207
+      },
+      {
+        "name": "Cano",
+        "player_id": 9207
+      },
+      {
+        "name": "dipshaaLex",
+        "player_id": 83102
+      },
+      {
+        "name": "Gomete",
+        "player_id": 50879
+      },
+      {
+        "name": "Hggg/Kouybit/fds",
+        "player_id": 28080
+      },
+      {
+        "name": "Kabag",
+        "player_id": 90019
+      },
+      {
+        "name": "Lulu",
+        "player_id": 83582
+      },
+      {
+        "name": "Pastayas",
+        "player_id": 83845
+      },
+      {
+        "name": "Sj Yoshi",
+        "player_id": 84082
+      },
+      {
+        "name": "Snaizy",
+        "player_id": 30782
+      },
+      {
+        "name": "StarLax",
+        "player_id": 82419
+      }
+    ],
+    "name": "Hellmoon"
+  },
+  {
+    "id": 91389,
+    "tag": "SHE",
+    "players": [
+      {
+        "name": "Alear_21",
+        "player_id": 85688
+      },
+      {
+        "name": "Biskk",
+        "player_id": 30060
+      },
+      {
+        "name": "Flopi",
+        "player_id": 80890
+      },
+      {
+        "name": "Foze",
+        "player_id": 77762
+      },
+      {
+        "name": "Gwendal",
+        "player_id": 66416
+      },
+      {
+        "name": "Janzer",
+        "player_id": 75690
+      },
+      {
+        "name": "JoyBoy 75",
+        "player_id": 83793
+      },
+      {
+        "name": "Mannigia",
+        "player_id": 85310
+      },
+      {
+        "name": "OpacityPST",
+        "player_id": 30067
+      },
+      {
+        "name": "Ratorz",
+        "player_id": 18936
+      },
+      {
+        "name": "Sdwllso",
+        "player_id": 59827
+      },
+      {
+        "name": "Swayz",
+        "player_id": 50949
+      },
+      {
+        "name": "Xenoz",
+        "player_id": 9142
+      },
+      {
+        "name": "Yozora",
+        "player_id": 67940
+      },
+      {
+        "name": "Zoro/Boruto/Luffy",
+        "player_id": 60901
+      }
+    ],
+    "name": "Shellstars"
+  },
+  {
+    "id": 91390,
+    "tag": "〒.〒",
+    "players": [
+      {
+        "name": "Azelix/Rei/Momone",
+        "player_id": 56357
+      },
+      {
+        "name": "Baena",
+        "player_id": 367
+      },
+      {
+        "name": "CharlyAB002",
+        "player_id": 11850
+      },
+      {
+        "name": "Confleis",
+        "player_id": 7541
+      },
+      {
+        "name": "Dalos",
+        "player_id": 1055
+      },
+      {
+        "name": "Diego",
+        "player_id": 163
+      },
+      {
+        "name": "eamarilla/lui/Arnes",
+        "player_id": 40687
+      },
+      {
+        "name": "Gaboide",
+        "player_id": 81868
+      },
+      {
+        "name": "Jennaroshi",
+        "player_id": 85675
+      },
+      {
+        "name": "Jude Bellingham",
+        "player_id": 52547
+      },
+      {
+        "name": "Lurine03",
+        "player_id": 201
+      },
+      {
+        "name": "Wynles",
+        "player_id": 3934
+      }
+    ],
+    "name": "Chicos que Lloran"
+  },
+  {
+    "id": 91391,
+    "tag": "DMG⦿",
+    "players": [
+      {
+        "name": "Atom12",
+        "player_id": 34403
+      },
+      {
+        "name": "Calox / Malox",
+        "player_id": 31911
+      },
+      {
+        "name": "clonador015",
+        "player_id": 14507
+      },
+      {
+        "name": "JaJaJairo",
+        "player_id": 69342
+      },
+      {
+        "name": "Migue927",
+        "player_id": 30199
+      },
+      {
+        "name": "MissB",
+        "player_id": 62793
+      },
+      {
+        "name": "Nhoichi",
+        "player_id": 31957
+      },
+      {
+        "name": "OxyzO",
+        "player_id": 14561
+      },
+      {
+        "name": "Shark",
+        "player_id": 5555
+      },
+      {
+        "name": "Villana",
+        "player_id": 13662
+      }
+    ],
+    "name": "Domingueros Origen"
+  },
+  {
+    "id": 91392,
+    "tag": "CYN",
+    "players": [
+      {
+        "name": "Arivak",
+        "player_id": 52357
+      },
+      {
+        "name": "Gekkouga",
+        "player_id": 16079
+      },
+      {
+        "name": "GodOfLagTommy",
+        "player_id": 29972
+      },
+      {
+        "name": "Ilkyx",
+        "player_id": 15166
+      },
+      {
+        "name": "kenma",
+        "player_id": 56139
+      },
+      {
+        "name": "Maskou",
+        "player_id": 27486
+      },
+      {
+        "name": "Meddy54",
+        "player_id": 11708
+      },
+      {
+        "name": "metal",
+        "player_id": 9288
+      },
+      {
+        "name": "Mi Akashi",
+        "player_id": 27115
+      },
+      {
+        "name": "NISYA",
+        "player_id": 81807
+      },
+      {
+        "name": "Shiloh",
+        "player_id": 76273
+      },
+      {
+        "name": "Shiro",
+        "player_id": 73683
+      },
+      {
+        "name": "ToadGamer5",
+        "player_id": 84234
+      },
+      {
+        "name": "XBZ20",
+        "player_id": 12651
+      },
+      {
+        "name": "Zachounet",
+        "player_id": 92409
+      }
+    ],
+    "name": "Cyneria Esport"
+  },
+  {
+    "id": 91498,
+    "tag": "RK",
+    "players": [
+      {
+        "name": "BLUE765",
+        "player_id": 79105
+      },
+      {
+        "name": "Eidrend",
+        "player_id": 34410
+      },
+      {
+        "name": "everlxng",
+        "player_id": 84716
+      },
+      {
+        "name": "Fraan_AM07",
+        "player_id": 46218
+      },
+      {
+        "name": "Hugo/Leon/CT",
+        "player_id": 86900
+      },
+      {
+        "name": "Kaskis",
+        "player_id": 90189
+      },
+      {
+        "name": "Krist55",
+        "player_id": 36065
+      },
+      {
+        "name": "Mariosko / Mario",
+        "player_id": 87904
+      },
+      {
+        "name": "Rk martin",
+        "player_id": 87532
+      },
+      {
+        "name": "Rubén",
+        "player_id": 88607
+      },
+      {
+        "name": "Zerpo",
+        "player_id": 86968
+      }
+    ],
+    "name": "Rozando la Katástrofe Amborgesa"
+  },
+  {
+    "id": 91645,
+    "tag": "∞",
+    "players": [
+      {
+        "name": "AlexBoo",
+        "player_id": 90527
+      },
+      {
+        "name": "C'monDamage",
+        "player_id": 87526
+      },
+      {
+        "name": "Candy_Lizzie",
+        "player_id": 60742
+      },
+      {
+        "name": "Carlos",
+        "player_id": 6201
+      },
+      {
+        "name": "Fede",
+        "player_id": 14335
+      },
+      {
+        "name": "Jesús",
+        "player_id": 90176
+      },
+      {
+        "name": "Loljose202/Lolo",
+        "player_id": 6344
+      },
+      {
+        "name": "LuisSc97",
+        "player_id": 83386
+      },
+      {
+        "name": "Martin",
+        "player_id": 86666
+      },
+      {
+        "name": "Revoltz3",
+        "player_id": 6063
+      },
+      {
+        "name": "TB★Senju",
+        "player_id": 79033
+      }
+    ],
+    "name": "Eternity"
+  },
+  {
+    "id": 91653,
+    "tag": "µ",
+    "players": [
+      {
+        "name": "cheese stick",
+        "player_id": 68314
+      },
+      {
+        "name": "Consumify / Crayon",
+        "player_id": 43060
+      },
+      {
+        "name": "coop",
+        "player_id": 24515
+      },
+      {
+        "name": "Empex",
+        "player_id": 15153
+      },
+      {
+        "name": "HypeSpeed",
+        "player_id": 60693
+      },
+      {
+        "name": "IzumiMK6",
+        "player_id": 17885
+      },
+      {
+        "name": "Jonny",
+        "player_id": 66600
+      },
+      {
+        "name": "Kilopoppy",
+        "player_id": 35262
+      },
+      {
+        "name": "Malware",
+        "player_id": 66404
+      },
+      {
+        "name": "meatball_mk",
+        "player_id": 61309
+      },
+      {
+        "name": "miimywii",
+        "player_id": 47519
+      },
+      {
+        "name": "QSahab",
+        "player_id": 43446
+      },
+      {
+        "name": "starter",
+        "player_id": 77195
+      },
+      {
+        "name": "zyoshi",
+        "player_id": 44444
+      }
+    ],
+    "name": "µTorrent"
+  }
+]

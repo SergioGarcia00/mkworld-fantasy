@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-09-06T12:33:05.848Z",
+  "players": [
+    {
+      "slot": 1,
+      "playerId": 175,
+      "name": "Ace Tman",
+      "team": "Arcadia Sky",
+      "mmr": 11099
+    },
+    {
+      "slot": 2,
+      "playerId": 23511,
+      "name": "WawayZz/hUmyD/Wa",
+      "team": "Ronrons",
+      "mmr": 13472
+    },
+    {
+      "slot": 3,
+      "playerId": 7885,
+      "name": "RaisedNewt42",
+      "team": "Liberty",
+      "mmr": 4904
+    },
+    {
+      "slot": 4,
+      "playerId": 79381,
+      "name": "Bersa",
+      "team": "Kartvengers Team",
+      "mmr": 4060
+    },
+    {
+      "slot": 5,
+      "playerId": 20161,
+      "name": "Tatane",
+      "team": "Lycoris",
+      "mmr": 5000
+    },
+    {
+      "slot": 6,
+      "playerId": 71811,
+      "name": "Kirbs III",
+      "team": "Garfield Kart",
+      "mmr": 4651
+    },
+    {
+      "slot": 7,
+      "playerId": 13614,
+      "name": "Shaq Fu / Maanghang",
+      "team": "Unbelievably Bailed",
+      "mmr": 4283
+    },
+    {
+      "slot": 8,
+      "playerId": 35799,
+      "name": "Triple C/Carter",
+      "team": "Garfield Kart",
+      "mmr": 4876
+    },
+    {
+      "slot": 9,
+      "playerId": 71991,
+      "name": "AFtt11",
+      "team": "Harmonia",
+      "mmr": 3028
+    },
+    {
+      "slot": 10,
+      "playerId": 91904,
+      "name": "Ender360",
+      "team": "Code Genius",
+      "mmr": 3245
+    }
+  ]
+}

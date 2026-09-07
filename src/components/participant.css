@@ -1,0 +1,139 @@
+.participant-form {
+  display: grid;
+  gap: 24px;
+}
+.participant-form > .field {
+  max-width: 440px;
+}
+.participant-form > .button {
+  justify-self: start;
+}
+.participant-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.participant-slot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  min-height: 146px;
+  padding: 20px;
+  background: #101e32;
+  border: 1px solid #2b405d;
+  border-radius: 12px;
+}
+.participant-slot strong {
+  font-size: 1.15rem;
+  overflow-wrap: anywhere;
+}
+.participant-slot .button {
+  align-self: start;
+}
+.participant-score {
+  display: grid;
+  grid-template-columns: minmax(160px, 2fr) 110px 110px 80px auto;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid #2b405d;
+}
+.participant-score p {
+  font-size: 0.8rem;
+  margin: 8px 0 0;
+}
+.participant-total {
+  display: grid;
+  gap: 8px;
+}
+.participant-total output {
+  font-size: 1.8rem;
+  font-variant-numeric: tabular-nums;
+}
+.participant-auth {
+  max-width: 520px;
+  margin: 48px auto;
+}
+.participant-auth h1 {
+  margin-bottom: 16px;
+}
+.participant-auth .participant-form {
+  margin-top: 32px;
+}
+.participant-feedback {
+  color: #ffadad;
+}
+.participant-summary {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+  margin: 24px 0 32px;
+}
+.participant-summary div {
+  display: grid;
+  gap: 8px;
+}
+.participant-summary strong {
+  font-size: 1.5rem;
+}
+.participant-offers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 32px;
+}
+.participant-offer {
+  padding: 28px 0;
+  border-bottom: 1px solid #2b405d;
+  display: grid;
+  gap: 14px;
+}
+.participant-offer h2 {
+  margin: 0;
+}
+.participant-offer .toolbar {
+  justify-content: space-between;
+}
+.participant-offer p {
+  margin: 0;
+}
+.participant-filters {
+  display: flex;
+  align-items: end;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+.participant-filters .field {
+  flex: 1;
+  min-width: 160px;
+}
+@media (max-width: 800px) {
+  .participant-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .participant-score {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .participant-score > div:first-of-type {
+    grid-column: 1/-1;
+  }
+  .participant-score .participant-total {
+    grid-column: auto;
+  }
+  .participant-offers {
+    grid-template-columns: 1fr;
+  }
+  .participant-summary {
+    gap: 24px;
+  }
+  .participant-auth {
+    margin: 20px auto;
+  }
+}
+@media (max-width: 420px) {
+  .participant-grid {
+    grid-template-columns: 1fr;
+  }
+}

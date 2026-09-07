@@ -1,0 +1,141 @@
+.admin-layout {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+.admin-nav {
+  display: grid;
+  gap: 3px;
+  position: sticky;
+  top: 100px;
+}
+.admin-nav a {
+  padding: 10px 14px;
+  color: #acc5df;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+}
+.admin-nav a:hover {
+  background: #132d49;
+  color: #edf6ff;
+}
+.admin-nav a[aria-current='page'] {
+  background: #17447a;
+  color: #fff;
+}
+.admin-content {
+  min-width: 0;
+}
+.admin-content h2 {
+  margin-bottom: 18px;
+}
+.admin-form {
+  display: grid;
+  gap: 16px;
+}
+.admin-form .field {
+  display: grid;
+  gap: 7px;
+}
+.admin-form input:not([type='checkbox']),
+.admin-form select,
+.admin-form textarea {
+  width: 100%;
+  background: #091c31;
+  color: #eaf5ff;
+  border: 1px solid #34516e;
+  border-radius: 6px;
+  padding: 11px 12px;
+  font: inherit;
+}
+.admin-form button {
+  justify-self: start;
+}
+.admin-form input[type='checkbox'] {
+  margin-right: 8px;
+}
+.admin-form pre {
+  overflow: auto;
+  max-width: 100%;
+}
+.admin-row {
+  padding: 20px 0;
+  border-bottom: 1px solid #26415c;
+}
+.admin-row:first-child {
+  padding-top: 0;
+}
+.admin-row summary {
+  cursor: pointer;
+  font-weight: 650;
+  padding: 8px 0;
+}
+.admin-row[open] summary {
+  margin-bottom: 18px;
+}
+.admin-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.admin-subsection {
+  margin-top: 32px;
+}
+.admin-error {
+  color: #ffc0bd;
+}
+.admin-success {
+  color: #a4eadb;
+}
+.admin-check {
+  display: flex;
+  align-items: start;
+  gap: 5px;
+  color: #b8cee3;
+  font-size: 14px;
+}
+.admin-content .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.admin-content .data-table th,
+.admin-content .data-table td {
+  text-align: left;
+  padding: 14px 12px;
+  border-bottom: 1px solid #26415c;
+  white-space: nowrap;
+}
+.admin-content .data-table th {
+  color: #a9c2da;
+  font-size: 12px;
+}
+.admin-content .table-scroll {
+  overflow: auto;
+}
+.admin-content .empty-state {
+  padding: 32px 0;
+  color: #b5cde2;
+}
+@media (max-width: 850px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .admin-nav {
+    position: static;
+    display: flex;
+    overflow: auto;
+    padding-bottom: 10px;
+  }
+  .admin-nav a {
+    white-space: nowrap;
+  }
+  .admin-row-head {
+    align-items: start;
+  }
+}

@@ -1,0 +1,212 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 36px 40px 28px;
+  background: #111e30;
+}
+
+.intro h2 {
+  max-width: 19ch;
+  font-size: clamp(38px, 3.5vw, 52px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.intro > p {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.explore {
+  margin-top: 24px;
+}
+
+.signature {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 32px;
+  color: var(--ice);
+}
+
+.wordmark {
+  font: 22px/1 var(--font-display), sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.season {
+  color: var(--muted);
+  font-size: 12px;
+  margin-left: auto;
+}
+
+.agenda {
+  min-width: 0;
+  padding: 28px 32px;
+  border-left: 1px solid var(--line);
+}
+
+.agendaHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.agendaHeader h3 {
+  font-size: 27px;
+}
+
+.agendaHeader p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.calendarLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 56px;
+  min-height: 44px;
+  color: var(--ice);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.calendarLink:hover {
+  background: var(--raised);
+}
+
+.schedule {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.schedule li {
+  display: grid;
+  grid-template-columns: 48px 80px minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  min-height: 58px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.weekday {
+  font: 22px/1 var(--font-display), sans-serif;
+  color: var(--ice);
+}
+
+.time {
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.event {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.race .weekday,
+.race .time {
+  color: var(--red);
+}
+
+.race .event {
+  color: var(--text);
+}
+
+@media (max-width: 1200px) {
+  .intro {
+    padding: 28px;
+  }
+  .intro h2 {
+    font-size: 42px;
+  }
+  .agenda {
+    padding: 28px 24px;
+  }
+  .season {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+  .schedule li {
+    grid-template-columns: 40px 68px minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 740px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .intro {
+    padding: 24px;
+  }
+  .intro h2 {
+    max-width: 20ch;
+    font-size: 40px;
+  }
+  .intro > p {
+    font-size: 15px;
+  }
+  .signature {
+    padding-top: 24px;
+  }
+  .season {
+    flex-basis: auto;
+    margin-left: auto;
+  }
+  .agenda {
+    padding: 24px;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  .agendaHeader h3 {
+    font-size: 26px;
+  }
+  .schedule li {
+    grid-template-columns: 36px 66px minmax(0, 1fr);
+    gap: 12px;
+    min-height: 56px;
+  }
+  .weekday {
+    font-size: 21px;
+  }
+  .time,
+  .event {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 420px) {
+  .intro,
+  .agenda {
+    padding: 24px 20px;
+  }
+  .season {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+}
