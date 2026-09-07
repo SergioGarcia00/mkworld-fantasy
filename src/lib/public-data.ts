@@ -7,10 +7,23 @@ import { isConfigured } from './supabase/env';
 
 export const publicCatalog = cache(async () => {
   const catalog = await getCatalog().catch(() => null);
+  const enriched = catalog
+    ? await (async () => {
+        try {
+          const db = await createClient();
+          const { data } = await db.from('player_enriched_details').select('*').eq('season_number', 3);
+          return data ?? [];
+        } catch {
+          return [];
+        }
+      })()
+    : [];
+  const details = new Map(enriched.map((row: any) => [String(row.mkcentral_player_id), row]));
   const players = source.jugadores.map((row) => {
     const live = catalog?.players.find(
       (p) => String(p.mkcentral_player_id) === String(row.player_id),
     );
+    const detail = details.get(String(row.player_id));
     return {
       id: String(row.player_id),
       slug: live?.slug ?? String(row.player_id),
@@ -22,6 +35,7 @@ export const publicCatalog = cache(async () => {
       events: row.events_s3_12p,
       price: live?.market_value ?? null,
       profile: row.mkcentral_profile,
+      detail,
     };
   });
   const teams = [...new Set(players.map((p) => p.team))].sort((a, b) => a.localeCompare(b, 'es'));
