@@ -24,13 +24,16 @@ export default async function Market({
     const [{ data: rows, error }, { data: squad }] = await Promise.all([
       db
         .from('market_offers')
-        .select('id,slot,mmr,player_id,players(name,slug,market_value,initial_value,teams(name))')
+        .select('id,slot,mmr,player_id,players(name,slug,market_value,initial_value,mkcentral_player_id,teams(name))')
         .eq('week_start', week.week)
         .order('slot'),
       db.from('fantasy_teams').select('id,budget').eq('user_id', profile.id).maybeSingle(),
     ]);
     if (error) throw new Error('No se pudieron cargar las ofertas.');
     offers = rows ?? [];
+    const { data: details } = await db.from('player_enriched_details').select('mkcentral_player_id,country,tier').eq('season_number', 3);
+    const detailById = new Map((details ?? []).map((d: any) => [String(d.mkcentral_player_id), d]));
+    offers = offers.map((offer) => ({ ...offer, detail: detailById.get(String(offer.players?.mkcentral_player_id)) }));
     team = squad;
     if (team) {
       const result = await db
@@ -161,6 +164,8 @@ export default async function Market({
                     .join('')
                     .slice(0, 2)
                     .toUpperCase();
+                  const countryCodes: Record<string, string> = { Spain: 'es', 'United States': 'us', Canada: 'ca', Lebanon: 'lb', France: 'fr', Germany: 'de', Italy: 'it', Portugal: 'pt', 'United Kingdom': 'gb', Japan: 'jp', Brazil: 'br', Mexico: 'mx', Chile: 'cl', Argentina: 'ar', Australia: 'au', Netherlands: 'nl', Belgium: 'be', Sweden: 'se', Norway: 'no', Finland: 'fi', Denmark: 'dk', Poland: 'pl', Austria: 'at', Switzerland: 'ch', Turkey: 'tr' };
+                  const flag = o.detail?.country ? countryCodes[o.detail.country] : null;
                   return (
                     <article key={o.id} className="participant-offer">
                       <div className="participant-offer-head">
@@ -179,7 +184,7 @@ export default async function Market({
                             <span className="muted">MMR {o.mmr.toLocaleString('es-ES')}</span>
                           </div>
                           <h2><Link href={`/players/${p.slug}`}>{p.name}</Link></h2>
-                          <p className="muted">{p.teams?.name ?? 'Piloto independiente'}</p>
+                          <p className="muted">{p.teams?.name ?? 'Piloto independiente'} {o.detail?.country && <span className="market-country">{flag && <span className="country-flag" role="img" aria-label={`Bandera de ${o.detail.country}`} style={{ backgroundImage: `url(https://flagcdn.com/w40/${flag}.png)` }} />} {o.detail.country}</span>}</p>
                         </div>
                       </div>
                       <div className="player-price-row">
