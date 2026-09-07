@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Link from 'next/link';
-import { Flag, ArrowUpRight, Eye } from 'lucide-react';
+import { Flag, ArrowUpRight, Eye, LogOut } from 'lucide-react';
 import { connection } from 'next/server';
 import { Navigation } from '@/components/navigation';
 import { currentProfile } from '@/lib/auth';
+import { signOut } from '@/app/auth/actions';
 import { leagueFeed } from '@/lib/public-data';
 import './globals.css';
 const body = localFont({
@@ -65,6 +66,14 @@ export default async function Layout({ children }: { children: React.ReactNode }
                   {profile ? 'Mi perfil' : 'Acceder'}
                   <ArrowUpRight size={16} />
                 </Link>
+                {profile && (
+                  <form action={signOut}>
+                    <button className="button secondary compact" type="submit">
+                      Salir
+                      <LogOut size={16} />
+                    </button>
+                  </form>
+                )}
               </div>
             </header>
             <main id="main">{children}</main>
