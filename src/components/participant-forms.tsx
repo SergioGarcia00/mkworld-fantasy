@@ -115,6 +115,8 @@ export function LineupForm({
         <h2>Parrilla titular</h2>
         <span className="badge">{selected.length} / 6</span>
       </div>
+      <div className="lineup-board">
+      <div className="lineup-starters">
       <div className="participant-grid">
         {Array.from({ length: 6 }, (_, i) => {
           const r = roster.find((r) => r.player_id === selected[i]);
@@ -128,6 +130,7 @@ export function LineupForm({
             </div>
           );
         })}
+      </div>
       </div>
       <h2>Reservas · {roster.length - selected.length} / 4</h2>
       <div className="participant-grid reserve-grid">
@@ -152,6 +155,7 @@ export function LineupForm({
             <span className="muted">Reserva disponible</span>
           </div>
         ))}
+      </div>
       </div>
       <p className="muted captain-help">Selecciona el círculo de un titular para elegir capitán · puntos × 1,5.</p>
       <p role="status" className="muted">
