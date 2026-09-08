@@ -119,25 +119,18 @@ export function LineupForm({
         {Array.from({ length: 6 }, (_, i) => {
           const r = roster.find((r) => r.player_id === selected[i]);
           return (
-            <div className="participant-slot" key={i}>
+            <div className={`participant-slot lineup-card ${r ? 'is-filled' : 'is-empty'}`} key={i}>
               <span className="muted">Posición {i + 1}</span>
               <strong>{r?.players?.name ?? 'Plaza disponible'}</strong>
               {r && (
-                <button
-                  type="button"
-                  disabled={closed}
-                  onClick={() => toggle(r.player_id)}
-                  className="button secondary"
-                >
-                  A reservas
-                </button>
+                <div className="lineup-card-actions"><label className="captain-choice"><input type="radio" name="captain" value={r.player_id} checked={captain === r.player_id} onChange={() => setCaptain(r.player_id)} disabled={closed} /> Capitán</label><button type="button" disabled={closed} onClick={() => toggle(r.player_id)} className="button secondary">A reservas</button></div>
               )}
             </div>
           );
         })}
       </div>
       <h2>Reservas · {roster.length - selected.length} / 4</h2>
-      <div className="participant-grid">
+      <div className="participant-grid reserve-grid">
         {roster
           .filter((r) => !selected.includes(r.player_id))
           .map((r) => (
@@ -160,23 +153,7 @@ export function LineupForm({
           </div>
         ))}
       </div>
-      <label className="field">
-        Capitán · puntos × 1,5
-        <select
-          name="captain"
-          value={captain}
-          onChange={(e) => setCaptain(e.target.value)}
-          required
-          disabled={closed}
-        >
-          <option value="">Elige un titular</option>
-          {selected.map((id) => (
-            <option key={id} value={id}>
-              {roster.find((r) => r.player_id === id)?.players?.name}
-            </option>
-          ))}
-        </select>
-      </label>
+      <p className="muted captain-help">Selecciona el círculo de un titular para elegir capitán · puntos × 1,5.</p>
       <p role="status" className="muted">
         {state.error ||
           state.success ||
