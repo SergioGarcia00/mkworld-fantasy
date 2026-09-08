@@ -14,11 +14,15 @@
   gap: 12px;
 }
 .reserve-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.lineup-board { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:20px 28px; padding:24px; background:#0d1929; border:1px solid #304963; border-radius:12px; }
+.lineup-board { display:grid; grid-template-columns:minmax(0,1fr) 280px; gap:20px 28px; padding:24px; background:#0d1929; border:1px solid #304963; border-radius:12px; }
 .lineup-starters { grid-column:1; grid-row:1 / span 2; }
+.lineup-starters { position:relative; padding:24px 24px 24px 58px; background:repeating-linear-gradient(90deg, transparent 0 32%, #29415a 32% 32.35%, transparent 32.35% 66%, #29415a 66% 66.35%, transparent 66.35%), linear-gradient(180deg,#13263b,#0f2033); border:1px solid #35516f; border-radius:10px; overflow:hidden; }
+.lineup-starters::before { content:'SALIDA'; position:absolute; left:14px; top:16px; bottom:16px; writing-mode:vertical-rl; letter-spacing:3px; font-size:10px; color:var(--ice); border-right:2px solid var(--ice); padding-right:8px; }
 .lineup-board > h2 { grid-column:2; grid-row:1; align-self:end; margin:0; font-size:22px; }
 .lineup-board > .reserve-grid { grid-column:2; grid-row:2; grid-template-columns:1fr; align-content:start; }
-.lineup-starters .participant-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.lineup-starters .participant-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 34px; }
+.lineup-starters .lineup-card:nth-child(even) { transform:translateY(22px); }
+.lineup-starters .lineup-card:nth-child(odd) { transform:translateY(-4px); }
 .participant-slot {
   display: flex;
   flex-direction: column;
@@ -156,6 +160,7 @@
   .lineup-board { grid-template-columns:1fr; }
   .lineup-starters, .lineup-board > h2, .lineup-board > .reserve-grid { grid-column:1; grid-row:auto; }
   .lineup-board > .reserve-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .lineup-starters { padding:20px 20px 20px 48px; }
   .participant-score {
     grid-template-columns: 1fr 1fr;
     gap: 16px;
@@ -187,5 +192,6 @@
   }
   .reserve-grid { grid-template-columns: 1fr; }
   .lineup-board { padding:16px; }
+  .lineup-starters { padding:18px 14px 18px 38px; }
   .lineup-board > .reserve-grid { grid-template-columns:1fr; }
 }
