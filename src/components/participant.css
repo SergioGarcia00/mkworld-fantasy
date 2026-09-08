@@ -16,13 +16,13 @@
 .reserve-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .lineup-board { display:grid; grid-template-columns:minmax(0,1fr) 280px; gap:20px 28px; padding:24px; background:#0d1929; border:1px solid #304963; border-radius:12px; }
 .lineup-starters { grid-column:1; grid-row:1 / span 2; }
-.lineup-starters { position:relative; padding:24px 24px 24px 58px; background:repeating-linear-gradient(90deg, transparent 0 32%, #29415a 32% 32.35%, transparent 32.35% 66%, #29415a 66% 66.35%, transparent 66.35%), linear-gradient(180deg,#13263b,#0f2033); border:1px solid #35516f; border-radius:10px; overflow:hidden; }
+.lineup-starters { position:relative; padding:24px 24px 24px 58px; background:repeating-linear-gradient(90deg, transparent 0 32%, #35536f 32% 32.6%, transparent 32.6% 66%, #35536f 66% 66.6%, transparent 66.6%), repeating-linear-gradient(0deg, transparent 0 48%, #2d4965 48% 49%, transparent 49% 98%, #2d4965 98% 99%), linear-gradient(180deg,#13263b,#0f2033); border:1px solid #527596; border-radius:10px; overflow:hidden; }
 .lineup-starters::before { content:'SALIDA'; position:absolute; left:14px; top:16px; bottom:16px; writing-mode:vertical-rl; letter-spacing:3px; font-size:10px; color:var(--ice); border-right:2px solid var(--ice); padding-right:8px; }
 .lineup-board > h2 { grid-column:2; grid-row:1; align-self:end; margin:0; font-size:22px; }
 .lineup-board > .reserve-grid { grid-column:2; grid-row:2; grid-template-columns:1fr; align-content:start; }
 .lineup-starters .participant-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 34px; }
-.lineup-starters .lineup-card:nth-child(even) { transform:translateY(22px); }
-.lineup-starters .lineup-card:nth-child(odd) { transform:translateY(-4px); }
+.lineup-starters .lineup-card:nth-child(even) { transform:translateY(28px) !important; }
+.lineup-starters .lineup-card:nth-child(odd) { transform:translateY(-6px) !important; }
 .participant-slot {
   display: flex;
   flex-direction: column;
