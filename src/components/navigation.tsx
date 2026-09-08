@@ -14,7 +14,6 @@ import {
   BookOpen,
   LifeBuoy,
   ShieldCheck,
-  ListChecks,
   Menu,
   X,
   ClipboardList,
@@ -22,7 +21,6 @@ import {
 const links = [
   ['/', 'Vista general', LayoutDashboard],
   ['/my-team', 'Mi equipo', ShieldCheck],
-  ['/lineup', 'Alineación', ListChecks],
   ['/market', 'Mercado', ShoppingBag],
   ['/scores', 'Puntuaciones', ClipboardList],
   ['/leagues', 'Clasificación', Trophy],

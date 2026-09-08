@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';
 import { participantData, euros } from '@/components/participant-data';
-import { Submit } from '@/components/participant-forms';
+import { Countdown, LineupForm, Submit } from '@/components/participant-forms';
 import { madridWeek } from '@/components/participant-time';
 import { sellPlayer } from '@/app/market/actions';
 export const metadata = { title: 'Mi equipo' };
@@ -25,6 +25,10 @@ export default async function MyTeam({
   const selected = lineup?.fantasy_lineup_players ?? [];
   const rated = roster.filter((r: any) => r.players?.mmr != null);
   const open = madridWeek().marketOpen;
+  const { data: day } = await db.from('matchdays').select('id,number,name,status,lock_at,start_at').in('status', ['OPEN','UPCOMING','LOCKED']).order('number').limit(1).maybeSingle();
+  const { data: saved } = team && day ? await db.from('fantasy_lineups').select('fantasy_lineup_players(player_id,is_captain)').eq('fantasy_team_id', team.id).eq('matchday_id', day.id).maybeSingle() : { data: null };
+  const lineupPlayers = saved?.fantasy_lineup_players ?? selected;
+  const deadline = day ? new Date(Math.min(Date.parse(day.lock_at), Date.parse(madridWeek(new Date(day.start_at)).lineupClose))).toISOString() : null;
   return (
     <>
       <div className="page-heading">
@@ -34,9 +38,7 @@ export default async function MyTeam({
             Tu plantilla de Atlas League · {roster.length} de 10 plazas ocupadas
           </p>
         </div>
-        <Link href="/lineup" className="button primary">
-          Preparar alineación
-        </Link>
+        <a href="#lineup" className="button primary">Preparar alineación</a>
       </div>
       {(params.error || params.success) && <p role="status">{params.error || params.success}</p>}
       <div className="participant-summary">
@@ -65,7 +67,7 @@ export default async function MyTeam({
         <div>
           <span className="muted">Última alineación</span>
           <strong>
-            {selected.length} titulares · {Math.max(0, roster.length - selected.length)} reservas
+            {lineupPlayers.length} titulares · {Math.max(0, roster.length - lineupPlayers.length)} reservas
           </strong>
         </div>
       </div>
@@ -127,6 +129,10 @@ export default async function MyTeam({
         {!open && (
           <p className="muted">Las ventas están cerradas hasta la próxima apertura del mercado.</p>
         )}
+      </section>
+      <section className="panel" id="lineup">
+        <div className="toolbar"><div><h2>{day ? `Jornada ${day.number} · ${day.name}` : 'Próxima jornada pendiente'}</h2><p className="muted">Seis titulares, cuatro reservas y un capitán.</p></div>{deadline && <Countdown at={deadline} />}</div>
+        {team && day && roster.length ? <LineupForm team={team.id} day={day.id} roster={roster} selected={(saved?.fantasy_lineup_players ?? []).map((p: any) => p.player_id)} captain={(saved?.fantasy_lineup_players ?? []).find((p: any) => p.is_captain)?.player_id ?? ''} deadline={day.status === 'LOCKED' ? new Date(0).toISOString() : deadline!} /> : <p className="muted">Necesitas una jornada publicada y jugadores en tu plantilla para alinear.</p>}
       </section>
     </>
   );
