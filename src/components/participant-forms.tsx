@@ -240,7 +240,7 @@ export function ScoreForm({
       <input type="hidden" name="team" value={team} />
       <input type="hidden" name="matchday" value={day} />
       <input type="hidden" name="player" value={player} />
-      <div>
+      <div className="score-player">
         <strong>{name}</strong>
         <p role="status" className="muted">
           {state.error ||
@@ -290,7 +290,7 @@ export function ScoreForm({
       </label>
       <div className="participant-total">
         <span className="muted">Total</span>
-        <output>{first ? Number(first) + Number(second) : '—'}</output>
+        <output>{first !== '' && second !== '' ? Number(first) + Number(second) : '—'}</output>
       </div>
       <button className="button primary" disabled={pending}>
         {pending ? 'Guardando…' : 'Guardar'}

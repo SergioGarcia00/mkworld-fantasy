@@ -453,6 +453,90 @@
     align-items: flex-start;
   }
 }
+
+/* Compact score rows */
+.participant-score {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.4fr) repeat(2, minmax(120px, 150px)) minmax(
+      88px,
+      0.6fr
+    ) auto;
+  grid-template-areas: 'player game1 game2 total save' 'player sub sub total save';
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: 12px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+}
+.participant-score:first-of-type {
+  margin-top: 28px;
+}
+.score-player {
+  grid-area: player;
+}
+.score-player strong {
+  display: block;
+  font-family: var(--font-display), sans-serif;
+  font-size: 24px;
+  line-height: 1.1;
+}
+.score-player p {
+  margin: 6px 0 0;
+  font-size: 12px;
+}
+.participant-score > .field:nth-of-type(1) {
+  grid-area: game1;
+}
+.participant-score > .field:nth-of-type(2) {
+  grid-area: game2;
+}
+.participant-score > .field {
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.participant-score > .field input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.sub-score-toggle {
+  grid-area: sub;
+  justify-self: start;
+  font-size: 12px;
+  gap: 7px;
+}
+.sub-score-toggle small {
+  font-size: 11px;
+}
+.participant-score .participant-total {
+  grid-area: total;
+  align-self: center;
+  gap: 2px;
+}
+.participant-score .participant-total output {
+  font-family: var(--font-display), sans-serif;
+  font-size: 28px;
+  line-height: 1;
+}
+.participant-score > .button {
+  grid-area: save;
+  justify-self: end;
+  min-height: 44px;
+}
+@media (max-width: 760px) {
+  .participant-score {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'player player' 'game1 game2' 'sub sub' 'total save';
+    gap: 14px 12px;
+    padding: 20px 0;
+  }
+  .participant-score > .button {
+    justify-self: stretch;
+  }
+}
 @media (max-width: 420px) {
   .participant-grid {
     grid-template-columns: 1fr;
