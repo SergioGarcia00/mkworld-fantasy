@@ -1,5 +1,4 @@
 import { PageHeading } from '@/components/ui';
-import { PlayerTable } from '@/components/player-table';
 import { publicCatalog, number } from '@/lib/public-data';
 import { createClient } from '@/lib/supabase/server';
 import { isConfigured } from '@/lib/supabase/env';
@@ -9,11 +8,26 @@ export default async function Stats() {
   const db = isConfigured() ? await createClient() : null;
   const { data: weekly } = db
     ? await db.rpc('public_player_weekly_stats')
-    : { data: [] as { player_id: string; total_points: number; entries: number }[] };
-  const activeIds = new Set((weekly ?? []).map((row) => row.player_id));
-  const known = players
-    .filter((p) => p.databaseId && activeIds.has(p.databaseId))
-    .sort((a, b) => (b.mmr ?? 0) - (a.mmr ?? 0));
+    : {
+        data: [] as {
+          player_id: string;
+          total_points: number;
+          users: number;
+          matchdays: number;
+          games: number;
+          average_points: number;
+        }[],
+      };
+  const rows = players
+    .filter((p) => p.databaseId && weekly?.some((row) => row.player_id === p.databaseId))
+    .map((player) => ({
+      player,
+      stats: weekly!.find((row) => row.player_id === player.databaseId)!,
+    }))
+    .sort((a, b) => Number(b.stats.total_points) - Number(a.stats.total_points));
+  const average = rows.length
+    ? rows.reduce((sum, row) => sum + Number(row.stats.average_points), 0) / rows.length
+    : 0;
   return (
     <>
       <PageHeading
@@ -22,16 +36,11 @@ export default async function Stats() {
       />
       <div className="metrics-strip">
         {[
-          [number(known.length), 'Jugadores con puntos'],
+          [number(rows.length), 'Jugadores con puntos'],
+          [number(Math.round(average)), 'Media por partida'],
           [
-            number(
-              Math.round(known.reduce((s, p) => s + (p.mmr ?? 0), 0) / Math.max(known.length, 1)),
-            ),
-            'MMR medio',
-          ],
-          [
-            number((weekly ?? []).reduce((sum, row) => sum + Number(row.entries), 0)),
-            'Puntuaciones registradas',
+            number((weekly ?? []).reduce((sum, row) => sum + Number(row.games), 0)),
+            'Partidas puntuadas',
           ],
           [
             number((weekly ?? []).reduce((sum, row) => sum + Number(row.total_points), 0)),
@@ -44,8 +53,39 @@ export default async function Stats() {
           </div>
         ))}
       </div>
-      <h2 className="section-heading">Jugadores con puntuaciones registradas</h2>
-      <PlayerTable players={known.slice(0, 20)} />
+      <h2 className="section-heading">Rendimiento de jugadores participantes</h2>
+      <div className="table-scroll">
+        <table className="data-table pilot-table">
+          <thead>
+            <tr>
+              <th>Jugador</th>
+              <th>Equipo</th>
+              <th className="numeric">Usuarios</th>
+              <th className="numeric">Jornadas</th>
+              <th className="numeric">Partidas</th>
+              <th className="numeric">Puntos totales</th>
+              <th className="numeric">Media / partida</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(({ player, stats }, index) => (
+              <tr key={player.id}>
+                <td>
+                  <strong>
+                    {String(index + 1).padStart(2, '0')} · {player.name}
+                  </strong>
+                </td>
+                <td>{player.team}</td>
+                <td className="numeric">{number(Number(stats.users))}</td>
+                <td className="numeric">{number(Number(stats.matchdays))}</td>
+                <td className="numeric">{number(Number(stats.games))}</td>
+                <td className="numeric mmr">{number(Number(stats.total_points))}</td>
+                <td className="numeric">{number(Number(stats.average_points))}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

@@ -59,7 +59,15 @@ export type Database = {
     Functions: {
       public_player_weekly_stats: {
         Args: Record<string, never>;
-        Returns: { player_id: string; total_points: number; entries: number }[];
+        Returns: {
+          player_id: string;
+          total_points: number;
+          entries: number;
+          users: number;
+          matchdays: number;
+          games: number;
+          average_points: number;
+        }[];
       };
       spectator_chat: {
         Args: Record<string, never>;
