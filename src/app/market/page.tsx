@@ -2,6 +2,8 @@ import { countryCode as resolveCountryCode } from '@/lib/country-code';
 /* Dynamic Supabase relations are checked by PostgreSQL; the inherited client schema only covers core tables. */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';
+import { Clock3, ArrowUpRight } from 'lucide-react';
+import './market.css';
 import { currentProfile } from '@/lib/auth';
 import { createClient } from '@/lib/supabase/server';
 import { Countdown, Submit } from '@/components/participant-forms';
@@ -12,7 +14,7 @@ export const metadata = { title: 'Mercado' };
 export default async function Market({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string; mmr?: string; price?: string; team?: string }>;
+  searchParams: Promise<{ error?: string }>;
 }) {
   const params = await searchParams;
   const week = madridWeek();
@@ -25,16 +27,28 @@ export default async function Market({
     const [{ data: rows, error }, { data: squad }] = await Promise.all([
       db
         .from('market_offers')
-        .select('id,slot,mmr,player_id,players(name,slug,market_value,initial_value,mkcentral_player_id,nationality,teams(name))')
+        .select(
+          'id,slot,mmr,player_id,players(name,slug,market_value,initial_value,mkcentral_player_id,nationality,teams(name))',
+        )
         .eq('week_start', week.week)
         .order('slot'),
       db.from('fantasy_teams').select('id,budget').eq('user_id', profile.id).maybeSingle(),
     ]);
     if (error) throw new Error('No se pudieron cargar las ofertas.');
     offers = rows ?? [];
-    const { data: details } = await db.from('player_enriched_details').select('mkcentral_player_id,display_name,country,tier').eq('season_number', 3).in('mkcentral_player_id', offers.map((offer) => String(offer.players?.mkcentral_player_id)));
+    const { data: details } = await db
+      .from('player_enriched_details')
+      .select('mkcentral_player_id,display_name,country,tier')
+      .eq('season_number', 3)
+      .in(
+        'mkcentral_player_id',
+        offers.map((offer) => String(offer.players?.mkcentral_player_id)),
+      );
     const detailById = new Map((details ?? []).map((d: any) => [String(d.mkcentral_player_id), d]));
-    offers = offers.map((offer) => ({ ...offer, detail: detailById.get(String(offer.players?.mkcentral_player_id)) }));
+    offers = offers.map((offer) => ({
+      ...offer,
+      detail: detailById.get(String(offer.players?.mkcentral_player_id)),
+    }));
     team = squad;
     if (team) {
       const result = await db
@@ -47,50 +61,51 @@ export default async function Market({
       db.rpc('market_bid_counts', { target_week: week.week }),
       db.rpc('my_market_bids', { target_week: week.week }),
     ]);
-    const countByPlayer = new Map((counts ?? []).map((row: any) => [row.player_id, Number(row.bidder_count)]));
+    const countByPlayer = new Map(
+      (counts ?? []).map((row: any) => [row.player_id, Number(row.bidder_count)]),
+    );
     const mineSet = new Set((mine ?? []).map((row: any) => row.player_id));
-    offers = offers.map((offer) => ({ ...offer, bidderCount: countByPlayer.get(offer.player_id) ?? 0, hasBid: mineSet.has(offer.player_id) }));
+    offers = offers.map((offer) => ({
+      ...offer,
+      bidderCount: countByPlayer.get(offer.player_id) ?? 0,
+      hasBid: mineSet.has(offer.player_id),
+    }));
   }
-  const teams: string[] = [
-    ...new Set<string>(offers.map((o) => o.players?.teams?.name).filter(Boolean)),
-  ];
-  const filtered = offers.filter(
-    (o) =>
-      (!params.team || o.players?.teams?.name === params.team) &&
-      (!params.price || o.players?.market_value <= Number(params.price)) &&
-      (!params.mmr ||
-        (params.mmr === 'high'
-          ? o.mmr > 9000
-          : params.mmr === 'mid'
-            ? o.mmr >= 4000 && o.mmr <= 5000
-            : o.mmr < 4000)),
-  );
   return (
     <>
-      <div className="page-heading">
-        <div>
-          <h1>Mercado de fichajes</h1>
-          <p className="muted">
-            Diez oportunidades cada semana para construir tu próxima victoria.
-          </p>
+      <header className="market-header">
+        <div className="market-intro">
+          <div className="market-title-row">
+            <h1>Mercado de fichajes</h1>
+            <span className={`market-state ${week.marketOpen ? 'is-open' : 'is-closed'}`}>
+              <span aria-hidden="true" />
+              {week.marketOpen ? 'Abierto' : 'Cerrado'}
+            </span>
+          </div>
+          <p>Diez oportunidades cada semana para construir tu próxima victoria.</p>
+          <div className="market-budget">
+            <div>
+              <span>Presupuesto disponible</span>
+              <strong>{team ? euros(team.budget) : 'Accede para consultar'}</strong>
+            </div>
+            <Link href={profile ? '/my-team' : '/login'} className="market-team-link">
+              {profile ? 'Ver mi equipo' : 'Acceder'}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
-        <Countdown at={week.marketClose} />
-      </div>
-      <div className="participant-summary">
-        <div>
-          <span className="muted">Estado del mercado</span>
-          <strong>{week.marketOpen ? 'Abierto' : 'Cerrado'}</strong>
+        <div className="market-deadline">
+          <div className="market-deadline-title">
+            <Clock3 size={18} aria-hidden="true" />
+            <span>{week.marketOpen ? 'El mercado cierra en' : 'Mercado cerrado'}</span>
+          </div>
+          {week.marketOpen && <Countdown at={week.marketClose} />}
+          <div className="market-schedule">
+            <strong>{week.marketOpen ? 'Viernes · 23:59' : 'Apertura: lunes · 01:00'}</strong>
+            <span>Hora de Madrid</span>
+          </div>
         </div>
-        <div>
-          <span className="muted">Presupuesto disponible</span>
-          <strong>{team ? euros(team.budget) : 'Accede para consultar'}</strong>
-        </div>
-        <div>
-          <span className="muted">Próximo cierre</span>
-          <strong>Viernes · 23:59</strong>
-          <span className="muted">Hora de Madrid</span>
-        </div>
-      </div>
+      </header>
       {params.error && (
         <p role="alert" className="participant-feedback">
           {params.error}
@@ -101,7 +116,7 @@ export default async function Market({
           El mercado está cerrado. Los fichajes vuelven el lunes a la 01:00, hora de Madrid.
         </p>
       )}
-      <section className="panel">
+      <section className="market-offers">
         <h2>Ofertas de la semana</h2>
         {!profile ? (
           <div className="empty-state">
@@ -121,41 +136,9 @@ export default async function Market({
           </div>
         ) : (
           <>
-            <form className="participant-filters">
-              <label className="field">
-                MMR
-                <select name="mmr" defaultValue={params.mmr ?? ''}>
-                  <option value="">Todos los rangos</option>
-                  <option value="high">Más de 9.000</option>
-                  <option value="mid">4.000–5.000</option>
-                  <option value="low">Menos de 4.000</option>
-                </select>
-              </label>
-              <label className="field">
-                Precio máximo
-                <input
-                  name="price"
-                  type="number"
-                  min="0"
-                  placeholder="Sin límite"
-                  defaultValue={params.price}
-                />
-              </label>
-              <label className="field">
-                Equipo
-                <select name="team" defaultValue={params.team ?? ''}>
-                  <option value="">Todos los equipos</option>
-                  {teams.map((t) => (
-                    <option key={t}>{t}</option>
-                  ))}
-                </select>
-              </label>
-              <button className="button secondary">Filtrar</button>
-              <Link href="/market">Limpiar</Link>
-            </form>
-            {filtered.length ? (
+            {offers.length ? (
               <div className="participant-offers">
-                {filtered.map((o) => {
+                {offers.map((o) => {
                   const p = o.players;
                   const inTeam = owned.some((r) => r.player_id === o.player_id);
                   const initials = p.name
@@ -169,9 +152,32 @@ export default async function Market({
                   return (
                     <article key={o.id} className="participant-offer">
                       <div className="participant-offer-head">
-                        <div className="player-avatar" aria-hidden="true">{initials}</div>
+                        <div className="player-avatar" aria-hidden="true">
+                          {initials}
+                        </div>
                         <div className="player-identity">
-                          <div className="toolbar">
+                          <h2>
+                            <Link href={`/players/${p.slug}`}>{p.name}</Link>
+                          </h2>
+                          <p className="muted">
+                            {p.teams?.name ?? 'Piloto independiente'}{' '}
+                            {playerCountry && (
+                              <span className="market-country">
+                                {flag && (
+                                  <span
+                                    className="country-flag"
+                                    role="img"
+                                    aria-label={`Bandera de ${playerCountry}`}
+                                    style={{
+                                      backgroundImage: `url(https://flagcdn.com/w40/${flag}.png)`,
+                                    }}
+                                  />
+                                )}{' '}
+                                {playerCountry}
+                              </span>
+                            )}
+                          </p>
+                          <div className="market-player-meta">
                             <span className="badge">
                               {o.slot === 10
                                 ? 'Code Genius'
@@ -183,8 +189,6 @@ export default async function Market({
                             </span>
                             <span className="muted">MMR {o.mmr.toLocaleString('es-ES')}</span>
                           </div>
-                          <h2><Link href={`/players/${p.slug}`}>{p.name}</Link></h2>
-                          <p className="muted">{p.teams?.name ?? 'Piloto independiente'} {playerCountry && <span className="market-country">{flag && <span className="country-flag" role="img" aria-label={`Bandera de ${playerCountry}`} style={{ backgroundImage: `url(https://flagcdn.com/w40/${flag}.png)` }} />} {playerCountry}</span>}</p>
                         </div>
                       </div>
                       <div className="player-price-row">
@@ -194,15 +198,27 @@ export default async function Market({
                         </div>
                         <div className="bidder-count">
                           <span className="participant-dot" aria-hidden="true" />
-                          <span>{o.bidderCount} {o.bidderCount === 1 ? 'participante puja' : 'participantes pujan'}</span>
+                          <span>
+                            {o.bidderCount}{' '}
+                            {o.bidderCount === 1 ? 'participante puja' : 'participantes pujan'}
+                          </span>
                         </div>
                       </div>
                       <form action={placeBid} className="bid-form">
                         <input type="hidden" name="team" value={team?.id ?? ''} />
                         <input type="hidden" name="player" value={o.player_id} />
                         <label className="field">
-                          <span>Tu puja <small>Importe privado</small></span>
-                          <input name="amount" type="number" min={p.initial_value} step="1" placeholder={String(p.initial_value)} required />
+                          <span>
+                            Tu puja (€) <small>Privada</small>
+                          </span>
+                          <input
+                            name="amount"
+                            type="number"
+                            min={p.initial_value}
+                            step="1"
+                            placeholder={String(p.initial_value)}
+                            required
+                          />
                         </label>
                         <Submit
                           disabled={
@@ -213,7 +229,11 @@ export default async function Market({
                             team.budget < p.initial_value
                           }
                         >
-                          {inTeam ? 'En tu plantilla' : o.hasBid ? 'Actualizar puja' : 'Pujar por piloto'}
+                          {inTeam
+                            ? 'En tu plantilla'
+                            : o.hasBid
+                              ? 'Actualizar puja'
+                              : 'Pujar por piloto'}
                         </Submit>
                       </form>
                     </article>
@@ -222,16 +242,8 @@ export default async function Market({
               </div>
             ) : (
               <div className="empty-state">
-                <h3>
-                  {offers.length
-                    ? 'Sin ofertas para estos filtros'
-                    : 'Aún no hay ofertas publicadas'}
-                </h3>
-                <p>
-                  {offers.length
-                    ? 'Prueba otro rango o limpia los filtros.'
-                    : 'El mercado semanal se publica los lunes a la 01:00.'}
-                </p>
+                <h3>Aún no hay ofertas publicadas</h3>
+                <p>El mercado semanal se publica los lunes a la 01:00.</p>
               </div>
             )}
           </>

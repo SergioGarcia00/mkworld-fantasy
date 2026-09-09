@@ -1,6 +1,7 @@
 'use client';
 import { useActionState, useEffect, useState } from 'react';
 import { useFormStatus } from 'react-dom';
+import { Crown } from 'lucide-react';
 import { signIn } from '@/app/auth/actions';
 import { saveLineup } from '@/app/lineup/actions';
 import { saveScore } from '@/app/scores/actions';
@@ -90,7 +91,11 @@ export function LineupForm({
   captain: string;
   deadline: string;
 }) {
-  const [selected, setSelected] = useState(initial);
+  const [selected, setSelected] = useState(() =>
+    [...new Set(initial)]
+      .filter((id) => roster.some((player) => player.player_id === id))
+      .slice(0, 6),
+  );
   const [captain, setCaptain] = useState(first);
   const [state, action, pending] = useActionState(saveLineup, {});
   const [closed, setClosed] = useState(false);
@@ -116,48 +121,85 @@ export function LineupForm({
         <span className="badge">{selected.length} / 6</span>
       </div>
       <div className="lineup-board">
-      <div className="lineup-starters">
-      <div className="participant-grid">
-        {Array.from({ length: 6 }, (_, i) => {
-          const r = roster.find((r) => r.player_id === selected[i]);
-          return (
-            <div className={`participant-slot lineup-card ${r ? 'is-filled' : 'is-empty'}`} key={i}>
-              <span className="muted">Posición {i + 1}</span>
-              <strong>{r?.players?.name ?? 'Plaza disponible'}</strong>
-              {r && (
-                <div className="lineup-card-actions"><label className="captain-choice"><input type="radio" name="captain" value={r.player_id} checked={captain === r.player_id} onChange={() => setCaptain(r.player_id)} disabled={closed} /> Capitán</label><button type="button" disabled={closed} onClick={() => toggle(r.player_id)} className="button secondary">A reservas</button></div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-      </div>
-      <h2>Reservas · {roster.length - selected.length} / 4</h2>
-      <div className="participant-grid reserve-grid">
-        {roster
-          .filter((r) => !selected.includes(r.player_id))
-          .map((r) => (
-            <div className="participant-slot" key={r.player_id}>
-              <strong>{r.players?.name}</strong>
-              <span className="muted">MMR {r.players?.mmr ?? '—'}</span>
-              <button
-                type="button"
-                className="button secondary"
-                disabled={selected.length >= 6 || closed}
-                onClick={() => toggle(r.player_id)}
-              >
-                A titulares
-              </button>
-            </div>
-          ))}
-        {Array.from({ length: Math.max(0, 4 - (roster.length - selected.length)) }, (_, i) => (
-          <div key={i} className="participant-slot">
-            <span className="muted">Reserva disponible</span>
+        <div className="lineup-starters">
+          <div className="participant-grid">
+            {Array.from({ length: 6 }, (_, i) => {
+              const r = roster.find((r) => r.player_id === selected[i]);
+              return (
+                <div
+                  className={`lineup-card ${r ? 'is-filled' : 'is-empty'} ${r && captain === r.player_id ? 'is-captain' : ''}`}
+                  key={i}
+                >
+                  <div className="grid-box">
+                    <span className="grid-position" aria-label={`Posición ${i + 1}`}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    {r && (
+                      <label className="captain-choice">
+                        <input
+                          type="radio"
+                          name="captain"
+                          value={r.player_id}
+                          checked={captain === r.player_id}
+                          onChange={() => setCaptain(r.player_id)}
+                          disabled={closed}
+                          aria-label={`Elegir a ${r.players?.name} como capitán`}
+                        />
+                        <Crown size={24} aria-hidden="true" />
+                        <span>{captain === r.player_id ? 'Capitán' : 'Elegir'}</span>
+                      </label>
+                    )}
+                  </div>
+                  <strong>{r?.players?.name ?? 'Plaza disponible'}</strong>
+                  {r && (
+                    <div className="lineup-card-actions">
+                      <button
+                        type="button"
+                        disabled={closed}
+                        onClick={() => toggle(r.player_id)}
+                        className="button secondary"
+                      >
+                        A reservas
+                      </button>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
-        ))}
+        </div>
+        <aside className="lineup-bench" aria-label="Reservas">
+          <h2>
+            Reservas <span>{roster.length - selected.length} / 4</span>
+          </h2>
+          <div className="participant-grid reserve-grid">
+            {roster
+              .filter((r) => !selected.includes(r.player_id))
+              .map((r) => (
+                <div className="participant-slot" key={r.player_id}>
+                  <strong>{r.players?.name}</strong>
+                  <span className="muted">MMR {r.players?.mmr ?? '—'}</span>
+                  <button
+                    type="button"
+                    className="button secondary"
+                    disabled={selected.length >= 6 || closed}
+                    onClick={() => toggle(r.player_id)}
+                  >
+                    A titulares
+                  </button>
+                </div>
+              ))}
+            {Array.from({ length: Math.max(0, 4 - (roster.length - selected.length)) }, (_, i) => (
+              <div key={i} className="participant-slot">
+                <span className="muted">Reserva disponible</span>
+              </div>
+            ))}
+          </div>
+        </aside>
       </div>
-      </div>
-      <p className="muted captain-help">Selecciona el círculo de un titular para elegir capitán · puntos × 1,5.</p>
+      <p className="muted captain-help">
+        Selecciona la corona de un titular para elegir capitán · puntos × 1,5.
+      </p>
       <p role="status" className="muted">
         {state.error ||
           state.success ||

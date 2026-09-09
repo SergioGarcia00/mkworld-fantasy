@@ -1,0 +1,292 @@
+.market-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+  gap: 48px;
+  padding: 32px;
+  margin-bottom: 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.market-intro {
+  min-width: 0;
+}
+.market-title-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.market-title-row h1 {
+  font-size: clamp(32px, 3vw, 44px);
+  line-height: 1.1;
+  margin: 0;
+}
+.market-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ice);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.market-state > span {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+}
+.market-state.is-closed {
+  color: var(--muted);
+}
+.market-intro > p {
+  margin: 12px 0 28px;
+  color: var(--muted);
+  font-size: 15px;
+}
+.market-budget {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.market-budget > div {
+  display: grid;
+  gap: 4px;
+}
+.market-budget > div > span {
+  color: var(--muted);
+  font-size: 13px;
+}
+.market-budget strong {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.market-team-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--ice);
+  font-size: 14px;
+  white-space: nowrap;
+}
+.market-team-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.market-deadline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 32px;
+  border-left: 1px solid var(--line);
+  gap: 16px;
+}
+.market-deadline-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.market-deadline .badge {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--ice);
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.market-schedule {
+  display: grid;
+  gap: 4px;
+}
+.market-schedule strong {
+  font-size: 15px;
+  font-weight: 400;
+}
+.market-schedule > span {
+  color: var(--muted);
+  font-size: 12px;
+}
+@media (max-width: 1100px) {
+  .market-header {
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    padding: 24px;
+  }
+  .market-deadline {
+    padding-left: 24px;
+  }
+  .market-budget {
+    flex-wrap: wrap;
+    gap: 8px 24px;
+  }
+}
+@media (max-width: 700px) {
+  .market-header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 20px;
+  }
+  .market-title-row {
+    gap: 12px;
+  }
+  .market-intro > p {
+    margin-bottom: 20px;
+  }
+  .market-deadline {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 20px 0 0;
+    gap: 12px;
+  }
+  .market-budget {
+    padding-top: 20px;
+  }
+}
+
+.market-offers > h2 {
+  margin-bottom: 24px;
+}
+
+/* Offers keep identity, valuation and bidding in three compact groups. */
+.market-offers .participant-offers {
+  gap: 16px;
+}
+.market-offers .participant-offer {
+  padding: 20px;
+  gap: 16px;
+  align-content: start;
+  background: var(--surface);
+  border-color: var(--line);
+}
+.market-offers .participant-offer-head {
+  align-items: flex-start;
+  gap: 12px;
+}
+.market-offers .player-avatar {
+  flex-basis: 44px;
+  height: 44px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+.market-offers .player-identity {
+  flex: 1;
+  gap: 4px;
+}
+.market-offers .player-identity h2 {
+  font-size: 26px;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.market-offers .player-identity p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.market-offers .market-country {
+  margin-left: 8px;
+  color: var(--muted);
+}
+.market-player-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 4px;
+  font-size: 12px;
+}
+.market-player-meta .badge {
+  font-size: 11px;
+  padding: 2px 6px;
+  line-height: 1.5;
+}
+.market-offers .player-price-row {
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-block: 1px solid var(--line);
+}
+.market-offers .player-price-row > div:first-child {
+  gap: 2px;
+}
+.market-offers .player-price-row .muted {
+  font-size: 12px;
+}
+.market-offers .player-price-row strong {
+  font-family: var(--font-display), sans-serif;
+  font-size: 26px;
+  line-height: 1.15;
+}
+.market-offers .bidder-count {
+  font-size: 12px;
+  gap: 8px;
+}
+.market-offers .participant-dot {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  box-shadow: none;
+}
+.market-offers .bid-form {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+}
+.market-offers .bid-form .field {
+  min-width: 0;
+  gap: 6px;
+}
+.market-offers .bid-form .field > span {
+  font-size: 12px;
+}
+.market-offers .bid-form small {
+  color: var(--muted);
+  font-size: 11px;
+}
+.market-offers .bid-form input {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+}
+.market-offers .bid-form .button {
+  min-height: 44px;
+  padding: 10px 16px;
+  font-size: 14px;
+}
+@media (max-width: 1100px) and (min-width: 801px) {
+  .market-offers .participant-offers {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .market-offers .participant-offer {
+    padding: 16px;
+  }
+  .market-offers .player-price-row {
+    flex-direction: row;
+    align-items: center;
+  }
+  .market-offers .bidder-count {
+    max-width: 108px;
+  }
+  .market-offers .bid-form {
+    gap: 8px;
+  }
+  .market-offers .bid-form .button {
+    padding-inline: 12px;
+  }
+}
