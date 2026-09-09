@@ -79,7 +79,7 @@ export default async function Standings({
                   <th>Equipo / participante</th>
                   <th className="numeric">Puntos</th>
                   <th className="numeric">Diferencia al líder</th>
-                  <th>Tendencia</th>
+                  <th>Media / jornada</th>
                 </tr>
               </thead>
               <tbody>
@@ -97,9 +97,11 @@ export default async function Standings({
                         : number(Number(rows.data[0]?.total_points) - Number(r.total_points))}
                     </td>
                     <td className="standing-trend">
-                      {Number(r.last_matchday_points) > 0
-                        ? `↑ ${number(Number(r.last_matchday_points))} pts`
-                        : '—'}
+                      {number(
+                        Number(r.total_points) /
+                          Math.max(1, selectedMatchday ? 1 : days.data.length),
+                      )}{' '}
+                      pts
                     </td>
                   </tr>
                 ))}
