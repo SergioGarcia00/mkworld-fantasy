@@ -1,0 +1,47 @@
+-- Banco de noticias reutilizables. Se guardan como borradores para que
+-- administración pueda copiar, personalizar y publicar cada jornada.
+insert into public.news_posts (title, body, category, published)
+select v.title, v.body, v.category, false
+from (values
+  ('{USUARIO} sorprende en {JORNADA}', '{USUARIO} cambia su alineación antes del cierre y apuesta por {PILOTO}. ¿Le saldrá bien la jugada?', 'Competición'),
+  ('{PILOTO} se convierte en la apuesta de la jornada', 'El piloto de {EQUIPO} entra en muchas parrillas para {JORNADA}. Su rendimiento será una de las claves del domingo.', 'Mercado'),
+  ('Movimiento de última hora en {EQUIPO}', '{USUARIO} incorpora a {PILOTO} por {IMPORTE}. El mercado se anima justo antes del cierre.', 'Mercado'),
+  ('El mercado cierra con máxima tensión', 'Quedan pocos minutos para el cierre de fichajes de {JORNADA}. Revisa tu plantilla y protege tus posiciones.', 'Aviso'),
+  ('{USUARIO} defiende el liderato', 'Con {PUNTOS} puntos acumulados, {USUARIO} llega a {JORNADA} como el rival a batir.', 'Clasificación'),
+  ('La lucha por el podio se aprieta', 'Solo {DIFERENCIA} puntos separan a los tres primeros equipos antes de las carreras de {JORNADA}.', 'Clasificación'),
+  ('{EQUIPO} escala posiciones', 'La buena actuación de {PILOTO} permite a {EQUIPO} avanzar en la clasificación de Atlas League.', 'Resultados'),
+  ('Una jornada para las sorpresas', 'Las elecciones menos habituales pueden marcar diferencias en {JORNADA}. La parrilla ya está preparada.', 'Competición'),
+  ('Capitanía decisiva para {USUARIO}', '{USUARIO} entrega la capitanía a {PILOTO}. La bonificación puede cambiar el resultado de la jornada.', 'Competición'),
+  ('{PILOTO} vuelve a la titularidad', 'Después de descansar en {JORNADA_ANTERIOR}, {PILOTO} regresa a la alineación de {USUARIO}.', 'Competición'),
+  ('Reserva que pide paso', '{PILOTO} parte como reserva, pero su rendimiento reciente hace que muchos managers se planteen darle una oportunidad.', 'Competición'),
+  ('La cláusula de {PILOTO} sube', 'El valor protegido de {PILOTO} queda fijado en {CLAUSULA}. Una señal de confianza de {USUARIO}.', 'Mercado'),
+  ('{USUARIO} libera presupuesto', 'La venta de {PILOTO} reporta {IMPORTE} y deja margen para reforzar la plantilla.', 'Mercado'),
+  ('Fichaje inesperado en la zona media', '{USUARIO} apuesta por {PILOTO} para remontar puestos en la clasificación.', 'Mercado'),
+  ('El duelo de {DIVISION} llega igualado', '{EQUIPO_A} y {EQUIPO_B} llegan separados por {DIFERENCIA} puntos en la previa de {JORNADA}.', 'Competición'),
+  ('Todos los ojos sobre {PILOTO}', 'La comunidad espera una gran actuación de {PILOTO} tras sus últimos resultados.', 'Competición'),
+  ('{USUARIO} apuesta por la regularidad', 'Su alineación combina experiencia y constancia para afrontar las carreras de {JORNADA}.', 'Competición'),
+  ('La estrategia agresiva de {USUARIO}', 'Tres cambios en la plantilla reflejan una apuesta decidida para escalar puestos esta semana.', 'Mercado'),
+  ('Mercado tranquilo antes de la carrera', 'Los managers mantienen sus plantillas y esperan a conocer los resultados de {JORNADA}.', 'Mercado'),
+  ('La parrilla ya está cerrada', 'Las alineaciones de {JORNADA} han quedado registradas. Ahora solo queda disfrutar de las carreras.', 'Aviso'),
+  ('Resultados pendientes de validar', 'La administración está revisando los puntos de {JORNADA}. La clasificación se actualizará después de la validación.', 'Aviso'),
+  ('Puntos publicados para {JORNADA}', 'Ya puedes consultar los puntos obtenidos por tus seis titulares y comprobar el rendimiento de tu equipo.', 'Resultados'),
+  ('{USUARIO} gana la jornada', 'Con {PUNTOS_JORNADA} puntos, {USUARIO} se lleva la victoria en {JORNADA}. ¡Enhorabuena!', 'Resultados'),
+  ('{USUARIO} firma el mejor resultado', '{USUARIO} suma {PUNTOS_JORNADA} puntos gracias a una alineación impecable.', 'Resultados'),
+  ('{PILOTO}, protagonista del domingo', 'La actuación de {PILOTO} aporta una gran cantidad de puntos a los managers que confiaron en él.', 'Resultados'),
+  ('La capitanía marca la diferencia', 'El multiplicador del capitán decide el duelo entre {USUARIO_A} y {USUARIO_B} en {JORNADA}.', 'Resultados'),
+  ('Remontada en la clasificación', '{USUARIO} recorta {DIFERENCIA} puntos al líder y se acerca al primer puesto.', 'Clasificación'),
+  ('Nuevo líder de Atlas League', 'Tras los resultados de {JORNADA}, {USUARIO} se coloca al frente con {PUNTOS} puntos.', 'Clasificación'),
+  ('Empate en la zona alta', '{USUARIO_A} y {USUARIO_B} terminan igualados a puntos tras una jornada emocionante.', 'Clasificación'),
+  ('La zona baja se comprime', 'Pocos puntos separan a los equipos de la parte baja. Cada decisión empieza a ser decisiva.', 'Clasificación'),
+  ('{EQUIPO} anuncia cambios', 'El manager de {EQUIPO} prepara varios movimientos para la próxima apertura del mercado.', 'Mercado'),
+  ('La próxima jornada ya tiene fecha', '{JORNADA_SIGUIENTE} comenzará el {FECHA}. Consulta el calendario y prepara tu estrategia.', 'Aviso'),
+  ('Recuerda revisar tu alineación', 'Antes del cierre del sábado, confirma tus seis titulares y el capitán para {JORNADA}.', 'Aviso'),
+  ('El mercado vuelve a abrir', 'Desde hoy puedes pujar por nuevos pilotos y ajustar tu plantilla de cara a {JORNADA}.', 'Aviso'),
+  ('{PILOTO} cambia de valor', 'Su nuevo valor de mercado queda en {VALOR}. La variación de esta semana es de {VARIACION}.', 'Mercado'),
+  ('Récord de actividad en el mercado', 'Los managers han realizado {MOVIMIENTOS} movimientos durante la apertura previa a {JORNADA}.', 'Mercado'),
+  ('La administración publica una aclaración', 'Recuerda que los puntos de los suplentes solo se aplican cuando entran en la alineación registrada.', 'Reglamento'),
+  ('Cómo se valida una jornada', 'Los resultados se revisan después de que todos los managers hayan enviado los puntos de sus titulares.', 'Reglamento'),
+  ('Consejo para la próxima carrera', 'Comprueba el MMR, la forma reciente y la división de cada piloto antes de confirmar tus elecciones.', 'Consejo'),
+  ('La temporada entra en su fase decisiva', 'Cada jornada cuenta y las diferencias se reducen. La batalla por Atlas League sigue abierta.', 'Competición')
+) as v(title, body, category)
+where not exists (select 1 from public.news_posts n where n.title = v.title);
