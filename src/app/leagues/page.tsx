@@ -10,6 +10,11 @@ export default async function Standings({
   searchParams: Promise<{ matchday?: string }>;
 }) {
   const { matchday } = await searchParams;
+  const selectedMatchday =
+    matchday &&
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(matchday)
+      ? matchday
+      : null;
   if (!isConfigured())
     return (
       <>
@@ -19,7 +24,7 @@ export default async function Standings({
     );
   const db = await createClient();
   const [rows, days] = await Promise.all([
-    db.rpc('spectator_standings', { target_matchday: matchday || null }),
+    db.rpc('spectator_standings', { target_matchday: selectedMatchday }),
     db.rpc('spectator_matchdays', {}),
   ]);
   if (rows.error || days.error)
@@ -43,10 +48,10 @@ export default async function Standings({
         <Empty />
       ) : (
         <>
-          <form className="toolbar">
+          <form className="toolbar" method="get" action="/leagues">
             <label className="field">
               <span>Jornada</span>
-              <select name="matchday" defaultValue={matchday ?? ''}>
+              <select name="matchday" defaultValue={selectedMatchday ?? ''}>
                 <option value="">Clasificación general</option>
                 {days.data.map((d) => (
                   <option value={d.id} key={d.id}>
@@ -55,7 +60,9 @@ export default async function Standings({
                 ))}
               </select>
             </label>
-            <button className="button secondary">Consultar</button>
+            <button className="button secondary" type="submit">
+              Consultar
+            </button>
           </form>
           <div className="table-scroll">
             <table className="data-table">
@@ -84,7 +91,7 @@ export default async function Standings({
                         ? '—'
                         : number(Number(rows.data[0]?.total_points) - Number(r.total_points))}
                     </td>
-                    <td className="numeric">{matchday ? 1 : days.data.length}</td>
+                    <td className="numeric">{selectedMatchday ? 1 : days.data.length}</td>
                     <td className="muted">Sin comparativa</td>
                   </tr>
                 ))}
