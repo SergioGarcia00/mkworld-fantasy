@@ -4,4 +4,4 @@ values('00000000-0000-4000-8000-000000000003',1,'{"baseMultiplier":1,"winBonus":
 -- DEMO calendar only, not actual MKCentral fixtures.
 insert into public.matchdays(season_id,number,name,start_at,lock_at,end_at)
 select '00000000-0000-4000-8000-000000000003',n,'Jornada DEMO '||n,now()+n*interval '7 days',now()+n*interval '7 days'-interval '1 hour',now()+n*interval '7 days'+interval '1 day'
-from generate_series(1,3) n on conflict(season_id,number) do nothing;
+from generate_series(1,4) n on conflict(season_id,number) do nothing;
