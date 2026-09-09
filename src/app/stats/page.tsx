@@ -60,7 +60,6 @@ export default async function Stats() {
             <tr>
               <th>Jugador</th>
               <th>Equipo</th>
-              <th className="numeric">Usuarios</th>
               <th className="numeric">Jornadas</th>
               <th className="numeric">Partidas</th>
               <th className="numeric">Puntos totales</th>
@@ -76,7 +75,6 @@ export default async function Stats() {
                   </strong>
                 </td>
                 <td>{player.team}</td>
-                <td className="numeric">{number(Number(stats.users))}</td>
                 <td className="numeric">{number(Number(stats.matchdays))}</td>
                 <td className="numeric">{number(Number(stats.games))}</td>
                 <td className="numeric mmr">{number(Number(stats.total_points))}</td>
