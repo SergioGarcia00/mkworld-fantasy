@@ -14,6 +14,21 @@
 .economy-history {
   margin-top: 24px;
 }
+.my-team-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.my-team-sections > #lineup {
+  order: 1;
+}
+.my-team-sections > .team-roster-section {
+  order: 2;
+}
+.my-team-sections > .economy-history {
+  order: 3;
+  margin-top: 0;
+}
 .transaction-list {
   display: grid;
 }

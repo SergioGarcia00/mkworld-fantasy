@@ -114,160 +114,169 @@ export default async function MyTeam({
           </strong>
         </div>
       </div>
-      <section className="panel">
-        <h2>Tu parrilla</h2>
-        {roster.length ? (
-          <div className="table-scroll">
-            <table className="data-table">
-              <thead>
-                <tr>
-                  <th>Piloto</th>
-                  <th>Equipo Atlas</th>
-                  <th>Rol</th>
-                  <th>MMR</th>
-                  <th>Valor</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {roster.map((r: any) => {
-                  const position = selected.find((s: any) => s.player_id === r.player_id);
-                  const change = valueHistory?.find((v: any) => v.player_id === r.player_id);
-                  return (
-                    <tr key={r.player_id}>
-                      <td>
-                        <Link href={`/players/${r.players?.slug}`}>{r.players?.name}</Link>
-                      </td>
-                      <td>{r.players?.teams?.name}</td>
-                      <td>
-                        {position?.is_captain ? 'Capitán × 1,5' : position ? 'Titular' : 'Reserva'}
-                      </td>
-                      <td>{r.players?.mmr ?? '—'}</td>
-                      <td>
-                        {euros(r.players?.market_value ?? 0)}{' '}
-                        {change && (
-                          <small
-                            className={
-                              change.variation >= 0
-                                ? 'transaction-positive'
-                                : 'transaction-negative'
-                            }
-                          >
-                            {change.variation >= 0 ? '▲ +' : '▼ '}
-                            {euros(Math.abs(change.variation))}
-                          </small>
-                        )}
-                      </td>
-                      <td>
-                        <div className="clause-detail">
-                          Cláusula{' '}
-                          {euros(
-                            Math.round(Number(r.players?.market_value ?? 0) * 1.5) +
-                              Number(r.clause_protection_amount ?? 0),
+      <div className="my-team-sections">
+        <section className="panel team-roster-section">
+          <h2>Tu parrilla</h2>
+          {roster.length ? (
+            <div className="table-scroll">
+              <table className="data-table">
+                <thead>
+                  <tr>
+                    <th>Piloto</th>
+                    <th>Equipo Atlas</th>
+                    <th>Rol</th>
+                    <th>MMR</th>
+                    <th>Valor</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {roster.map((r: any) => {
+                    const position = selected.find((s: any) => s.player_id === r.player_id);
+                    const change = valueHistory?.find((v: any) => v.player_id === r.player_id);
+                    return (
+                      <tr key={r.player_id}>
+                        <td>
+                          <Link href={`/players/${r.players?.slug}`}>{r.players?.name}</Link>
+                        </td>
+                        <td>{r.players?.teams?.name}</td>
+                        <td>
+                          {position?.is_captain
+                            ? 'Capitán × 1,5'
+                            : position
+                              ? 'Titular'
+                              : 'Reserva'}
+                        </td>
+                        <td>{r.players?.mmr ?? '—'}</td>
+                        <td>
+                          {euros(r.players?.market_value ?? 0)}{' '}
+                          {change && (
+                            <small
+                              className={
+                                change.variation >= 0
+                                  ? 'transaction-positive'
+                                  : 'transaction-negative'
+                              }
+                            >
+                              {change.variation >= 0 ? '▲ +' : '▼ '}
+                              {euros(Math.abs(change.variation))}
+                            </small>
                           )}
-                        </div>
-                        <form action={protectClause} className="clause-form">
-                          <input type="hidden" name="team" value={team.id} />
-                          <input type="hidden" name="player" value={r.player_id} />
-                          <input
-                            name="amount"
-                            type="number"
-                            min="1"
-                            step="50000"
-                            placeholder="Proteger €"
-                            aria-label={`Gasto para proteger a ${r.players?.name}`}
-                          />
-                          <Submit disabled={!open}>Proteger</Submit>
-                        </form>
-                        <form action={sellPlayer}>
-                          <input type="hidden" name="team" value={team.id} />
-                          <input type="hidden" name="player" value={r.player_id} />
-                          <Submit disabled={!open}>Vender · {euros(r.purchase_price)}</Submit>
-                        </form>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <div className="empty-state">
-            <h3>{team ? 'Tu plantilla empieza aquí' : 'Tu equipo todavía no está asignado'}</h3>
-            <p>
-              {team
-                ? 'Explora las ofertas para completar tus diez plazas.'
-                : 'Contacta con administración para que te asigne un equipo.'}
+                        </td>
+                        <td>
+                          <div className="clause-detail">
+                            Cláusula{' '}
+                            {euros(
+                              Math.round(Number(r.players?.market_value ?? 0) * 1.5) +
+                                Number(r.clause_protection_amount ?? 0),
+                            )}
+                          </div>
+                          <form action={protectClause} className="clause-form">
+                            <input type="hidden" name="team" value={team.id} />
+                            <input type="hidden" name="player" value={r.player_id} />
+                            <input
+                              name="amount"
+                              type="number"
+                              min="1"
+                              step="50000"
+                              placeholder="Proteger €"
+                              aria-label={`Gasto para proteger a ${r.players?.name}`}
+                            />
+                            <Submit disabled={!open}>Proteger</Submit>
+                          </form>
+                          <form action={sellPlayer}>
+                            <input type="hidden" name="team" value={team.id} />
+                            <input type="hidden" name="player" value={r.player_id} />
+                            <Submit disabled={!open}>Vender · {euros(r.purchase_price)}</Submit>
+                          </form>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="empty-state">
+              <h3>{team ? 'Tu plantilla empieza aquí' : 'Tu equipo todavía no está asignado'}</h3>
+              <p>
+                {team
+                  ? 'Explora las ofertas para completar tus diez plazas.'
+                  : 'Contacta con administración para que te asigne un equipo.'}
+              </p>
+              <Link href="/market" className="button primary">
+                Ir al mercado
+              </Link>
+            </div>
+          )}
+          {!open && (
+            <p className="muted">
+              Las ventas están cerradas hasta la próxima apertura del mercado.
             </p>
-            <Link href="/market" className="button primary">
-              Ir al mercado
-            </Link>
+          )}
+        </section>
+        <section className="panel economy-history">
+          <div className="toolbar">
+            <h2>Movimientos</h2>
+            <span className="muted">Últimas operaciones</span>
           </div>
-        )}
-        {!open && (
-          <p className="muted">Las ventas están cerradas hasta la próxima apertura del mercado.</p>
-        )}
-      </section>
-      <section className="panel economy-history">
-        <div className="toolbar">
-          <h2>Movimientos</h2>
-          <span className="muted">Últimas operaciones</span>
-        </div>
-        {transactions?.length ? (
-          <div className="transaction-list">
-            {transactions.map((tx: any) => {
-              const positive = [
-                'ROUND_POINTS_REWARD',
-                'ROUND_POSITION_BONUS',
-                'ROUND_PARTICIPATION_BONUS',
-                'PILOT_MARKET_SALE',
-                'SELL',
-              ].includes(tx.type);
-              return (
-                <div className="transaction-row" key={tx.id}>
-                  <div>
-                    <strong>{tx.description ?? tx.type}</strong>
-                    <span className="muted">
-                      {new Date(tx.created_at).toLocaleDateString('es-ES')}
-                    </span>
+          {transactions?.length ? (
+            <div className="transaction-list">
+              {transactions.map((tx: any) => {
+                const positive = [
+                  'ROUND_POINTS_REWARD',
+                  'ROUND_POSITION_BONUS',
+                  'ROUND_PARTICIPATION_BONUS',
+                  'PILOT_MARKET_SALE',
+                  'SELL',
+                ].includes(tx.type);
+                return (
+                  <div className="transaction-row" key={tx.id}>
+                    <div>
+                      <strong>{tx.description ?? tx.type}</strong>
+                      <span className="muted">
+                        {new Date(tx.created_at).toLocaleDateString('es-ES')}
+                      </span>
+                    </div>
+                    <strong className={positive ? 'transaction-positive' : 'transaction-negative'}>
+                      {positive ? '+' : '-'}
+                      {euros(tx.amount)}
+                    </strong>
                   </div>
-                  <strong className={positive ? 'transaction-positive' : 'transaction-negative'}>
-                    {positive ? '+' : '-'}
-                    {euros(tx.amount)}
-                  </strong>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+          ) : (
+            <p className="muted">Aún no tienes movimientos económicos.</p>
+          )}
+        </section>
+        <section className="panel" id="lineup">
+          <div className="toolbar">
+            <div>
+              <h2>{day ? `Jornada ${day.number} · ${day.name}` : 'Próxima jornada pendiente'}</h2>
+              <p className="muted">Seis titulares, cuatro reservas y un capitán.</p>
+            </div>
+            {deadline && <Countdown at={deadline} />}
           </div>
-        ) : (
-          <p className="muted">Aún no tienes movimientos económicos.</p>
-        )}
-      </section>
-      <section className="panel" id="lineup">
-        <div className="toolbar">
-          <div>
-            <h2>{day ? `Jornada ${day.number} · ${day.name}` : 'Próxima jornada pendiente'}</h2>
-            <p className="muted">Seis titulares, cuatro reservas y un capitán.</p>
-          </div>
-          {deadline && <Countdown at={deadline} />}
-        </div>
-        {team && day && roster.length ? (
-          <LineupForm
-            team={team.id}
-            day={day.id}
-            roster={roster}
-            selected={(saved?.fantasy_lineup_players ?? []).map((p: any) => p.player_id)}
-            captain={
-              (saved?.fantasy_lineup_players ?? []).find((p: any) => p.is_captain)?.player_id ?? ''
-            }
-            deadline={day.status === 'LOCKED' ? new Date(0).toISOString() : deadline!}
-          />
-        ) : (
-          <p className="muted">
-            Necesitas una jornada publicada y jugadores en tu plantilla para alinear.
-          </p>
-        )}
-      </section>
+          {team && day && roster.length ? (
+            <LineupForm
+              team={team.id}
+              day={day.id}
+              roster={roster}
+              selected={(saved?.fantasy_lineup_players ?? []).map((p: any) => p.player_id)}
+              captain={
+                (saved?.fantasy_lineup_players ?? []).find((p: any) => p.is_captain)?.player_id ??
+                ''
+              }
+              deadline={day.status === 'LOCKED' ? new Date(0).toISOString() : deadline!}
+            />
+          ) : (
+            <p className="muted">
+              Necesitas una jornada publicada y jugadores en tu plantilla para alinear.
+            </p>
+          )}
+        </section>
+      </div>
     </>
   );
 }
