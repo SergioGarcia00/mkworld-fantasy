@@ -23,15 +23,11 @@ export default async function Standings({
       </>
     );
   const db = await createClient();
-  const [rows, days, pilotScores] = await Promise.all([
+  const [rows, days, pilotScores, pilotCatalog] = await Promise.all([
     db.rpc('spectator_standings', { target_matchday: selectedMatchday }),
     db.rpc('spectator_matchdays', {}),
-    (() => {
-      const q = (db as any)
-        .from('player_matchday_scores')
-        .select('player_id,points,matchday_id,players(name,teams(name))');
-      return selectedMatchday ? q.eq('matchday_id', selectedMatchday) : q;
-    })(),
+    (db as any).rpc('public_player_weekly_stats'),
+    (db as any).from('players').select('id,name,teams(name)').eq('status', 'ACTIVE'),
   ]);
   if (rows.error || days.error)
     return (
@@ -74,7 +70,6 @@ export default async function Standings({
             </span>
           </form>
           {rows.data.length > 0 && <Podium rows={rows.data.slice(0, 3)} />}
-          <PilotHighlights scores={pilotScores.data ?? []} matchday={selectedMatchday} />
           <h2 className="standings-section-title">Clasificación completa</h2>
           <div className="table-scroll">
             <table className="data-table">
@@ -107,6 +102,13 @@ export default async function Standings({
               </tbody>
             </table>
           </div>
+          <PilotHighlights
+            scores={(pilotScores.data ?? []).map((s: any) => ({
+              ...s,
+              players: (pilotCatalog.data ?? []).find((p: any) => p.id === s.player_id),
+            }))}
+            matchday={selectedMatchday}
+          />
           {!rows.data.length && <Empty />}
         </>
       )}
@@ -152,8 +154,8 @@ function PilotHighlights({ scores, matchday }: { scores: any[]; matchday: string
   const totals = new Map<string, any>();
   scores.forEach((row) => {
     const current = totals.get(row.player_id) ?? { ...row, total: 0, rounds: 0 };
-    current.total += Number(row.points) || 0;
-    current.rounds += 1;
+    current.total += Number(row.total_points ?? row.points) || 0;
+    current.rounds += Number(row.matchdays ?? 1);
     totals.set(row.player_id, current);
   });
   const top = [...totals.values()].sort((a, b) => b.total - a.total).slice(0, 5);
