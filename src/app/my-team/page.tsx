@@ -6,6 +6,7 @@ import { LineupForm, Submit } from '@/components/participant-forms';
 import { madridWeek } from '@/components/participant-time';
 import { sellPlayer } from '@/app/market/actions';
 import { ProtectClauseModal } from '@/components/protect-clause-modal';
+import { money } from '@/lib/public-data';
 export const metadata = { title: 'Mi equipo' };
 export default async function MyTeam({
   searchParams,
@@ -123,11 +124,11 @@ export default async function MyTeam({
               <table className="data-table">
                 <thead>
                   <tr>
-                    <th>Piloto</th>
-                    <th>Equipo / piloto</th>
+                    <th>Piloto / equipo</th>
                     <th>Rol</th>
                     <th>MMR</th>
                     <th>Valor</th>
+                    <th>Cláusula</th>
                     <th>Acciones</th>
                   </tr>
                 </thead>
@@ -150,7 +151,7 @@ export default async function MyTeam({
                         </td>
                         <td className="roster-mmr">{r.players?.mmr ?? '—'}</td>
                         <td>
-                          {euros(r.players?.market_value ?? 0)}{' '}
+                          <strong>{money(r.players?.market_value ?? 0)}</strong>{' '}
                           {change && (
                             <small
                               className={
@@ -159,37 +160,37 @@ export default async function MyTeam({
                                   : 'transaction-negative'
                               }
                             >
-                              {change.variation >= 0 ? '▲ +' : '▼ '}
-                              {euros(Math.abs(change.variation))}
+                              {change.variation >= 0 ? '▲ +' : '▼ -'}
+                              {money(Math.abs(change.variation))}
                             </small>
                           )}
                         </td>
                         <td>
-                          <div className="clause-cell">
-                            <div className="clause-detail">
-                              {euros(
+                          <div className="clause-detail">
+                            {money(
+                              Math.round(Number(r.players?.market_value ?? 0) * 1.5) +
+                                Number(r.clause_protection_amount ?? 0),
+                            )}
+                          </div>
+                        </td>
+                        <td>
+                          <div className="roster-actions">
+                            <ProtectClauseModal
+                              team={team.id}
+                              player={r.player_id}
+                              name={r.players?.name ?? 'jugador'}
+                              value={euros(r.players?.market_value ?? 0)}
+                              clause={euros(
                                 Math.round(Number(r.players?.market_value ?? 0) * 1.5) +
                                   Number(r.clause_protection_amount ?? 0),
                               )}
-                            </div>
-                            <div className="roster-actions">
-                              <ProtectClauseModal
-                                team={team.id}
-                                player={r.player_id}
-                                name={r.players?.name ?? 'jugador'}
-                                value={euros(r.players?.market_value ?? 0)}
-                                clause={euros(
-                                  Math.round(Number(r.players?.market_value ?? 0) * 1.5) +
-                                    Number(r.clause_protection_amount ?? 0),
-                                )}
-                                disabled={!open}
-                              />
-                              <form action={sellPlayer}>
-                                <input type="hidden" name="team" value={team.id} />
-                                <input type="hidden" name="player" value={r.player_id} />
-                                <Submit disabled={!open}>Vender</Submit>
-                              </form>
-                            </div>
+                              disabled={!open}
+                            />
+                            <form action={sellPlayer}>
+                              <input type="hidden" name="team" value={team.id} />
+                              <input type="hidden" name="player" value={r.player_id} />
+                              <Submit disabled={!open}>Vender</Submit>
+                            </form>
                           </div>
                         </td>
                       </tr>
