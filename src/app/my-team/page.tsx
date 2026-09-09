@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { participantData, euros, squadValue } from '@/components/participant-data';
 import { Countdown, LineupForm, Submit } from '@/components/participant-forms';
 import { madridWeek } from '@/components/participant-time';
-import { sellPlayer } from '@/app/market/actions';
+import { sellPlayer, protectClause } from '@/app/market/actions';
 export const metadata = { title: 'Mi equipo' };
 export default async function MyTeam({
   searchParams,
@@ -159,6 +159,26 @@ export default async function MyTeam({
                         )}
                       </td>
                       <td>
+                        <div className="clause-detail">
+                          Cláusula{' '}
+                          {euros(
+                            Math.round(Number(r.players?.market_value ?? 0) * 1.5) +
+                              Number(r.clause_protection_amount ?? 0),
+                          )}
+                        </div>
+                        <form action={protectClause} className="clause-form">
+                          <input type="hidden" name="team" value={team.id} />
+                          <input type="hidden" name="player" value={r.player_id} />
+                          <input
+                            name="amount"
+                            type="number"
+                            min="1"
+                            step="50000"
+                            placeholder="Proteger €"
+                            aria-label={`Gasto para proteger a ${r.players?.name}`}
+                          />
+                          <Submit disabled={!open}>Proteger</Submit>
+                        </form>
                         <form action={sellPlayer}>
                           <input type="hidden" name="team" value={team.id} />
                           <input type="hidden" name="player" value={r.player_id} />

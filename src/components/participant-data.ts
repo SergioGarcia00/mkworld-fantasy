@@ -17,7 +17,9 @@ export async function participantData() {
   const { data: roster, error: rosterError } = team
     ? await db
         .from('fantasy_roster_players')
-        .select('player_id,purchase_price,players(name,slug,market_value,mmr,teams(name))')
+        .select(
+          'player_id,purchase_price,clause_protection_amount,clause_protected_until,players(name,slug,market_value,mmr,teams(name))',
+        )
         .eq('fantasy_team_id', team.id)
     : { data: [], error: null };
   if (rosterError) throw new Error('No se pudo cargar tu plantilla.');
