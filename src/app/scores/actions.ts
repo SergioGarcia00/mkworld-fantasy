@@ -10,14 +10,20 @@ export async function saveScore(
   const first = Number(form.get('gameOne')),
     raw = String(form.get('gameTwo') ?? '').trim(),
     second = raw ? Number(raw) : null;
+  const enteredAsSub = form.get('enteredAsSub') === 'on';
+  const minimum = enteredAsSub ? 0 : 12;
   if (
     second === null ||
     !Number.isInteger(first) ||
-    first < 12 ||
+    first < minimum ||
     first > 180 ||
-    (second !== null && (!Number.isInteger(second) || second < 12 || second > 180))
+    (second !== null && (!Number.isInteger(second) || second < minimum || second > 180))
   )
-    return { error: 'Cada carrera debe tener entre 12 y 180 puntos enteros.' };
+    return {
+      error: enteredAsSub
+        ? 'Cada carrera debe tener entre 0 y 180 puntos enteros.'
+        : 'Cada carrera debe tener entre 12 y 180 puntos enteros.',
+    };
   const { error } = await db.rpc('submit_player_weekly_score', {
     target_team: team.id,
     target_matchday: form.get('matchday'),

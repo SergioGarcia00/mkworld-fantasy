@@ -233,6 +233,7 @@ export function ScoreForm({
 }) {
   const [first, setFirst] = useState(one?.toString() ?? '');
   const [second, setSecond] = useState(two?.toString() ?? '');
+  const [enteredAsSub, setEnteredAsSub] = useState(false);
   const [state, action, pending] = useActionState(saveScore, {});
   return (
     <form action={action} className="participant-score">
@@ -253,13 +254,13 @@ export function ScoreForm({
           name="gameOne"
           aria-label={`Carrera 1 de ${name}`}
           type="number"
-          min="12"
+          min={enteredAsSub ? 0 : 12}
           max="180"
           step="1"
           required
           value={first}
           onChange={(e) => setFirst(e.target.value)}
-          placeholder="12–180"
+          placeholder={enteredAsSub ? '0–180' : '12–180'}
         />
       </label>
       <label className="field">
@@ -269,13 +270,23 @@ export function ScoreForm({
           required
           aria-label={`Carrera 2 de ${name}`}
           type="number"
-          min="12"
+          min={enteredAsSub ? 0 : 12}
           max="180"
           step="1"
           value={second}
           onChange={(e) => setSecond(e.target.value)}
-          placeholder="12–180"
+          placeholder={enteredAsSub ? '0–180' : '12–180'}
         />
+      </label>
+      <label className="sub-score-toggle">
+        <input
+          type="checkbox"
+          name="enteredAsSub"
+          checked={enteredAsSub}
+          onChange={(e) => setEnteredAsSub(e.target.checked)}
+        />
+        <span>Entró como Sub</span>
+        <small>Permite puntuar menos de 12</small>
       </label>
       <div className="participant-total">
         <span className="muted">Total</span>
