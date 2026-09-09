@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';
 import { participantData, euros, squadValue } from '@/components/participant-data';
-import { Countdown, LineupForm, Submit } from '@/components/participant-forms';
+import { LineupForm, Submit } from '@/components/participant-forms';
 import { madridWeek } from '@/components/participant-time';
 import { sellPlayer, protectClause } from '@/app/market/actions';
 export const metadata = { title: 'Mi equipo' };
@@ -251,13 +251,6 @@ export default async function MyTeam({
           )}
         </section>
         <section className="panel" id="lineup">
-          <div className="toolbar">
-            <div>
-              <h2>{day ? `Jornada ${day.number} · ${day.name}` : 'Próxima jornada pendiente'}</h2>
-              <p className="muted">Seis titulares, cuatro reservas y un capitán.</p>
-            </div>
-            {deadline && <Countdown at={deadline} />}
-          </div>
           {team && day && roster.length ? (
             <LineupForm
               team={team.id}
@@ -269,6 +262,7 @@ export default async function MyTeam({
                 ''
               }
               deadline={day.status === 'LOCKED' ? new Date(0).toISOString() : deadline!}
+              matchdayTitle={`Jornada ${day.number} · ${day.name}`}
             />
           ) : (
             <p className="muted">

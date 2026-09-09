@@ -83,6 +83,7 @@ export function LineupForm({
   selected: initial,
   captain: first,
   deadline,
+  matchdayTitle,
 }: {
   team: string;
   day: string;
@@ -90,6 +91,7 @@ export function LineupForm({
   selected: string[];
   captain: string;
   deadline: string;
+  matchdayTitle: string;
 }) {
   const [selected, setSelected] = useState(() =>
     [...new Set(initial)]
@@ -121,6 +123,24 @@ export function LineupForm({
         <span className="badge">{selected.length} / 6</span>
       </div>
       <div className="lineup-board">
+        <aside className="lineup-info" aria-label="Información de la jornada">
+          <Countdown at={deadline} />
+          <div className="lineup-info-main">
+            <span className="eyebrow">Jornada</span>
+            <h3>{matchdayTitle}</h3>
+            <p>Seis titulares, cuatro reservas y un capitán.</p>
+          </div>
+          <div className="lineup-info-help">
+            <p>Selecciona la corona de un titular para elegir capitán · puntos × 1,5.</p>
+            <p role="status">
+              {state.error ||
+                state.success ||
+                (closed
+                  ? 'La alineación está bloqueada.'
+                  : 'Selecciona seis titulares y un capitán para guardar.')}
+            </p>
+          </div>
+        </aside>
         <div className="lineup-starters">
           <div className="participant-grid">
             {Array.from({ length: 6 }, (_, i) => {
@@ -197,16 +217,6 @@ export function LineupForm({
           </div>
         </aside>
       </div>
-      <p className="muted captain-help">
-        Selecciona la corona de un titular para elegir capitán · puntos × 1,5.
-      </p>
-      <p role="status" className="muted">
-        {state.error ||
-          state.success ||
-          (closed
-            ? 'La alineación está bloqueada.'
-            : 'Selecciona seis titulares y un capitán para guardar.')}
-      </p>
       <button
         className="button primary"
         disabled={pending || closed || selected.length !== 6 || !captain}

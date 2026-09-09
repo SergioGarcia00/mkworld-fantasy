@@ -63,6 +63,7 @@ export default async function Lineup() {
               (saved?.fantasy_lineup_players ?? []).find((p: any) => p.is_captain)?.player_id ?? ''
             }
             deadline={day.status === 'LOCKED' ? new Date(0).toISOString() : deadline!}
+            matchdayTitle={`Jornada ${day.number} · ${day.name}`}
           />
         ) : (
           <div className="empty-state">
