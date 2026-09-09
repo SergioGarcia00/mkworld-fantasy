@@ -12,7 +12,7 @@ export default async function Player({ params }: { params: Promise<{ slug: strin
   const catalog = await publicCatalog();
   const p = catalog.players.find((p) => p.slug === slug || p.id === slug);
   if (!p) notFound();
-  const db = await createClient();
+  const db: any = await createClient();
   const { data: fantasyScores } = p.databaseId
     ? await db
         .from('player_matchday_scores')
