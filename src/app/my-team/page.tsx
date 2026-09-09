@@ -50,6 +50,16 @@ export default async function MyTeam({
         .order('created_at', { ascending: false })
         .limit(12)
     : { data: [] };
+  const { data: valueHistory } = roster.length
+    ? await db
+        .from('player_market_value_history')
+        .select('player_id,variation,percentage_change,timestamp')
+        .in(
+          'player_id',
+          roster.map((r: any) => r.player_id),
+        )
+        .order('timestamp', { ascending: false })
+    : { data: [] };
   const lineupPlayers = saved?.fantasy_lineup_players ?? selected;
   const deadline = day
     ? new Date(
@@ -122,6 +132,7 @@ export default async function MyTeam({
               <tbody>
                 {roster.map((r: any) => {
                   const position = selected.find((s: any) => s.player_id === r.player_id);
+                  const change = valueHistory?.find((v: any) => v.player_id === r.player_id);
                   return (
                     <tr key={r.player_id}>
                       <td>
@@ -132,7 +143,21 @@ export default async function MyTeam({
                         {position?.is_captain ? 'Capitán × 1,5' : position ? 'Titular' : 'Reserva'}
                       </td>
                       <td>{r.players?.mmr ?? '—'}</td>
-                      <td>{euros(r.players?.market_value ?? 0)}</td>
+                      <td>
+                        {euros(r.players?.market_value ?? 0)}{' '}
+                        {change && (
+                          <small
+                            className={
+                              change.variation >= 0
+                                ? 'transaction-positive'
+                                : 'transaction-negative'
+                            }
+                          >
+                            {change.variation >= 0 ? '▲ +' : '▼ '}
+                            {euros(Math.abs(change.variation))}
+                          </small>
+                        )}
+                      </td>
                       <td>
                         <form action={sellPlayer}>
                           <input type="hidden" name="team" value={team.id} />
