@@ -1,12 +1,11 @@
 /* Dynamic Supabase relations are checked by PostgreSQL; the inherited client schema only covers core tables. */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';
-import { participantData, euros, squadValue } from '@/components/participant-data';
+import { participantData, euros, squadValue, compactEuros } from '@/components/participant-data';
 import { LineupForm, Submit } from '@/components/participant-forms';
 import { madridWeek } from '@/components/participant-time';
 import { sellPlayer } from '@/app/market/actions';
 import { ProtectClauseModal } from '@/components/protect-clause-modal';
-import { money } from '@/lib/public-data';
 export const metadata = { title: 'Mi equipo' };
 export default async function MyTeam({
   searchParams,
@@ -151,7 +150,7 @@ export default async function MyTeam({
                         </td>
                         <td className="roster-mmr">{r.players?.mmr ?? '—'}</td>
                         <td>
-                          <strong>{money(r.players?.market_value ?? 0)}</strong>{' '}
+                          <strong>{compactEuros(r.players?.market_value ?? 0)}</strong>{' '}
                           {change && (
                             <small
                               className={
@@ -161,13 +160,13 @@ export default async function MyTeam({
                               }
                             >
                               {change.variation >= 0 ? '▲ +' : '▼ -'}
-                              {money(Math.abs(change.variation))}
+                              {compactEuros(Math.abs(change.variation))}
                             </small>
                           )}
                         </td>
                         <td>
                           <div className="clause-detail">
-                            {money(
+                            {compactEuros(
                               Math.round(Number(r.players?.market_value ?? 0) * 1.5) +
                                 Number(r.clause_protection_amount ?? 0),
                             )}
