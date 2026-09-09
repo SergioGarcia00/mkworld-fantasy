@@ -1087,6 +1087,105 @@ textarea {
     grid-row: 2;
   }
 }
+
+/* Compact roster rows and protection dialog */
+.team-roster-section .data-table th,
+.team-roster-section .data-table td {
+  padding-block: 14px;
+}
+.team-roster-section .data-table {
+  table-layout: fixed;
+}
+.team-roster-section .data-table th:nth-child(1) {
+  width: 30%;
+}
+.team-roster-section .data-table th:nth-child(2) {
+  width: 13%;
+}
+.team-roster-section .data-table th:nth-child(3) {
+  width: 10%;
+}
+.team-roster-section .data-table th:nth-child(4) {
+  width: 9%;
+}
+.team-roster-section .data-table th:nth-child(5) {
+  width: 16%;
+}
+.team-roster-section .data-table th:nth-child(6) {
+  width: 22%;
+}
+.roster-team {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 4px;
+}
+.clause-cell,
+.roster-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.clause-cell {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.clause-detail {
+  color: var(--ice);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.roster-actions .button {
+  min-height: 36px;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+.protect-dialog {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  padding: 24px;
+  max-width: 420px;
+  width: calc(100% - 32px);
+}
+.protect-dialog::backdrop {
+  background: #020711b8;
+}
+.protect-dialog-form {
+  display: grid;
+  gap: 12px;
+}
+.protect-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+@media (max-width: 760px) {
+  .team-roster-section .data-table {
+    table-layout: auto;
+  }
+  .team-roster-section .data-table thead {
+    display: none;
+  }
+  .team-roster-section .data-table tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    padding: 14px 0;
+  }
+  .team-roster-section .data-table td {
+    padding: 0;
+    border: 0;
+  }
+  .team-roster-section .data-table td:first-child {
+    grid-column: 1 / -1;
+  }
+  .roster-actions {
+    justify-content: flex-start;
+  }
+}
 .profile-banner h1 {
   font-size: 64px;
   margin: 16px 0;
