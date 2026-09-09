@@ -41,6 +41,7 @@ export const publicCatalog = cache(async () => {
     const detail = details.get(String(row.player_id));
     return {
       id: String(row.player_id),
+      databaseId: live?.id ?? null,
       slug: live?.slug ?? String(row.player_id),
       name: row.jugador,
       team: row.equipo,

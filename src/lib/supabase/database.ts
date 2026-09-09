@@ -57,6 +57,10 @@ export type Database = {
     };
     Views: { player_statistics: { Row: RecordRow<PlayerStatistics>; Relationships: [] } };
     Functions: {
+      public_player_weekly_stats: {
+        Args: Record<string, never>;
+        Returns: { player_id: string; total_points: number; entries: number }[];
+      };
       spectator_chat: {
         Args: Record<string, never>;
         Returns: { id: string; body: string; created_at: string; display_name: string }[];
