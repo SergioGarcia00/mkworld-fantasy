@@ -21,7 +21,7 @@ export default async function Player({ params }: { params: Promise<{ slug: strin
     : { data: [] };
   const fantasyPoints = (fantasyScores ?? []).map((row: any) => Number(row.points) || 0);
   const fantasyRounds = fantasyPoints.length;
-  const fantasyTotal = fantasyPoints.reduce((sum, value) => sum + value, 0);
+  const fantasyTotal = fantasyPoints.reduce((sum: number, value: number) => sum + value, 0);
   const fantasyAverage = fantasyRounds ? fantasyTotal / fantasyRounds : 0;
   const d: any = p.detail;
   const s12 = d?.stats_12p ?? {};
