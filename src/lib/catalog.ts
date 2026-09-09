@@ -89,6 +89,7 @@ async function readAllPlayers() {
     const { data, error } = await db
       .from('players')
       .select('*')
+      .eq('status', 'ACTIVE')
       .order('id')
       .range(offset, offset + 999);
     if (error) throw new Error('No se pudieron cargar los jugadores.');
