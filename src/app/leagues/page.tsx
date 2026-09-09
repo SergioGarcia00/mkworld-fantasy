@@ -96,7 +96,11 @@ export default async function Standings({
                         ? '—'
                         : number(Number(rows.data[0]?.total_points) - Number(r.total_points))}
                     </td>
-                    <td className="muted">—</td>
+                    <td className="standing-trend">
+                      {Number(r.last_matchday_points) > 0
+                        ? `↑ ${number(Number(r.last_matchday_points))} pts`
+                        : '—'}
+                    </td>
                   </tr>
                 ))}
               </tbody>
