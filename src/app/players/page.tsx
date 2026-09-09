@@ -9,13 +9,25 @@ export const metadata = { title: 'Pilotos' };
 export default async function Players({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; team?: string; mmr?: string; country?: string; tier?: string; format?: string; page?: string }>;
+  searchParams: Promise<{
+    q?: string;
+    team?: string;
+    mmr?: string;
+    country?: string;
+    tier?: string;
+    format?: string;
+    page?: string;
+  }>;
 }) {
   const [catalog, params] = await Promise.all([publicCatalog(), searchParams]);
   const q = (params.q ?? '').trim().toLocaleLowerCase('es');
   const format = params.format === '24' ? '24' : '12';
-  const countries = [...new Set(catalog.players.map((p) => (p.detail as any)?.country).filter(Boolean))].sort();
-  const tiers = [...new Set(catalog.players.map((p) => (p.detail as any)?.tier).filter(Boolean))].sort();
+  const countries = [
+    ...new Set(catalog.players.map((p) => (p.detail as any)?.country).filter(Boolean)),
+  ].sort();
+  const tiers = [
+    ...new Set(catalog.players.map((p) => (p.detail as any)?.tier).filter(Boolean)),
+  ].sort();
   const filtered = catalog.players.filter(
     (p) =>
       (!q || p.name.toLocaleLowerCase('es').includes(q)) &&
@@ -26,7 +38,8 @@ export default async function Players({
         (params.mmr === 'top'
           ? ((format === '24' ? (p.detail as any)?.mmr_24p : p.mmr) ?? 0) > 9000
           : params.mmr === 'mid'
-            ? ((format === '24' ? (p.detail as any)?.mmr_24p : p.mmr) ?? 0) >= 4000 && ((format === '24' ? (p.detail as any)?.mmr_24p : p.mmr) ?? 0) <= 5000
+            ? ((format === '24' ? (p.detail as any)?.mmr_24p : p.mmr) ?? 0) >= 4000 &&
+              ((format === '24' ? (p.detail as any)?.mmr_24p : p.mmr) ?? 0) <= 5000
             : ((format === '24' ? (p.detail as any)?.mmr_24p : p.mmr) ?? 0) < 4000)),
   );
   const total = Math.max(1, Math.ceil(filtered.length / 30));
@@ -44,13 +57,35 @@ export default async function Players({
         <span className="badge">{catalog.players.length.toLocaleString('es-ES')} pilotos</span>
       </PageHeading>
       <form className="toolbar">
-        <label className="field"><span>Formato</span><select name="format" defaultValue={format}><option value="12">12p</option><option value="24">24p</option></select></label>
+        <label className="field">
+          <span>Formato</span>
+          <select name="format" defaultValue={format}>
+            <option value="12">12p</option>
+            <option value="24">24p</option>
+          </select>
+        </label>
         <label className="field">
           <span>Buscar piloto</span>
           <input name="q" defaultValue={params.q} placeholder="Nombre del piloto" />
         </label>
-        <label className="field"><span>País</span><select name="country" defaultValue={params.country ?? ''}><option value="">Todos</option>{countries.map((c) => <option key={c}>{c}</option>)}</select></label>
-        <label className="field"><span>Tier</span><select name="tier" defaultValue={params.tier ?? ''}><option value="">Todos</option>{tiers.map((t) => <option key={t}>{t}</option>)}</select></label>
+        <label className="field">
+          <span>País</span>
+          <select name="country" defaultValue={params.country ?? ''}>
+            <option value="">Todos</option>
+            {countries.map((c) => (
+              <option key={c}>{c}</option>
+            ))}
+          </select>
+        </label>
+        <label className="field">
+          <span>Tier</span>
+          <select name="tier" defaultValue={params.tier ?? ''}>
+            <option value="">Todos</option>
+            {tiers.map((t) => (
+              <option key={t}>{t}</option>
+            ))}
+          </select>
+        </label>
         <label className="field">
           <span>Equipo</span>
           <select name="team" defaultValue={params.team ?? ''}>
@@ -87,6 +122,9 @@ export default async function Players({
       )}
       {filtered.length ? (
         <>
+          <p className="muted player-seeding-note">
+            Las divisiones y conferencias corresponden a las seedings preliminares de Season 3.
+          </p>
           <PlayerTable players={filtered.slice((page - 1) * 30, page * 30)} />
           <div className="pagination">
             {page > 1 ? (

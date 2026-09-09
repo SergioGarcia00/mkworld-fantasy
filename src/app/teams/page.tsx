@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { publicCatalog } from '@/lib/public-data';
 import { PageHeading, EmptyState } from '@/components/ui';
+import { seedingFor } from '@/lib/season-seedings';
 export const metadata = { title: 'Equipos Atlas' };
 export default async function Teams({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   const [catalog, { q = '' }] = await Promise.all([publicCatalog(), searchParams]);
@@ -32,7 +33,11 @@ export default async function Teams({ searchParams }: { searchParams: Promise<{ 
             </span>
             <div>
               <h2>{team}</h2>
-              <p>{catalog.players.filter((p) => p.team === team).length} pilotos</p>
+              <p>
+                {catalog.players.filter((p) => p.team === team).length} pilotos{' '}
+                {seedingFor(team) &&
+                  `· División ${seedingFor(team)!.division} · Conferencia ${seedingFor(team)!.conference}`}
+              </p>
             </div>
             <ArrowUpRight size={18} />
           </Link>
