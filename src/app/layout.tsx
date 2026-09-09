@@ -6,7 +6,7 @@ import { connection } from 'next/server';
 import { Navigation } from '@/components/navigation';
 import { currentProfile } from '@/lib/auth';
 import { signOut } from '@/app/auth/actions';
-import { leagueFeed } from '@/lib/public-data';
+import { currentMatchday } from '@/lib/public-data';
 import './globals.css';
 const body = localFont({
   src: '../../public/fonts/barlow-regular.ttf',
@@ -26,8 +26,7 @@ export const metadata: Metadata = {
 };
 export default async function Layout({ children }: { children: React.ReactNode }) {
   await connection();
-  const [profile, feed] = await Promise.all([currentProfile().catch(() => null), leagueFeed()]);
-  const day = feed.days.find((d) => d.status === 'OPEN' || d.status === 'UPCOMING');
+  const [profile, day] = await Promise.all([currentProfile().catch(() => null), currentMatchday()]);
   return (
     <html lang="es">
       <body className={`${body.variable} ${display.variable}`}>

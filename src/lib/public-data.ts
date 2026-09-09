@@ -15,7 +15,12 @@ export const publicCatalog = cache(async () => {
           const db: any = await createClient();
           const rows: any[] = [];
           for (let offset = 0; ; offset += 500) {
-            const { data, error } = await db.from('player_enriched_details').select('*').eq('season_number', 3).order('mkcentral_player_id').range(offset, offset + 499);
+            const { data, error } = await db
+              .from('player_enriched_details')
+              .select('*')
+              .eq('season_number', 3)
+              .order('mkcentral_player_id')
+              .range(offset, offset + 499);
             if (error) throw error;
             rows.push(...(data ?? []));
             if (!data || data.length < 500) break;
@@ -114,6 +119,25 @@ export const leagueFeed = cache(async () => {
       daysUnavailable: true,
       chatUnavailable: true,
     };
+  }
+});
+
+// The shell only needs the active jornada. Keeping this separate avoids loading
+// news and chat before every page can render.
+export const currentMatchday = cache(async () => {
+  if (!isConfigured()) return null;
+  try {
+    const db = await createClient();
+    const { data } = await db
+      .from('matchdays')
+      .select('id,number,name,status,start_at,end_at')
+      .in('status', ['OPEN', 'UPCOMING'])
+      .order('number')
+      .limit(1)
+      .maybeSingle();
+    return (data as Matchday | null) ?? null;
+  } catch {
+    return null;
   }
 });
 export const statusLabel = (status: string) =>
