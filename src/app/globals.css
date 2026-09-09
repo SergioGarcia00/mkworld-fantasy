@@ -10,6 +10,34 @@
   --red: #ff777f;
   color-scheme: dark;
 }
+
+.economy-history {
+  margin-top: 24px;
+}
+.transaction-list {
+  display: grid;
+}
+.transaction-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.transaction-row > div {
+  display: grid;
+  gap: 3px;
+}
+.transaction-row .muted {
+  font-size: 12px;
+}
+.transaction-positive {
+  color: #8ee3b0;
+}
+.transaction-negative {
+  color: #ffadad;
+}
 * {
   box-sizing: border-box;
 }

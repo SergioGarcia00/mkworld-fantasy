@@ -42,6 +42,14 @@ export default async function MyTeam({
           .eq('matchday_id', day.id)
           .maybeSingle()
       : { data: null };
+  const { data: transactions } = team
+    ? await db
+        .from('fantasy_transactions')
+        .select('id,type,amount,description,created_at')
+        .eq('fantasy_team_id', team.id)
+        .order('created_at', { ascending: false })
+        .limit(12)
+    : { data: [] };
   const lineupPlayers = saved?.fantasy_lineup_players ?? selected;
   const deadline = day
     ? new Date(
@@ -153,6 +161,41 @@ export default async function MyTeam({
         )}
         {!open && (
           <p className="muted">Las ventas están cerradas hasta la próxima apertura del mercado.</p>
+        )}
+      </section>
+      <section className="panel economy-history">
+        <div className="toolbar">
+          <h2>Movimientos</h2>
+          <span className="muted">Últimas operaciones</span>
+        </div>
+        {transactions?.length ? (
+          <div className="transaction-list">
+            {transactions.map((tx: any) => {
+              const positive = [
+                'ROUND_POINTS_REWARD',
+                'ROUND_POSITION_BONUS',
+                'ROUND_PARTICIPATION_BONUS',
+                'PILOT_MARKET_SALE',
+                'SELL',
+              ].includes(tx.type);
+              return (
+                <div className="transaction-row" key={tx.id}>
+                  <div>
+                    <strong>{tx.description ?? tx.type}</strong>
+                    <span className="muted">
+                      {new Date(tx.created_at).toLocaleDateString('es-ES')}
+                    </span>
+                  </div>
+                  <strong className={positive ? 'transaction-positive' : 'transaction-negative'}>
+                    {positive ? '+' : '-'}
+                    {euros(tx.amount)}
+                  </strong>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <p className="muted">Aún no tienes movimientos económicos.</p>
         )}
       </section>
       <section className="panel" id="lineup">
