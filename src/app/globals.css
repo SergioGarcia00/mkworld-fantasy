@@ -1097,16 +1097,16 @@ textarea {
   table-layout: fixed;
 }
 .team-roster-section .data-table th:nth-child(1) {
-  width: 30%;
+  width: 27%;
 }
 .team-roster-section .data-table th:nth-child(2) {
-  width: 13%;
+  width: 12%;
 }
 .team-roster-section .data-table th:nth-child(3) {
-  width: 10%;
+  width: 9%;
 }
 .team-roster-section .data-table th:nth-child(4) {
-  width: 9%;
+  width: 14%;
 }
 .team-roster-section .data-table th:nth-child(5) {
   width: 16%;
@@ -1119,6 +1119,18 @@ textarea {
   color: var(--muted);
   font-size: 12px;
   margin-top: 4px;
+}
+.value-detail {
+  display: grid;
+  gap: 3px;
+  white-space: nowrap;
+}
+.value-detail strong {
+  font-variant-numeric: tabular-nums;
+}
+.value-detail small {
+  font-size: 11px;
+  line-height: 1.2;
 }
 .clause-cell,
 .roster-actions {

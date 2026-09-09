@@ -151,19 +151,21 @@ export default async function MyTeam({
                         </td>
                         <td className="roster-mmr">{r.players?.mmr ?? '—'}</td>
                         <td>
-                          <strong>{compactEuros(r.players?.market_value ?? 0)}</strong>{' '}
-                          {change && (
-                            <small
-                              className={
-                                change.variation >= 0
-                                  ? 'transaction-positive'
-                                  : 'transaction-negative'
-                              }
-                            >
-                              {change.variation >= 0 ? '▲ +' : '▼ -'}
-                              {compactEuros(Math.abs(change.variation))}
-                            </small>
-                          )}
+                          <div className="value-detail">
+                            <strong>{compactEuros(r.players?.market_value ?? 0)}</strong>
+                            {change && (
+                              <small
+                                className={
+                                  change.variation >= 0
+                                    ? 'transaction-positive'
+                                    : 'transaction-negative'
+                                }
+                              >
+                                {change.variation >= 0 ? '▲ +' : '▼ -'}
+                                {compactEuros(Math.abs(change.variation))}
+                              </small>
+                            )}
+                          </div>
                         </td>
                         <td>
                           <div className="clause-detail">
