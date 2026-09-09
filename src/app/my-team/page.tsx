@@ -2,10 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';
 import { participantData, euros, squadValue, compactEuros } from '@/components/participant-data';
-import { LineupForm, Submit } from '@/components/participant-forms';
+import { LineupForm } from '@/components/participant-forms';
 import { madridWeek } from '@/components/participant-time';
-import { sellPlayer } from '@/app/market/actions';
 import { ProtectClauseModal } from '@/components/protect-clause-modal';
+import { SellPlayerModal } from '@/components/sell-player-modal';
+import { immediateSalePrice } from '@/lib/economy';
 export const metadata = { title: 'Mi equipo' };
 export default async function MyTeam({
   searchParams,
@@ -185,11 +186,16 @@ export default async function MyTeam({
                               )}
                               disabled={!open}
                             />
-                            <form action={sellPlayer}>
-                              <input type="hidden" name="team" value={team.id} />
-                              <input type="hidden" name="player" value={r.player_id} />
-                              <Submit disabled={!open}>Vender</Submit>
-                            </form>
+                            <SellPlayerModal
+                              team={team.id}
+                              player={r.player_id}
+                              name={r.players?.name ?? 'jugador'}
+                              value={compactEuros(r.players?.market_value ?? 0)}
+                              salePrice={compactEuros(
+                                immediateSalePrice(Number(r.players?.market_value ?? 0)),
+                              )}
+                              disabled={!open}
+                            />
                           </div>
                         </td>
                       </tr>
