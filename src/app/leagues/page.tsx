@@ -23,9 +23,15 @@ export default async function Standings({
       </>
     );
   const db = await createClient();
-  const [rows, days] = await Promise.all([
+  const [rows, days, pilotScores] = await Promise.all([
     db.rpc('spectator_standings', { target_matchday: selectedMatchday }),
     db.rpc('spectator_matchdays', {}),
+    (() => {
+      const q = (db as any)
+        .from('player_matchday_scores')
+        .select('player_id,points,matchday_id,players(name,teams(name))');
+      return selectedMatchday ? q.eq('matchday_id', selectedMatchday) : q;
+    })(),
   ]);
   if (rows.error || days.error)
     return (
@@ -48,7 +54,7 @@ export default async function Standings({
         <Empty />
       ) : (
         <>
-          <form className="toolbar" method="get" action="/leagues">
+          <form className="toolbar standings-toolbar" method="get" action="/leagues">
             <label className="field">
               <span>Jornada</span>
               <select name="matchday" defaultValue={selectedMatchday ?? ''}>
@@ -63,36 +69,39 @@ export default async function Standings({
             <button className="button secondary" type="submit">
               Consultar
             </button>
+            <span className="standings-rounds">
+              {selectedMatchday ? '1' : days.data.length} jornadas validadas
+            </span>
           </form>
+          {rows.data.length > 0 && <Podium rows={rows.data.slice(0, 3)} />}
+          <PilotHighlights scores={pilotScores.data ?? []} matchday={selectedMatchday} />
+          <h2 className="standings-section-title">Clasificación completa</h2>
           <div className="table-scroll">
             <table className="data-table">
               <thead>
                 <tr>
                   <th>Posición</th>
-                  <th>Equipo</th>
-                  <th>Participante</th>
+                  <th>Equipo / participante</th>
                   <th className="numeric">Puntos</th>
                   <th className="numeric">Diferencia al líder</th>
-                  <th className="numeric">Jornadas validadas</th>
                   <th>Tendencia</th>
                 </tr>
               </thead>
               <tbody>
-                {rows.data.map((r) => (
+                {rows.data.slice(3).map((r) => (
                   <tr key={r.fantasy_team_id}>
                     <td className="mmr">#{r.position}</td>
                     <td>
                       <strong>{r.fantasy_team_name}</strong>
+                      <span className="standing-participant">{r.participant_name}</span>
                     </td>
-                    <td className="muted">{r.participant_name}</td>
                     <td className="numeric mmr">{number(Number(r.total_points))}</td>
                     <td className="numeric">
                       {Number(r.total_points) === Number(rows.data[0]?.total_points)
                         ? '—'
                         : number(Number(rows.data[0]?.total_points) - Number(r.total_points))}
                     </td>
-                    <td className="numeric">{selectedMatchday ? 1 : days.data.length}</td>
-                    <td className="muted">Sin comparativa</td>
+                    <td className="muted">—</td>
                   </tr>
                 ))}
               </tbody>
@@ -113,5 +122,68 @@ function Empty() {
       label="Consultar calendario"
       icon={Trophy}
     />
+  );
+}
+
+function Podium({ rows }: { rows: any[] }) {
+  const ordered = [rows[1], rows[0], rows[2]].filter(Boolean);
+  return (
+    <section className="podium" aria-label="Podio general">
+      {ordered.map((r) => (
+        <article className={`podium-card podium-${r.position}`} key={r.fantasy_team_id}>
+          <span className="podium-medal">
+            {r.position === 1 ? '1.º' : r.position === 2 ? '2.º' : '3.º'}
+          </span>
+          <strong>{r.fantasy_team_name}</strong>
+          <span className="muted">{r.participant_name}</span>
+          <b>{number(Number(r.total_points))} pts</b>
+          <small>
+            {r.position === 1
+              ? 'Líder'
+              : `−${number(Number(rows[0].total_points) - Number(r.total_points))} pts`}
+          </small>
+        </article>
+      ))}
+    </section>
+  );
+}
+
+function PilotHighlights({ scores, matchday }: { scores: any[]; matchday: string | null }) {
+  const totals = new Map<string, any>();
+  scores.forEach((row) => {
+    const current = totals.get(row.player_id) ?? { ...row, total: 0, rounds: 0 };
+    current.total += Number(row.points) || 0;
+    current.rounds += 1;
+    totals.set(row.player_id, current);
+  });
+  const top = [...totals.values()].sort((a, b) => b.total - a.total).slice(0, 5);
+  return (
+    <section className="pilot-highlights">
+      <div className="section-heading">
+        <div>
+          <h2>Pilotos destacados</h2>
+          <p className="muted">
+            Puntos Fantasy acumulados en jornadas validadas
+            {matchday ? ' · jornada seleccionada' : ''}.
+          </p>
+        </div>
+      </div>
+      {top.length ? (
+        <div className="pilot-highlight-list">
+          {top.map((p, i) => (
+            <div className="pilot-highlight-row" key={p.player_id}>
+              <span className="mmr">#{i + 1}</span>
+              <div>
+                <strong>{p.players?.name ?? 'Piloto'}</strong>
+                <span>{p.players?.teams?.name ?? 'Equipo no disponible'}</span>
+              </div>
+              <b>{number(p.total)} pts</b>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="muted">Todavía no hay puntos individuales publicados.</p>
+      )}
+    </section>
   );
 }
