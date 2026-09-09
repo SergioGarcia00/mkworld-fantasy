@@ -7,7 +7,7 @@ import './market.css';
 import { currentProfile } from '@/lib/auth';
 import { createClient } from '@/lib/supabase/server';
 import { Countdown, Submit } from '@/components/participant-forms';
-import { euros } from '@/components/participant-data';
+import { euros, squadValue } from '@/components/participant-data';
 import { madridWeek } from '@/components/participant-time';
 import { placeBid } from './actions';
 export const metadata = { title: 'Mercado' };
@@ -53,7 +53,7 @@ export default async function Market({
     if (team) {
       const result = await db
         .from('fantasy_roster_players')
-        .select('player_id')
+        .select('player_id,players(market_value)')
         .eq('fantasy_team_id', team.id);
       owned = result.data ?? [];
     }
@@ -93,6 +93,12 @@ export default async function Market({
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
+          {team && (
+            <div className="market-wealth">
+              <span>Plantilla {euros(squadValue(owned))}</span>
+              <span>Patrimonio {euros(Number(team.budget) + squadValue(owned))}</span>
+            </div>
+          )}
         </div>
         <div className="market-deadline">
           <div className="market-deadline-title">
