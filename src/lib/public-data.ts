@@ -34,26 +34,28 @@ export const publicCatalog = cache(async () => {
       })()
     : [];
   const details = new Map(enriched.map((row: any) => [String(row.mkcentral_player_id), row]));
-  const players = source.jugadores.map((row) => {
-    const live = catalog?.players.find(
-      (p) => String(p.mkcentral_player_id) === String(row.player_id),
-    );
-    const detail = details.get(String(row.player_id));
-    return {
-      id: String(row.player_id),
-      databaseId: live?.id ?? null,
-      slug: live?.slug ?? String(row.player_id),
-      name: row.jugador,
-      team: row.equipo,
-      mmr: row.mmr_s3_12p,
-      rank: row.rank_s3_12p,
-      peak: row.peak_mmr_s3_12p,
-      events: row.events_s3_12p,
-      price: live?.market_value ?? null,
-      profile: row.mkcentral_profile,
-      detail,
-    };
-  });
+  const players = source.jugadores
+    .filter((row) => row.jugador.trim().toLocaleLowerCase('es') !== 'breve')
+    .map((row) => {
+      const live = catalog?.players.find(
+        (p) => String(p.mkcentral_player_id) === String(row.player_id),
+      );
+      const detail = details.get(String(row.player_id));
+      return {
+        id: String(row.player_id),
+        databaseId: live?.id ?? null,
+        slug: live?.slug ?? String(row.player_id),
+        name: row.jugador,
+        team: row.equipo,
+        mmr: row.mmr_s3_12p,
+        rank: row.rank_s3_12p,
+        peak: row.peak_mmr_s3_12p,
+        events: row.events_s3_12p,
+        price: live?.market_value ?? null,
+        profile: row.mkcentral_profile,
+        detail,
+      };
+    });
   const teams = [...new Set(players.map((p) => p.team))].sort((a, b) => a.localeCompare(b, 'es'));
   return { players, teams, offline: !catalog || catalog.mode === 'preview' };
 });
