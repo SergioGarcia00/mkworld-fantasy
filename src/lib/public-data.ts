@@ -8,7 +8,9 @@ import { createClient } from './supabase/server';
 import { isConfigured } from './supabase/env';
 
 export const publicCatalog = cache(async () => {
-  const catalog = await getCatalog().catch(() => null);
+  // Players and teams pages do not render historical statistics. Avoid loading
+  // that large relation just to build their public catalogue.
+  const catalog = await getCatalog(false).catch(() => null);
   const enriched = catalog
     ? await (async () => {
         try {

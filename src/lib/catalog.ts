@@ -8,7 +8,7 @@ import type { Catalog, Team, Player, PlayerStatistics } from '@/domain/models';
 import { isConfigured } from '@/lib/supabase/env';
 import { createClient } from '@/lib/supabase/server';
 const stableId = (s: string) => createHash('sha256').update(s).digest('hex').slice(0, 24);
-export const getCatalog = cache(async (): Promise<Catalog> => {
+export const getCatalog = cache(async (includeStats = true): Promise<Catalog> => {
   if (!isConfigured()) {
     const rows = mapImport(source);
     const teams = new Map<string, Team>();
@@ -65,7 +65,7 @@ export const getCatalog = cache(async (): Promise<Catalog> => {
   const [players, teams, stats, seasons, config] = await Promise.all([
     readAllPlayers(),
     db.from('teams').select('*').order('name').limit(10000),
-    readAllStats(),
+    includeStats ? readAllStats() : Promise.resolve([] as PlayerStatistics[]),
     db.from('seasons').select('*').order('created_at', { ascending: false }),
     db.from('app_config').select('*').single(),
   ]);
