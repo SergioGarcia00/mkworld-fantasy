@@ -26,7 +26,7 @@
   align-items: start;
 }
 .lineup-starters {
-  padding: 32px 24px 88px;
+  padding: 24px 24px 28px;
   border-inline: 1px solid #527596;
   min-width: 0;
 }
@@ -52,10 +52,10 @@
 }
 .lineup-starters .participant-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px 32px;
+  gap: 12px 32px;
 }
 .lineup-starters .lineup-card:nth-child(even) {
-  translate: 0 72px;
+  translate: 0 36px;
 }
 .participant-slot {
   display: flex;
@@ -79,7 +79,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  min-height: 144px;
+  min-height: 116px;
   padding: 0;
   background: none;
   border: 0;
@@ -95,7 +95,7 @@
   align-items: center;
   justify-content: center;
   width: 128px;
-  height: 56px;
+  height: 48px;
   border: 2px solid #69819b;
   border-bottom: 0;
 }
@@ -117,7 +117,7 @@
   border-color: #527596;
 }
 .lineup-starters .lineup-card strong {
-  font-size: clamp(20px, 2vw, 28px);
+  font-size: clamp(18px, 2vw, 25px);
   line-height: 1.15;
   overflow-wrap: anywhere;
   max-width: 100%;
@@ -457,10 +457,9 @@
 /* Compact score rows */
 .participant-score {
   display: grid;
-  grid-template-columns: minmax(180px, 1.4fr) repeat(2, minmax(120px, 150px)) minmax(
-      88px,
-      0.6fr
-    ) auto;
+  grid-template-columns:
+    minmax(180px, 1.4fr) repeat(2, minmax(120px, 150px)) minmax(88px, 0.6fr)
+    auto;
   grid-template-areas: 'player game1 game2 total save' 'player sub sub total save';
   align-items: center;
   gap: 12px 20px;
