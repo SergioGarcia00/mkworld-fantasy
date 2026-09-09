@@ -30,6 +30,7 @@ export default async function Players({
   ].sort();
   const filtered = catalog.players.filter(
     (p) =>
+      p.name.trim().toLocaleLowerCase('es') !== 'breve' &&
       (!q || p.name.toLocaleLowerCase('es').includes(q)) &&
       (!params.team || p.team === params.team) &&
       (!params.country || (p.detail as any)?.country === params.country) &&

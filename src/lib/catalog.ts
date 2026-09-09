@@ -93,7 +93,7 @@ async function readAllPlayers() {
       .order('id')
       .range(offset, offset + 999);
     if (error) throw new Error('No se pudieron cargar los jugadores.');
-    all.push(...data);
+    all.push(...data.filter((player) => player.name.trim().toLocaleLowerCase('es') !== 'breve'));
     if (data.length < 1000) return all;
   }
 }
