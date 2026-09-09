@@ -127,6 +127,13 @@
   align-items: center;
   gap: 8px;
   text-align: center;
+  cursor: grab;
+}
+.lineup-starters .lineup-card:active {
+  cursor: grabbing;
+}
+.lineup-starters .lineup-card.is-empty {
+  cursor: default;
 }
 .grid-box {
   position: relative;
@@ -218,28 +225,37 @@
   cursor: default;
 }
 .reserve-grid .participant-slot {
-  min-height: 112px;
-  padding: 16px 0;
+  min-height: 0;
+  padding: 10px 0;
   border: 0;
   border-bottom: 1px solid #29374b;
   border-radius: 0;
   background: none;
-  gap: 4px;
+  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 .reserve-grid .participant-slot strong {
-  font-size: 22px;
+  font-size: 17px;
   line-height: 1.2;
 }
 .reserve-grid .participant-slot .muted {
   font-size: 13px;
 }
 .reserve-grid .button {
-  padding: 8px 0;
-  min-height: 44px;
+  flex: 0 0 auto;
+  padding: 6px 8px;
+  min-height: 36px;
   background: none;
   border-color: transparent;
   font-size: 13px;
   color: var(--ice);
+}
+.lineup-bench.is-drop-target {
+  border-radius: 8px;
+  outline: 2px dashed #4798ff;
+  outline-offset: 8px;
 }
 .reserve-grid .button:hover:not(:disabled) {
   text-decoration: underline;

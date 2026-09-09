@@ -99,6 +99,7 @@ export function LineupForm({
       .slice(0, 6),
   );
   const [captain, setCaptain] = useState(first);
+  const [draggedId, setDraggedId] = useState<string | null>(null);
   const [state, action, pending] = useActionState(saveLineup, {});
   const [closed, setClosed] = useState(false);
   useEffect(() => {
@@ -110,6 +111,24 @@ export function LineupForm({
       setSelected(selected.filter((x) => x !== id));
       if (captain === id) setCaptain('');
     } else if (selected.length < 6) setSelected([...selected, id]);
+  }
+  function moveToStarter(id: string, index: number) {
+    if (closed || (selected.includes(id) && selected[index] === id)) return;
+    const next = [...selected];
+    const previous = next[index];
+    const from = next.indexOf(id);
+    if (from >= 0) next[from] = previous;
+    next[index] = id;
+    setSelected(next);
+  }
+  function moveToBench(id: string) {
+    if (closed || !selected.includes(id)) return;
+    setSelected(selected.filter((playerId) => playerId !== id));
+    if (captain === id) setCaptain('');
+  }
+  function handleDropOnStarter(index: number) {
+    if (draggedId) moveToStarter(draggedId, index);
+    setDraggedId(null);
   }
   return (
     <form action={action} className="participant-form">
@@ -149,6 +168,11 @@ export function LineupForm({
                 <div
                   className={`lineup-card ${r ? 'is-filled' : 'is-empty'} ${r && captain === r.player_id ? 'is-captain' : ''}`}
                   key={i}
+                  draggable={Boolean(r) && !closed}
+                  onDragStart={() => r && setDraggedId(r.player_id)}
+                  onDragEnd={() => setDraggedId(null)}
+                  onDragOver={(event) => event.preventDefault()}
+                  onDrop={() => handleDropOnStarter(i)}
                 >
                   <div className="grid-box">
                     <span className="grid-position" aria-label={`Posición ${i + 1}`}>
@@ -188,7 +212,12 @@ export function LineupForm({
             })}
           </div>
         </div>
-        <aside className="lineup-bench" aria-label="Reservas">
+        <aside
+          className={`lineup-bench ${draggedId ? 'is-drop-target' : ''}`}
+          aria-label="Reservas"
+          onDragOver={(event) => event.preventDefault()}
+          onDrop={() => draggedId && moveToBench(draggedId)}
+        >
           <h2>
             Reservas <span>{roster.length - selected.length} / 4</span>
           </h2>
@@ -196,21 +225,27 @@ export function LineupForm({
             {roster
               .filter((r) => !selected.includes(r.player_id))
               .map((r) => (
-                <div className="participant-slot" key={r.player_id}>
+                <div
+                  className="participant-slot"
+                  key={r.player_id}
+                  draggable={!closed}
+                  onDragStart={() => setDraggedId(r.player_id)}
+                  onDragEnd={() => setDraggedId(null)}
+                >
                   <strong>{r.players?.name}</strong>
-                  <span className="muted">MMR {r.players?.mmr ?? '—'}</span>
                   <button
                     type="button"
                     className="button secondary"
                     disabled={selected.length >= 6 || closed}
                     onClick={() => toggle(r.player_id)}
+                    draggable={false}
                   >
                     A titulares
                   </button>
                 </div>
               ))}
             {Array.from({ length: Math.max(0, 4 - (roster.length - selected.length)) }, (_, i) => (
-              <div key={i} className="participant-slot">
+              <div key={i} className="participant-slot reserve-empty">
                 <span className="muted">Reserva disponible</span>
               </div>
             ))}
