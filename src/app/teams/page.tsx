@@ -32,7 +32,14 @@ export default async function Teams({ searchParams }: { searchParams: Promise<{ 
               {team.slice(0, 2).toUpperCase()}
             </span>
             <div>
-              <h2>{team}</h2>
+              <h2>
+                {team}{' '}
+                {seedingFor(team) && (
+                  <span className="seeding-badge">
+                    D{seedingFor(team)!.division} <i>C{seedingFor(team)!.conference}</i>
+                  </span>
+                )}
+              </h2>
               <p>
                 {catalog.players.filter((p) => p.team === team).length} pilotos{' '}
                 {seedingFor(team) &&

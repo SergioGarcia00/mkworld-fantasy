@@ -40,10 +40,14 @@ export function PlayerTable({ players }: { players: PublicPlayer[] }) {
               <td>
                 <Link href={`/teams/${encodeURIComponent(p.team)}`}>{p.team}</Link>
               </td>
-              <td className="muted">
-                {seedingFor(p.team)
-                  ? `D${seedingFor(p.team)!.division} · C${seedingFor(p.team)!.conference}`
-                  : 'No seeded'}
+              <td className="seeding-cell">
+                {seedingFor(p.team) ? (
+                  <span className="seeding-badge">
+                    D{seedingFor(p.team)!.division} <i>C{seedingFor(p.team)!.conference}</i>
+                  </span>
+                ) : (
+                  <span className="muted">No seeded</span>
+                )}
               </td>
               <td className="numeric muted">{p.rank ? `#${number(p.rank)}` : '—'}</td>
               <td className="numeric mmr">{number(p.mmr)}</td>
