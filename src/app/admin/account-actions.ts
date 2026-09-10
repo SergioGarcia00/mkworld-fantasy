@@ -94,6 +94,16 @@ export async function setMatchdayStatus(form: FormData) {
   if (error) throw new Error(error.message);
   revalidatePath('/admin');
 }
+export async function startTestMatchday(form: FormData) {
+  await requireAdmin();
+  const db: any = await createClient();
+  const { error } = await db.rpc('admin_start_test_matchday', {
+    target_matchday: z.uuid().parse(form.get('id')),
+  });
+  if (error) throw new Error(error.message);
+  revalidatePath('/admin');
+  revalidatePath('/', 'layout');
+}
 export async function notifyParticipants(form: FormData) {
   await requireAdmin();
   const db: any = await operatorClient();
@@ -109,17 +119,13 @@ export async function createNews(form: FormData) {
   await requireAdmin();
   const db: any = await createClient();
   const profile = await currentProfile();
-  const { error } = await db
-    .from('news_posts')
-    .insert({
-      title: z.string().trim().min(1).max(140).parse(form.get('title')),
-      body: z.string().trim().min(1).max(10000).parse(form.get('body')),
-      category: z
-        .enum(['Competición', 'Mercado', 'Resultados', 'Aviso'])
-        .parse(form.get('category')),
-      published: form.get('published') === 'on',
-      author_id: profile?.id,
-    });
+  const { error } = await db.from('news_posts').insert({
+    title: z.string().trim().min(1).max(140).parse(form.get('title')),
+    body: z.string().trim().min(1).max(10000).parse(form.get('body')),
+    category: z.enum(['Competición', 'Mercado', 'Resultados', 'Aviso']).parse(form.get('category')),
+    published: form.get('published') === 'on',
+    author_id: profile?.id,
+  });
   if (error) throw new Error(error.message);
   revalidatePath('/');
   revalidatePath('/admin');

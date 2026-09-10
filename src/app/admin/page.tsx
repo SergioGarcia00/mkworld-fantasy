@@ -13,6 +13,7 @@ import {
   enrollParticipant,
   setPublication,
   setMatchdayStatus,
+  startTestMatchday,
   createNews,
   deleteChatMessage,
   notifyParticipants,
@@ -345,6 +346,10 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
                   </button>
                 </AdminDirectForm>
               ))}
+              <AdminDirectForm action={startTestMatchday}>
+                <input type="hidden" name="id" value={d.id} />
+                <button className="button primary">Iniciar prueba · 1 h</button>
+              </AdminDirectForm>
               <AdminForm action={adminOperation} label="Recalcular puntuación">
                 <input type="hidden" name="operation" value="scores" />
                 <input type="hidden" name="id" value={d.id} />
