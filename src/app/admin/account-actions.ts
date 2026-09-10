@@ -189,9 +189,8 @@ export async function enrollParticipant(_: ActionState, form: FormData): Promise
 export async function renameParticipantTeam(_: ActionState, form: FormData): Promise<ActionState> {
   try {
     await requireAdmin();
-    const { error } = await (
-      await createClient()
-    ).rpc('admin_rename_participant_team', {
+    const db: any = await createClient();
+    const { error } = await db.rpc('admin_rename_participant_team', {
       target_user: z.uuid().parse(form.get('user')),
       team_name: nameSchema.pipe(z.string().max(80)).parse(form.get('name')),
     });
@@ -205,9 +204,10 @@ export async function renameParticipantTeam(_: ActionState, form: FormData): Pro
 export async function removeParticipant(_: ActionState, form: FormData): Promise<ActionState> {
   try {
     await requireAdmin();
-    const { error } = await (
-      await createClient()
-    ).rpc('admin_remove_participant', { target_user: z.uuid().parse(form.get('user')) });
+    const db: any = await createClient();
+    const { error } = await db.rpc('admin_remove_participant', {
+      target_user: z.uuid().parse(form.get('user')),
+    });
     if (error) throw new Error(error.message);
     revalidatePath('/', 'layout');
     return { success: 'Participante retirado de la liga.' };
