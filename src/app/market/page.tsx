@@ -10,6 +10,7 @@ import { Countdown, Submit } from '@/components/participant-forms';
 import { euros, squadValue } from '@/components/participant-data';
 import { madridWeek } from '@/components/participant-time';
 import { placeBid } from './actions';
+import { loadMarket } from '@/lib/market-data';
 export const metadata = { title: 'Mercado' };
 export default async function Market({
   searchParams,
@@ -19,58 +20,9 @@ export default async function Market({
   const params = await searchParams;
   const week = madridWeek();
   const profile = await currentProfile();
-  let offers: any[] = [],
-    team: any = null,
-    owned: any[] = [];
-  if (profile) {
-    const db: any = await createClient();
-    const [{ data: rows, error }, { data: squad }] = await Promise.all([
-      db
-        .from('market_offers')
-        .select(
-          'id,slot,mmr,player_id,players(name,slug,market_value,initial_value,mkcentral_player_id,nationality,teams(name))',
-        )
-        .eq('week_start', week.week)
-        .order('slot'),
-      db.from('fantasy_teams').select('id,budget').eq('user_id', profile.id).maybeSingle(),
-    ]);
-    if (error) throw new Error('No se pudieron cargar las ofertas.');
-    offers = rows ?? [];
-    const { data: details } = await db
-      .from('player_enriched_details')
-      .select('mkcentral_player_id,display_name,country,tier')
-      .eq('season_number', 3)
-      .in(
-        'mkcentral_player_id',
-        offers.map((offer) => String(offer.players?.mkcentral_player_id)),
-      );
-    const detailById = new Map((details ?? []).map((d: any) => [String(d.mkcentral_player_id), d]));
-    offers = offers.map((offer) => ({
-      ...offer,
-      detail: detailById.get(String(offer.players?.mkcentral_player_id)),
-    }));
-    team = squad;
-    if (team) {
-      const result = await db
-        .from('fantasy_roster_players')
-        .select('player_id,players(market_value)')
-        .eq('fantasy_team_id', team.id);
-      owned = result.data ?? [];
-    }
-    const [{ data: counts }, { data: mine }] = await Promise.all([
-      db.rpc('market_bid_counts', { target_week: week.week }),
-      db.rpc('my_market_bids', { target_week: week.week }),
-    ]);
-    const countByPlayer = new Map(
-      (counts ?? []).map((row: any) => [row.player_id, Number(row.bidder_count)]),
-    );
-    const mineSet = new Set((mine ?? []).map((row: any) => row.player_id));
-    offers = offers.map((offer) => ({
-      ...offer,
-      bidderCount: countByPlayer.get(offer.player_id) ?? 0,
-      hasBid: mineSet.has(offer.player_id),
-    }));
-  }
+  const { offers, team, owned } = profile
+    ? await loadMarket(await createClient(), profile.id, week.week)
+    : { offers: [], team: null, owned: [] };
   return (
     <>
       <header className="market-header">

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Link from 'next/link';
 import { Flag, ArrowUpRight, Eye, LogOut } from 'lucide-react';
-import { connection } from 'next/server';
+import { Suspense } from 'react';
 import { Navigation } from '@/components/navigation';
 import { currentProfile } from '@/lib/auth';
 import { signOut } from '@/app/auth/actions';
@@ -24,9 +24,7 @@ export const metadata: Metadata = {
   description:
     'Toda la competición Atlas League: pilotos, equipos, calendario y resultados. Dos carreras. Una plantilla. Toda la pista.',
 };
-export default async function Layout({ children }: { children: React.ReactNode }) {
-  await connection();
-  const [profile, day] = await Promise.all([currentProfile().catch(() => null), currentMatchday()]);
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
       <body className={`${body.variable} ${display.variable}`}>
@@ -44,7 +42,9 @@ export default async function Layout({ children }: { children: React.ReactNode }
             <div className="league-label">
               ATLAS LEAGUE <span>S03</span>
             </div>
-            <Navigation admin={profile?.role === 'ADMIN'} />
+            <Suspense fallback={<Navigation />}>
+              <ProfileNavigation />
+            </Suspense>
             <div className="sidebar-footer">
               <span className="status-dot" /> Una liga. Toda la pista.
               <small>Mario Kart World</small>
@@ -54,26 +54,19 @@ export default async function Layout({ children }: { children: React.ReactNode }
             <header className="topbar">
               <span className="topbar-league">
                 Atlas League <span>/</span>{' '}
-                <b>{day ? `Jornada ${String(day.number).padStart(2, '0')}` : 'Pretemporada'}</b>
+                <Suspense fallback={<b aria-busy="true">Jornada…</b>}>
+                  <MatchdayLabel />
+                </Suspense>
               </span>
-              <div className="topbar-actions">
-                <span className="viewer">
-                  <Eye size={16} />
-                  {profile ? profile.display_name : 'Modo espectador'}
-                </span>
-                <Link className="button secondary compact" href={profile ? '/profile' : '/login'}>
-                  {profile ? 'Mi perfil' : 'Acceder'}
-                  <ArrowUpRight size={16} />
-                </Link>
-                {profile && (
-                  <form action={signOut}>
-                    <button className="button secondary compact" type="submit">
-                      Salir
-                      <LogOut size={16} />
-                    </button>
-                  </form>
-                )}
-              </div>
+              <Suspense
+                fallback={
+                  <div className="topbar-actions" role="status">
+                    Cargando cuenta…
+                  </div>
+                }
+              >
+                <AccountActions />
+              </Suspense>
             </header>
             <main id="main">{children}</main>
             <footer>
@@ -86,5 +79,39 @@ export default async function Layout({ children }: { children: React.ReactNode }
         </div>
       </body>
     </html>
+  );
+}
+
+async function ProfileNavigation() {
+  const profile = await currentProfile().catch(() => null);
+  return <Navigation admin={profile?.role === 'ADMIN'} />;
+}
+
+async function MatchdayLabel() {
+  const day = await currentMatchday();
+  return <b>{day ? `Jornada ${String(day.number).padStart(2, '0')}` : 'Pretemporada'}</b>;
+}
+
+async function AccountActions() {
+  const profile = await currentProfile().catch(() => null);
+  return (
+    <div className="topbar-actions">
+      <span className="viewer">
+        <Eye size={16} />
+        {profile ? profile.display_name : 'Modo espectador'}
+      </span>
+      <Link className="button secondary compact" href={profile ? '/profile' : '/login'}>
+        {profile ? 'Mi perfil' : 'Acceder'}
+        <ArrowUpRight size={16} />
+      </Link>
+      {profile && (
+        <form action={signOut}>
+          <button className="button secondary compact" type="submit">
+            Salir
+            <LogOut size={16} />
+          </button>
+        </form>
+      )}
+    </div>
   );
 }

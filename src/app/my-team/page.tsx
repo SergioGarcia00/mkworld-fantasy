@@ -15,53 +15,62 @@ export default async function MyTeam({
 }) {
   const { db, team, roster } = await participantData();
   const params = await searchParams;
-  const { data: lineup } = team
-    ? await db
-        .from('fantasy_lineups')
-        .select('fantasy_lineup_players(player_id,is_captain)')
-        .eq('fantasy_team_id', team.id)
-        .order('saved_at', { ascending: false })
-        .limit(1)
-        .maybeSingle()
-    : { data: null };
+  const [{ data: lineup }, { day, saved }, { data: transactions }, { data: valueHistory }] =
+    await Promise.all([
+      (async () =>
+        team
+          ? await db
+              .from('fantasy_lineups')
+              .select('fantasy_lineup_players(player_id,is_captain)')
+              .eq('fantasy_team_id', team.id)
+              .order('saved_at', { ascending: false })
+              .limit(1)
+              .maybeSingle()
+          : { data: null })(),
+      (async () => {
+        const { data: day } = await db
+          .from('matchdays')
+          .select('id,number,name,status,lock_at,start_at')
+          .in('status', ['OPEN', 'UPCOMING', 'LOCKED'])
+          .order('number')
+          .limit(1)
+          .maybeSingle();
+        const { data: saved } =
+          team && day
+            ? await db
+                .from('fantasy_lineups')
+                .select('fantasy_lineup_players(player_id,is_captain)')
+                .eq('fantasy_team_id', team.id)
+                .eq('matchday_id', day.id)
+                .maybeSingle()
+            : { data: null };
+        return { day, saved };
+      })(),
+      (async () =>
+        team
+          ? await db
+              .from('fantasy_transactions')
+              .select('id,type,amount,description,created_at')
+              .eq('fantasy_team_id', team.id)
+              .order('created_at', { ascending: false })
+              .limit(12)
+          : { data: [] })(),
+      (async () =>
+        roster.length
+          ? await db
+              .from('player_market_value_history')
+              .select('player_id,variation,percentage_change,timestamp')
+              .in(
+                'player_id',
+                roster.map((r: any) => r.player_id),
+              )
+              .order('timestamp', { ascending: false })
+          : { data: [] })(),
+    ]);
   const selected = lineup?.fantasy_lineup_players ?? [];
   const rated = roster.filter((r: any) => r.players?.mmr != null);
   const currentSquadValue = squadValue(roster);
   const open = madridWeek().marketOpen;
-  const { data: day } = await db
-    .from('matchdays')
-    .select('id,number,name,status,lock_at,start_at')
-    .in('status', ['OPEN', 'UPCOMING', 'LOCKED'])
-    .order('number')
-    .limit(1)
-    .maybeSingle();
-  const { data: saved } =
-    team && day
-      ? await db
-          .from('fantasy_lineups')
-          .select('fantasy_lineup_players(player_id,is_captain)')
-          .eq('fantasy_team_id', team.id)
-          .eq('matchday_id', day.id)
-          .maybeSingle()
-      : { data: null };
-  const { data: transactions } = team
-    ? await db
-        .from('fantasy_transactions')
-        .select('id,type,amount,description,created_at')
-        .eq('fantasy_team_id', team.id)
-        .order('created_at', { ascending: false })
-        .limit(12)
-    : { data: [] };
-  const { data: valueHistory } = roster.length
-    ? await db
-        .from('player_market_value_history')
-        .select('player_id,variation,percentage_change,timestamp')
-        .in(
-          'player_id',
-          roster.map((r: any) => r.player_id),
-        )
-        .order('timestamp', { ascending: false })
-    : { data: [] };
   const lineupPlayers = saved?.fantasy_lineup_players ?? selected;
   const deadline = day
     ? new Date(

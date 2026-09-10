@@ -10,36 +10,39 @@ import { isConfigured } from './supabase/env';
 export const publicCatalog = cache(async () => {
   // Players and teams pages do not render historical statistics. Avoid loading
   // that large relation just to build their public catalogue.
-  const catalog = await getCatalog(false).catch(() => null);
-  const enriched = catalog
-    ? await (async () => {
-        try {
-          const db: any = await createClient();
-          const rows: any[] = [];
-          for (let offset = 0; ; offset += 500) {
-            const { data, error } = await db
-              .from('player_enriched_details')
-              .select('*')
-              .eq('season_number', 3)
-              .order('mkcentral_player_id')
-              .range(offset, offset + 499);
-            if (error) throw error;
-            rows.push(...(data ?? []));
-            if (!data || data.length < 500) break;
+  const [catalog, enriched] = await Promise.all([
+    getCatalog(false).catch(() => null),
+    isConfigured()
+      ? (async () => {
+          try {
+            const db: any = await createClient();
+            const rows: any[] = [];
+            for (let offset = 0; ; offset += 500) {
+              const { data, error } = await db
+                .from('player_enriched_details')
+                .select('*')
+                .eq('season_number', 3)
+                .order('mkcentral_player_id')
+                .range(offset, offset + 499);
+              if (error) throw error;
+              rows.push(...(data ?? []));
+              if (!data || data.length < 500) break;
+            }
+            return rows;
+          } catch {
+            return [];
           }
-          return rows;
-        } catch {
-          return [];
-        }
-      })()
-    : [];
+        })()
+      : Promise.resolve([]),
+  ]);
+  const livePlayers = new Map(
+    catalog?.players.map((player) => [String(player.mkcentral_player_id), player]),
+  );
   const details = new Map(enriched.map((row: any) => [String(row.mkcentral_player_id), row]));
   const players = source.jugadores
     .filter((row) => row.jugador.trim().toLocaleLowerCase('es') !== 'breve')
     .map((row) => {
-      const live = catalog?.players.find(
-        (p) => String(p.mkcentral_player_id) === String(row.player_id),
-      );
+      const live = livePlayers.get(String(row.player_id));
       const detail = details.get(String(row.player_id));
       return {
         id: String(row.player_id),
