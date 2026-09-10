@@ -186,3 +186,32 @@ export async function enrollParticipant(_: ActionState, form: FormData): Promise
     return errorState(error);
   }
 }
+export async function renameParticipantTeam(_: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    const { error } = await (
+      await createClient()
+    ).rpc('admin_rename_participant_team', {
+      target_user: z.uuid().parse(form.get('user')),
+      team_name: nameSchema.pipe(z.string().max(80)).parse(form.get('name')),
+    });
+    if (error) throw new Error(error.message);
+    revalidatePath('/', 'layout');
+    return { success: 'Nombre del equipo actualizado.' };
+  } catch (error) {
+    return errorState(error);
+  }
+}
+export async function removeParticipant(_: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    const { error } = await (
+      await createClient()
+    ).rpc('admin_remove_participant', { target_user: z.uuid().parse(form.get('user')) });
+    if (error) throw new Error(error.message);
+    revalidatePath('/', 'layout');
+    return { success: 'Participante retirado de la liga.' };
+  } catch (error) {
+    return errorState(error);
+  }
+}

@@ -14,6 +14,8 @@ import {
   setPublication,
   setMatchdayStatus,
   startTestMatchday,
+  renameParticipantTeam,
+  removeParticipant,
   createNews,
   deleteChatMessage,
   notifyParticipants,
@@ -256,6 +258,18 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
                       Confirmo el cambio de permisos.
                     </label>
                   </AdminForm>
+                )}
+                {p.role === 'USER' && (
+                  <>
+                    <AdminForm action={renameParticipantTeam} label="Cambiar nombre del equipo">
+                      <input type="hidden" name="user" value={p.id} />
+                      <Field label="Nuevo nombre" name="name" />
+                    </AdminForm>
+                    <AdminForm action={removeParticipant} label="Quitar de la liga">
+                      <input type="hidden" name="user" value={p.id} />
+                      <p>Retira su equipo de la liga y conserva su cuenta.</p>
+                    </AdminForm>
+                  </>
                 )}
               </div>
             </details>
