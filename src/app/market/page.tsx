@@ -1,6 +1,4 @@
 import { countryCode as resolveCountryCode } from '@/lib/country-code';
-/* Dynamic Supabase relations are checked by PostgreSQL; the inherited client schema only covers core tables. */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';
 import { Clock3, ArrowUpRight } from 'lucide-react';
 import './market.css';
@@ -8,7 +6,7 @@ import { currentProfile } from '@/lib/auth';
 import { createClient } from '@/lib/supabase/server';
 import { Countdown, Submit } from '@/components/participant-forms';
 import { euros, squadValue } from '@/components/participant-data';
-import { madridWeek } from '@/components/participant-time';
+import { competitionWeek } from '@/lib/practice';
 import { placeBid } from './actions';
 import { loadMarket } from '@/lib/market-data';
 export const metadata = { title: 'Mercado' };
@@ -18,7 +16,7 @@ export default async function Market({
   searchParams: Promise<{ error?: string }>;
 }) {
   const params = await searchParams;
-  const week = madridWeek();
+  const week = await competitionWeek();
   const profile = await currentProfile();
   const { offers, team, owned } = profile
     ? await loadMarket(await createClient(), profile.id, week.week)
@@ -34,7 +32,11 @@ export default async function Market({
               {week.marketOpen ? 'Abierto' : 'Cerrado'}
             </span>
           </div>
-          <p>Diez oportunidades cada semana para construir tu próxima victoria.</p>
+          <p>
+            {week.manual
+              ? 'Ofertas de pruebas: la administración decide cuándo cambiar de ronda.'
+              : 'Diez oportunidades cada semana para construir tu próxima victoria.'}
+          </p>
           <div className="market-budget">
             <div>
               <span>Presupuesto disponible</span>
@@ -55,12 +57,24 @@ export default async function Market({
         <div className="market-deadline">
           <div className="market-deadline-title">
             <Clock3 size={18} aria-hidden="true" />
-            <span>{week.marketOpen ? 'El mercado cierra en' : 'Mercado cerrado'}</span>
+            <span>
+              {week.manual
+                ? 'Control manual · pruebas'
+                : week.marketOpen
+                  ? 'El mercado cierra en'
+                  : 'Mercado cerrado'}
+            </span>
           </div>
-          {week.marketOpen && <Countdown at={week.marketClose} />}
+          {!week.manual && week.marketOpen && <Countdown at={week.marketClose} />}
           <div className="market-schedule">
-            <strong>{week.marketOpen ? 'Viernes · 23:59' : 'Apertura: lunes · 01:00'}</strong>
-            <span>Hora de Madrid</span>
+            <strong>
+              {week.manual
+                ? 'Sin fecha de cierre'
+                : week.marketOpen
+                  ? 'Viernes · 23:59'
+                  : 'Apertura: lunes · 01:00'}
+            </strong>
+            <span>{week.manual ? 'Gestionado desde administración' : 'Hora de Madrid'}</span>
           </div>
         </div>
       </header>
@@ -71,7 +85,9 @@ export default async function Market({
       )}
       {!week.marketOpen && (
         <p className="panel">
-          El mercado está cerrado. Los fichajes vuelven el lunes a la 01:00, hora de Madrid.
+          {week.manual
+            ? 'Mercado cerrado por administración. Espera a que se abra la siguiente prueba.'
+            : 'El mercado está cerrado. Los fichajes vuelven el lunes a la 01:00, hora de Madrid.'}
         </p>
       )}
       <section className="market-offers">

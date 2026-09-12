@@ -4,13 +4,25 @@ import Link from 'next/link';
 import { participantData } from '@/components/participant-data';
 import { Countdown, LineupForm } from '@/components/participant-forms';
 import { madridWeek } from '@/components/participant-time';
+import { practiceSettings } from '@/lib/practice';
 export const metadata = { title: 'Tu alineación' };
 export default async function Lineup() {
   const { db, team, roster } = await participantData();
+  const practice = await practiceSettings();
   const { data: day, error } = await db
     .from('matchdays')
     .select('id,number,name,status,lock_at,start_at')
-    .in('status', ['OPEN', 'UPCOMING', 'LOCKED'])
+    .in(
+      'status',
+      practice?.test_mode
+        ? ['OPEN', 'UPCOMING', 'LOCKED', 'FINISHED']
+        : ['OPEN', 'UPCOMING', 'LOCKED'],
+    )
+    .filter(
+      practice?.test_mode ? 'id' : 'number',
+      practice?.test_mode ? 'eq' : 'gte',
+      practice?.test_mode ? practice.test_matchday_id : 0,
+    )
     .order('number')
     .limit(1)
     .maybeSingle();
@@ -24,14 +36,15 @@ export default async function Lineup() {
           .eq('matchday_id', day.id)
           .maybeSingle()
       : { data: null };
-  const deadline = day
-    ? new Date(
-        Math.min(
-          Date.parse(day.lock_at),
-          Date.parse(madridWeek(new Date(day.start_at)).lineupClose),
-        ),
-      ).toISOString()
-    : null;
+  const deadline =
+    day && !practice?.test_mode
+      ? new Date(
+          Math.min(
+            Date.parse(day.lock_at),
+            Date.parse(madridWeek(new Date(day.start_at)).lineupClose),
+          ),
+        ).toISOString()
+      : null;
   return (
     <>
       <div className="page-heading">
@@ -49,12 +62,15 @@ export default async function Lineup() {
           <span className="badge">{saved ? 'Alineación guardada' : 'Pendiente'}</span>
         </div>
         <p className="muted">
-          Cierre el sábado a las 23:59, hora de Madrid.
+          {practice?.test_mode
+            ? 'Pruebas sin horario: la administración abre y cierra las alineaciones.'
+            : 'Cierre el sábado a las 23:59, hora de Madrid.'}
           {deadline &&
             ` Límite de esta jornada: ${new Date(deadline).toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}.`}
         </p>
         {team && day && roster.length ? (
           <LineupForm
+            key={day.id}
             team={team.id}
             day={day.id}
             roster={roster}
@@ -62,7 +78,16 @@ export default async function Lineup() {
             captain={
               (saved?.fantasy_lineup_players ?? []).find((p: any) => p.is_captain)?.player_id ?? ''
             }
-            deadline={day.status === 'LOCKED' ? new Date(0).toISOString() : deadline!}
+            deadline={
+              practice?.test_mode
+                ? null
+                : day.status === 'LOCKED'
+                  ? new Date(0).toISOString()
+                  : deadline!
+            }
+            manuallyClosed={
+              practice?.test_mode ? !practice.test_lineup_open || day.status === 'FINISHED' : false
+            }
             matchdayTitle={`Jornada ${day.number} · ${day.name}`}
           />
         ) : (

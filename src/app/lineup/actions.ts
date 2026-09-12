@@ -1,6 +1,7 @@
 'use server';
 import { revalidatePath } from 'next/cache';
 import { participantData } from '@/components/participant-data';
+import { practiceSettings } from '@/lib/practice';
 import { madridWeek } from '@/components/participant-time';
 export async function saveLineup(
   _: { error?: string; success?: string },
@@ -14,11 +15,22 @@ export async function saveLineup(
     .eq('id', form.get('matchday'))
     .single();
   if (queryError || !day) return { error: 'No se pudo cargar la jornada.' };
+  const practice = await practiceSettings();
+  if (
+    practice?.test_mode &&
+    (day.id !== practice.test_matchday_id ||
+      !practice.test_lineup_open ||
+      day.status === 'FINISHED')
+  )
+    return { error: 'Alineaciones cerradas por administración.' };
   const deadline = Math.min(
     Date.parse(day.lock_at),
     Date.parse(madridWeek(new Date(day.start_at)).lineupClose),
   );
-  if (['LOCKED', 'FINISHED'].includes(day.status) || Date.now() >= deadline)
+  if (
+    !practice?.test_mode &&
+    (['LOCKED', 'FINISHED'].includes(day.status) || Date.now() >= deadline)
+  )
     return { error: 'El plazo ha terminado. La alineación está bloqueada.' };
   const starters = form.getAll('starter').map(String),
     captain = String(form.get('captain'));

@@ -2,13 +2,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { participantData } from '@/components/participant-data';
 import { ScoreForm } from '@/components/participant-forms';
+import { practiceSettings } from '@/lib/practice';
 export const metadata = { title: 'Puntuaciones' };
 export default async function Scores() {
   const { db, team, roster } = await participantData();
+  const practice = await practiceSettings();
   const { data: day, error } = await db
     .from('matchdays')
     .select('id,number,name,status')
-    .in('status', ['OPEN', 'UPCOMING'])
+    .in(
+      'status',
+      practice?.test_mode ? ['OPEN', 'UPCOMING', 'LOCKED', 'FINISHED'] : ['OPEN', 'UPCOMING'],
+    )
+    .filter(
+      practice?.test_mode ? 'id' : 'number',
+      practice?.test_mode ? 'eq' : 'gte',
+      practice?.test_mode ? practice.test_matchday_id : 0,
+    )
     .order('number')
     .limit(1)
     .maybeSingle();
@@ -38,7 +48,10 @@ export default async function Scores() {
           De 12 a 180 puntos por carrera. Puedes guardar la primera carrera y completar la segunda
           después. La administración valida los resultados.
         </p>
-        {team && day && roster.length ? (
+        {team &&
+        day &&
+        roster.length &&
+        (!practice?.test_mode || (practice.test_scores_open && day.status !== 'FINISHED')) ? (
           roster.map((r: any) => {
             const input = inputs?.find((v: any) => v.player_id === r.player_id);
             return (
@@ -56,7 +69,11 @@ export default async function Scores() {
         ) : (
           <div className="empty-state">
             <h3>Todavía no hay puntos que registrar</h3>
-            <p>Los campos estarán disponibles cuando tengas plantilla y una jornada abierta.</p>
+            <p>
+              {practice?.test_mode && !practice.test_scores_open
+                ? 'El envío de puntos está cerrado por administración.'
+                : 'Los campos estarán disponibles cuando tengas plantilla y una jornada abierta.'}
+            </p>
           </div>
         )}
       </section>

@@ -8,6 +8,7 @@ import { currentProfile } from '@/lib/auth';
 import { signOut } from '@/app/auth/actions';
 import { currentMatchday } from '@/lib/public-data';
 import './globals.css';
+import { practiceSettings } from '@/lib/practice';
 const body = localFont({
   src: '../../public/fonts/barlow-regular.ttf',
   variable: '--font-body',
@@ -68,7 +69,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <AccountActions />
               </Suspense>
             </header>
-            <main id="main">{children}</main>
+            <main id="main">
+              <Suspense fallback={null}>
+                <PracticeNotice />
+              </Suspense>
+              {children}
+            </main>
             <footer>
               <span>
                 MKWorld Fantasy <b>Atlas League</b>
@@ -112,6 +118,22 @@ async function AccountActions() {
           </button>
         </form>
       )}
+    </div>
+  );
+}
+
+async function PracticeNotice() {
+  const settings = await practiceSettings();
+  if (!settings?.test_mode) return null;
+  return (
+    <div className="panel" role="status">
+      <strong>Liga de pruebas · control manual</strong>
+      <p>
+        Sin horarios automáticos. Mercado: {settings.test_market_open ? 'abierto' : 'cerrado'} ·
+        Alineaciones: {settings.test_lineup_open ? 'abiertas' : 'cerradas'} · Puntos:{' '}
+        {settings.test_scores_open ? 'abiertos' : 'cerrados'}. Los cambios se guardan en la liga
+        actual.
+      </p>
     </div>
   );
 }

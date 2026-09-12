@@ -83,6 +83,7 @@ export function LineupForm({
   selected: initial,
   captain: first,
   deadline,
+  manuallyClosed = false,
   matchdayTitle,
 }: {
   team: string;
@@ -90,7 +91,8 @@ export function LineupForm({
   roster: { player_id: string; players: { name: string; mmr: number | null } | null }[];
   selected: string[];
   captain: string;
-  deadline: string;
+  deadline: string | null;
+  manuallyClosed?: boolean;
   matchdayTitle: string;
 }) {
   const [selected, setSelected] = useState(() =>
@@ -101,8 +103,10 @@ export function LineupForm({
   const [captain, setCaptain] = useState(first);
   const [draggedId, setDraggedId] = useState<string | null>(null);
   const [state, action, pending] = useActionState(saveLineup, {});
-  const [closed, setClosed] = useState(false);
+  const [timeClosed, setClosed] = useState(false);
+  const closed = manuallyClosed || (deadline !== null && timeClosed);
   useEffect(() => {
+    if (!deadline) return;
     const timer = setInterval(() => setClosed(Date.now() >= Date.parse(deadline)), 1000);
     return () => clearInterval(timer);
   }, [deadline]);
@@ -143,7 +147,13 @@ export function LineupForm({
       </div>
       <div className="lineup-board">
         <aside className="lineup-info" aria-label="Información de la jornada">
-          <Countdown at={deadline} />
+          {deadline ? (
+            <Countdown at={deadline} />
+          ) : (
+            <p className="badge">
+              {closed ? 'Cerrada por administración' : 'Pruebas · sin límite de tiempo'}
+            </p>
+          )}
           <div className="lineup-info-main">
             <span className="eyebrow">Jornada</span>
             <h3>{matchdayTitle}</h3>

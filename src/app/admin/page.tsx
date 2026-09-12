@@ -13,7 +13,6 @@ import {
   enrollParticipant,
   setPublication,
   setMatchdayStatus,
-  startTestMatchday,
   renameParticipantTeam,
   removeParticipant,
   createNews,
@@ -23,8 +22,10 @@ import {
 import { adminOperation } from './operations';
 import { AdminForm, AdminDirectForm, ImportWorkbench } from './forms';
 import './admin.css';
+import { PracticePanel } from './practice-panel';
 export const metadata = { title: 'Administración' };
 const tabs = [
+  ['practice', 'Liga de pruebas'],
   ['accounts', 'Cuentas y permisos'],
   ['players', 'Jugadores'],
   ['teams', 'Equipos reales'],
@@ -131,7 +132,8 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
       </select>
     </label>
   );
-  if (tab === 'import') content = <ImportWorkbench seasons={data.seasons} />;
+  if (tab === 'practice') content = <PracticePanel />;
+  else if (tab === 'import') content = <ImportWorkbench seasons={data.seasons} />;
   else if (tab === 'players')
     content = (
       <section className="panel">
@@ -360,10 +362,9 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
                   </button>
                 </AdminDirectForm>
               ))}
-              <AdminDirectForm action={startTestMatchday}>
-                <input type="hidden" name="id" value={d.id} />
-                <button className="button primary">Iniciar prueba · 1 h</button>
-              </AdminDirectForm>
+              <Link className="button secondary" href="/admin?tab=practice">
+                Configurar pruebas sin horarios
+              </Link>
               <AdminForm action={adminOperation} label="Recalcular puntuación">
                 <input type="hidden" name="operation" value="scores" />
                 <input type="hidden" name="id" value={d.id} />

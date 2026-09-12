@@ -40,6 +40,12 @@ export interface Profile {
   created_at: string;
 }
 export interface AppConfig {
+  test_mode?: boolean;
+  test_market_open?: boolean;
+  test_lineup_open?: boolean;
+  test_scores_open?: boolean;
+  test_matchday_id?: string | null;
+  test_market_week?: string | null;
   id: boolean;
   starting_budget: number;
   initial_player_value: number;

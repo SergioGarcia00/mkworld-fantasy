@@ -13,15 +13,21 @@ import { WEEKLY_SCHEDULE, EmptyState } from '@/components/ui';
 import { PlayerTable } from '@/components/player-table';
 import { Popup } from '@/components/popup';
 import { StandingsPreview } from '@/components/standings-preview';
+import { practiceSettings } from '@/lib/practice';
 import hero from './overview-hero.module.css';
 export default async function Home() {
   const [catalog, feed] = await Promise.all([publicCatalog(), leagueFeed()]);
+  const practice = await practiceSettings();
   const featured = ['Byakuya Togami', 'Celestia Ludenberg', 'Chiaki Nanami', 'Dragnir'];
   const players = featured.flatMap((n) => {
     const p = catalog.players.find((p) => p.name.startsWith(n));
     return p ? [p] : [];
   });
-  const day = feed.days.find((d) => ['OPEN', 'UPCOMING'].includes(d.status));
+  const day = feed.days.find((d) =>
+    practice?.test_mode
+      ? d.id === practice.test_matchday_id
+      : ['OPEN', 'UPCOMING'].includes(d.status),
+  );
   return (
     <div className="overview">
       <div className="overview-title">
@@ -48,17 +54,32 @@ export default async function Home() {
         <div className={hero.agenda}>
           <div className={hero.agendaHeader}>
             <div>
-              <h3>Tu semana en pista</h3>
-              <p>Todos los horarios, hora de Madrid</p>
+              <h3>{practice?.test_mode ? 'Tu sesión de pruebas' : 'Tu semana en pista'}</h3>
+              <p>
+                {practice?.test_mode
+                  ? 'La administración decide cada paso'
+                  : 'Todos los horarios, hora de Madrid'}
+              </p>
             </div>
-            <Link className={hero.calendarLink} href="/calendar" aria-label="Ver calendario completo">
+            <Link
+              className={hero.calendarLink}
+              href="/calendar"
+              aria-label="Ver calendario completo"
+            >
               <CalendarDays size={21} aria-hidden="true" />
               <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
           </div>
           <ol className={hero.schedule}>
-            {WEEKLY_SCHEDULE.map(([weekday, time, label]) => (
-              <li key={weekday} className={weekday === 'DOM' ? hero.race : undefined}>
+            {(practice?.test_mode
+              ? [
+                  ['BETA', practice.test_market_open ? 'Abierto' : 'Cerrado', 'Mercado'],
+                  ['BETA', practice.test_lineup_open ? 'Abiertas' : 'Cerradas', 'Alineaciones'],
+                  ['BETA', practice.test_scores_open ? 'Abiertos' : 'Cerrados', 'Puntos'],
+                ]
+              : WEEKLY_SCHEDULE
+            ).map(([weekday, time, label]) => (
+              <li key={label} className={weekday === 'DOM' ? hero.race : undefined}>
                 <span className={hero.weekday}>{weekday}</span>
                 <span className={hero.time}>{time}</span>
                 <span className={hero.event}>{label}</span>
@@ -189,4 +210,3 @@ export default async function Home() {
     </div>
   );
 }
-

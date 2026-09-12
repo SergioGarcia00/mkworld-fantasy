@@ -57,6 +57,19 @@ export type Database = {
     };
     Views: { player_statistics: { Row: RecordRow<PlayerStatistics>; Relationships: [] } };
     Functions: {
+      admin_test_controls: {
+        Args: {
+          enabled: boolean;
+          market_open: boolean;
+          lineup_open: boolean;
+          scores_open: boolean;
+          target_matchday: string | null;
+        };
+        Returns: undefined;
+      };
+      admin_create_test_matchday: { Args: { day_name: string }; Returns: string };
+      admin_test_new_market: { Args: Record<string, never>; Returns: number };
+      admin_test_settle_market: { Args: Record<string, never>; Returns: number };
       public_player_weekly_stats: {
         Args: Record<string, never>;
         Returns: {

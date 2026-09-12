@@ -5,6 +5,7 @@ import { cache } from 'react';
 import source from '../../atlas-fantasy-s3-mmr-FINAL.json';
 import { getCatalog } from './catalog';
 import { createClient } from './supabase/server';
+import { practiceSettings } from './practice';
 import { isConfigured } from './supabase/env';
 
 export const publicCatalog = cache(async () => {
@@ -133,6 +134,11 @@ export const leagueFeed = cache(async () => {
 // The shell only needs the active jornada. Keeping this separate avoids loading
 // news and chat before every page can render.
 export const currentMatchday = cache(async () => {
+  const practice = await practiceSettings();
+  if (practice?.test_mode) {
+    const feed = await leagueFeed();
+    return feed.days.find((day) => day.id === practice.test_matchday_id) ?? null;
+  }
   if (!isConfigured()) return null;
   try {
     const db = await createClient();

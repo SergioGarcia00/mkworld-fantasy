@@ -2,11 +2,11 @@
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { participantData } from '@/components/participant-data';
-import { madridWeek } from '@/components/participant-time';
+import { competitionWeek } from '@/lib/practice';
 export async function placeBid(form: FormData) {
   const { db, team } = await participantData();
   if (!team || team.id !== form.get('team')) redirect('/market?error=Equipo%20no%20autorizado');
-  const week = madridWeek();
+  const week = await competitionWeek();
   if (!week.marketOpen) redirect('/market?error=El%20mercado%20está%20cerrado');
   const amount = Number(form.get('amount'));
   if (!Number.isInteger(amount) || amount <= 0)
@@ -23,7 +23,8 @@ export async function placeBid(form: FormData) {
 export async function sellPlayer(form: FormData) {
   const { db, team } = await participantData();
   if (!team || team.id !== form.get('team')) redirect('/my-team?error=Equipo%20no%20autorizado');
-  if (!madridWeek().marketOpen) redirect('/my-team?error=El%20mercado%20está%20cerrado');
+  if (!(await competitionWeek()).marketOpen)
+    redirect('/my-team?error=El%20mercado%20está%20cerrado');
   const { error } = await db.rpc('sell_player', {
     target_fantasy_team: team.id,
     target_player: form.get('player'),
