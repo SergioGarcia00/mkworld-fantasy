@@ -2,7 +2,7 @@
 export const DEFAULT_CONFIG = {
   id: true,
   starting_budget: 25_000,
-  initial_player_value: 3_000,
+  initial_player_value: 6_000,
   squad_size: 10,
   starter_size: 6,
   max_players_same_real_team: 2,
