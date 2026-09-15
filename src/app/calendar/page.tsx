@@ -32,19 +32,32 @@ export default async function Calendar() {
             <strong>{String(d.number).padStart(2, '0')}</strong>
             <div>
               <h2>{d.name}</h2>
-              <p>
-                {practice?.test_mode && d.id === practice.test_matchday_id
-                  ? 'Jornada de pruebas · sin horario'
-                  : d.start_at
-                    ? new Intl.DateTimeFormat('es-ES', {
-                        dateStyle: 'long',
-                        timeZone: 'Europe/Madrid',
-                      }).format(new Date(d.start_at))
-                    : 'Fecha pendiente de publicación'}{' '}
-                · Dos carreras
-              </p>
+              {practice?.test_mode && d.id === practice.test_matchday_id ? (
+                <p>Jornada de pruebas · sin horario automático</p>
+              ) : d.start_at ? (
+                <div className="calendar-event-details">
+                  <p>
+                    {new Intl.DateTimeFormat('es-ES', {
+                      dateStyle: 'long',
+                      timeZone: 'Europe/Madrid',
+                    }).format(new Date(d.start_at))}
+                  </p>
+                  <span>
+                    {new Intl.DateTimeFormat('es-ES', {
+                      timeStyle: 'short',
+                      timeZone: 'Europe/Madrid',
+                    }).format(new Date(d.start_at))}{' '}
+                    · 2 partidas
+                  </span>
+                </div>
+              ) : (
+                <p>Fecha pendiente de publicación · 2 partidas</p>
+              )}
             </div>
-            <span className="badge">{statusLabel(d.status)}</span>
+            <div className="calendar-event-status">
+              <span className="badge">{statusLabel(d.status)}</span>
+              <span className="calendar-event-count">2 partidas</span>
+            </div>
           </article>
         ))
       ) : (

@@ -1325,6 +1325,31 @@ textarea {
   color: var(--muted);
   font-size: 14px;
 }
+.calendar-event-details {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.calendar-event-details p {
+  margin-top: 8px;
+}
+.calendar-event-details > span {
+  color: var(--ice);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.calendar-event-status {
+  display: grid;
+  justify-items: end;
+  gap: 7px;
+  margin-left: auto;
+}
+.calendar-event-count {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
 .rules {
   max-width: 860px;
 }
@@ -1950,6 +1975,10 @@ textarea {
     flex-wrap: wrap;
   }
   .calendar-event .badge {
+    margin-left: 0;
+  }
+  .calendar-event-status {
+    justify-items: start;
     margin-left: 0;
   }
   .profile-banner h1 {
