@@ -167,4 +167,6 @@ export const number = (value: number | null) =>
 export const money = (value: number | null) =>
   value == null
     ? 'Por publicar'
-    : `${(value / 1e6).toLocaleString('es-ES', { maximumFractionDigits: 1 })} M€`;
+    : value >= 1_000_000
+      ? `${(value / 1_000_000).toLocaleString('es-ES', { maximumFractionDigits: 1 })} M€`
+      : `${value.toLocaleString('es-ES', { maximumFractionDigits: 0 })} €`;
