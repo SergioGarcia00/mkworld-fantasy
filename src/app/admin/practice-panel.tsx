@@ -30,8 +30,9 @@ export async function PracticePanel() {
         <p className="muted">
           El miércoles a las 10:00 se repartirán 8 pilotos por participante: 2 de cada banda (aprox.
           9000, 6000, 4000 y 2000 MMR). El reparto equilibra el valor total entre equipos. Después
-          habrá una subasta diaria de 10:00 a 23:00 y una tienda nueva cada día hasta el domingo
-          incluido.
+          habrá una subasta diaria de 10:00 a 23:00 y una tienda nueva cada día. El domingo la
+          tienda cierra a las 18:00 para que todos confirmen su alineación antes de las 19:00,
+          cuando empieza Atlas League.
         </p>
         <AdminForm
           action={practiceAction}
