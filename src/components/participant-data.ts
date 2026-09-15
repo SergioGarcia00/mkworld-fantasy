@@ -32,6 +32,6 @@ export const euros = (n: number) =>
     maximumFractionDigits: 0,
   }).format(n);
 export const compactEuros = (n: number) =>
-  `${(n / 1e6).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} M€`;
+  new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
 export const squadValue = (roster: Array<{ players?: { market_value?: number | null } | null }>) =>
   roster.reduce((sum, row) => sum + Number(row.players?.market_value ?? 0), 0);

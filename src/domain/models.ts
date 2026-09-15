@@ -43,7 +43,8 @@ export interface AppConfig {
   first_week_mode?: boolean;
   first_week_initialized?: boolean;
   first_week_market_date?: string | null;
-  first_week_market_open?: boolean;
+    first_week_market_open?: boolean;
+    economy_normalized?: boolean;
   test_mode?: boolean;
   test_market_open?: boolean;
   test_lineup_open?: boolean;

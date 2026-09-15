@@ -93,7 +93,7 @@ export default async function Home() {
           ['1.965', 'Pilotos en la parrilla'],
           ['121', 'Equipos Atlas'],
           ['6 + 4', 'Titulares y reservas'],
-          ['100 M€', 'Presupuesto inicial'],
+          ['1 M€', 'Presupuesto inicial'],
         ].map(([value, label]) => (
           <div key={label}>
             <strong>{value}</strong>
