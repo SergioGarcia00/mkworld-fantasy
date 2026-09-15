@@ -10,7 +10,16 @@ export async function practiceAction(_: ActionState, form: FormData): Promise<Ac
     await requireAdmin();
     const db = await createClient();
     const operation = z
-      .enum(['controls', 'create', 'market', 'settle'])
+      .enum([
+        'controls',
+        'create',
+        'market',
+        'settle',
+        'first_prepare',
+        'first_tick',
+        'first_shop',
+        'first_settle',
+      ])
       .parse(form.get('operation'));
     const result =
       operation === 'controls'
@@ -28,15 +37,24 @@ export async function practiceAction(_: ActionState, form: FormData): Promise<Ac
           ? await db.rpc('admin_create_test_matchday', {
               day_name: z.string().trim().min(1).max(100).parse(form.get('name')),
             })
-          : await db.rpc(
-              operation === 'market' ? 'admin_test_new_market' : 'admin_test_settle_market',
-              {},
-            );
+          : operation === 'market'
+            ? await db.rpc('admin_test_new_market', {})
+            : operation === 'settle'
+              ? await db.rpc('admin_test_settle_market', {})
+              : operation === 'first_prepare'
+                ? await db.rpc('admin_prepare_first_week', {})
+                : operation === 'first_tick'
+                  ? await db.rpc('admin_first_week_tick', {})
+                  : operation === 'first_shop'
+                    ? await db.rpc('admin_first_week_shop', { target_day: String(form.get('day')) })
+                    : await db.rpc('admin_first_week_settle', {
+                        target_day: String(form.get('day')),
+                      });
     if (result.error) throw new Error(result.error.message);
     revalidatePath('/', 'layout');
     return {
       success:
-        operation === 'settle'
+        operation === 'settle' || operation === 'first_settle'
           ? `Mercado cerrado: ${result.data} fichajes adjudicados. Las pujas sin saldo o sin plaza no se adjudican.`
           : 'Cambios guardados.',
     };

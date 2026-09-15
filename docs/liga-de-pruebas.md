@@ -2,6 +2,10 @@
 
 Aplicar `supabase/migrations/202609120001_manual_practice.sql` a la base de datos del proyecto antes de usar los controles. Esta entrega no aplica migraciones ni activa el modo en la base remota.
 
+Para la primera semana real del 16 al 20 de septiembre de 2026 aplica también `supabase/migrations/202609150001_first_week_2026.sql`. En administración aparecerá el bloque “Primera semana” dentro de “Liga de pruebas”.
+
+Pulsa “Preparar primera semana” una sola vez antes del miércoles. El sistema reparte 2 pilotos por cada banda de MMR a cada equipo y descuenta el mismo valor total de sus presupuestos, equilibrando las diferencias con una asignación de menor total acumulado. El programador de Supabase llama `admin_first_week_tick()` cada minuto: abre la tienda a las 10:00, la cierra y adjudica a las 23:00, y genera la siguiente tienda a las 10:00 del día siguiente. También puedes usar “Actualizar ahora”, “Generar tienda del día” y “Cerrar y adjudicar día” desde el panel.
+
 1. Entrar como administrador en **Administración → Liga de pruebas**.
 2. Seleccionar una jornada sin finalizar o crear una nueva desde el mismo panel.
 3. Activar el modo de pruebas, elegir qué acciones se permiten y guardar.

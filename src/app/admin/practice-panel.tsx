@@ -25,6 +25,70 @@ export async function PracticePanel() {
       <p className="badge">
         {settings?.test_mode ? 'Modo de pruebas activo' : 'Calendario habitual activo'}
       </p>
+      <div className="admin-subsection">
+        <h3>Primera semana · 16–20 septiembre 2026</h3>
+        <p className="muted">
+          El miércoles a las 10:00 se repartirán 8 pilotos por participante: 2 de cada banda (aprox.
+          9000, 6000, 4000 y 2000 MMR). El reparto equilibra el valor total entre equipos. Después
+          habrá una subasta diaria de 10:00 a 23:00 y una tienda nueva cada día hasta el domingo
+          incluido.
+        </p>
+        <AdminForm
+          action={practiceAction}
+          label={
+            settings?.first_week_initialized
+              ? 'Primera semana ya preparada'
+              : 'Preparar primera semana'
+          }
+        >
+          <input type="hidden" name="operation" value="first_prepare" />
+          {settings?.first_week_initialized && (
+            <p className="muted">
+              Ya se ha hecho el reparto inicial. No se puede repetir para evitar duplicar o mover
+              plantillas.
+            </p>
+          )}
+        </AdminForm>
+        {settings?.first_week_mode && (
+          <>
+            <div className="grid-2">
+              <AdminForm action={practiceAction} label="Actualizar ahora">
+                <input type="hidden" name="operation" value="first_tick" />
+                <p className="muted">
+                  Ejecuta la transición correspondiente a la hora actual. El cron de Supabase
+                  también la ejecutará automáticamente si está disponible.
+                </p>
+              </AdminForm>
+              <AdminForm action={practiceAction} label="Generar tienda del día">
+                <input type="hidden" name="operation" value="first_shop" />
+                <label className="field">
+                  Día
+                  <select name="day" defaultValue="2026-09-16">
+                    {['2026-09-16', '2026-09-17', '2026-09-18', '2026-09-19', '2026-09-20'].map(
+                      (day) => (
+                        <option key={day}>{day}</option>
+                      ),
+                    )}
+                  </select>
+                </label>
+              </AdminForm>
+            </div>
+            <AdminForm action={practiceAction} label="Cerrar y adjudicar día">
+              <input type="hidden" name="operation" value="first_settle" />
+              <label className="field">
+                Día
+                <select name="day" defaultValue={settings.first_week_market_date ?? '2026-09-16'}>
+                  {['2026-09-16', '2026-09-17', '2026-09-18', '2026-09-19', '2026-09-20'].map(
+                    (day) => (
+                      <option key={day}>{day}</option>
+                    ),
+                  )}
+                </select>
+              </label>
+            </AdminForm>
+          </>
+        )}
+      </div>
       <AdminForm action={practiceAction} label="Guardar controles">
         <input type="hidden" name="operation" value="controls" />
         <label>

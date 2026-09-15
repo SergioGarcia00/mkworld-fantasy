@@ -70,6 +70,10 @@ export type Database = {
       admin_create_test_matchday: { Args: { day_name: string }; Returns: string };
       admin_test_new_market: { Args: Record<string, never>; Returns: number };
       admin_test_settle_market: { Args: Record<string, never>; Returns: number };
+      admin_prepare_first_week: { Args: Record<string, never>; Returns: number };
+      admin_first_week_shop: { Args: { target_day: string }; Returns: number };
+      admin_first_week_settle: { Args: { target_day: string }; Returns: number };
+      admin_first_week_tick: { Args: Record<string, never>; Returns: number };
       public_player_weekly_stats: {
         Args: Record<string, never>;
         Returns: {
