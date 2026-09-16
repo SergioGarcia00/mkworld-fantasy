@@ -44,7 +44,7 @@ export function SellPlayerModal({
             <button type="button" className="button secondary" onClick={() => ref.current?.close()}>
               Cancelar
             </button>
-            <button className="button primary">Confirmar venta</button>
+            <button type="submit" className="button primary">Confirmar venta</button>
           </div>
         </form>
       </dialog>
