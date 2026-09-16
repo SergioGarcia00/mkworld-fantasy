@@ -27,7 +27,7 @@ export default async function Scores() {
     team && day
       ? await db
           .from('player_weekly_inputs')
-          .select('player_id,game_one,game_two')
+          .select('player_id,game_one,game_two,postponed')
           .eq('fantasy_team_id', team.id)
           .eq('matchday_id', day.id)
       : { data: [] };
@@ -63,6 +63,7 @@ export default async function Scores() {
                 name={r.players?.name}
                 one={input?.game_one}
                 two={input?.game_two ?? undefined}
+                postponed={input?.postponed ?? false}
               />
             );
           })

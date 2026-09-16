@@ -278,6 +278,7 @@ export function ScoreForm({
   name,
   one,
   two,
+  postponed: initialPostponed = false,
 }: {
   team: string;
   day: string;
@@ -285,10 +286,12 @@ export function ScoreForm({
   name: string;
   one?: number;
   two?: number;
+  postponed?: boolean;
 }) {
   const [first, setFirst] = useState(one?.toString() ?? '');
   const [second, setSecond] = useState(two?.toString() ?? '');
   const [enteredAsSub, setEnteredAsSub] = useState(false);
+  const [postponed, setPostponed] = useState(initialPostponed);
   const [state, action, pending] = useActionState(saveScore, {});
   return (
     <form action={action} className="participant-score">
@@ -312,8 +315,9 @@ export function ScoreForm({
           min={enteredAsSub ? 0 : 12}
           max="180"
           step="1"
-          required
-          value={first}
+          required={!postponed}
+          disabled={postponed}
+          value={postponed ? '' : first}
           onChange={(e) => setFirst(e.target.value)}
           placeholder={enteredAsSub ? '0–180' : '12–180'}
         />
@@ -322,16 +326,27 @@ export function ScoreForm({
         Carrera 2
         <input
           name="gameTwo"
-          required
+          required={!postponed}
+          disabled={postponed}
           aria-label={`Carrera 2 de ${name}`}
           type="number"
           min={enteredAsSub ? 0 : 12}
           max="180"
           step="1"
-          value={second}
+          value={postponed ? '' : second}
           onChange={(e) => setSecond(e.target.value)}
           placeholder={enteredAsSub ? '0–180' : '12–180'}
         />
+      </label>
+      <label className="sub-score-toggle postponed-toggle">
+        <input
+          type="checkbox"
+          name="postponed"
+          checked={postponed}
+          onChange={(e) => setPostponed(e.target.checked)}
+        />
+        <span>Aplazado</span>
+        <small>Se mantienen sus puntos pendientes hasta que juegue</small>
       </label>
       <label className="sub-score-toggle">
         <input

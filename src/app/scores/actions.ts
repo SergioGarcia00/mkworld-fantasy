@@ -11,6 +11,20 @@ export async function saveScore(
     raw = String(form.get('gameTwo') ?? '').trim(),
     second = raw ? Number(raw) : null;
   const enteredAsSub = form.get('enteredAsSub') === 'on';
+  const postponed = form.get('postponed') === 'on';
+  if (postponed) {
+    const { error } = await db.rpc('submit_player_weekly_score', {
+      target_team: team.id,
+      target_matchday: form.get('matchday'),
+      target_player: form.get('player'),
+      first_game: 0,
+      second_game: 0,
+      postponed: true,
+    });
+    if (error) return { error: error.message };
+    revalidatePath('/scores');
+    return { success: 'Aplazado · se completará cuando juegue' };
+  }
   const minimum = enteredAsSub ? 0 : 12;
   if (
     second === null ||
@@ -30,6 +44,7 @@ export async function saveScore(
     target_player: form.get('player'),
     first_game: first,
     second_game: second,
+    postponed: false,
   });
   if (error) return { error: error.message };
   revalidatePath('/scores');
