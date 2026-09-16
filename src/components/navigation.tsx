@@ -34,7 +34,7 @@ const links = [
   ['/rules', 'Reglamento', BookOpen],
   ['/support', 'Soporte', LifeBuoy],
 ] as const;
-export function Navigation({ admin = false }: { admin?: boolean }) {
+export function Navigation({ admin = false, authenticated = false }: { admin?: boolean; authenticated?: boolean }) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   return (
@@ -53,7 +53,9 @@ export function Navigation({ admin = false }: { admin?: boolean }) {
         className={`navigation ${open ? 'is-open' : ''}`}
         aria-label="Navegación principal"
       >
-        {links.map(([href, label, Icon], i) => (
+        {links.map(([href, label, Icon], i) => {
+          if (!authenticated && (href === '/my-team' || href === '/scores')) return null;
+          return (
           <Link
             onClick={() => setOpen(false)}
             href={href}
@@ -66,7 +68,8 @@ export function Navigation({ admin = false }: { admin?: boolean }) {
             <Icon size={18} />
             <span>{label}</span>
           </Link>
-        ))}
+          );
+        })}
         {admin && (
           <Link onClick={() => setOpen(false)} href="/admin">
             <ShieldCheck size={18} />

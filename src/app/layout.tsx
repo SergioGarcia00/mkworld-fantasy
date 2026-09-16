@@ -90,7 +90,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 async function ProfileNavigation() {
   const profile = await currentProfile().catch(() => null);
-  return <Navigation admin={profile?.role === 'ADMIN'} />;
+  return <Navigation admin={profile?.role === 'ADMIN'} authenticated={Boolean(profile)} />;
 }
 
 async function MatchdayLabel() {
