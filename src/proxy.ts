@@ -15,7 +15,11 @@ export async function proxy(request: NextRequest) {
       },
     },
   });
-  await client.auth.getUser();
+  // Refresh authentication opportunistically; public pages must not wait on a slow auth service.
+  await Promise.race([
+    client.auth.getUser(),
+    new Promise((resolve) => setTimeout(resolve, 2500)),
+  ]);
   return response;
 }
 export const config = {

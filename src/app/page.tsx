@@ -17,7 +17,7 @@ import { StandingsPreview } from '@/components/standings-preview';
 import { practiceSettings } from '@/lib/practice';
 import hero from './overview-hero.module.css';
 export default async function Home() {
-  const [catalog, feed, configResult] = await Promise.all([
+  const [catalog, feed, configResult, practice] = await Promise.all([
     publicCatalog(),
     leagueFeed(),
     (async () => {
@@ -32,8 +32,8 @@ export default async function Home() {
         return { data: null, error: true };
       }
     })(),
+    practiceSettings(),
   ]);
-  const practice = await practiceSettings();
   const config = configResult.data as
     | { starting_budget: number; squad_size: number; starter_size: number }
     | null;

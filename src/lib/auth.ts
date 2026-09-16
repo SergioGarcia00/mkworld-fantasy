@@ -5,10 +5,11 @@ import { isConfigured } from '@/lib/supabase/env';
 export const currentProfile = cache(async () => {
   if (!isConfigured()) return null;
   const db = await createClient();
-  const {
-    data: { user },
-    error,
-  } = await db.auth.getUser();
+  const authResult = await Promise.race([
+    db.auth.getUser(),
+    new Promise<never>((_, reject) => setTimeout(() => reject(new Error('auth-timeout')), 3500)),
+  ]).catch(() => ({ data: { user: null }, error: new Error('auth-unavailable') }));
+  const { data: { user }, error } = authResult;
   if (error || !user) return null;
   const { data, error: profileError } = await db
     .from('profiles')
