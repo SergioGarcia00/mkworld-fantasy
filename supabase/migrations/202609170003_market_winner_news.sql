@@ -1,7 +1,7 @@
 -- Publish a readable news item as soon as each sealed auction is settled.
 create or replace function public.publish_market_result_news()
 returns trigger language plpgsql security definer set search_path = '' as $$
-declare player_name text; team_name text; owner_name text; week date; headline text;
+declare player_name text; team_name text; owner_name text; week date; headline text; paid bigint;
 begin
   select p.name, o.week_start into player_name, week
   from public.players p join public.market_offers o on o.id = new.market_offer_id;
@@ -9,13 +9,15 @@ begin
     into team_name, owner_name
   from public.fantasy_teams ft left join public.profiles pr on pr.id = ft.user_id
   where ft.id = new.fantasy_team_id;
+  select coalesce(new.winning_amount, b.amount) into paid
+  from public.market_bids b where b.id = new.winning_bid_id;
   headline := left('Subasta ganada · ' || player_name || ' · ' || week::text, 140);
   if not exists (select 1 from public.news_posts n where n.title = headline) then
     insert into public.news_posts(title, body, category, published)
     values (
       headline,
       coalesce(owner_name, team_name) || ' (' || team_name || ') gana la subasta de ' ||
-      player_name || ' por ' || to_char(new.winning_amount, 'FM999G999G999G990') || ' €.',
+      player_name || ' por ' || to_char(paid, 'FM999G999G999G990') || ' €.',
       'Mercado', true
     );
   end if;
