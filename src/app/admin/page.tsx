@@ -23,6 +23,7 @@ import { adminOperation } from './operations';
 import { AdminForm, AdminDirectForm, ImportWorkbench } from './forms';
 import './admin.css';
 import { PracticePanel } from './practice-panel';
+import { practiceAction } from './practice-actions';
 export const metadata = { title: 'Administración' };
 const tabs = [
   ['practice', 'Liga de pruebas'],
@@ -381,9 +382,37 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
       'id,slot,mmr,week_start,players(name,market_value,teams(name))',
       'week_start',
     );
+    const marketConfig = await db
+      .from('app_config')
+      .select('first_week_mode,first_week_market_date,first_week_market_open')
+      .eq('id', true)
+      .single();
+    const firstWeekDay = marketConfig.data?.first_week_market_date ?? '2026-09-16';
     content = (
       <section className="panel">
-        <h2>Mercado semanal</h2>
+        <h2>Mercado de la liga actual</h2>
+        <p className="muted">
+          Abre o cierra el mercado cuando quieras. Al regenerarlo se sustituyen las ofertas por 10
+          pilotos nuevos para todos los participantes.
+        </p>
+        <div className="admin-row">
+          <div className="admin-row-head">
+            <h3>Estado: {marketConfig.data?.first_week_market_open ? 'Abierto' : 'Cerrado'}</h3>
+            <span className="badge">{marketConfig.data?.first_week_mode ? 'Primera semana' : 'Mercado semanal'}</span>
+          </div>
+          <div className="toolbar">
+            <AdminForm action={practiceAction} label="Abrir mercado">
+              <input type="hidden" name="operation" value="first_open" />
+            </AdminForm>
+            <AdminForm action={practiceAction} label="Cerrar mercado">
+              <input type="hidden" name="operation" value="first_close" />
+            </AdminForm>
+            <AdminForm action={practiceAction} label="Regenerar 10 pilotos">
+              <input type="hidden" name="operation" value="first_regenerate" />
+              <input type="hidden" name="day" value={firstWeekDay} />
+            </AdminForm>
+          </div>
+        </div>
         <Table
           headers={['Semana', 'Oferta', 'Jugador', 'Equipo', 'MMR', 'Valor (€)']}
           rows={rows.map((r) => [

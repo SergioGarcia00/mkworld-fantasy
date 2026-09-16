@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
 import { requireAdmin } from '@/lib/auth';
 import { createClient } from '@/lib/supabase/server';
+import { operatorClient } from '@/lib/supabase/operator';
 import type { ActionState } from '@/domain/models';
 
 export async function practiceAction(_: ActionState, form: FormData): Promise<ActionState> {
@@ -19,6 +20,9 @@ export async function practiceAction(_: ActionState, form: FormData): Promise<Ac
         'first_tick',
         'first_shop',
         'first_settle',
+        'first_open',
+        'first_close',
+        'first_regenerate',
       ])
       .parse(form.get('operation'));
     const result =
@@ -45,11 +49,25 @@ export async function practiceAction(_: ActionState, form: FormData): Promise<Ac
                 ? await db.rpc('admin_prepare_first_week', {})
                 : operation === 'first_tick'
                   ? await db.rpc('admin_first_week_tick', {})
-                  : operation === 'first_shop'
+                : operation === 'first_shop'
                     ? await db.rpc('admin_first_week_shop', { target_day: String(form.get('day')) })
-                    : await db.rpc('admin_first_week_settle', {
+                    : operation === 'first_settle'
+                    ? await db.rpc('admin_first_week_settle', {
                         target_day: String(form.get('day')),
-                      });
+                      })
+                    : operation === 'first_open'
+                      ? await (await operatorClient())
+                          .from('app_config')
+                          .update({ first_week_market_open: true, test_market_open: true })
+                          .eq('id', true)
+                    : operation === 'first_close'
+                        ? await (await operatorClient())
+                            .from('app_config')
+                            .update({ first_week_market_open: false, test_market_open: false })
+                            .eq('id', true)
+                        : await db.rpc('admin_first_week_shop', {
+                            target_day: String(form.get('day')),
+                          });
     if (result.error) throw new Error(result.error.message);
     revalidatePath('/', 'layout');
     return {
