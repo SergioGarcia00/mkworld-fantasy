@@ -208,7 +208,7 @@ export default async function MyTeam({
                                 Math.round(Number(r.players?.market_value ?? 0) * 1.5) +
                                   Number(r.clause_protection_amount ?? 0),
                               )}
-                              disabled={!open}
+                              disabled={false}
                             />
                             <SellPlayerModal
                               team={team.id}
