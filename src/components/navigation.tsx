@@ -5,6 +5,7 @@ import { useState } from 'react';
 import {
   LayoutDashboard,
   Users,
+  UserRound,
   Flag,
   CalendarDays,
   ShoppingBag,
@@ -25,6 +26,7 @@ const links = [
   ['/scores', 'Puntuaciones', ClipboardList],
   ['/leagues', 'Clasificación', Trophy],
   ['/teams', 'Equipos', Users],
+  ['/users', 'Usuarios', UserRound],
   ['/players', 'Pilotos', Flag],
   ['/calendar', 'Calendario', CalendarDays],
   ['/stats', 'Estadísticas', ChartNoAxesCombined],
