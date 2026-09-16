@@ -62,8 +62,10 @@ export default async function Market({
           <div className="market-deadline-title">
             <Clock3 size={18} aria-hidden="true" />
             <span>
-                {week.firstWeek
+                {week.firstWeek && week.marketOpen
                   ? 'El mercado de hoy cierra en'
+                  : week.firstWeek
+                  ? 'Mercado cerrado'
                   : week.manual
                   ? 'Control manual · pruebas'
                 : week.marketOpen

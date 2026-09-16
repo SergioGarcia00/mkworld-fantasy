@@ -21,18 +21,15 @@ export function Submit({
   );
 }
 export function Countdown({ at }: { at: string }) {
-  const [now, setNow] = useState<number | null>(null);
+  const [now, setNow] = useState<number>(() => Date.now());
   useEffect(() => {
     const timer = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(timer);
   }, []);
-  const seconds =
-    now === null ? null : Math.max(0, Math.floor((new Date(at).getTime() - now) / 1000));
+  const seconds = Math.max(0, Math.floor((new Date(at).getTime() - now) / 1000));
   return (
     <span className="badge">
-      {seconds === null
-        ? 'Calculando plazo…'
-        : seconds === 0
+      {seconds === 0
           ? 'Plazo cerrado'
           : `${Math.floor(seconds / 86400)}d ${Math.floor(seconds / 3600) % 24}h ${Math.floor(seconds / 60) % 60}m ${seconds % 60}s`}
     </span>
