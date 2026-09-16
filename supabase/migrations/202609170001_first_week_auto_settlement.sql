@@ -3,7 +3,7 @@
 create or replace function public.admin_first_week_tick()
 returns integer language plpgsql security definer set search_path='' as $$
 declare cfg public.app_config; local_now timestamp; today date; current_day date;
-        generated integer:=0; market_close time;
+        next_day date; generated integer:=0; market_close time;
 begin
   if not public.is_admin() and auth.role()<>'service_role' then raise exception 'Solo administradores'; end if;
   select * into strict cfg from public.app_config where id=true for update;
@@ -17,16 +17,20 @@ begin
   -- shop may have been closed manually or by an earlier tick before settlement.
   if current_day < today then
     perform public.admin_first_week_settle(current_day);
-  end if;
-
-  if local_now::time >= time '10:00'
-     and (select first_week_market_date from public.app_config where id=true) is distinct from today then
-    generated:=public.admin_first_week_shop(today);
+    -- Recover a missed tick and publish today's shop immediately.
+    if today <= date '2026-09-20' then
+      generated:=public.admin_first_week_shop(today);
+    end if;
   end if;
 
   if local_now::time >= market_close
      and (select first_week_market_open from public.app_config where id=true) then
     perform public.admin_first_week_settle(today);
+    -- Once a shop closes, the next day's ten offers open straight away.
+    next_day:=today + 1;
+    if next_day <= date '2026-09-20' then
+      generated:=public.admin_first_week_shop(next_day);
+    end if;
   end if;
   if today = date '2026-09-20' and local_now::time >= time '19:00' then
     update public.app_config set test_lineup_open=false where id=true;
