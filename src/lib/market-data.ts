@@ -2,10 +2,8 @@ import 'server-only';
 /* Dynamic relations are validated by PostgreSQL; generated types cover core tables only. */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export async function loadMarket(db: any, userId: string, week: string) {
-  // Each branch starts immediately; only dependent queries wait for their parent.
-  const [offers, squad, counts, mine] = await Promise.all([
-    (async () => {
+export async function loadMarket(db: any, userId: string | null, week: string) {
+  const offersPromise = (async () => {
       const { data, error } = await db
         .from('market_offers')
         .select(
@@ -34,7 +32,13 @@ export async function loadMarket(db: any, userId: string, week: string) {
         ...offer,
         detail: byId.get(String(offer.players?.mkcentral_player_id)),
       }));
-    })(),
+  })();
+  if (!userId) {
+    const offers = await offersPromise;
+    return { offers: offers.map((offer) => ({ ...offer, bidderCount: 0, hasBid: false })), team: null, owned: [] };
+  }
+  const [offers, squad, counts, mine] = await Promise.all([
+    offersPromise,
     (async () => {
       const { data: team, error } = await db
         .from('fantasy_teams')

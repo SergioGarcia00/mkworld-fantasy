@@ -18,9 +18,11 @@ export default async function Market({
   const params = await searchParams;
   const week = await competitionWeek();
   const profile = await currentProfile();
-  const { offers, team, owned } = profile
-    ? await loadMarket(await createClient(), profile.id, week.week)
-    : { offers: [], team: null, owned: [] };
+  const { offers, team, owned } = await loadMarket(
+    await createClient(),
+    profile?.id ?? null,
+    week.week,
+  );
   return (
     <>
       <header className="market-header">
@@ -100,24 +102,7 @@ export default async function Market({
       )}
       <section className="market-offers">
         <h2>Ofertas de la semana</h2>
-        {!profile ? (
-          <div className="empty-state">
-            <h3>Tu siguiente fichaje te espera</h3>
-            <p>
-              Las ofertas semanales están disponibles para los participantes. Como espectador,
-              puedes explorar todos los pilotos.
-            </p>
-            <div className="toolbar">
-              <Link className="button primary" href="/login">
-                Acceder
-              </Link>
-              <Link className="button secondary" href="/players">
-                Explorar pilotos
-              </Link>
-            </div>
-          </div>
-        ) : (
-          <>
+        <>
             {offers.length ? (
               <div className="participant-offers">
                 {offers.map((o) => {
@@ -181,12 +166,13 @@ export default async function Market({
                         <div className="bidder-count">
                           <span className="participant-dot" aria-hidden="true" />
                           <span>
-                            {o.bidderCount}{' '}
-                            {o.bidderCount === 1 ? 'participante puja' : 'participantes pujan'}
+                            {profile
+                              ? `${o.bidderCount} ${o.bidderCount === 1 ? 'participante puja' : 'participantes pujan'}`
+                              : 'Solo lectura para visitantes'}
                           </span>
                         </div>
                       </div>
-                      <form action={placeBid} className="bid-form">
+                      {profile ? <form action={placeBid} className="bid-form">
                         <input type="hidden" name="team" value={team?.id ?? ''} />
                         <input type="hidden" name="player" value={o.player_id} />
                         <label className="field">
@@ -217,7 +203,14 @@ export default async function Market({
                               ? 'Actualizar puja'
                               : 'Pujar por piloto'}
                         </Submit>
-                      </form>
+                      </form> : (
+                        <div className="guest-market-action">
+                          <span className="muted">Solo lectura para visitantes</span>
+                          <Link className="button secondary compact-action" href="/login">
+                            Acceder para pujar
+                          </Link>
+                        </div>
+                      )}
                     </article>
                   );
                 })}
@@ -228,8 +221,7 @@ export default async function Market({
                 <p>El mercado semanal se publica los lunes a la 01:00.</p>
               </div>
             )}
-          </>
-        )}
+        </>
       </section>
     </>
   );
