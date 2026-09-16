@@ -33,7 +33,9 @@ export default async function Market({
             </span>
           </div>
           <p>
-            {week.manual
+            {week.firstWeek
+              ? 'Mercado de apertura: diez pilotos nuevos cada día hasta el domingo.'
+              : week.manual
               ? 'Ofertas de pruebas: la administración decide cuándo cambiar de ronda.'
               : 'Diez oportunidades cada semana para construir tu próxima victoria.'}
           </p>
@@ -58,8 +60,10 @@ export default async function Market({
           <div className="market-deadline-title">
             <Clock3 size={18} aria-hidden="true" />
             <span>
-              {week.manual
-                ? 'Control manual · pruebas'
+                {week.firstWeek
+                  ? 'El mercado de hoy cierra en'
+                  : week.manual
+                  ? 'Control manual · pruebas'
                 : week.marketOpen
                   ? 'El mercado cierra en'
                   : 'Mercado cerrado'}
@@ -68,8 +72,10 @@ export default async function Market({
           {!week.manual && week.marketOpen && <Countdown at={week.marketClose} />}
           <div className="market-schedule">
             <strong>
-              {week.manual
-                ? 'Sin fecha de cierre'
+                {week.firstWeek
+                  ? week.marketCloseLabel
+                  : week.manual
+                  ? 'Sin fecha de cierre'
                 : week.marketOpen
                   ? 'Viernes · 23:59'
                   : 'Apertura: lunes · 01:00'}
@@ -85,8 +91,10 @@ export default async function Market({
       )}
       {!week.marketOpen && (
         <p className="panel">
-          {week.manual
-            ? 'Mercado cerrado por administración. Espera a que se abra la siguiente prueba.'
+            {week.firstWeek
+              ? 'El mercado de hoy está cerrado. La siguiente tienda se abrirá cuando la administración la publique.'
+              : week.manual
+              ? 'Mercado cerrado por administración. Espera a que se abra la siguiente prueba.'
             : 'El mercado está cerrado. Los fichajes vuelven el lunes a la 01:00, hora de Madrid.'}
         </p>
       )}
