@@ -8,7 +8,8 @@ import {
   Flag,
   CalendarDays,
 } from 'lucide-react';
-import { leagueFeed, publicCatalog, statusLabel } from '@/lib/public-data';
+import { leagueFeed, money, number, publicCatalog, statusLabel } from '@/lib/public-data';
+import { createClient } from '@/lib/supabase/server';
 import { WEEKLY_SCHEDULE, EmptyState } from '@/components/ui';
 import { PlayerTable } from '@/components/player-table';
 import { Popup } from '@/components/popup';
@@ -16,8 +17,26 @@ import { StandingsPreview } from '@/components/standings-preview';
 import { practiceSettings } from '@/lib/practice';
 import hero from './overview-hero.module.css';
 export default async function Home() {
-  const [catalog, feed] = await Promise.all([publicCatalog(), leagueFeed()]);
+  const [catalog, feed, configResult] = await Promise.all([
+    publicCatalog(),
+    leagueFeed(),
+    (async () => {
+      try {
+        const db: any = await createClient();
+        return await db
+          .from('app_config')
+          .select('starting_budget,squad_size,starter_size')
+          .eq('id', true)
+          .maybeSingle();
+      } catch {
+        return { data: null, error: true };
+      }
+    })(),
+  ]);
   const practice = await practiceSettings();
+  const config = configResult.data as
+    | { starting_budget: number; squad_size: number; starter_size: number }
+    | null;
   const featured = ['Byakuya Togami', 'Celestia Ludenberg', 'Chiaki Nanami', 'Dragnir'];
   const players = featured.flatMap((n) => {
     const p = catalog.players.find((p) => p.name.startsWith(n));
@@ -90,10 +109,13 @@ export default async function Home() {
       </section>
       <section className="metrics-strip" aria-label="La liga en cifras">
         {[
-          ['1.965', 'Pilotos en la parrilla'],
-          ['121', 'Equipos Atlas'],
-          ['6 + 4', 'Titulares y reservas'],
-          ['1 M€', 'Presupuesto inicial'],
+          [number(catalog.players.length), 'Pilotos en la parrilla'],
+          [number(catalog.teams.length), 'Equipos Atlas'],
+          [
+            config ? `${number(config.starter_size)} + ${number(config.squad_size - config.starter_size)}` : '—',
+            'Titulares y reservas',
+          ],
+          [config ? money(Number(config.starting_budget)) : '—', 'Presupuesto inicial'],
         ].map(([value, label]) => (
           <div key={label}>
             <strong>{value}</strong>
