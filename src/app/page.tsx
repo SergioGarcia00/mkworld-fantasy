@@ -7,6 +7,7 @@ import {
   MessageSquare,
   Flag,
   CalendarDays,
+  ExternalLink,
 } from 'lucide-react';
 import { leagueFeed, money, number, publicCatalog, statusLabel } from '@/lib/public-data';
 import { createClient } from '@/lib/supabase/server';
@@ -50,7 +51,18 @@ export default async function Home() {
   return (
     <div className="overview">
       <div className="overview-title">
-        <h1>Vista general</h1>
+        <div className="overview-title-main">
+          <h1>Vista general</h1>
+          <a
+            className="fluxer-link"
+            href="https://fluxer.gg/cVQpA2g9"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Servidor de Fluxer
+            <ExternalLink size={15} aria-hidden="true" />
+          </a>
+        </div>
         <span className="badge">
           <span className="status-dot" />
           {day ? statusLabel(day.status) : 'Preparando la próxima salida'}

@@ -412,6 +412,24 @@ footer b {
 .overview-title h1 {
   font-size: 32px;
 }
+.overview-title-main {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.fluxer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ice);
+  font-size: 14px;
+  text-decoration: none;
+}
+.fluxer-link:hover {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .section-heading {
   display: flex;
   justify-content: space-between;
@@ -1851,6 +1869,13 @@ textarea {
   }
   .overview-title h1 {
     font-size: 28px;
+  }
+  .overview-title-main {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .fluxer-link {
+    font-size: 12px;
   }
   .overview-title .badge {
     font-size: 10px;
