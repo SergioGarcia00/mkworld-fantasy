@@ -7,8 +7,7 @@ import { euros } from '@/components/participant-data';
 import { AcquirePlayerModal } from '@/components/acquire-player-modal';
 import { practiceSettings } from '@/lib/practice';
 
-/* The fantasy roster is league data, so this view is available to participants
-   of the official league and uses the same RLS protected server client. */
+/* Public roster directory. Actions remain available only to authenticated users. */
 export const metadata = { title: 'Usuarios' };
 
 export default async function UsersPage({
@@ -17,17 +16,6 @@ export default async function UsersPage({
   searchParams: Promise<{ error?: string; success?: string }>;
 }) {
   const profile = await currentProfile();
-  if (!profile) {
-    return (
-      <EmptyState
-        title="Inicia sesión para ver las plantillas"
-        description="Los usuarios y sus jugadores están disponibles para los participantes de Atlas League."
-        href="/login"
-        label="Acceder"
-      />
-    );
-  }
-
   const db: any = await createClient();
   const practice = await practiceSettings();
   const params = await searchParams;
@@ -74,7 +62,7 @@ export default async function UsersPage({
                 {roster.length ? (
                   <div className="table-scroll">
                     <table className="data-table">
-                      <thead><tr><th>Jugador</th><th>Equipo</th><th>MMR</th><th>Valor</th><th>Acción</th></tr></thead>
+                      <thead><tr><th>Jugador</th><th>Equipo</th><th>MMR</th><th>Valor</th>{profile && <th>Acción</th>}</tr></thead>
                       <tbody>
                         {roster.map((row: any) => (
                           <tr key={row.player_id}>
@@ -82,7 +70,7 @@ export default async function UsersPage({
                             <td>{row.players?.teams?.name ?? '—'}</td>
                             <td>{row.players?.mmr?.toLocaleString('es-ES') ?? '—'}</td>
                             <td>{euros(Number(row.players?.market_value ?? 0))}</td>
-                            <td>
+                            {profile && <td>
                               {(() => {
                                 const protectedByDate = row.clause_protected_until && new Date(row.clause_protected_until) > new Date();
                                 const protectedPlayer = Boolean(practice?.first_week_mode || protectedByDate);
@@ -105,7 +93,7 @@ export default async function UsersPage({
                                   />
                                 );
                               })()}
-                            </td>
+                            </td>}
                           </tr>
                         ))}
                       </tbody>
