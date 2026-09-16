@@ -59,7 +59,7 @@ export default async function Home() {
             target="_blank"
             rel="noreferrer"
           >
-            Servidor de Fluxer
+            Servidor oficial de Fluxer
             <ExternalLink size={15} aria-hidden="true" />
           </a>
         </div>
