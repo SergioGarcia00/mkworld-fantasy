@@ -4,12 +4,18 @@ import { currentProfile } from '@/lib/auth';
 import { createClient } from '@/lib/supabase/server';
 import { PageHeading, EmptyState } from '@/components/ui';
 import { euros } from '@/components/participant-data';
+import { AcquirePlayerModal } from '@/components/acquire-player-modal';
+import { practiceSettings } from '@/lib/practice';
 
 /* The fantasy roster is league data, so this view is available to participants
    of the official league and uses the same RLS protected server client. */
 export const metadata = { title: 'Usuarios' };
 
-export default async function UsersPage() {
+export default async function UsersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string; success?: string }>;
+}) {
   const profile = await currentProfile();
   if (!profile) {
     return (
@@ -23,12 +29,14 @@ export default async function UsersPage() {
   }
 
   const db: any = await createClient();
+  const practice = await practiceSettings();
+  const params = await searchParams;
   const { data: config } = await db.from('app_config').select('official_league_id').eq('id', true).maybeSingle();
   const { data: teams, error } = config?.official_league_id
     ? await db
         .from('fantasy_teams')
         .select(
-          'id,name,budget,user_id,profiles(display_name),fantasy_roster_players(player_id,purchase_price,players(name,slug,mmr,market_value,teams(name)))',
+          'id,name,budget,user_id,profiles(display_name),fantasy_roster_players(player_id,purchase_price,clause_protection_amount,clause_protected_until,players(name,slug,mmr,market_value,teams(name)))',
         )
         .eq('league_id', config.official_league_id)
         .order('name')
@@ -43,6 +51,7 @@ export default async function UsersPage() {
         title="Usuarios"
         description="Consulta las plantillas de los participantes y descubre qué jugadores están disponibles para futuros traspasos."
       />
+      {(params.error || params.success) && <p role="status">{params.error || params.success}</p>}
       {participants.length ? (
         <div className="team-list users-list">
           {participants.map((team) => {
@@ -65,7 +74,7 @@ export default async function UsersPage() {
                 {roster.length ? (
                   <div className="table-scroll">
                     <table className="data-table">
-                      <thead><tr><th>Jugador</th><th>Equipo</th><th>MMR</th><th>Valor</th></tr></thead>
+                      <thead><tr><th>Jugador</th><th>Equipo</th><th>MMR</th><th>Valor</th><th>Acción</th></tr></thead>
                       <tbody>
                         {roster.map((row: any) => (
                           <tr key={row.player_id}>
@@ -73,6 +82,30 @@ export default async function UsersPage() {
                             <td>{row.players?.teams?.name ?? '—'}</td>
                             <td>{row.players?.mmr?.toLocaleString('es-ES') ?? '—'}</td>
                             <td>{euros(Number(row.players?.market_value ?? 0))}</td>
+                            <td>
+                              {(() => {
+                                const protectedByDate = row.clause_protected_until && new Date(row.clause_protected_until) > new Date();
+                                const protectedPlayer = Boolean(practice?.first_week_mode || protectedByDate);
+                                const reason = practice?.first_week_mode
+                                  ? 'Los jugadores están protegidos durante la primera semana.'
+                                  : protectedByDate
+                                    ? `Protegido hasta ${new Date(row.clause_protected_until).toLocaleString('es-ES')}.`
+                                    : undefined;
+                                return (
+                                  <AcquirePlayerModal
+                                    player={row.player_id}
+                                    name={row.players?.name ?? 'jugador'}
+                                    owner={team.profiles?.display_name ?? team.name}
+                                    clause={euros(Math.min(
+                                      Math.round(Number(row.players?.market_value ?? 0) * 3),
+                                      Math.round(Number(row.players?.market_value ?? 0) * 1.5) + Number(row.clause_protection_amount ?? 0),
+                                    ))}
+                                    disabled={team.user_id === profile.id || protectedPlayer}
+                                    reason={team.user_id === profile.id ? 'Ya está en tu plantilla.' : reason}
+                                  />
+                                );
+                              })()}
+                            </td>
                           </tr>
                         ))}
                       </tbody>

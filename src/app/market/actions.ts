@@ -54,7 +54,9 @@ export async function payClause(form: FormData) {
     target_player: form.get('player'),
     idempotency: `clause:${form.get('player')}:${Date.now()}`,
   });
-  if (error) redirect(`/my-team?error=${encodeURIComponent(error.message)}`);
+  const returnTo = form.get('returnTo') === '/users' ? '/users' : '/my-team';
+  if (error) redirect(`${returnTo}?error=${encodeURIComponent(error.message)}`);
   revalidatePath('/my-team');
-  redirect('/my-team?success=Cláusula%20pagada');
+  revalidatePath('/users');
+  redirect(`${returnTo}?success=Jugador%20fichado`);
 }
