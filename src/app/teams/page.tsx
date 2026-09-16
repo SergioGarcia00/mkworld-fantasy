@@ -7,6 +7,10 @@ export const metadata = { title: 'Equipos Atlas' };
 export default async function Teams({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   const [catalog, { q = '' }] = await Promise.all([publicCatalog(), searchParams]);
   const teams = catalog.teams.filter((t) => t.toLowerCase().includes(q.toLowerCase()));
+  const playerCounts = catalog.players.reduce<Record<string, number>>((counts, player) => {
+    counts[player.team] = (counts[player.team] ?? 0) + 1;
+    return counts;
+  }, {});
   return (
     <>
       <PageHeading
@@ -41,7 +45,7 @@ export default async function Teams({ searchParams }: { searchParams: Promise<{ 
                 )}
               </h2>
               <p>
-                {catalog.players.filter((p) => p.team === team).length} pilotos{' '}
+                {playerCounts[team] ?? 0} pilotos{' '}
                 {seedingFor(team) &&
                   `· División ${seedingFor(team)!.division} · Conferencia ${seedingFor(team)!.conference}`}
               </p>

@@ -62,13 +62,23 @@ export const getCatalog = cache(async (includeStats = true): Promise<Catalog> =>
     };
   }
   const db = await createClient();
-  const [players, teams, stats, seasons, config] = await Promise.all([
-    readAllPlayers(),
-    db.from('teams').select('*').order('name').limit(10000),
-    includeStats ? readAllStats() : Promise.resolve([] as PlayerStatistics[]),
-    db.from('seasons').select('*').order('created_at', { ascending: false }),
-    db.from('app_config').select('*').single(),
-  ]);
+  const [players, teams, stats, seasons, config] = includeStats
+    ? await Promise.all([
+        readAllPlayers(),
+        db.from('teams').select('*').order('name').limit(10000),
+        readAllStats(),
+        db.from('seasons').select('*').order('created_at', { ascending: false }),
+        db.from('app_config').select('*').single(),
+      ])
+    : [
+        ...(await Promise.all([
+          readAllPlayers(),
+          db.from('teams').select('*').order('name').limit(10000),
+        ])),
+        [] as PlayerStatistics[],
+        { data: [], error: null },
+        { data: DEFAULT_CONFIG, error: null },
+      ];
   if (teams.error || seasons.error || config.error)
     throw new Error(
       'No se pudo cargar el catálogo. Revisa la conexión y las migraciones de Supabase.',

@@ -21,7 +21,7 @@ export const publicCatalog = cache(async () => {
             for (let offset = 0; ; offset += 500) {
               const { data, error } = await db
                 .from('player_enriched_details')
-                .select('*')
+                .select('mkcentral_player_id,display_name,country,tier,mmr_24p')
                 .eq('season_number', 3)
                 .order('mkcentral_player_id')
                 .range(offset, offset + 499);
