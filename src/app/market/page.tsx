@@ -161,7 +161,7 @@ export default async function Market({
                           </p>
                           <div className="market-player-meta">
                             <span className="badge">
-                              {o.slot === 10
+                              {p.teams?.name === 'Code Genius'
                                 ? 'Code Genius'
                                 : o.mmr > 9000
                                   ? 'Top MMR'
