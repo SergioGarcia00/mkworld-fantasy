@@ -1,6 +1,10 @@
 alter table public.player_weekly_inputs
   add column if not exists postponed boolean not null default false;
 
+-- The previous five-argument overload has defaults and makes a five-argument
+-- call ambiguous with this six-argument version.
+drop function if exists public.submit_player_weekly_score(uuid,uuid,uuid,integer,integer);
+
 create or replace function public.submit_player_weekly_score(
   target_team uuid,
   target_matchday uuid,

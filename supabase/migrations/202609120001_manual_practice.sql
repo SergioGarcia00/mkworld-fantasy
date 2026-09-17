@@ -116,7 +116,6 @@ begin
   if exists(select 1 from public.market_bid_results where market_offer_id=offer_row.id) then raise exception 'Oferta ya adjudicada'; end if;
   select * into strict player_row from public.players where id = target_player;
   if bid_amount < player_row.initial_value then raise exception 'La puja mínima es el valor base del piloto'; end if;
-  if bid_amount > team_row.budget then raise exception 'La puja supera tu presupuesto'; end if;
   if exists (select 1 from public.fantasy_roster_players where fantasy_team_id = team_row.id and player_id = target_player) then
     raise exception 'El piloto ya está en tu plantilla';
   end if;
@@ -153,7 +152,6 @@ begin
  select * into strict config from public.app_config where id=true;
  if (select count(*) from public.fantasy_roster_players where fantasy_team_id=team_row.id) >= config.squad_size then raise exception 'La plantilla ya tiene 10 jugadores'; end if;
  if exists(select 1 from public.fantasy_roster_players where player_id=target_player) then raise exception 'El jugador ya pertenece a otra plantilla'; end if;
- if team_row.budget < player_row.market_value then raise exception 'Presupuesto insuficiente'; end if;
  update public.fantasy_teams set budget=budget-player_row.market_value where id=team_row.id;
  insert into public.fantasy_roster_players(fantasy_team_id,league_id,player_id,purchase_price) values(team_row.id,team_row.league_id,player_row.id,player_row.market_value);
  insert into public.fantasy_transactions(fantasy_team_id,player_id,type,amount) values(team_row.id,player_row.id,'BUY',player_row.market_value);
@@ -175,7 +173,6 @@ begin
  if not cfg.test_mode and exists(select 1 from public.matchdays where status in ('LOCKED','FINISHED')) then raise exception 'Las cláusulas están cerradas durante la jornada'; end if;
  base_clause := round(player_row.market_value*cfg.clause_base_multiplier);
  clause_amount := least(base_clause+roster_row.clause_protection_amount,round(player_row.market_value*cfg.max_clause_multiplier));
- if buyer.budget < clause_amount then raise exception 'Saldo insuficiente para pagar la cláusula'; end if;
  before_buyer:=buyer.budget; before_seller:=seller.budget; until_at:=now() + make_interval(hours=>cfg.clause_protection_hours);
  delete from public.fantasy_roster_players where fantasy_team_id=seller.id and player_id=target_player;
  insert into public.fantasy_roster_players(fantasy_team_id,league_id,player_id,purchase_price,clause_protection_amount,clause_protected_until) values(buyer.id,buyer.league_id,target_player,clause_amount,0,until_at);

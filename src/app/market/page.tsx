@@ -195,8 +195,7 @@ export default async function Market({
                             !team ||
                             !week.marketOpen ||
                             inTeam ||
-                            owned.length >= 10 ||
-                            team.budget < p.initial_value
+                            owned.length >= 10
                           }
                         >
                           {inTeam

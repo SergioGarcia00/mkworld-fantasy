@@ -3,6 +3,9 @@ create or replace function public.sell_player(target_fantasy_team uuid, target_p
 returns void language plpgsql security definer set search_path = '' as $$
 declare team_row public.fantasy_teams; roster_row public.fantasy_roster_players; player_value bigint; sale_price bigint; before_balance bigint; config_row public.app_config;
 begin
+  if not public.competition_market_open() then
+    raise exception 'El mercado está cerrado';
+  end if;
   select * into strict team_row from public.fantasy_teams where id=target_fantasy_team and user_id=auth.uid() for update;
   select * into strict roster_row from public.fantasy_roster_players where fantasy_team_id=team_row.id and player_id=target_player for update;
   select market_value into strict player_value from public.players where id=target_player;

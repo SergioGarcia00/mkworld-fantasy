@@ -25,7 +25,6 @@ begin
   select * into strict offer_row from public.market_offers where player_id = target_player and week_start = date_trunc('week', now() at time zone 'Europe/Madrid')::date;
   select * into strict player_row from public.players where id = target_player;
   if bid_amount < player_row.initial_value then raise exception 'La puja mínima es el valor base del piloto'; end if;
-  if bid_amount > team_row.budget then raise exception 'La puja supera tu presupuesto'; end if;
   if exists (select 1 from public.fantasy_roster_players where fantasy_team_id = team_row.id and player_id = target_player) then
     raise exception 'El piloto ya está en tu plantilla';
   end if;

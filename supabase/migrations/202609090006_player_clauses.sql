@@ -41,7 +41,6 @@ begin
  max_clause := round(player_value*cfg.max_clause_multiplier);
  effective_spend := least(spend_amount, greatest(0,ceil((max_clause-base_clause-roster_row.clause_protection_amount)/cfg.clause_protection_efficiency))::bigint);
  if effective_spend <= 0 then raise exception 'La cláusula ya está en su máximo'; end if;
- if team_row.budget < effective_spend then raise exception 'Saldo insuficiente para proteger este piloto'; end if;
  increase := least(max_clause-base_clause-roster_row.clause_protection_amount, floor(effective_spend*cfg.clause_protection_efficiency)::bigint);
  before_balance := team_row.budget;
  update public.fantasy_teams set budget=budget-effective_spend where id=target_team;
@@ -69,7 +68,6 @@ begin
  if exists(select 1 from public.matchdays where status in ('LOCKED','FINISHED')) then raise exception 'Las cláusulas están cerradas durante la jornada'; end if;
  base_clause := round(player_row.market_value*cfg.clause_base_multiplier);
  clause_amount := least(base_clause+roster_row.clause_protection_amount,round(player_row.market_value*cfg.max_clause_multiplier));
- if buyer.budget < clause_amount then raise exception 'Saldo insuficiente para pagar la cláusula'; end if;
  before_buyer:=buyer.budget; before_seller:=seller.budget; until_at:=now() + make_interval(hours=>cfg.clause_protection_hours);
  delete from public.fantasy_roster_players where fantasy_team_id=seller.id and player_id=target_player;
  insert into public.fantasy_roster_players(fantasy_team_id,league_id,player_id,purchase_price,clause_protection_amount,clause_protected_until) values(buyer.id,buyer.league_id,target_player,clause_amount,0,until_at);

@@ -106,7 +106,7 @@ begin
     if exists(select 1 from public.market_bid_results where market_offer_id=offer.id) then continue; end if;
     for bid in select b.* from public.market_bids b join public.fantasy_teams t on t.id=b.fantasy_team_id where b.market_offer_id=offer.id and t.league_id=cfg.official_league_id order by b.amount desc,b.created_at,b.id loop
       select * into strict ft from public.fantasy_teams where id=bid.fantasy_team_id for update;
-      if ft.budget < bid.amount or exists(select 1 from public.fantasy_roster_players where fantasy_team_id=ft.id and player_id=offer.player_id) or (select count(*) from public.fantasy_roster_players where fantasy_team_id=ft.id)>=cfg.squad_size then continue; end if;
+      if exists(select 1 from public.fantasy_roster_players where fantasy_team_id=ft.id and player_id=offer.player_id) or (select count(*) from public.fantasy_roster_players where fantasy_team_id=ft.id)>=cfg.squad_size then continue; end if;
       update public.fantasy_teams set budget=budget-bid.amount where id=ft.id;
       insert into public.fantasy_roster_players(fantasy_team_id,league_id,player_id,purchase_price) values(ft.id,ft.league_id,offer.player_id,bid.amount);
       insert into public.fantasy_transactions(fantasy_team_id,player_id,type,amount,description,idempotency_key) values(ft.id,offer.player_id,'BUY',bid.amount,'Adjudicación de subasta · primera semana','first-week-auction:'||offer.id);

@@ -78,7 +78,7 @@ create function public.is_league_member(target uuid) returns boolean language sq
 $$;
 create table public.fantasy_teams (
  id uuid primary key default gen_random_uuid(), user_id uuid not null references public.profiles(id), league_id uuid not null references public.leagues(id),
- name text not null check(length(name) between 1 and 80), budget bigint not null check(budget>=0), created_at timestamptz not null default now(),
+ name text not null check(length(name) between 1 and 80), budget bigint not null, created_at timestamptz not null default now(),
  unique(league_id,user_id), unique(id,league_id), foreign key(league_id,user_id) references public.league_members(league_id,user_id)
 );
 -- A roster is the set of these rows; avoid a redundant one-to-one roster header.
