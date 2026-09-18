@@ -64,7 +64,7 @@ beforeAll(async () => {
   team = (await db.query<{ id: string }>('select id from fantasy_teams where user_id=$1', [USER]))
     .rows[0].id;
   await db.exec(
-    "insert into teams(source_key,name,slug,tag) values('beta','Beta','beta','B'); insert into players(source_key,name,slug,team_id,market_value,initial_value,mmr) select 'beta-'||n,'Pilot '||n,'beta-'||n,(select id from teams where source_key='beta'),100,100,4500 from generate_series(1,8) n;",
+    "insert into teams(source_key,name,slug,tag) values('beta','Beta','beta','B'); insert into players(source_key,name,slug,team_id,market_value,initial_value,mmr) select 'beta-'||n,'Pilot '||n,'beta-'||n,(select id from teams where source_key='beta'),100,100,4500 from generate_series(1,11) n;",
   );
   players = (
     await db.query<{ id: string }>(
@@ -73,7 +73,7 @@ beforeAll(async () => {
   ).rows.map((p) => p.id);
   await db.query(
     'insert into fantasy_roster_players(fantasy_team_id,league_id,player_id,purchase_price) select $1,league_id,p.id,100 from fantasy_teams cross join players p where fantasy_teams.id=$1 and p.id=any($2::uuid[])',
-    [team, players.slice(0, 6)],
+    [team, players.slice(0, 10)],
   );
   await db.query(
     "update matchdays set lock_at='2000-01-01',start_at='2000-01-02',end_at='2000-01-03',status='OPEN' where id=$1",
@@ -133,13 +133,13 @@ it('pins the market to an old week, enforces closure and settles exactly once', 
   await db.exec("update app_config set test_market_week='2000-01-03' where id=true");
   await db.query(
     "insert into market_offers(season_id,week_start,slot,player_id,mmr) values($1,'2000-01-03',1,$2,4500)",
-    [SEASON, players[6]],
+    [SEASON, players[10]],
   );
   await actor(USER);
-  await db.query('select place_market_bid($1,$2,150)', [team, players[6]]);
+  await db.query('select place_market_bid($1,$2,150)', [team, players[10]]);
   await controls(false);
   await actor(USER);
-  await expect(db.query('select place_market_bid($1,$2,160)', [team, players[6]])).rejects.toThrow(
+  await expect(db.query('select place_market_bid($1,$2,160)', [team, players[10]])).rejects.toThrow(
     'El mercado está cerrado',
   );
   await expect(db.query('select sell_player($1,$2)', [team, players[0]])).rejects.toThrow(
@@ -153,14 +153,14 @@ it('pins the market to an old week, enforces closure and settles exactly once', 
     (
       await db.query(
         'select * from fantasy_roster_players where fantasy_team_id=$1 and player_id=$2',
-        [team, players[6]],
+        [team, players[10]],
       )
     ).rows,
   ).toHaveLength(1);
   expect(
     (
       await db.query("select * from fantasy_transactions where player_id=$1 and type='BUY'", [
-        players[6],
+        players[10],
       ])
     ).rows,
   ).toHaveLength(1);
