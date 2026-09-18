@@ -14,3 +14,5 @@ design-detection.json
 lint-result.txt
 tsconfig.tsbuildinfo
 
+.vercel
+.env*
