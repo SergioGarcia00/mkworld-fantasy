@@ -233,6 +233,11 @@ it('stores postponed scores as pending and allows completing them later', async 
   await db.query('select save_lineup($1,$2,$3::uuid[],$4)', [team, day, players.slice(0, 6), players[0]]);
 });
 
+it('publishes player statistics only after a matchday is validated', async () => {
+  await actor('');
+  expect((await db.query('select * from public_player_weekly_stats()')).rows).toHaveLength(0);
+});
+
 it('finalizes manually, calculates points and pays rewards only once', async () => {
   await controls();
   await db.query("select admin_set_matchday_status($1,'FINISHED')", [day]);
@@ -250,6 +255,7 @@ it('finalizes manually, calculates points and pays rewards only once', async () 
       ).rows[0].points,
     ),
   ).toBe(1360);
+  expect((await db.query('select * from public_player_weekly_stats()')).rows.length).toBeGreaterThan(0);
   await actor(ADMIN);
   await db.query("select admin_set_matchday_status($1,'FINISHED')", [day]);
   await db.exec('reset role');
