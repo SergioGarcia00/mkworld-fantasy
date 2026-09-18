@@ -194,8 +194,7 @@ export default async function Market({
                           disabled={
                             !team ||
                             !week.marketOpen ||
-                            inTeam ||
-                            owned.length >= 10
+                            inTeam
                           }
                         >
                           {inTeam
