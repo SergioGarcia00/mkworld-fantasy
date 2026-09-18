@@ -246,6 +246,7 @@ it('exposes public rosters without exposing private fantasy team data', async ()
   expect(rows.rows).toHaveLength(10);
   expect(rows.rows[0].fantasy_team_name).toBe('Beta team');
   await expect(db.query('select budget from fantasy_teams')).rejects.toThrow();
+  await expect(db.query('select id from profiles')).rejects.toThrow();
 });
 
 it('lets spectators read chat but prevents anonymous publishing', async () => {
