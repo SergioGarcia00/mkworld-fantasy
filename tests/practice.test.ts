@@ -194,6 +194,45 @@ it('restores normal deadline checks when manual mode is disabled', async () => {
   ).rejects.toThrow('El plazo de alineación ha terminado');
 });
 
+it('validates titular count and captain before saving a lineup', async () => {
+  await controls();
+  await actor(USER);
+  await expect(
+    db.query('select save_lineup($1,$2,$3::uuid[],$4)', [team, day, players.slice(0, 5), players[0]]),
+  ).rejects.toThrow('exactamente 6 titulares');
+  await expect(
+    db.query('select save_lineup($1,$2,$3::uuid[],$4)', [team, day, players.slice(0, 7), players[0]]),
+  ).rejects.toThrow('exactamente 6 titulares');
+  await expect(
+    db.query('select save_lineup($1,$2,$3::uuid[],$4)', [team, day, players.slice(0, 6), players[6]]),
+  ).rejects.toThrow('El capitán debe ser titular');
+  await db.query('select save_lineup($1,$2,$3::uuid[],$4)', [team, day, players.slice(0, 6), players[2]]);
+  await db.exec('reset role');
+  expect(
+    (await db.query<{ n: number }>('select count(*)::int n from fantasy_lineup_players lp join fantasy_lineups l on l.id=lp.lineup_id where l.fantasy_team_id=$1 and l.matchday_id=$2 and lp.is_starter', [team, day])).rows[0].n,
+  ).toBe(6);
+  expect(
+    (await db.query<{ player_id: string }>('select player_id from fantasy_lineup_players lp join fantasy_lineups l on l.id=lp.lineup_id where l.fantasy_team_id=$1 and l.matchday_id=$2 and lp.is_captain', [team, day])).rows[0].player_id,
+  ).toBe(players[2]);
+});
+
+it('stores postponed scores as pending and allows completing them later', async () => {
+  await controls();
+  await actor(USER);
+  await db.query('select submit_player_weekly_score($1,$2,$3,0,0,true)', [team, day, players[0]]);
+  await db.exec('reset role');
+  let input = (await db.query<{ game_one: number; game_two: number; postponed: boolean }>('select game_one,game_two,postponed from player_weekly_inputs where fantasy_team_id=$1 and matchday_id=$2 and player_id=$3', [team, day, players[0]])).rows[0];
+  expect(input).toMatchObject({ game_one: 0, game_two: 0, postponed: true });
+  await actor(USER);
+  await db.query('select submit_player_weekly_score($1,$2,$3,80,90,false)', [team, day, players[0]]);
+  await db.exec('reset role');
+  input = (await db.query<{ game_one: number; game_two: number; postponed: boolean }>('select game_one,game_two,postponed from player_weekly_inputs where fantasy_team_id=$1 and matchday_id=$2 and player_id=$3', [team, day, players[0]])).rows[0];
+  expect(input).toMatchObject({ game_one: 80, game_two: 90, postponed: false });
+  // Leave the shared practice fixture deterministic for the final scoring test.
+  await db.query('select submit_player_weekly_score($1,$2,$3,120,120,false)', [team, day, players[0]]);
+  await db.query('select save_lineup($1,$2,$3::uuid[],$4)', [team, day, players.slice(0, 6), players[0]]);
+});
+
 it('finalizes manually, calculates points and pays rewards only once', async () => {
   await controls();
   await db.query("select admin_set_matchday_status($1,'FINISHED')", [day]);
