@@ -35,11 +35,11 @@ export function SellPlayerModal({
           <input type="hidden" name="team" value={team} />
           <input type="hidden" name="player" value={player} />
           <h3>¿Vender a {name}?</h3>
-          <p className="muted">Valor actual: {value}</p>
+          <p className="muted">Valor de mercado actual: {value}</p>
           <p>
             Recibirás <strong>{salePrice}</strong> en tu saldo.
           </p>
-          <p className="muted">La venta se ejecutará inmediatamente y liberará esta plaza.</p>
+          <p className="muted">Venta inmediata: recibes el 95% del valor de mercado. La cláusula es un importe distinto y solo se aplica a fichajes entre usuarios.</p>
           <div className="protect-dialog-actions">
             <button type="button" className="button secondary" onClick={() => ref.current?.close()}>
               Cancelar

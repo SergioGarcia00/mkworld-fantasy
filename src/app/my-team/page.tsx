@@ -218,7 +218,9 @@ export default async function MyTeam({
                               salePrice={compactEuros(
                                 immediateSalePrice(Number(r.players?.market_value ?? 0)),
                               )}
-                              disabled={!open}
+                              // La venta inmediata es gestión de plantilla y no depende
+                              // de que la ventana de subastas esté abierta.
+                              disabled={false}
                             />
                           </div>
                         </td>
