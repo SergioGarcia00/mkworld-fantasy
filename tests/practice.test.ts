@@ -5,13 +5,13 @@ const ADMIN = '00000000-0000-4000-8000-000000000001';
 const USER = '00000000-0000-4000-8000-000000000002';
 const SEASON = '00000000-0000-4000-8000-000000000003';
 let db: PGlite, day: string, team: string, players: string[];
-async function actor(id: string) {
+async function actor(id: string, role = 'authenticated') {
   await db.exec('reset role');
   await db.query(
-    "select set_config('request.jwt.claim.sub',$1,false),set_config('request.jwt.claim.role','authenticated',false)",
-    [id],
+    "select set_config('request.jwt.claim.sub',$1,false),set_config('request.jwt.claim.role',$2,false)",
+    [id, role],
   );
-  await db.exec('set role authenticated');
+  await db.exec(`set role ${role}`);
 }
 async function controls(market = true, lineup = true, scores = true, enabled = true) {
   await actor(ADMIN);
@@ -55,6 +55,8 @@ beforeAll(async () => {
   await db.query("update profiles set role='ADMIN' where id=$1", [ADMIN]);
   await actor(ADMIN);
   await db.query('select initialize_official_league($1,$2)', ['Beta', SEASON]);
+  await db.exec('reset role');
+  await db.exec("update leagues set is_public=true where name='Beta'");
   await db.query('select enroll_official_participant($1,$2)', [USER, 'Beta team']);
   day = (
     await db.query<{ id: string }>("select admin_create_test_matchday('Prueba sin fechas') id")
@@ -236,6 +238,24 @@ it('stores postponed scores as pending and allows completing them later', async 
 it('publishes player statistics only after a matchday is validated', async () => {
   await actor('');
   expect((await db.query('select * from public_player_weekly_stats()')).rows).toHaveLength(0);
+});
+
+it('exposes public rosters without exposing private fantasy team data', async () => {
+  await actor('', 'anon');
+  const rows = await db.query<{ player_id: string; fantasy_team_name: string }>('select player_id,fantasy_team_name from spectator_users()');
+  expect(rows.rows).toHaveLength(10);
+  expect(rows.rows[0].fantasy_team_name).toBe('Beta team');
+  await expect(db.query('select budget from fantasy_teams')).rejects.toThrow();
+});
+
+it('lets spectators read chat but prevents anonymous publishing', async () => {
+  await actor(USER);
+  await db.query('insert into chat_messages(user_id,body) values($1,$2)', [USER, 'Mensaje de prueba']);
+  await actor('', 'anon');
+  expect((await db.query('select * from spectator_chat()')).rows).toHaveLength(1);
+  await expect(
+    db.query('insert into chat_messages(user_id,body) values($1,$2)', [USER, 'No debería entrar']),
+  ).rejects.toThrow();
 });
 
 it('finalizes manually, calculates points and pays rewards only once', async () => {

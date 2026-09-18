@@ -19,19 +19,34 @@ export default async function UsersPage({
   const db: any = await createClient();
   const practice = await practiceSettings();
   const params = await searchParams;
-  const { data: config } = await db.from('app_config').select('official_league_id').eq('id', true).maybeSingle();
-  const { data: teams, error } = config?.official_league_id
-    ? await db
-        .from('fantasy_teams')
-        .select(
-          'id,name,budget,user_id,profiles(display_name),fantasy_roster_players(player_id,purchase_price,clause_protection_amount,clause_protected_until,players(name,slug,mmr,market_value,teams(name)))',
-        )
-        .eq('league_id', config.official_league_id)
-        .order('name')
-    : { data: [], error: null };
+  const { data: directory, error } = await db.rpc('spectator_users');
 
   if (error) throw new Error('No se pudieron cargar los usuarios.');
-  const participants = (teams ?? []) as any[];
+  const grouped = new Map<string, any>();
+  for (const row of directory ?? []) {
+    const participant = grouped.get(row.fantasy_team_id) ?? {
+      id: row.fantasy_team_id,
+      name: row.fantasy_team_name,
+      profiles: { display_name: row.participant_name },
+      fantasy_roster_players: [],
+    };
+    if (row.player_id)
+      participant.fantasy_roster_players.push({
+        player_id: row.player_id,
+        purchase_price: row.purchase_price,
+        clause_protection_amount: row.clause_protection_amount,
+        clause_protected_until: row.clause_protected_until,
+        players: {
+          name: row.player_name,
+          slug: row.player_slug,
+          mmr: row.player_mmr,
+          market_value: row.player_market_value,
+          teams: { name: row.real_team_name },
+        },
+      });
+    grouped.set(row.fantasy_team_id, participant);
+  }
+  const participants = [...grouped.values()];
 
   return (
     <>
