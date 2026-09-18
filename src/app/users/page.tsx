@@ -73,12 +73,10 @@ export default async function UsersPage({
                             {profile && <td>
                               {(() => {
                                 const protectedByDate = row.clause_protected_until && new Date(row.clause_protected_until) > new Date();
-                                const protectedPlayer = Boolean(practice?.first_week_mode || protectedByDate);
-                                const reason = practice?.first_week_mode
-                                  ? 'Los jugadores están protegidos durante la primera semana.'
-                                  : protectedByDate
-                                    ? `Protegido hasta ${new Date(row.clause_protected_until).toLocaleString('es-ES')}.`
-                                    : undefined;
+                                const protectedPlayer = protectedByDate;
+                                const reason = protectedByDate
+                                  ? `Protegido hasta ${new Date(row.clause_protected_until).toLocaleString('es-ES')}.`
+                                  : undefined;
                                 return (
                                   <AcquirePlayerModal
                                     player={row.player_id}
