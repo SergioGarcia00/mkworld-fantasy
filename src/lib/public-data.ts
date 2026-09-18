@@ -8,12 +8,12 @@ import { createClient } from './supabase/server';
 import { practiceSettings } from './practice';
 import { isConfigured } from './supabase/env';
 
-export const publicCatalog = cache(async () => {
+export const publicCatalog = cache(async (includeDetails = true) => {
   // Players and teams pages do not render historical statistics. Avoid loading
   // that large relation just to build their public catalogue.
   const [catalog, enriched] = await Promise.all([
     getCatalog(false).catch(() => null),
-    isConfigured()
+    includeDetails && isConfigured()
       ? (async () => {
           try {
             const db: any = await createClient();

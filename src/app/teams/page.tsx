@@ -5,7 +5,7 @@ import { PageHeading, EmptyState } from '@/components/ui';
 import { seedingFor } from '@/lib/season-seedings';
 export const metadata = { title: 'Equipos Atlas' };
 export default async function Teams({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
-  const [catalog, { q = '' }] = await Promise.all([publicCatalog(), searchParams]);
+  const [catalog, { q = '' }] = await Promise.all([publicCatalog(false), searchParams]);
   const teams = catalog.teams.filter((t) => t.toLowerCase().includes(q.toLowerCase()));
   const playerCounts = catalog.players.reduce<Record<string, number>>((counts, player) => {
     counts[player.team] = (counts[player.team] ?? 0) + 1;
