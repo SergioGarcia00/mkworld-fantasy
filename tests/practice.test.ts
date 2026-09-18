@@ -64,7 +64,7 @@ beforeAll(async () => {
   team = (await db.query<{ id: string }>('select id from fantasy_teams where user_id=$1', [USER]))
     .rows[0].id;
   await db.exec(
-    "insert into teams(source_key,name,slug,tag) values('beta','Beta','beta','B'); insert into players(source_key,name,slug,team_id,market_value,initial_value,mmr) select 'beta-'||n,'Pilot '||n,'beta-'||n,(select id from teams where source_key='beta'),100,100,4500 from generate_series(1,11) n;",
+    "insert into teams(source_key,name,slug,tag) values('beta','Beta','beta','B'),('code','Code Genius','code','CG'); insert into players(source_key,name,slug,team_id,market_value,initial_value,mmr) select 'beta-'||n,'Pilot '||n,'beta-'||n,(select id from teams where source_key='beta'),100,100,case when n in (22,23) then 9500 when n=24 then 3000 else 4500 end from generate_series(1,24) n; insert into players(source_key,name,slug,team_id,market_value,initial_value,mmr) values('code-1','Code Pilot','code-pilot',(select id from teams where source_key='code'),100,100,3000);",
   );
   players = (
     await db.query<{ id: string }>(
@@ -142,8 +142,11 @@ it('pins the market to an old week, enforces closure and settles exactly once', 
   await expect(db.query('select place_market_bid($1,$2,160)', [team, players[10]])).rejects.toThrow(
     'El mercado está cerrado',
   );
-  await expect(db.query('select sell_player($1,$2)', [team, players[0]])).rejects.toThrow(
-    'El mercado está cerrado',
+  await db.query('select sell_player($1,$2)', [team, players[0]]);
+  await db.exec('reset role');
+  await db.query(
+    'insert into fantasy_roster_players(fantasy_team_id,league_id,player_id,purchase_price) values($1,(select league_id from fantasy_teams where id=$1),$2,100)',
+    [team, players[0]],
   );
   await actor(ADMIN);
   expect((await db.query<{ n: number }>('select admin_test_settle_market() n')).rows[0].n).toBe(1);
@@ -157,6 +160,13 @@ it('pins the market to an old week, enforces closure and settles exactly once', 
       )
     ).rows,
   ).toHaveLength(1);
+  const nextMarket = (await db.query<{ open: boolean; week: string }>('select test_market_open open,test_market_week::text week from app_config where id=true')).rows[0];
+  expect(nextMarket.open).toBe(true);
+  expect(nextMarket.week).not.toBe('2000-01-03');
+  expect((await db.query('select id from market_offers where week_start=$1', [nextMarket.week])).rows).toHaveLength(10);
+  expect((await db.query("select title from news_posts where category='Mercado' and title like 'Subasta ganada ·%'" )).rows).toHaveLength(1);
+  await db.exec('reset role');
+  await db.query('delete from fantasy_roster_players where fantasy_team_id=$1 and player_id=$2', [team, players[10]]);
   expect(
     (
       await db.query("select * from fantasy_transactions where player_id=$1 and type='BUY'", [
