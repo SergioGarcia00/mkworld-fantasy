@@ -1224,6 +1224,21 @@ textarea {
   gap: 8px;
   margin-top: 8px;
 }
+.lineup-blocker-dialog {
+  display: block;
+  position: fixed;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
+.lineup-blocker-dialog::backdrop {
+  background: #020711b8;
+}
+.lineup-blocker-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--ice);
+}
 @media (max-width: 760px) {
   .team-roster-section .data-table {
     table-layout: auto;

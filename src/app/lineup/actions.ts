@@ -3,12 +3,27 @@ import { revalidatePath } from 'next/cache';
 import { participantData } from '@/components/participant-data';
 import { practiceSettings } from '@/lib/practice';
 import { madridWeek } from '@/components/participant-time';
+import { lineupBlocker, type LineupBlocker } from './validation';
+
+type LineupActionState = { error?: string; success?: string; blocker?: LineupBlocker };
 export async function saveLineup(
-  _: { error?: string; success?: string },
+  _: LineupActionState,
   form: FormData,
-): Promise<{ error?: string; success?: string }> {
-  const { db, team } = await participantData();
+): Promise<LineupActionState> {
+  const { db, team, roster } = await participantData();
   if (!team || team.id !== form.get('team')) return { error: 'No se pudo identificar tu equipo.' };
+  const blocker = lineupBlocker(roster.length, Number(team.budget));
+  if (blocker) {
+    return {
+      blocker,
+      error:
+        blocker === 'squad_budget'
+          ? 'No puedes guardar la alineación: tienes más de 10 jugadores y el presupuesto está en negativo.'
+          : blocker === 'squad'
+            ? 'No puedes guardar la alineación: tienes más de 10 jugadores.'
+            : 'No puedes guardar la alineación: el presupuesto está en negativo.',
+    };
+  }
   const { data: day, error: queryError } = await db
     .from('matchdays')
     .select('id,status,lock_at,start_at')

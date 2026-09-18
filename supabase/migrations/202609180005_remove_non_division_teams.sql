@@ -4,6 +4,12 @@ declare
   extra_teams uuid[];
   extra_players uuid[];
 begin
+  -- A fresh install has no seedings yet; wait until the official structure exists.
+  if (select count(*) from public.season_team_seedings
+      where season_id = '00000000-0000-4000-8000-000000000003'::uuid) < 118 then
+    return;
+  end if;
+
   select coalesce(array_agg(t.id), '{}'::uuid[]) into extra_teams
   from public.teams t
   where not exists (

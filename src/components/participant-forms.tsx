@@ -5,6 +5,7 @@ import { Crown } from 'lucide-react';
 import { signIn } from '@/app/auth/actions';
 import { saveLineup } from '@/app/lineup/actions';
 import { saveScore } from '@/app/scores/actions';
+import { lineupBlockerMessage, type LineupBlocker } from '@/app/lineup/validation';
 import './participant.css';
 export function Submit({
   children,
@@ -100,6 +101,8 @@ export function LineupForm({
   const [captain, setCaptain] = useState(first);
   const [draggedId, setDraggedId] = useState<string | null>(null);
   const [state, action, pending] = useActionState(saveLineup, {});
+  const blocker = state.blocker as LineupBlocker | undefined;
+  const blockerMessages = blocker ? lineupBlockerMessage(blocker) : [];
   const [timeClosed, setClosed] = useState(false);
   const closed = manuallyClosed || (deadline !== null && timeClosed);
   useEffect(() => {
@@ -265,6 +268,20 @@ export function LineupForm({
       >
         {pending ? 'Guardando…' : 'Guardar alineación'}
       </button>
+      {blocker && (
+        <dialog open className="protect-dialog lineup-blocker-dialog" aria-labelledby="lineup-blocker-title">
+          <div className="protect-dialog-form">
+            <h3 id="lineup-blocker-title">No puedes guardar la alineación</h3>
+            <p className="muted">Antes de confirmar la jornada tienes que corregir tu plantilla:</p>
+            <ul className="lineup-blocker-list">
+              {blockerMessages.map((message) => <li key={message}>{message}</li>)}
+            </ul>
+            <div className="protect-dialog-actions">
+              <a className="button primary" href="/my-team">Ir a mi equipo</a>
+            </div>
+          </div>
+        </dialog>
+      )}
     </form>
   );
 }
