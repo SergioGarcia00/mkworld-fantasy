@@ -100,7 +100,7 @@ export default async function MyTeam({
           <h1>{team?.name ?? 'Mi equipo'}</h1>
           <p className="muted">
             Tu plantilla de Atlas League · {roster.length} jugadores
-            {roster.length !== 10 ? ' · necesitas exactamente 10 para confirmar la alineación' : ' · lista para alinear'}
+            {roster.length < 6 ? ' · necesitas al menos 6 para confirmar la alineación' : roster.length > 10 ? ' · vende hasta quedarte con 10 como máximo' : ' · lista para alinear'}
           </p>
         </div>
         <a href="#lineup" className="button primary">
@@ -321,3 +321,4 @@ export default async function MyTeam({
     </>
   );
 }
+

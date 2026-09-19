@@ -18,9 +18,9 @@ export async function saveLineup(
       blocker,
       error:
         blocker === 'squad_budget'
-          ? 'No puedes guardar la alineación: tienes más de 10 jugadores y el presupuesto está en negativo.'
+          ? 'No puedes guardar la alineación: tienes que tener entre 6 y 10 jugadores y el presupuesto no puede estar en negativo.'
           : blocker === 'squad'
-            ? 'No puedes guardar la alineación: tienes más de 10 jugadores.'
+            ? 'No puedes guardar la alineación: tienes que tener entre 6 y 10 jugadores.'
             : 'No puedes guardar la alineación: el presupuesto está en negativo.',
     };
   }
@@ -62,3 +62,4 @@ export async function saveLineup(
   revalidatePath('/my-team');
   return { success: 'Alineación guardada.' };
 }
+
