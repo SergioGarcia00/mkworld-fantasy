@@ -3,11 +3,10 @@
 import Link from 'next/link';
 import { participantData, euros, squadValue, compactEuros } from '@/components/participant-data';
 import { LineupForm } from '@/components/participant-forms';
-import { madridWeek } from '@/components/participant-time';
 import { ProtectClauseModal } from '@/components/protect-clause-modal';
 import { SellPlayerModal } from '@/components/sell-player-modal';
 import { immediateSalePrice } from '@/lib/economy';
-import { practiceSettings, competitionWeek } from '@/lib/practice';
+import { lineupCloseFor, practiceSettings, competitionWeek } from '@/lib/practice';
 export const metadata = { title: 'Mi equipo' };
 export default async function MyTeam({
   searchParams,
@@ -89,7 +88,7 @@ export default async function MyTeam({
       ? new Date(
           Math.min(
             Date.parse(day.lock_at),
-            Date.parse(madridWeek(new Date(day.start_at)).lineupClose),
+            Date.parse(lineupCloseFor(day.start_at, practice)),
           ),
         ).toISOString()
       : null;

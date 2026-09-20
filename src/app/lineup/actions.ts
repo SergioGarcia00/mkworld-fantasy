@@ -1,8 +1,7 @@
 'use server';
 import { revalidatePath } from 'next/cache';
 import { participantData } from '@/components/participant-data';
-import { practiceSettings } from '@/lib/practice';
-import { madridWeek } from '@/components/participant-time';
+import { lineupCloseFor, practiceSettings } from '@/lib/practice';
 import { lineupBlocker, type LineupBlocker } from './validation';
 
 type LineupActionState = { error?: string; success?: string; blocker?: LineupBlocker };
@@ -38,10 +37,7 @@ export async function saveLineup(
       day.status === 'FINISHED')
   )
     return { error: 'Alineaciones cerradas por administración.' };
-  const deadline = Math.min(
-    Date.parse(day.lock_at),
-    Date.parse(madridWeek(new Date(day.start_at)).lineupClose),
-  );
+  const deadline = Math.min(Date.parse(day.lock_at), Date.parse(lineupCloseFor(day.start_at, practice)));
   if (
     !practice?.test_mode &&
     (['LOCKED', 'FINISHED'].includes(day.status) || Date.now() >= deadline)

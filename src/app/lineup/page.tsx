@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { participantData } from '@/components/participant-data';
 import { Countdown, LineupForm } from '@/components/participant-forms';
-import { madridWeek } from '@/components/participant-time';
-import { practiceSettings } from '@/lib/practice';
+import { lineupCloseFor, practiceSettings } from '@/lib/practice';
 export const metadata = { title: 'Tu alineación' };
 export default async function Lineup() {
   const { db, team, roster } = await participantData();
@@ -41,7 +40,7 @@ export default async function Lineup() {
       ? new Date(
           Math.min(
             Date.parse(day.lock_at),
-            Date.parse(madridWeek(new Date(day.start_at)).lineupClose),
+            Date.parse(lineupCloseFor(day.start_at, practice)),
           ),
         ).toISOString()
       : null;

@@ -16,6 +16,17 @@ export const practiceSettings = cache(async () => {
   if (error) throw new Error('No se pudo cargar el modo de competición.');
   return data;
 });
+
+export function lineupCloseFor(
+  startAt: string,
+  settings: { first_week_mode?: boolean | null; first_week_market_date?: string | null } | null,
+) {
+  if (settings?.first_week_mode && settings.first_week_market_date) {
+    return new Date(`${settings.first_week_market_date}T19:00:00+02:00`).toISOString();
+  }
+  return madridWeek(new Date(startAt)).lineupClose;
+}
+
 export async function competitionWeek() {
   const settings = await practiceSettings();
   const week = madridWeek();
