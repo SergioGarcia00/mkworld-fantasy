@@ -245,7 +245,7 @@ export default async function MyTeam({
           )}
           {!open && (
             <p className="muted">
-              Las ventas están cerradas hasta la próxima apertura del mercado.
+              Las pujas están cerradas, pero puedes vender jugadores de tu plantilla en cualquier momento.
             </p>
           )}
         </section>
