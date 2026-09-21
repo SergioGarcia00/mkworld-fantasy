@@ -45,8 +45,9 @@ export default async function Scores() {
       <section className="panel">
         <h2>{team?.name ?? 'Tu equipo'}</h2>
         <p className="muted">
-          De 12 a 180 puntos por carrera. Puedes guardar la primera carrera y completar la segunda
-          después. La administración valida los resultados.
+          De 0 a 180 puntos por carrera. Usa 0 cuando el piloto no haya disputado esa carrera.
+          Puedes guardar la primera carrera y completar la segunda después. La administración
+          valida los resultados.
         </p>
         {team &&
         day &&

@@ -173,11 +173,12 @@ export default function Rules() {
         <h2>Puntuaciones y validación</h2>
         <p>
           Cada piloto tiene dos carreras por jornada. Introduce la puntuación de cada una y la
-          aplicación calcula el total. Como regla general, cada carrera admite entre 12 y 180
-          puntos.
+          aplicación calcula el total. Cada carrera admite entre 0 y 180 puntos; usa 0 cuando el
+          piloto no haya disputado esa carrera.
         </p>
         <div className="rules-callout rules-callout--warning">
-          <b>¿Entró como Sub?</b> Marca esa casilla para permitir una puntuación inferior a 12.
+          <b>¿Entró como Sub?</b> Marca esa casilla para dejar constancia de que entró como
+          sustituto.
         </div>
         <p>
           La administración revisa y valida los datos. Solo las jornadas validadas cuentan para
