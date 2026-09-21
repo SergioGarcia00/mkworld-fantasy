@@ -326,14 +326,14 @@ export function ScoreForm({
           name="gameOne"
           aria-label={`Carrera 1 de ${name}`}
           type="number"
-          min={enteredAsSub ? 0 : 12}
+          min="0"
           max="180"
           step="1"
           required={!postponed}
           disabled={postponed}
           value={postponed ? '' : first}
           onChange={(e) => setFirst(e.target.value)}
-          placeholder={enteredAsSub ? '0–180' : '12–180'}
+          placeholder="0–180"
         />
       </label>
       <label className="field">
@@ -344,12 +344,12 @@ export function ScoreForm({
           disabled={postponed}
           aria-label={`Carrera 2 de ${name}`}
           type="number"
-          min={enteredAsSub ? 0 : 12}
+          min="0"
           max="180"
           step="1"
           value={postponed ? '' : second}
           onChange={(e) => setSecond(e.target.value)}
-          placeholder={enteredAsSub ? '0–180' : '12–180'}
+          placeholder="0–180"
         />
       </label>
       <label className="sub-score-toggle postponed-toggle">
@@ -362,7 +362,7 @@ export function ScoreForm({
         <span>Aplazado</span>
         <small>Se mantienen sus puntos pendientes hasta que juegue</small>
       </label>
-      <label className="sub-score-toggle">
+      <label className="sub-score-toggle entered-sub-toggle">
         <input
           type="checkbox"
           name="enteredAsSub"
@@ -370,7 +370,7 @@ export function ScoreForm({
           onChange={(e) => setEnteredAsSub(e.target.checked)}
         />
         <span>Entró como Sub</span>
-        <small>Permite puntuar menos de 12</small>
+        <small>Indica que entró como sustituto</small>
       </label>
       <div className="participant-total">
         <span className="muted">Total</span>

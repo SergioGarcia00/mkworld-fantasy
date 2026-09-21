@@ -521,7 +521,10 @@
   grid-template-columns:
     minmax(180px, 1.4fr) repeat(2, minmax(120px, 150px)) minmax(88px, 0.6fr)
     auto;
-  grid-template-areas: 'player game1 game2 total save' 'player sub sub total save';
+  grid-template-areas:
+    'player game1 game2 total save'
+    'player postponed postponed total save'
+    'player entered entered total save';
   align-items: center;
   gap: 12px 20px;
   margin-top: 12px;
@@ -563,10 +566,15 @@
   font-variant-numeric: tabular-nums;
 }
 .sub-score-toggle {
-  grid-area: sub;
   justify-self: start;
   font-size: 12px;
   gap: 7px;
+}
+.participant-score .postponed-toggle {
+  grid-area: postponed;
+}
+.participant-score .entered-sub-toggle {
+  grid-area: entered;
 }
 .sub-score-toggle small {
   font-size: 11px;
@@ -589,7 +597,12 @@
 @media (max-width: 760px) {
   .participant-score {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'player player' 'game1 game2' 'sub sub' 'total save';
+    grid-template-areas:
+      'player player'
+      'game1 game2'
+      'postponed postponed'
+      'entered entered'
+      'total save';
     gap: 14px 12px;
     padding: 20px 0;
   }

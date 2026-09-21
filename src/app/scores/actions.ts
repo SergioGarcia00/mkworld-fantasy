@@ -25,7 +25,9 @@ export async function saveScore(
     revalidatePath('/scores');
     return { success: 'Aplazado · se completará cuando juegue' };
   }
-  const minimum = enteredAsSub ? 0 : 12;
+  // Cero significa que el piloto no disputó esa carrera. Los suplentes
+  // siguen quedando identificados por separado para el cálculo posterior.
+  const minimum = 0;
   if (
     second === null ||
     !Number.isInteger(first) ||
@@ -36,7 +38,7 @@ export async function saveScore(
     return {
       error: enteredAsSub
         ? 'Cada carrera debe tener entre 0 y 180 puntos enteros.'
-        : 'Cada carrera debe tener entre 12 y 180 puntos enteros.',
+        : 'Cada carrera debe tener entre 0 y 180 puntos enteros.',
     };
   const { error } = await db.rpc('submit_player_weekly_score', {
     target_team: team.id,
