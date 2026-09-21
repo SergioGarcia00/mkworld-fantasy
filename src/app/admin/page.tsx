@@ -25,6 +25,8 @@ import './admin.css';
 import { PracticePanel } from './practice-panel';
 import { practiceAction } from './practice-actions';
 export const metadata = { title: 'Administración' };
+// Administration tables must always reflect the latest participant submissions.
+export const dynamic = 'force-dynamic';
 const tabs = [
   ['practice', 'Liga de pruebas'],
   ['accounts', 'Cuentas y permisos'],
