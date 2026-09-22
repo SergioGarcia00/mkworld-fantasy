@@ -36,6 +36,8 @@ export async function protectClause(form: FormData) {
   const { db, team } = await participantData();
   if (!team || team.id !== form.get('team')) redirect('/my-team?error=Equipo%20no%20autorizado');
   const spend = Number(form.get('amount'));
+  if (!Number.isInteger(spend) || spend <= 0)
+    redirect('/my-team?error=Indica%20un%20importe%20entero%20mayor%20que%20cero');
   const { error } = await db.rpc('protect_player_clause', {
     target_team: team.id,
     target_player: form.get('player'),
