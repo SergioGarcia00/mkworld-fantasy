@@ -290,6 +290,9 @@ export function ScoreForm({
   day,
   player,
   name,
+  realTeam,
+  division,
+  conference,
   one,
   two,
   postponed: initialPostponed = false,
@@ -298,6 +301,9 @@ export function ScoreForm({
   day: string;
   player: string;
   name: string;
+  realTeam?: string;
+  division?: number;
+  conference?: 'A' | 'B';
   one?: number;
   two?: number;
   postponed?: boolean;
@@ -314,6 +320,11 @@ export function ScoreForm({
       <input type="hidden" name="player" value={player} />
       <div className="score-player">
         <strong>{name}</strong>
+        <p className="score-player-meta">
+          {realTeam ?? 'Equipo sin asignar'}
+          {division ? ` · División ${division}` : ''}
+          {conference ? ` · Conferencia ${conference}` : ''}
+        </p>
         <p role="status" className="muted">
           {state.error ||
             state.success ||

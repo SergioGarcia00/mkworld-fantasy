@@ -3,6 +3,7 @@
 import { participantData } from '@/components/participant-data';
 import { ScoreForm } from '@/components/participant-forms';
 import { practiceSettings } from '@/lib/practice';
+import { seedingFor } from '@/lib/season-seedings';
 export const metadata = { title: 'Puntuaciones' };
 export default async function Scores() {
   const { db, team, roster } = await participantData();
@@ -55,6 +56,8 @@ export default async function Scores() {
         (!practice?.test_mode || (practice.test_scores_open && day.status !== 'FINISHED')) ? (
           roster.map((r: any) => {
             const input = inputs?.find((v: any) => v.player_id === r.player_id);
+            const realTeam = r.players?.teams?.name ?? 'Equipo sin asignar';
+            const seeding = seedingFor(realTeam);
             return (
               <ScoreForm
                 key={r.player_id}
@@ -62,6 +65,9 @@ export default async function Scores() {
                 day={day.id}
                 player={r.player_id}
                 name={r.players?.name}
+                realTeam={realTeam}
+                division={seeding?.division}
+                conference={seeding?.conference}
                 one={input?.game_one}
                 two={input?.game_two ?? undefined}
                 postponed={input?.postponed ?? false}
