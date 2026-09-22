@@ -1,6 +1,16 @@
 'use client';
 import { useRef } from 'react';
+import { useFormStatus } from 'react-dom';
 import { protectClause } from '@/app/market/actions';
+
+function ProtectSubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button className="button primary" disabled={pending}>
+      {pending ? 'Aplicando protección…' : 'Confirmar protección'}
+    </button>
+  );
+}
 
 export function ProtectClauseModal({
   team,
@@ -50,7 +60,7 @@ export function ProtectClauseModal({
             <button type="button" className="button secondary" onClick={() => ref.current?.close()}>
               Cancelar
             </button>
-            <button className="button primary">Confirmar protección</button>
+            <ProtectSubmitButton />
           </div>
         </form>
       </dialog>
