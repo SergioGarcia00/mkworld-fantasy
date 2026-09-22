@@ -41,7 +41,7 @@ export function ProtectClauseModal({
               name="amount"
               type="number"
               min="1"
-              step="50000"
+              step="1"
               placeholder="Importe en €"
               required
             />
