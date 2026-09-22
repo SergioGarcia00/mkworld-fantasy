@@ -32,9 +32,9 @@ begin
   where fantasy_team_id = target_team and player_id = target_player
   for update;
 
-  select market_value into strict player_value
-  from public.players
-  where id = target_player;
+  select p.market_value into strict player_value
+  from public.players p
+  where p.id = target_player;
 
   select * into strict cfg
   from public.app_config
