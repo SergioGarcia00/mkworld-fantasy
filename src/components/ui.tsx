@@ -49,7 +49,7 @@ export function EmptyState({
 export const WEEKLY_SCHEDULE = [
   ['LUN', '01:00', 'Apertura del mercado'],
   ['VIE', '23:59', 'Cierre de fichajes'],
-  ['SÁB', '23:59', 'Cierre de alineaciones'],
+  ['DOM', '18:00', 'Cierre de alineaciones'],
   ['DOM', '2 carreras', 'Día de competición'],
 ] as const;
 

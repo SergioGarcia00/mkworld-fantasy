@@ -5,7 +5,7 @@ export const metadata = { title: 'Reglamento' };
 const faqs = [
   [
     '¿Cuándo tengo que entrar?',
-    'Revisa el mercado el lunes, deja tus fichajes listos antes del viernes y confirma la alineación antes del sábado por la noche.',
+    'Revisa el mercado el lunes, deja tus fichajes listos antes del viernes y confirma la alineación antes del domingo a las 18:00.',
   ],
   [
     '¿Qué ocurre si no completo la alineación?',
@@ -102,7 +102,7 @@ export default function Rules() {
                 <td>Deja las pujas confirmadas.</td>
               </tr>
               <tr>
-                <td>Sábado · 23:59</td>
+                <td>Domingo · 18:00</td>
                 <td>Cierre de alineaciones</td>
                 <td>Guarda seis titulares y un capitán.</td>
               </tr>

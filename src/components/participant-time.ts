@@ -15,10 +15,10 @@ export function madridWeek(now = new Date()) {
   const monday = new Date(local);
   monday.setUTCDate(local.getUTCDate() - ((local.getUTCDay() + 6) % 7));
   monday.setUTCHours(0, 0, 0, 0);
-  const cutoff = (day: number) => {
+  const cutoff = (day: number, hour = 23, minute = 59) => {
     const wall = new Date(monday);
     wall.setUTCDate(wall.getUTCDate() + day);
-    wall.setUTCHours(23, 59);
+    wall.setUTCHours(hour, minute);
     const probe = new Date(wall.toLocaleString('en-US', { timeZone: 'Europe/Madrid' }));
     const utcProbe = new Date(wall.toLocaleString('en-US', { timeZone: 'UTC' }));
     return new Date(wall.getTime() - (probe.getTime() - utcProbe.getTime())).toISOString();
@@ -26,7 +26,7 @@ export function madridWeek(now = new Date()) {
   return {
     week: monday.toISOString().slice(0, 10),
     marketClose: cutoff(4),
-    lineupClose: cutoff(5),
+    lineupClose: cutoff(6, 18, 0),
     marketOpen:
       local.getTime() >= monday.getTime() + 3600000 &&
       local.getTime() < monday.getTime() + (4 * 24 + 23) * 3600000 + 59 * 60000,

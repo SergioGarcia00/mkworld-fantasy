@@ -63,7 +63,7 @@ export default async function Lineup() {
         <p className="muted">
           {practice?.test_mode
             ? 'Pruebas sin horario: la administración abre y cierra las alineaciones.'
-            : 'Cierre el sábado a las 23:59, hora de Madrid.'}
+            : 'Cierre el domingo a las 18:00, hora de Madrid.'}
           {deadline &&
             ` Límite de esta jornada: ${new Date(deadline).toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}.`}
         </p>

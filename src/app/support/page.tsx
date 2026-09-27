@@ -22,7 +22,7 @@ export default function Support() {
       <section>
         <h2>No puedo fichar o cambiar mi alineación</h2>
         <p>
-          Los fichajes cierran el viernes a las 23:59 y la alineación el sábado a las 23:59, hora de
+          Los fichajes cierran el viernes a las 23:59 y la alineación el domingo a las 18:00, hora de
           Madrid. Comprueba también tu presupuesto y los espacios de tu plantilla.
         </p>
         <Link href="/rules" className="text-link">
