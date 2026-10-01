@@ -22,6 +22,7 @@ declare
   base_clause bigint;
   before_buyer bigint;
   before_seller bigint;
+  seller_credit bigint;
   until_at timestamptz;
 begin
   if not public.competition_market_open() then
@@ -78,6 +79,7 @@ begin
     raise exception 'Saldo insuficiente';
   end if;
 
+  seller_credit := round(clause_amount*(cfg.clause_seller_percentage/100))::bigint;
   until_at := now() + make_interval(hours=>cfg.clause_protection_hours);
 
   delete from public.fantasy_roster_players
@@ -95,7 +97,7 @@ begin
   where id=buyer.id;
 
   update public.fantasy_teams
-  set budget=budget+clause_amount*(cfg.clause_seller_percentage/100)
+  set budget=budget+seller_credit
   where id=seller.id;
 
   insert into public.fantasy_transactions(
@@ -110,8 +112,8 @@ begin
     ),
     (
       seller.id,target_player,'CLAUSE_SALE',
-      clause_amount*(cfg.clause_seller_percentage/100),
-      before_seller,before_seller+clause_amount*(cfg.clause_seller_percentage/100),
+      seller_credit,
+      before_seller,before_seller+seller_credit,
       'Cláusula pagada por otro participante',
       jsonb_build_object('buyerId',buyer.id,'clauseAmount',clause_amount),
       idempotency||':seller'
@@ -120,7 +122,7 @@ begin
   return query
   select target_player,seller.id,buyer.id,clause_amount,
          before_buyer-clause_amount,
-         before_seller+clause_amount*(cfg.clause_seller_percentage/100),
+         before_seller+seller_credit,
          until_at;
 end $$;
 
