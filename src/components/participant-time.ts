@@ -23,12 +23,22 @@ export function madridWeek(now = new Date()) {
     const utcProbe = new Date(wall.toLocaleString('en-US', { timeZone: 'UTC' }));
     return new Date(wall.getTime() - (probe.getTime() - utcProbe.getTime())).toISOString();
   };
+  const dayOfWeek = local.getUTCDay();
+  const saturdayAfterClose = dayOfWeek === 6 && local.getUTCHours() >= 1;
+  const sundayAfterClose = dayOfWeek === 0;
+  const marketMonday = new Date(monday);
+  if (saturdayAfterClose || sundayAfterClose) {
+    marketMonday.setUTCDate(marketMonday.getUTCDate() + 7);
+  }
+  const marketMondayOffset = Math.round(
+    (marketMonday.getTime() - monday.getTime()) / 86400000,
+  );
+
   return {
-    week: monday.toISOString().slice(0, 10),
-    marketClose: cutoff(4),
-    lineupClose: cutoff(6, 18, 0),
-    marketOpen:
-      local.getTime() >= monday.getTime() + 3600000 &&
-      local.getTime() < monday.getTime() + (4 * 24 + 23) * 3600000 + 59 * 60000,
+    week: marketMonday.toISOString().slice(0, 10),
+    marketClose: cutoff(marketMondayOffset + 5, 1, 0),
+    lineupClose: cutoff(marketMondayOffset + 6, 18, 0),
+    // The next market opens as soon as Saturday's settlement finishes.
+    marketOpen: true,
   };
 }

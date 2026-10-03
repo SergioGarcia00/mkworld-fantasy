@@ -81,8 +81,8 @@ export default async function Market({
                   : week.manual
                   ? 'Sin fecha de cierre'
                 : week.marketOpen
-                  ? 'Viernes · 23:59'
-                  : 'Apertura: lunes · 01:00'}
+                  ? 'Sábado · 01:00'
+                  : 'Apertura inmediata tras la adjudicación'}
             </strong>
             <span>{week.manual ? 'Gestionado desde administración' : 'Hora de Madrid'}</span>
           </div>
@@ -99,7 +99,7 @@ export default async function Market({
               ? 'El mercado de hoy está cerrado. La siguiente tienda se abrirá cuando la administración la publique.'
               : week.manual
               ? 'Mercado cerrado por administración. Espera a que se abra la siguiente prueba.'
-            : 'El mercado está cerrado. Los fichajes vuelven el lunes a la 01:00, hora de Madrid.'}
+            : 'El mercado está cerrado hasta que se complete la adjudicación de la ronda.'}
         </p>
       )}
       <section className="market-offers">
@@ -218,7 +218,7 @@ export default async function Market({
             ) : (
               <div className="empty-state">
                 <h3>Aún no hay ofertas publicadas</h3>
-                <p>El mercado semanal se publica los lunes a la 01:00.</p>
+                <p>La siguiente ronda se prepara al cerrar la anterior.</p>
               </div>
             )}
         </>

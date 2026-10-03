@@ -77,8 +77,8 @@ export default function Rules() {
       <section className="rules-section">
         <h2>El calendario de una jornada</h2>
         <p>
-          Los horarios se muestran en Europe/Madrid. El domingo se disputan dos carreras y el lunes
-          comienza el siguiente ciclo.
+          Los horarios se muestran en Europe/Madrid. El domingo se disputan dos carreras y el sábado
+          a la 01:00 se adjudica la ronda y comienza la siguiente sin pausa.
         </p>
         <Timeline />
         <div className="rules-table-wrap">
@@ -92,14 +92,9 @@ export default function Rules() {
             </thead>
             <tbody>
               <tr>
-                <td>Lunes · 01:00</td>
-                <td>Apertura del mercado</td>
+                <td>Sábado · 01:00</td>
+                <td>Adjudicación y nueva apertura del mercado</td>
                 <td>Analiza ofertas y presupuesto.</td>
-              </tr>
-              <tr>
-                <td>Viernes · 23:59</td>
-                <td>Cierre de fichajes</td>
-                <td>Deja las pujas confirmadas.</td>
               </tr>
               <tr>
                 <td>Domingo · 18:00</td>
