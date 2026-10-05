@@ -216,8 +216,10 @@ export default async function MyTeam({
                               name={r.players?.name ?? 'jugador'}
                               value={compactEuros(r.players?.market_value ?? 0)}
                               salePrice={compactEuros(
-                                immediateSalePrice(Number(r.players?.market_value ?? 0)),
+                                immediateSalePrice(Number(r.players?.market_value ?? 0)) +
+                                  Number(r.clause_protection_spent ?? 0),
                               )}
+                              clauseRefund={compactEuros(Number(r.clause_protection_spent ?? 0))}
                               // La venta inmediata es gestión de plantilla y no depende
                               // de que la ventana de subastas esté abierta.
                               disabled={false}

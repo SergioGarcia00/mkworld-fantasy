@@ -18,7 +18,7 @@ export async function participantData() {
     ? await db
         .from('fantasy_roster_players')
         .select(
-          'player_id,purchase_price,clause_protection_amount,clause_protected_until,players(name,slug,market_value,mmr,teams(name))',
+          'player_id,purchase_price,clause_protection_amount,clause_protection_spent,clause_protected_until,players(name,slug,market_value,mmr,teams(name))',
         )
         .eq('fantasy_team_id', team.id)
     : { data: [], error: null };

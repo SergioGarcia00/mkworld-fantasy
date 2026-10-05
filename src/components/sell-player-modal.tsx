@@ -19,6 +19,7 @@ export function SellPlayerModal({
   name,
   value,
   salePrice,
+  clauseRefund,
   disabled,
 }: {
   team: string;
@@ -26,6 +27,7 @@ export function SellPlayerModal({
   name: string;
   value: string;
   salePrice: string;
+  clauseRefund: string;
   disabled: boolean;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -49,7 +51,10 @@ export function SellPlayerModal({
           <p>
             Recibirás <strong>{salePrice}</strong> en tu saldo.
           </p>
-          <p className="muted">Venta inmediata: recibes el 95% del valor de mercado. La cláusula es un importe distinto y solo se aplica a fichajes entre usuarios.</p>
+          <p className="muted">La venta devuelve el 95% del valor de mercado y todo lo gastado en subir la cláusula.</p>
+          {clauseRefund !== '0 €' && (
+            <p className="muted">Incluye {clauseRefund} recuperados por la protección de cláusula.</p>
+          )}
           <p className="muted" aria-live="polite">
             La venta se procesa al instante. Si tarda unos segundos, no pulses de nuevo.
           </p>
