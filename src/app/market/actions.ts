@@ -35,7 +35,14 @@ export async function sellPlayer(form: FormData) {
 export async function protectClause(form: FormData) {
   const { db, team } = await participantData();
   if (!team || team.id !== form.get('team')) redirect('/my-team?error=Equipo%20no%20autorizado');
-  const spend = Number(form.get('amount'));
+  const rawAmount = String(form.get('amount') ?? '').trim();
+  // Accept both plain integers (10000) and the Spanish thousands notation
+  // users commonly type in this form (10.000 or 10 000).
+  const normalizedAmount =
+    /^\d{1,3}([.\s]\d{3})+$/.test(rawAmount)
+      ? rawAmount.replace(/[.\s]/g, '')
+      : rawAmount;
+  const spend = Number(normalizedAmount);
   if (!Number.isInteger(spend) || spend <= 0)
     redirect('/my-team?error=Indica%20un%20importe%20entero%20mayor%20que%20cero');
   const { error } = await db.rpc('protect_player_clause', {

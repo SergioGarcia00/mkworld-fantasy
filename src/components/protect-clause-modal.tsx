@@ -6,7 +6,7 @@ import { protectClause } from '@/app/market/actions';
 function ProtectSubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <button className="button primary" disabled={pending}>
+    <button type="submit" className="button primary" disabled={pending}>
       {pending ? 'Aplicando protección…' : 'Confirmar protección'}
     </button>
   );
@@ -47,11 +47,12 @@ export function ProtectClauseModal({
           <p className="muted">Cláusula actual: {clause}</p>
           <label className="field">
             <span>¿Cuánto quieres gastar?</span>
+            <small className="muted">Escribe el importe en euros, por ejemplo 10000 o 10.000.</small>
             <input
               name="amount"
-              type="number"
-              min="1"
-              step="1"
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9. ]+"
               placeholder="Importe en €"
               required
             />
