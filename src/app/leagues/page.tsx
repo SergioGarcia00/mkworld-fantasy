@@ -23,12 +23,21 @@ export default async function Standings({
       </>
     );
   const db = await createClient();
-  const [rows, days, pilotScores, pilotCatalog] = await Promise.all([
+  const [rows, days, pilotScores] = await Promise.all([
     db.rpc('spectator_standings', { target_matchday: selectedMatchday }),
     db.rpc('spectator_matchdays', {}),
     (db as any).rpc('public_player_weekly_stats'),
-    (db as any).from('players').select('id,name,teams(name)').eq('status', 'ACTIVE'),
   ]);
+  const pilotIds = [
+    ...new Set(
+      ((pilotScores.data ?? []) as Array<{ player_id?: string }>).flatMap((score) =>
+        score.player_id ? [score.player_id] : [],
+      ),
+    ),
+  ];
+  const pilotCatalog = pilotIds.length
+    ? await (db as any).from('players').select('id,name,teams(name)').in('id', pilotIds)
+    : { data: [], error: null };
   if (rows.error || days.error)
     return (
       <>
