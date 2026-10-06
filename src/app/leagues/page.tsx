@@ -28,15 +28,19 @@ export default async function Standings({
     db.rpc('spectator_matchdays', {}),
     (db as any).rpc('public_player_weekly_stats'),
   ]);
-  const pilotIds = [
-    ...new Set(
-      ((pilotScores.data ?? []) as Array<{ player_id?: string }>).flatMap((score) =>
-        score.player_id ? [score.player_id] : [],
-      ),
-    ),
-  ];
-  const pilotCatalog = pilotIds.length
-    ? await (db as any).from('players').select('id,name,teams(name)').in('id', pilotIds)
+  const featuredPilotIds = ((pilotScores.data ?? []) as Array<{
+    player_id?: string;
+    total_points?: number;
+  }>)
+    .filter((score) => score.player_id)
+    .sort((a, b) => Number(b.total_points ?? 0) - Number(a.total_points ?? 0))
+    .slice(0, 5)
+    .map((score) => score.player_id as string);
+  const pilotCatalog = featuredPilotIds.length
+    ? await (db as any)
+        .from('players')
+        .select('id,name,teams(name)')
+        .in('id', featuredPilotIds)
     : { data: [], error: null };
   if (rows.error || days.error)
     return (
