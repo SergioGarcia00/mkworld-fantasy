@@ -28,7 +28,11 @@ export function AcquirePlayerModal({
         title={reason}
         onClick={() => ref.current?.showModal()}
       >
-        {disabled && reason ? 'Protegido' : 'Fichar'}
+        {disabled
+          ? reason?.startsWith('Protegido')
+            ? 'Protegido'
+            : 'No disponible'
+          : 'Fichar'}
       </button>
       {!disabled && (
         <dialog ref={ref} className="protect-dialog sell-dialog">
