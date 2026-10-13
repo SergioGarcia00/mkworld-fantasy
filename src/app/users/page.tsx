@@ -97,10 +97,10 @@ export default async function UsersPage({
                                     player={row.player_id}
                                     name={row.players?.name ?? 'jugador'}
                                     owner={team.profiles?.display_name ?? team.name}
-                                    clause={euros(Math.min(
-                                      Math.round(Number(row.players?.market_value ?? 0) * 3),
-                                      Math.round(Number(row.players?.market_value ?? 0) * 1.5) + Number(row.clause_protection_amount ?? 0),
-                                    ))}
+                                    clause={euros(
+                                      Math.round(Number(row.players?.market_value ?? 0) * 1.5) +
+                                        Number(row.clause_protection_amount ?? 0),
+                                    )}
                                     disabled={team.user_id === profile.id || protectedPlayer}
                                     reason={team.user_id === profile.id ? 'Ya está en tu plantilla.' : reason}
                                   />
