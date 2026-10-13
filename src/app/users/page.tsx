@@ -5,7 +5,6 @@ import { createClient } from '@/lib/supabase/server';
 import { PageHeading, EmptyState } from '@/components/ui';
 import { euros } from '@/components/participant-data';
 import { AcquirePlayerModal } from '@/components/acquire-player-modal';
-import { competitionWeek } from '@/lib/practice';
 
 /* Public roster directory. Actions remain available only to authenticated users. */
 export const metadata = { title: 'Usuarios' };
@@ -17,14 +16,8 @@ export default async function UsersPage({
 }) {
   const profile = await currentProfile();
   const db: any = await createClient();
-  const week = await competitionWeek();
   const params = await searchParams;
   const { data: directory, error } = await db.rpc('spectator_users');
-  const { data: currentOffers } = await db
-    .from('market_offers')
-    .select('player_id')
-    .eq('week_start', week.week);
-  const currentMarketPlayers = new Set((currentOffers ?? []).map((offer: { player_id: string }) => offer.player_id));
 
   if (error) throw new Error('No se pudieron cargar los usuarios.');
   const grouped = new Map<string, any>();
@@ -94,11 +87,8 @@ export default async function UsersPage({
                               {(() => {
                                 const protectedByDate = row.clause_protected_until && new Date(row.clause_protected_until) > new Date();
                                 const protectedPlayer = protectedByDate;
-                                const currentMarketPlayer = currentMarketPlayers.has(row.player_id);
                                 const reason = protectedByDate
                                   ? `Protegido hasta ${new Date(row.clause_protected_until).toLocaleString('es-ES')}.`
-                                  : !currentMarketPlayer
-                                    ? 'Este piloto no pertenece al mercado actual.'
                                   : undefined;
                                 return (
                                   <AcquirePlayerModal
@@ -109,7 +99,7 @@ export default async function UsersPage({
                                       Math.round(Number(row.players?.market_value ?? 0) * 1.5) +
                                         Number(row.clause_protection_amount ?? 0),
                                     )}
-                                    disabled={team.user_id === profile.id || protectedPlayer || !currentMarketPlayer}
+                                    disabled={team.user_id === profile.id || protectedPlayer}
                                     reason={team.user_id === profile.id ? 'Ya está en tu plantilla.' : reason}
                                   />
                                 );
