@@ -39,7 +39,7 @@ begin
   with eligible as (
     select distinct on (p.team_id) p.id, p.team_id, p.mmr
     from public.players p join public.teams t on t.id = p.team_id
-    where p.status = 'ACTIVE' and p.mmr is not null and lower(trim(t.name)) = any(playoff_teams)
+    where p.status = 'ACTIVE' and p.mmr is not null and trim(t.name) = any(playoff_teams)
     order by p.team_id, random()
   ), picks as (
     select id, mmr, row_number() over(order by random())::integer slot
