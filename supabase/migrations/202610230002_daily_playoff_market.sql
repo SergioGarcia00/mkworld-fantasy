@@ -37,15 +37,14 @@ declare
 begin
   delete from public.market_offers where season_id = target_season and week_start = market_date;
   with eligible as (
-    select p.id, p.mmr from public.players p join public.teams t on t.id = p.team_id
+    select distinct on (p.team_id) p.id, p.team_id, p.mmr
+    from public.players p join public.teams t on t.id = p.team_id
     where p.status = 'ACTIVE' and p.mmr is not null and lower(trim(t.name)) = any(playoff_teams)
-  ), high as (
-    select id, mmr, row_number() over(order by random())::integer slot from eligible where mmr > 9000 order by random() limit 2
-  ), mid as (
-    select id, mmr, (row_number() over(order by random()) + 2)::integer slot from eligible where mmr between 4000 and 9000 order by random() limit 6
-  ), low as (
-    select id, mmr, (row_number() over(order by random()) + 8)::integer slot from eligible where mmr < 4000 order by random() limit 2
-  ), picks as (select * from high union all select * from mid union all select * from low)
+    order by p.team_id, random()
+  ), picks as (
+    select id, mmr, row_number() over(order by random())::integer slot
+    from eligible order by random() limit 10
+  )
   insert into public.market_offers(season_id, week_start, slot, player_id, mmr)
   select target_season, market_date, slot, id, mmr from picks;
   return (select count(*) from public.market_offers where season_id = target_season and week_start = market_date);
