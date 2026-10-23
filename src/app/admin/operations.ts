@@ -20,8 +20,6 @@ export async function adminOperation(_: ActionState, form: FormData): Promise<Ac
       if (form.get('confirm') !== 'on') throw new Error('Confirma la regeneración del mercado.');
       const season = z.uuid().parse(form.get('season'));
       const week = z.iso.date().parse(form.get('week'));
-      if (new Date(week + 'T12:00:00Z').getUTCDay() !== 1)
-        throw new Error('Selecciona un lunes como inicio de semana.');
       ({ error } = await db.rpc('generate_weekly_market', {
         target_season: season,
         target_week: week,

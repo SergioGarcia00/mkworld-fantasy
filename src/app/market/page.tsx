@@ -39,7 +39,7 @@ export default async function Market({
               ? 'Mercado de apertura: diez pilotos nuevos cada día hasta el domingo.'
               : week.manual
               ? 'Ofertas de pruebas: la administración decide cuándo cambiar de ronda.'
-              : 'Diez oportunidades cada semana para construir tu próxima victoria.'}
+              : 'Diez oportunidades nuevas cada día para construir tu próxima victoria.'}
           </p>
           <div className="market-budget">
             <div>
@@ -82,7 +82,7 @@ export default async function Market({
                   ? 'Sin fecha de cierre'
                 : week.marketOpen
                   ? 'Sábado · 01:00'
-                  : 'Apertura inmediata tras la adjudicación'}
+                  : 'Todos los días · 01:00'}
             </strong>
             <span>{week.manual ? 'Gestionado desde administración' : 'Hora de Madrid'}</span>
           </div>
@@ -103,7 +103,7 @@ export default async function Market({
         </p>
       )}
       <section className="market-offers">
-        <h2>Ofertas de la semana</h2>
+        <h2>Ofertas de hoy</h2>
         <>
             {offers.length ? (
               <div className="participant-offers">
