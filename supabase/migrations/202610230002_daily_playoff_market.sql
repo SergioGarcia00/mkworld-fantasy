@@ -23,16 +23,12 @@ returns integer language plpgsql security definer set search_path = '' as $$
 declare
   market_date date := coalesce(target_week, (now() at time zone 'Europe/Madrid')::date);
   playoff_teams text[] := array[
-    'Rozando la Katástrofe','Clarity','Lycoris','Leftovers','brilliant','Leaf Bloom',
-    'Crazy Dave Racing','Battle Alliance','Solar Storm','Dynamite','Stellar Roses','Urumyans',
-    'Cool Kids','Astroblitz','Jackpot','Excalibur','Unbelievably Bailed','The Squirrel Squad',
-    'Starstruck 2','Nferno Violet','Kartvengers Team Alpha','Pixel Racers','Ronrons 2','Caliburn',
-    'Liberty','Archon Accelerators','Acceleration','Rozando la Katástrofe Exodus','STAKATAKA',
-    'Tempest','Segundones Team','Midnight Wasps','Solarblitz','Yoshi Family Safari',
-    'Shy Guys Gambling Club','KartsRapaces Blues','Prime 6','RKU','Koopa Troopers','Cyneria Esport',
-    'La Hoop','The Acorn Academy','KARTNIVOROS','RK Amborgesa','Capybara Skies','Ignition',
-    'Pixel Academy','Diamond Justice','Volt Switch','Knights of Wheels','Jet Joker Neo',
-    'Trial Chambers Perle','Rozando la Katástrofe Eclipse','Real Calabacín','Space Dementia'
+    'Rozando la Katástrofe','Clarity','Battle Alliance','brilliant','Solar Storm','Urumyans',
+    'Cool Kids','Jackpot','The Squirrel Squad','Starstruck 2','Kartvengers Team Alpha',
+    'Archon Accelerators','Lycoris','Midnight Wasps','STAKATAKA','KartsRapaces Blues',
+    'Solarblitz','RKU','Cyneria Esport','KARTNIVOROS','The Acorn Academy','Ignition',
+    'Capybara Skies','Jet Joker Neo','Afterparty','KVT2','Rozando la Katástrofe Eclipse',
+    'Space Dementia'
   ];
 begin
   delete from public.market_offers where season_id = target_season and week_start = market_date;
