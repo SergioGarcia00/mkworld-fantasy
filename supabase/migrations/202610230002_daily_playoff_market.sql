@@ -65,7 +65,7 @@ begin
     if now() < close_at then continue; end if;
     for offer in select o.* from public.market_offers o where o.season_id=season and o.week_start=market_date order by o.slot for update loop
       if exists(select 1 from public.market_bid_results r where r.market_offer_id=offer.id) then continue; end if;
-      for bid in select b.* from public.market_bids b join public.fantasy_teams t on t.id=b.fantasy_team_id join public.profiles p on p.id=t.user_id where b.market_offer_id=offer.id and t.league_id=cfg.official_league_id and coalesce(p.access_enabled,true) order by b.amount desc,b.created_at asc,b.id asc loop
+      for bid in select mb.* from public.market_bids mb join public.fantasy_teams t on t.id=mb.fantasy_team_id join public.profiles p on p.id=t.user_id where mb.market_offer_id=offer.id and t.league_id=cfg.official_league_id and coalesce(p.access_enabled,true) order by mb.amount desc,mb.created_at asc,mb.id asc loop
         select * into strict team_row from public.fantasy_teams where id=bid.fantasy_team_id for update;
         if team_row.budget < bid.amount or exists(select 1 from public.fantasy_roster_players r where r.league_id=cfg.official_league_id and r.player_id=offer.player_id) then continue; end if;
         select b2.amount into second_bid from public.market_bids b2 where b2.market_offer_id=offer.id and b2.id<>bid.id order by b2.amount desc,b2.created_at asc,b2.id asc limit 1;
