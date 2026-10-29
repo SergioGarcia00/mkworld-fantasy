@@ -8,7 +8,7 @@ declare
     'Cool Kids','Jackpot','The Squirrel Squad','Starstruck 2','Kartvengers Team Alpha',
     'Archon Accelerators','Lycoris','Midnight Wasps','STAKATAKA','KartsRapaces Blues',
     'Solarblitz','RKU','Cyneria Esport','KARTNIVOROS','The Acorn Academy','Ignition',
-    'Capybara Skies','Jet Joker Neo','Afterparty','KVT2','Rozando la Katástrofe Eclipse',
+    'Capybara Skies','Jet Joker Neo','Knights Of Wheels','Afterparty','KVT2','Rozando la Katástrofe Eclipse',
     'Space Dementia'
   ];
 begin
