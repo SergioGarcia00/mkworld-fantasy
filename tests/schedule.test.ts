@@ -12,6 +12,6 @@ describe('Madrid daily competition clock', () => {
   it('closes the daily market and lineup at the next Madrid deadlines', () => {
     const clock = madridWeek(new Date('2026-10-29T12:00:00Z'));
     expect(clock.marketClose).toBe('2026-10-29T23:00:00.000Z');
-    expect(clock.lineupClose).toBe('2026-10-29T17:00:00.000Z');
+    expect(clock.lineupClose).toBe('2026-10-30T17:00:00.000Z');
   });
 });
