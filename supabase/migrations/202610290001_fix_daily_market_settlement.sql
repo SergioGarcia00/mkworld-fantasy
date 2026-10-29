@@ -59,12 +59,12 @@ begin
         insert into public.fantasy_roster_players(fantasy_team_id, league_id, player_id, purchase_price)
           values (team_row.id, team_row.league_id, offer_row.player_id, bid_row.amount);
         insert into public.fantasy_transactions(fantasy_team_id, player_id, type, amount, balance_before, balance_after, description, metadata, idempotency_key)
-          values (team_row.id, offer_row.player_id, 'BUY', bid_row.amount, team_row.budget, team_row.budget - bid_row.amount,
-            'Adjudicación automática de puja', jsonb_build_object('marketOfferId', offer_row.id, 'marketDate', market_date), 'normal-market:' || offer_row.id)
-          on conflict (fantasy_team_id, idempotency_key) do nothing;
+          select team_row.id, offer_row.player_id, 'BUY', bid_row.amount, team_row.budget, team_row.budget - bid_row.amount,
+            'Adjudicación automática de puja', jsonb_build_object('marketOfferId', offer_row.id, 'marketDate', market_date), 'normal-market:' || offer_row.id
+          where not exists (select 1 from public.fantasy_transactions tx where tx.fantasy_team_id = team_row.id and tx.idempotency_key = 'normal-market:' || offer_row.id);
         insert into public.market_bid_results(market_offer_id, player_id, fantasy_team_id, winning_bid_id, winning_amount, second_amount)
-          values (offer_row.id, offer_row.player_id, team_row.id, bid_row.id, bid_row.amount, second_bid)
-          on conflict (market_offer_id) do nothing;
+          select offer_row.id, offer_row.player_id, team_row.id, bid_row.id, bid_row.amount, second_bid
+          where not exists (select 1 from public.market_bid_results mbr where mbr.market_offer_id = offer_row.id);
         if found then awarded := awarded + 1; end if;
         exit;
       end loop;
