@@ -81,7 +81,7 @@ export default async function Market({
                   : week.manual
                   ? 'Sin fecha de cierre'
                 : week.marketOpen
-                  ? 'Sábado · 01:00'
+                  ? 'Cada día · 01:00'
                   : 'Todos los días · 01:00'}
             </strong>
             <span>{week.manual ? 'Gestionado desde administración' : 'Hora de Madrid'}</span>
